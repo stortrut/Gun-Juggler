@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 1530846656}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 7.1, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -733,7 +733,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1734863818}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8fea298a93f714e4e8d8f37911afa231, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -773,8 +773,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -785,7 +785,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &2081155669
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +865,7 @@ Transform:
   m_GameObject: {fileID: 2081155669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.52, y: -1.58, z: 0}
+  m_LocalPosition: {x: 13.88, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 3.04129, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

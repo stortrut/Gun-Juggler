@@ -8,31 +8,45 @@ public class EnemyMovement : MonoBehaviour
     public GameObject Player;
     public Vector2 velocity;
     Rigidbody2D rb2D;
-    bool playerNear;    
+    bool playerNear;
     bool onPatrol;
     bool hitObstacle;
-    float distanceSide=0.6f;
+    bool groundExists;
+    float distanceSide = 0.1f;
     SpriteRenderer EnemySprite;
-    Vector2 rightdirection = Vector2.right;
-    
+    Vector3 rightdirection = Vector2.right;
+    Vector2 savedVelocity;
+    bool startStop=true;
+    bool stopStop=true;
+    float currentTime=0;
+
     void Start()
     {
-        EnemySprite=GetComponent<SpriteRenderer>();
-        rb2D= GetComponent<Rigidbody2D>();
+        EnemySprite = GetComponent<SpriteRenderer>();
+        rb2D = GetComponent<Rigidbody2D>();
         Patrol();
     }
 
-  
+
     void Update()
     {
-        hitObstacle=Physics2D.Raycast(transform.position+new Vector3(distanceSide,0),rightdirection,distanceSide); 
-        Debug.DrawRay(transform.position, rightdirection * distanceSide, Color.blue);
-        if (hitObstacle==true)
+        hitObstacle = Physics2D.Raycast(transform.position + rightdirection/1.6f, rightdirection, distanceSide);
+        groundExists = Physics2D.Raycast(transform.position + rightdirection/1.6f, Vector2.down, 5);
+        Debug.DrawRay(transform.position + rightdirection/1.6f, rightdirection * distanceSide, Color.blue);
+        Debug.DrawRay(transform.position + rightdirection/1.6f, Vector2.down * 2, Color.yellow);
+        
+        if ((hitObstacle == true || groundExists == false) && (Time.time-currentTime>1.5f||currentTime==0))
         {
-            Flip();
+            currentTime = Time.time;
             hitObstacle = false;
+            groundExists = true;
+            Stop();
+            Invoke(nameof(Flip), 0.4f);
+            Invoke(nameof(Stop),0.3f);
+            
+            
         }
-       
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             Patrol();
@@ -41,24 +55,48 @@ public class EnemyMovement : MonoBehaviour
         {
             Patrol();
         }
-        
+
     }
 
-    public void Patrol() 
-    { 
-        onPatrol=true;
+    public void Patrol()
+    {
+        onPatrol = true;
         velocity *= Vector2.right;
         rb2D.velocity = velocity;
-        
+
     }
 
     public void Flip()
     {
-        velocity = -velocity;
-        rb2D.velocity = velocity;
+        velocity *= -1;
+        rb2D.velocity *= -1;
         EnemySprite.flipX = true;
-        rightdirection = -rightdirection;
+        rightdirection *=-1;
     }
 
+    public void Stop()
+    {
 
+
+        switch (startStop)
+        {
+
+            case true:
+                savedVelocity = rb2D.velocity;
+                Debug.Log(savedVelocity);
+                rb2D.velocity = Vector2.zero;
+                startStop = !startStop;
+                break;
+            case false:
+                rb2D.velocity=savedVelocity;
+                startStop = !startStop;
+                
+                break;
+
+
+        }
+
+
+
+    }
 }
