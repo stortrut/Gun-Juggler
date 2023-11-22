@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IDamageable 
 {
 
-    int protection { get; set; }
+    //int protection { get; set; }
     void ApplyDamage(int amount);
-    void RemoveProtection(int protection);
+   // void RemoveProtection(int protection);
 }
