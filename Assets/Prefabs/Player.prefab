@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8232971706319005664}
   - component: {fileID: 8683175589293134518}
   - component: {fileID: 1382661823739762043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,9 +122,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 8683175589293134518}
+  mainPlayerCollider: {fileID: 1382661823739762043}
   acceleration: 10
   speed: 7
   deacceleration: 10
+  jumpHeight: 1
+  groundCheckDistanceFromCollider: 0.1
 --- !u!50 &8683175589293134518
 Rigidbody2D:
   serializedVersion: 4

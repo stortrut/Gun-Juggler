@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private Collider2D mainPlayerCollider;
 
-    [Header("Movement")]
+    [Header("Walk")]
     [SerializeField] private float acceleration = 10f;
     [SerializeField] private float speed = 7f;
     [SerializeField] private float deacceleration = 10f;
@@ -14,11 +15,55 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private float velocityToAddX;
 
+    [Header("Jump")]
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float groundCheckDistanceFromCollider;
+
+    private float calculatedGroundCheckLenght;  //we should use this. TODO
+
+    private bool onGround = false;
+    private bool isJumping = false;
+
+
+
+    private void Start()
+    {
+        //calculatedGroundCheckLenght = mainPlayerCollider.bounds.size.y + groundCheckDistanceFromCollider; TODO
+    }
+
 
     // Update is called once per frame
     void Update()
     {
+        calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider; //TODO
+
+
         Walk();
+        Jump();
+
+        if (onGround)
+        {
+            isJumping = false;
+        }
+    }
+    private void FixedUpdate()
+    {
+        onGround = CheckIfTouchingGround();
+    }
+
+    private bool CheckIfTouchingGround()
+    {
+        bool isTouchingGround = false;
+
+        RaycastHit2D[] groundCheckArray = Physics2D.RaycastAll(transform.position, Vector2.down, calculatedGroundCheckLenght);
+
+        foreach (RaycastHit2D rayCastHitObject in groundCheckArray)
+        {
+            if (rayCastHitObject.collider.CompareTag("Ground"))
+                isTouchingGround = true;
+        }
+
+        return isTouchingGround;
     }
 
 
@@ -35,5 +80,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);
+    }
+
+    private void Jump()
+    {
+        if (onGround && Input.GetButtonDown("Jump"))
+        {
+            float jumpVelocity = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
+            isJumping = true;
+        }
     }
 }
