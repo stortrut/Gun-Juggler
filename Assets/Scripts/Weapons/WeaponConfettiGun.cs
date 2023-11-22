@@ -18,7 +18,7 @@ public class WeaponConfettiGun : Weapon
             if (equipped)
             {
                 Shoot();
-                knockback.KnockBackMyself(transform.position);
+                knockback.KnockBackMyself(transform.position,50);
             }
         }
         if (Input.GetMouseButtonDown(1))

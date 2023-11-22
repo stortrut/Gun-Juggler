@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
+    Rigidbody2D rb2D;
     private void Start()
     {
-        Transform transform = GetComponent<Transform>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
-    public void KnockBackMyself(Vector3 referencePosition)  //referencePosition is not the thing that gets knocked back
+    public void KnockBackMyself(Vector3 referenceTransformPosition, float knockbackForce)  //referenceTransformPosition is the thing that not gets knocked back
     {
-        Vector3 distance = new Vector3(referencePosition.x - transform.position.x, 0);
+        Vector3 distance = new Vector3(referenceTransformPosition.x - transform.position.x, 0);
         distance.Normalize();
-        float knockbackDirection = distance.x;
-        Debug.Log(knockbackDirection);
-
-        transform.position += new Vector3(-knockbackDirection * 1, 0, 0);
+        Debug.Log(distance);
+        rb2D.AddForce(knockbackForce * distance, ForceMode2D.Impulse);
+        //transform.position += new Vector3(-knockbackDirection * 1, 0, 0);
     }
 }
