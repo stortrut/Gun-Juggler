@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     float distanceSide = 0.1f;
 
 
-    LayerMask normal = 0;
+    LayerMask normal;
     Vector3 rightdirection = Vector2.right;
     Vector2 savedVelocity;
     bool startStop=false;
@@ -27,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-       
+       normal =LayerMask.GetMask("Default");
        
         Patrol();
         
@@ -37,10 +37,13 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         hitObstacle = Physics2D.Raycast(transform.position + rightdirection/1.6f, rightdirection, distanceSide,normal);
-        groundExists = Physics2D.Raycast(transform.position + rightdirection/1.6f, Vector2.down, 5);
+        groundExists = Physics2D.Raycast(transform.position + rightdirection/1.6f, Vector2.down*distanceSide, 5);
         Debug.DrawRay(transform.position + rightdirection/1.6f, rightdirection * distanceSide, Color.blue);
         Debug.DrawRay(transform.position + rightdirection/1.6f, Vector2.down * 2, Color.yellow);
-      
+        if (hitObstacle==true)
+        {
+            Debug.Log(hitObstacle);
+        }
         if ((hitObstacle == true || groundExists == false) && (Time.time-currentTime>1.5f||currentTime==0))
         {
             currentTime = Time.time;
@@ -62,38 +65,38 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 4)
-        {
-            Debug.Log(other.gameObject.name);
-            PlayerCheck();
-        }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.gameObject.layer == 3)
+    //    {
+    //        Debug.Log(other.gameObject.name);
+    //        PlayerCheck();
+    //    }
             
 
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 4)
-        {
-            Debug.Log(other.gameObject.name);
-            ChangeVelocity(0.5f);
-        }
-    }
+    //}
+    //private void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.gameObject.layer == 3)
+    //    {
+    //        Debug.Log(other.gameObject.name);
+    //        ChangeVelocity(-4);
+    //    }
+    //}
 
-    private void PlayerCheck()
-    {
-        if (Player.transform.position.x < transform.position.x == facingRight)
-        {
-          Flip();
-
-        }
-       else
-        {
+    //private void PlayerCheck()
+    //{
+    //    if ((Player.transform.position.x > transform.position.x) == facingRight)
+    //    {
+    //      Flip();
+                
+    //    }
+    //   else
+    //    {
           
-        }
-        ChangeVelocity(2f);
-    }
+    //    }
+    //    ChangeVelocity(4);
+    //}
     
     public void Patrol()
     {
