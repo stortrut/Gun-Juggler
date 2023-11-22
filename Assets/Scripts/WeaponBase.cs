@@ -8,17 +8,16 @@ public class WeaponBase : MonoBehaviour
     public float Speed;
     public float FireRate;
     public GameObject Bullet;
-    public List<GameObject>[] weaponsInJuggleLoop;
-    public bool switchWeapon { get; set; }
+    public bool weaponEquipped { get; set; }
 
-    void Update()
+    public void WeaponEquipped()
     {
-        
-    }
-    public void Switch()
-    {
-
+        weaponEquipped = true;
     }
 
+    public void WeaponNotEquipped()
+    {
+        weaponEquipped = false;
+    }
 }
 
