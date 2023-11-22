@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 9119690792154605625}
   - component: {fileID: 7070400236775060171}
   - component: {fileID: 571675861264299918}
+  - component: {fileID: 3424185532160099899}
   m_Layer: 7
   m_Name: Player2
   m_TagString: Player
@@ -392,6 +393,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.76, y: 1}
   m_Direction: 0
+--- !u!114 &3424185532160099899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7711082908771170882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec2ddf4102bcac4ba8f2768a32e689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5337500562198286426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -594,6 +607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4004771119036506655, guid: 3c524fea2f002b046a2813e08b939efd, type: 3}
+      propertyPath: knockback
+      value: 
+      objectReference: {fileID: 3424185532160099899}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

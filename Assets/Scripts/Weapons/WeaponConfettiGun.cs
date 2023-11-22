@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WeaponConfettiGun : Weapon
 {
-    [SerializeField]
-    bool equipped = true;
+    [SerializeField] private bool equipped = true;
+    [SerializeField] private Knockback knockback;
     private void Start()
-    {
+    {   
         bulletSpeed = 20f;
     }
 
@@ -18,7 +18,7 @@ public class WeaponConfettiGun : Weapon
             if (equipped)
             {
                 Shoot();
-                //Weapon.Knockback();
+                knockback.KnockBackMyself(transform.position);
             }
         }
         if (Input.GetMouseButtonDown(1))
