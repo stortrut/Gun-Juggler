@@ -9,15 +9,16 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject Player; 
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Vector2 velocity;
+    [SerializeField] private int velocity;
     
     bool playerNear;
     bool onPatrol;
     bool hitObstacle;
     bool groundExists;
     float distanceSide = 0.1f;
-   
-    
+
+
+    LayerMask normal = 0;
     Vector3 rightdirection = Vector2.right;
     Vector2 savedVelocity;
     bool startStop=false;
@@ -26,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        
+       
        
         Patrol();
         
@@ -35,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        hitObstacle = Physics2D.Raycast(transform.position + rightdirection/1.6f, rightdirection, distanceSide);
+        hitObstacle = Physics2D.Raycast(transform.position + rightdirection/1.6f, rightdirection, distanceSide,normal);
         groundExists = Physics2D.Raycast(transform.position + rightdirection/1.6f, Vector2.down, 5);
         Debug.DrawRay(transform.position + rightdirection/1.6f, rightdirection * distanceSide, Color.blue);
         Debug.DrawRay(transform.position + rightdirection/1.6f, Vector2.down * 2, Color.yellow);
@@ -76,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
         if (other.gameObject.layer == 4)
         {
             Debug.Log(other.gameObject.name);
-            rigidBody.velocity /=  2;
+            ChangeVelocity(0.5f);
         }
     }
 
@@ -91,14 +92,14 @@ public class EnemyMovement : MonoBehaviour
         {
           
         }
-        rigidBody.velocity *= 2;
+        ChangeVelocity(2f);
     }
     
     public void Patrol()
     {
         if(rigidBody.velocity==Vector2.zero)
         {
-            rigidBody.velocity = Vector2.one;
+            ChangeVelocity(velocity);
         }
         else
         {
@@ -115,21 +116,28 @@ public class EnemyMovement : MonoBehaviour
         {
             if(facingRight)
             {
-             rigidBody.velocity = Vector2.right * -2;
+             rigidBody.velocity = Vector2.right * -velocity;
             }
             else
             {
-             rigidBody.velocity = Vector2.right * 2;
+             rigidBody.velocity = Vector2.right * velocity;
             }
                 
         }
-        velocity *= -1;
-        rigidBody.velocity *= -1;
+        //  velocity *= -1;
+        ChangeVelocity(-1f);
         spriteRenderer.flipX = true;
         rightdirection *=-1;
         facingRight = !facingRight;
     }
-
+    private void ChangeVelocity(float Change)
+    {
+        rigidBody.velocity *= Change;
+    }
+    private void ChangeVelocity(int Change)
+    {
+        rigidBody.velocity += new Vector2(Change,0);
+    }
     public void Stop()
     {
         startStop = !startStop;
@@ -140,8 +148,8 @@ public class EnemyMovement : MonoBehaviour
             
             case true:
                 savedVelocity = rigidBody.velocity;
-                Debug.Log(savedVelocity);
-                rigidBody.velocity = Vector2.zero;
+                Debug.Log(savedVelocity);   
+                ChangeVelocity(0f);
                 
                 break;
             case false:

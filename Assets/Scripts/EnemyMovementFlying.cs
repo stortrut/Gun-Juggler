@@ -11,5 +11,5 @@ public class EnemyMovementFlying : MonoBehaviour
     {
         rigidBody.velocity = Vector2.one*speed;
     }
-
+    
 }
