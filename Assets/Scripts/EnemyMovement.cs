@@ -25,7 +25,8 @@ public class EnemyMovement : MonoBehaviour
         EnemySprite = GetComponent<SpriteRenderer>();
         rb2D = GetComponent<Rigidbody2D>();
         Patrol();
-    }
+        
+    }   
 
 
     void Update()
@@ -49,7 +50,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Patrol();
+            Flip();
         }
         if (!playerNear && !onPatrol)
         {
@@ -60,9 +61,16 @@ public class EnemyMovement : MonoBehaviour
 
     public void Patrol()
     {
+        if(rb2D.velocity==Vector2.zero)
+        {
+            rb2D.velocity = velocity;
+        }
+        else
+        {
+        rb2D.velocity = savedVelocity;
+        }
         onPatrol = true;
-        velocity *= Vector2.right;
-        rb2D.velocity = velocity;
+        
 
     }
 
