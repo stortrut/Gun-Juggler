@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3984172966805339924}
   - component: {fileID: 8446159208739660955}
-  - component: {fileID: 1980229813155602721}
+  - component: {fileID: 4004771119036506655}
   m_Layer: 0
   m_Name: confettigun
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1286843282832632854}
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1980229813155602721
+--- !u!114 &4004771119036506655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2914651183424707450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e390f15c51e97b418e3ce0e584a68bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f57e9a90ec0d264689c2bd603e48e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   fireRate: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 1286843282832632854}
+  equipped: 1
 --- !u!1 &4141879939821872340
 GameObject:
   m_ObjectHideFlags: 0
