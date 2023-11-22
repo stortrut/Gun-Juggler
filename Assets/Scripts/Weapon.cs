@@ -5,17 +5,22 @@ using UnityEngine;
 
 public class Weapon : WeaponBase
 {
-    [SerializeField]
-    WeaponBase weaponBase;
     private void Start()
     {
+        bulletSpeed = 20f;
+        Debug.Log(gunPoint, gameObject);
+
     }
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
-    public void Shoot(float damage, float speed, float fireRate, Vector3 pos)
+    public void Shoot()
     {
-        GameObject weaponBullet = Instantiate(Bullet, pos, Quaternion.identity);
-        weaponBullet.GetComponent<Rigidbody>().velocity = pos * speed;
+        GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
+        weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
     }
 }
