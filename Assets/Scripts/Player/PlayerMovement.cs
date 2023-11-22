@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
 
     [Header("Walk")]
     [SerializeField] private float acceleration = 10f;
@@ -15,27 +17,26 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private float velocityToAddX;
 
+    [HideInInspector] public bool isFacingRight;
+
+
     [Header("Jump")]
     [SerializeField] private float jumpHeight;
     [SerializeField] private float groundCheckDistanceFromCollider;
 
-    private float calculatedGroundCheckLenght;  //we should use this. TODO
+    private float calculatedGroundCheckLenght;
 
     private bool onGround = false;
     private bool isJumping = false;
 
 
 
-    private void Start()
-    {
-        //calculatedGroundCheckLenght = mainPlayerCollider.bounds.size.y + groundCheckDistanceFromCollider; TODO
-    }
 
 
     // Update is called once per frame
     void Update()
     {
-        calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider; //TODO
+        calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider;
 
 
         Walk();
@@ -70,6 +71,17 @@ public class PlayerMovement : MonoBehaviour
     private void Walk()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        if(horizontalInput > 0) 
+        { 
+            isFacingRight = true;
+            spriteRenderer.flipX = false;
+        }
+        if (horizontalInput < 0) 
+        { 
+            isFacingRight = false;
+            spriteRenderer.flipX = true;
+        }
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
         velocityToAddX = Mathf.Clamp(velocityToAddX, -speed, speed);
