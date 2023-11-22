@@ -5,22 +5,20 @@ using UnityEngine;
 
 public class Weapon : WeaponBase
 {
-    private void Start()
-    {
-        bulletSpeed = 20f;
-        Debug.Log(gunPoint, gameObject);
-
-    }
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
-    }
     public void Shoot()
     {
         GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
+        Vector2 direction = 
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
     }
+
+    public void Knockback()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        var rb = player.GetComponent<Rigidbody2D>();
+        //rb.AddForce()
+    }
+
 }
+//weapon scriptet kallar på spelaren, ref rigidbody, funktion direktion, power, force - trygetcomponent
+//gamemanager, singleton?
