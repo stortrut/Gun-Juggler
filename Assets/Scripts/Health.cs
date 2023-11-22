@@ -8,6 +8,7 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private int health;
     [SerializeField] private int protection;
 
+
     public int Protection
     {
         get { return protection; }
@@ -23,6 +24,12 @@ public class Health : MonoBehaviour, IDamageable
         health -= amount;
         if (health <= 0)
         {
+            if(gameObject.transform.parent != null)
+            {
+                
+              //var enemyProtection=gameObject.GetComponentInParent<EnemyProtection>();
+                //enemyProtection.died = false;
+            }
             Destroy(gameObject);
         }
     }

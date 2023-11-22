@@ -11,10 +11,12 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D damagedObject)
     {
         IDamageable HitObject=damagedObject.gameObject.GetComponent<IDamageable>();
-           
+        if (HitObject != null)
+        Debug.Log(HitObject.Protection);
         if (HitObject != null && HitObject.Protection==0)
         {
             HitObject.ApplyDamage(1);
+            
         }
         Destroy(this.gameObject);   
     }

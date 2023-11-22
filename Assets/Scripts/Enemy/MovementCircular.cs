@@ -18,6 +18,6 @@ public class MovementCircular : MonoBehaviour
         x = Mathf.Cos(Time.time*frequency)*amplitude;
         y = Mathf.Sin(Time.time*frequency)*amplitude;
         z = transform.position.z;
-        transform.position = new Vector3(AttachedEnemy.transform.position.x+x, AttachedEnemy.transform.position.y+y, z);
-    }
+        transform.position = new Vector3(transform.parent.position.x+x,transform.parent.position.y+y, z);
+    }   
 }

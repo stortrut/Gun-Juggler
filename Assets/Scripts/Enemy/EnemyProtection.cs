@@ -5,19 +5,25 @@ using UnityEngine;
 public class EnemyProtection : MonoBehaviour
 {
     [SerializeField] private GameObject Protection;
-    [SerializeField] private int numberOfProtection;
+    public int numberOfProtection;
+    private GameObject CurrentProtection;
+    public bool died=false;
  
     void Start()
     {
         for (int i = 0; i < numberOfProtection; i++) 
         { 
-          Instantiate(Protection,Vector3.one,Quaternion.identity,gameObject.transform);
+          CurrentProtection=Instantiate(Protection,Vector3.one,Quaternion.identity,gameObject.transform);
         }
     }
 
 
     void Update()
     {
-        
+        if (died) 
+        {
+            numberOfProtection--;
+            died = false;
+        }
     }
 }
