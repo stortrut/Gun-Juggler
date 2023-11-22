@@ -8,8 +8,9 @@ public class Weapon : WeaponBase
     public void Shoot()
     {
         GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
-        Vector2 direction = 
+        //Vector2 direction = 
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
+        Destroy(weaponBullet,3);
     }
 
     public void Knockback()
