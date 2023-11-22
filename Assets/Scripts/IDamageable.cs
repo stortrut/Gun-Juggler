@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IDamageable : MonoBehaviour
+public interface IDamageable 
 {
-    public float currentHealth;
+    
 
-    public void ApplyDamage(float amount)
+    public void ApplyDamage(int amount)
     {
-        currentHealth -= amount;
+
+        
     }
 }

@@ -10,9 +10,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int velocity;
-    
-    bool playerNear;
-    bool onPatrol;
     bool hitObstacle;
     bool groundExists;
     float distanceSide = 0.1f;
@@ -28,9 +25,8 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
        normal =LayerMask.GetMask("Default");
-       
-        Patrol();
-        
+        ChangeVelocity(1);
+        ChangeVelocity(5f);
     }
 
 
@@ -49,9 +45,10 @@ public class EnemyMovement : MonoBehaviour
             currentTime = Time.time;
             hitObstacle = false;
             groundExists = true;
-            Stop();
-            Invoke(nameof(Flip), 0.4f);
-            Invoke(nameof(Stop),0.3f);
+            //Stop();
+            Flip();
+            //Invoke(nameof(Flip), 0.4f);
+           // Invoke(nameof(Stop),0.3f);
             
             
         }
@@ -65,57 +62,10 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.gameObject.layer == 3)
-    //    {
-    //        Debug.Log(other.gameObject.name);
-    //        PlayerCheck();
-    //    }
-            
 
-    //}
-    //private void OnTriggerExit2D(Collider2D other)
-    //{
-    //    if (other.gameObject.layer == 3)
-    //    {
-    //        Debug.Log(other.gameObject.name);
-    //        ChangeVelocity(-4);
-    //    }
-    //}
-
-    //private void PlayerCheck()
-    //{
-    //    if ((Player.transform.position.x > transform.position.x) == facingRight)
-    //    {
-    //      Flip();
-                
-    //    }
-    //   else
-    //    {
-          
-    //    }
-    //    ChangeVelocity(4);
-    //}
-    
-    public void Patrol()
+  public void Flip()
     {
-        if(rigidBody.velocity==Vector2.zero)
-        {
-            ChangeVelocity(velocity);
-        }
-        else
-        {
-        rigidBody.velocity = savedVelocity;
-        }
-        onPatrol = true;
-        
-
-    }
-
-    public void Flip()
-    {
-        if(rigidBody.velocity==Vector2.zero)
+        if(rigidBody.velocity==Vector2.zero||rigidBody.velocity!=Vector2.right*5)
         {
             if(facingRight)
             {
@@ -125,9 +75,7 @@ public class EnemyMovement : MonoBehaviour
             {
              rigidBody.velocity = Vector2.right * velocity;
             }
-                
         }
-        //  velocity *= -1;
         ChangeVelocity(-1f);
         spriteRenderer.flipX = true;
         rightdirection *=-1;
@@ -144,11 +92,8 @@ public class EnemyMovement : MonoBehaviour
     public void Stop()
     {
         startStop = !startStop;
-
-
         switch (startStop)
         {
-            
             case true:
                 savedVelocity = rigidBody.velocity;
                 Debug.Log(savedVelocity);   
@@ -157,12 +102,40 @@ public class EnemyMovement : MonoBehaviour
                 break;
             case false:
                 rigidBody.velocity=savedVelocity;
-                
-                
                 break;
-
-
         }
       
     }
 }
+//private void OnTriggerEnter2D(Collider2D other)
+//{
+//    if (other.gameObject.layer == 3)
+//    {
+//        Debug.Log(other.gameObject.name);
+//        PlayerCheck();
+//    }
+
+
+//}
+//private void OnTriggerExit2D(Collider2D other)
+//{
+//    if (other.gameObject.layer == 3)
+//    {
+//        Debug.Log(other.gameObject.name);
+//        ChangeVelocity(-4);
+//    }
+//}
+
+//private void PlayerCheck()
+//{
+//    if ((Player.transform.position.x > transform.position.x) == facingRight)
+//    {
+//      Flip();
+
+//    }
+//   else
+//    {
+
+//    }
+//    ChangeVelocity(4);
+//}
