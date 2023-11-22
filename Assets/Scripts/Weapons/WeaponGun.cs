@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WeaponGun : Weapon
 {
-    [SerializeField]
-    bool equipped = false;
     private void Start()
     {
         bulletSpeed = 20f;
@@ -15,20 +13,22 @@ public class WeaponGun : Weapon
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (equipped)
+            if (weaponEquipped)
             {
                 Shoot();
             }
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space))
         {
-            if (!equipped)
+            if (!weaponEquipped)
             {
-                equipped = true;
+                weaponEquipped = true;
+                spriterenderer.enabled = true;
             }
-            else if (equipped)
+            else if (weaponEquipped)
             {
-                equipped = false;
+                weaponEquipped = false;
+                spriterenderer.enabled = false;
             }
         }
     }

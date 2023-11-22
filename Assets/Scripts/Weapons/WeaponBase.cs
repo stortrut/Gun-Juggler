@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
-    public float damage;
-    public float bulletSpeed;
-    public float fireRate;
+
+    [SerializeField] protected bool weaponEquipped;
+    [SerializeField] protected float damage, bulletSpeed, fireRate;
+    [SerializeField] protected SpriteRenderer spriterenderer;
+
     public GameObject bullet;
     public Transform gunPoint; 
-    public bool weaponEquipped { get; set; }
 
     public void WeaponEquipped()
     {

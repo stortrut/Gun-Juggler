@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponConfettiGun : Weapon
 {
-    [SerializeField] private bool equipped = true;
     [SerializeField] private Knockback knockback;
     private void Start()
     {   
@@ -15,21 +14,24 @@ public class WeaponConfettiGun : Weapon
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (equipped)
+            if (weaponEquipped)
             {
                 Shoot();
-                knockback.KnockBackMyself(transform.position,50);
+                knockback.KnockBackMyself(transform.position);
             }
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space))
         {
-            if (!equipped)
+            if (!weaponEquipped)
             {
-                equipped = true;
+                weaponEquipped = true;
+                spriterenderer.enabled = true;
+
             }
-            else if (equipped)
+            else if (weaponEquipped)
             {
-                equipped = false;
+                weaponEquipped = false;
+                spriterenderer.enabled = false;
             }
         }
     }
