@@ -11,7 +11,7 @@ public class EnemyProtection : MonoBehaviour
     {
         for (int i = 0; i < numberOfProtection; i++) 
         { 
-          Instantiate(Protection,transform.parent);
+          Instantiate(Protection,Vector3.one,Quaternion.identity,gameObject.transform);
         }
     }
 
