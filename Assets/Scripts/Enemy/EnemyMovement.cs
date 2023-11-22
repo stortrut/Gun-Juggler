@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         hitObstacle = Physics2D.Raycast(transform.position + rightdirection/1.6f, rightdirection, distanceSide,normal);
-        groundExists = Physics2D.Raycast(transform.position + rightdirection/1.6f, Vector2.down*distanceSide, 5);
+        groundExists = Physics2D.Raycast(transform.position + rightdirection/1.6f, Vector2.down*distanceSide, 5,normal);
         Debug.DrawRay(transform.position + rightdirection/1.6f, rightdirection * distanceSide, Color.blue);
         Debug.DrawRay(transform.position + rightdirection/1.6f, Vector2.down * 2, Color.yellow);
         if (hitObstacle==true)
@@ -49,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
             Flip();
             //Invoke(nameof(Flip), 0.4f);
            // Invoke(nameof(Stop),0.3f);
-            
+           
             
         }
 

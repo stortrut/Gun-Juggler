@@ -4,11 +4,8 @@ using UnityEngine;
 
 public interface IDamageable 
 {
-    
 
-    public void ApplyDamage(int amount)
-    {
 
-        
-    }
+    void ApplyDamage(int amount);
+   
 }

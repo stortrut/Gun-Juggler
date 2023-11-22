@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementCircular : MonoBehaviour
-{
+{   
     [SerializeField] private float frequency;
     [SerializeField] private float amplitude;
     [SerializeField] private GameObject AttachedEnemy;
@@ -11,7 +11,7 @@ public class MovementCircular : MonoBehaviour
     private float y;
     private float z;
    
-
+    
 
     void Update()
     {
