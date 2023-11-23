@@ -10,6 +10,9 @@ public class Health : MonoBehaviour, IDamageable
     private EnemyProtection ProtectionScript;
     public bool isProtected;
     private EnemyProtection Parent;
+    private SpriteRenderer spriteRenderer;
+    private bool colorischanged;
+    
 
     public bool hasProtection { get { return isProtected; } set {    } }
 
@@ -17,7 +20,7 @@ public class Health : MonoBehaviour, IDamageable
     void Start()
     {
         ProtectionScript = GetComponent<EnemyProtection>();
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     public void ApplyDamage(int amount)
     {
@@ -39,5 +42,30 @@ public class Health : MonoBehaviour, IDamageable
             Parent.RemoveProtection(1);
 
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.gameObject.name);
+        ColorChange(1);
+        Invoke(nameof(ColorChange),0.3f);
+    }
+    private void ColorChange(int color)
+    {
+        if (colorischanged==false)
+        {
+        spriteRenderer.color = Color.red;
+        }
+        if (isProtected == true)
+        {
+            spriteRenderer.color = Color.blue;
+        }
+
+        colorischanged = true;
+     
+    }
+    private void ColorChange()
+    {
+        spriteRenderer.color = Color.white;
+        colorischanged = false;
     }
 }

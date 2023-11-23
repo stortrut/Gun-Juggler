@@ -27,8 +27,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        heightOfObject=GetComponent<Renderer > ().bounds.size.y;
-        widthOfObject = GetComponent<Renderer>().bounds.size.x;
+        heightOfObject=GetComponent<BoxCollider2D > ().bounds.size.y;
+        widthOfObject = GetComponent<BoxCollider2D>().bounds.size.x;
        normal =LayerMask.GetMask("Default");
         ChangeVelocity(1);
         ChangeVelocity(5f);
@@ -37,29 +37,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        raycastPosition = new Vector2(transform.position.x+(widthOfObject/1.7f  ), transform.position.y - (heightOfObject / 2));
-        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide,normal);
-        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
-        groundExists = Physics2D.Raycast(raycastPosition, Vector2.down*distanceSide, 5,normal);
-        Debug.DrawRay(raycastPosition, rightdirection * distanceSide, Color.blue);
-        Debug.DrawRay(raycastPosition, Vector2.down * 2, Color.yellow);
-        if (hitObstacle==true)
-        {
-            Debug.Log(hitObstacle);
-        }
-        if ((hitObstacle == true || groundExists == false) && (Time.time-currentTime>1.5f||currentTime==0))
-        {
-            currentTime = Time.time;
-            hitObstacle = false;
-            groundExists = true;
-            //Stop();
-            Flip();
-            //Invoke(nameof(Flip), 0.4f);
-           // Invoke(nameof(Stop),0.3f);
-           
-            
-        }
-
+        RayCast();
+     
         if (Input.GetKeyDown(KeyCode.P))
         {
             Flip();
@@ -69,8 +48,8 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
-
-  public void Flip()
+   
+    public void Flip()
     {
         if(rigidBody.velocity==Vector2.zero||rigidBody.velocity!=Vector2.right*5)
         {
@@ -113,6 +92,32 @@ public class EnemyMovement : MonoBehaviour
                 break;
         }
       
+    }
+    private void RayCast()
+    {
+        raycastPosition = new Vector2(transform.position.x + (widthOfObject / 2), transform.position.y - (heightOfObject / 2));
+        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
+        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
+        groundExists = Physics2D.Raycast(raycastPosition, Vector2.down * distanceSide, 5, normal);
+        Debug.DrawRay(raycastPosition, rightdirection * distanceSide, Color.blue);
+        Debug.DrawRay(raycastPosition, Vector2.down * 2, Color.yellow);
+        if (hitObstacle == true)
+        {
+            Debug.Log(hitObstacle);
+        }
+        if ((hitObstacle == true || groundExists == false) && (Time.time - currentTime > 1.5f || currentTime == 0))
+        {
+            currentTime = Time.time;
+            hitObstacle = false;
+            groundExists = true;
+            //Stop();
+            Flip();
+            //Invoke(nameof(Flip), 0.4f);
+            // Invoke(nameof(Stop),0.3f);
+
+
+        }
+
     }
 }
 //private void OnTriggerEnter2D(Collider2D other)

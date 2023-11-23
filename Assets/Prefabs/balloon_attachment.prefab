@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2939687135213298414}
   - component: {fileID: -8045318533795588669}
   - component: {fileID: -6055048033844398865}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: balloon_attachment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequency: 1.5
-  amplitude: 3.5
+  amplitude: 5
   AttachedEnemy: {fileID: 8989953743101133587, guid: d56267c24a2f4a14aae3bba884e6e7e6, type: 3}
 --- !u!114 &-8045318533795588669
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  protection: 0
+  isProtected: 0
 --- !u!58 &-6055048033844398865
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
         IDamageable HitObject=damagedObject.gameObject.GetComponent<IDamageable>();
         if (HitObject != null)
         {
+
          Debug.Log(HitObject.hasProtection);
         }
         
