@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3984172966805339924}
   - component: {fileID: 8446159208739660955}
   - component: {fileID: 4004771119036506655}
-  - component: {fileID: -1659744006629932079}
+  - component: {fileID: 5331792648429078863}
   m_Layer: 0
   m_Name: confettigun
   m_TagString: Untagged
@@ -107,33 +107,85 @@ MonoBehaviour:
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 1286843282832632854}
   knockback: {fileID: 0}
---- !u!50 &-1659744006629932079
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &5331792648429078863
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2914651183424707450}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunThrowAnimationCurveY:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 4
+      outSlope: 4
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4
+      outSlope: -4
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunThrowAnimationCurveX:
     serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.017870095
+      outSlope: -0.017870095
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.35087505
+    - serializedVersion: 3
+      time: 1
+      value: -1.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2
+      value: 0
+      inSlope: 0.025260855
+      outSlope: 0.025260855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.24821687
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  weaponBase: {fileID: 4004771119036506655}
 --- !u!1 &4141879939821872340
 GameObject:
   m_ObjectHideFlags: 0

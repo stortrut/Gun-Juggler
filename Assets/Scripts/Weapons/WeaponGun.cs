@@ -13,23 +13,24 @@ public class WeaponGun : Weapon
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Shoot");
             if (weaponEquipped)
             {
                 Shoot();
             }
         }
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!weaponEquipped)
-            {
-                weaponEquipped = true;
-                //spriterenderer.enabled = true;
-            }
-            else if (weaponEquipped)
-            {
-                weaponEquipped = false;
-                //spriterenderer.enabled = false;
-            }
-        }
+        //if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if (!weaponEquipped)
+        //    {
+        //        weaponEquipped = true;
+        //        spriterenderer.enabled = true;
+        //    }
+        //    else if (weaponEquipped)
+        //    {
+        //        weaponEquipped = false;
+        //        spriterenderer.enabled = false;
+        //    }
+        //}
     }
 }

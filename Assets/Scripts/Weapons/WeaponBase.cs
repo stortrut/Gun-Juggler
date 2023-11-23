@@ -5,19 +5,19 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
 
-    [SerializeField] protected bool weaponEquipped;
+    [SerializeField] public bool weaponEquipped;
     [SerializeField] protected float damage, bulletSpeed, fireRate;
     [SerializeField] protected SpriteRenderer spriterenderer;
 
     public GameObject bullet;
     public Transform gunPoint; 
 
-    public void WeaponEquipped()
+    public void EquipWeapon()
     {
         weaponEquipped = true;
     }
 
-    public void WeaponNotEquipped()
+    public void UnEquipWeapon()
     {
         weaponEquipped = false;
     }
