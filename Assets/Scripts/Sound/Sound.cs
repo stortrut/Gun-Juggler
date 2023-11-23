@@ -9,7 +9,8 @@ public class Sound : MonoBehaviour
 
     private AudioSource source;
     [SerializeField] private AudioClip[] backgroundMusic;
-    [SerializeField] public AudioClip[] kaboom;
+    [SerializeField] public AudioClip[] shootingSounds;
+    [SerializeField] public AudioClip[] hittingSounds;
 
     private void Awake()
     {
