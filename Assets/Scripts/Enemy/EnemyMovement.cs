@@ -28,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         heightOfObject=GetComponent<Renderer > ().bounds.size.y;
+        widthOfObject = GetComponent<Renderer>().bounds.size.x;
        normal =LayerMask.GetMask("Default");
         ChangeVelocity(1);
         ChangeVelocity(5f);
@@ -36,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        raycastPosition = new Vector2(transform.position.x+(widthOfObject/2), transform.position.y - (heightOfObject / 2));
+        raycastPosition = new Vector2(transform.position.x+(widthOfObject/2.2f), transform.position.y - (heightOfObject / 2));
         hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide,normal);
         hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
         groundExists = Physics2D.Raycast(raycastPosition, Vector2.down*distanceSide, 5,normal);
