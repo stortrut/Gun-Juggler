@@ -7,20 +7,31 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
-    [SerializeField] private int protection;
+    private EnemyProtection ProtectionScript;
+    private int protection=0;
     private Health Parent;
+    
+    
 
-
-    public int Protection
+    [HideInInspector] public int Protection
     {
-        get { return protection; }
+        get {
+            if (ProtectionScript == null)
+            {
+                return protection;
+            }
+                return ProtectionScript.numberOfProtection; 
+        }
         set { if (value < 0)
             {
-                protection = 0; 
+                ProtectionScript.numberOfProtection = 0; 
             }
                 }
     }
-
+    void Start()
+    {
+        ProtectionScript = GetComponent<EnemyProtection>();
+    }
     public void ApplyDamage(int amount)
     {
         health -= amount;
@@ -46,8 +57,8 @@ public class Health : MonoBehaviour, IDamageable
     public void RemoveProtection(int amount)
     {
 
-        
-        protection -= amount;
+
+        ProtectionScript.numberOfProtection -= amount;
         Debug.Log(Protection+gameObject.name);
     }
 }

@@ -5,16 +5,15 @@ using UnityEngine;
 public class EnemyProtection : MonoBehaviour
 {
     [SerializeField] private GameObject Protection;
-    [SerializeField] private Health healthScript;
     public int numberOfProtection = 1;
 
     private GameObject CurrentProtection;
     public void Start()
     {
-        for (int i = 0; i < numberOfProtection; i++) 
+        for (int i = 1; i < numberOfProtection+1; i++) 
         { 
-          CurrentProtection=Instantiate(Protection,Vector3.one/numberOfProtection,Quaternion.identity,gameObject.transform);
-            //CurrentProtection.GetComponent<>
+          CurrentProtection=Instantiate(Protection,new Vector2(i,i),Quaternion.identity,gameObject.transform);
+            
         }
     }
 }
