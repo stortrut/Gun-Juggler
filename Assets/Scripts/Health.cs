@@ -24,15 +24,22 @@ public class Health : MonoBehaviour, IDamageable
         health -= amount;
         if (health <= 0)
         {
-            if(gameObject.transform.parent != null)
-            {
-                
-              //var enemyProtection=gameObject.GetComponentInParent<EnemyProtection>();
-                //enemyProtection.died = false;
-            }
+            HasParent();
             Destroy(gameObject);
         }
     }
+
+    private void HasParent()
+    {
+        if (gameObject.transform.parent != null)
+        {
+
+            EnemyProtection enemyProtection = gameObject.GetComponentInParent<EnemyProtection>();
+            Debug.Log(enemyProtection);
+            enemyProtection.ChildDied();
+        }
+    }
+
     public void RemoveProtection(int protection)
     {
 
