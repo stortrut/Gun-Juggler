@@ -8,10 +8,20 @@ public class PlayerJuggle : MonoBehaviour
 
     [SerializeField] private WeaponJuggleMovement weaponInHand;
 
+
+    private void Start()
+    {
+        weapons[1].ThrowUpWeapon();
+    }
+
+
     public void CatchWeapon(WeaponJuggleMovement newWeapon)
     {
         weaponInHand.ThrowUpWeapon();
+        weaponInHand.weaponBase.UnEquipWeapon();
 
+        newWeapon.beingThrown = false;
+        newWeapon.weaponBase.EquipWeapon();
         weaponInHand = newWeapon;
     }
 

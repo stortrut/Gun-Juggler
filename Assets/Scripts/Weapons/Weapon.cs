@@ -7,6 +7,7 @@ public class Weapon : WeaponBase
 {
     public void Shoot()
     {
+        Debug.Log("Bullet created");
         GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
         weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
         //Vector2 direction = 

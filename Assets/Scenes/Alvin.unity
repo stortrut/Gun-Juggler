@@ -665,6 +665,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   weaponBase: {fileID: 0}
+  curveDeltaTime: 0
+  beingThrown: 0
 --- !u!212 &433948552
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -850,6 +852,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   weaponBase: {fileID: 464867707}
+  curveDeltaTime: 0
+  beingThrown: 0
 --- !u!212 &464867709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1662,7 +1666,7 @@ GameObject:
   - component: {fileID: 1816673944}
   - component: {fileID: 1816673945}
   m_Layer: 0
-  m_Name: small_gun
+  m_Name: small_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,6 +1751,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   weaponBase: {fileID: 1816673945}
+  curveDeltaTime: 0
+  beingThrown: 0
 --- !u!114 &1816673945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,7 +2145,7 @@ GameObject:
   - component: {fileID: 2050193547}
   - component: {fileID: 2050193546}
   m_Layer: 0
-  m_Name: small_gun
+  m_Name: small_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2249,16 +2255,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 2
       value: 0
-      inSlope: -1.5623703
-      outSlope: -1.5623703
+      inSlope: 0.025260855
+      outSlope: 0.025260855
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.14714181
+      inWeight: 0.24821687
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   weaponBase: {fileID: 2050193546}
+  curveDeltaTime: 0
+  beingThrown: 0
 --- !u!212 &2050193548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2813,6 +2821,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   weaponBase: {fileID: 8446159207551948485}
+  curveDeltaTime: 0
+  beingThrown: 0
 --- !u!70 &7378509433305922234
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2937,7 +2947,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce438ef879a37d4f8f846cdb812cb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  weapons:
+  - {fileID: 1816673944}
+  - {fileID: 2050193547}
   weaponInHand: {fileID: 1816673944}
 --- !u!212 &8259924175755953438
 SpriteRenderer:
