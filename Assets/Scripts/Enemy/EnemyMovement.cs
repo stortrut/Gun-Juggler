@@ -18,12 +18,16 @@ public class EnemyMovement : MonoBehaviour
     LayerMask normal;
     Vector3 rightdirection = Vector2.right;
     Vector2 savedVelocity;
+    Vector2 raycastPosition;
+    float heightOfObject;
+    float widthOfObject;
     bool startStop=false;
     bool facingRight;
     float currentTime=0;
 
     void Start()
     {
+        heightOfObject=GetComponent<Renderer > ().bounds.size.y;
        normal =LayerMask.GetMask("Default");
         ChangeVelocity(1);
         ChangeVelocity(5f);
@@ -32,10 +36,12 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        hitObstacle = Physics2D.Raycast(transform.position + rightdirection/1.6f, rightdirection, distanceSide,normal);
-        groundExists = Physics2D.Raycast(transform.position + rightdirection/1.6f, Vector2.down*distanceSide, 5,normal);
-        Debug.DrawRay(transform.position + rightdirection/1.6f, rightdirection * distanceSide, Color.blue);
-        Debug.DrawRay(transform.position + rightdirection/1.6f, Vector2.down * 2, Color.yellow);
+        raycastPosition = new Vector2(transform.position.x+(widthOfObject/2), transform.position.y - (heightOfObject / 2));
+        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide,normal);
+        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
+        groundExists = Physics2D.Raycast(raycastPosition, Vector2.down*distanceSide, 5,normal);
+        Debug.DrawRay(raycastPosition, rightdirection * distanceSide, Color.blue);
+        Debug.DrawRay(raycastPosition, Vector2.down * 2, Color.yellow);
         if (hitObstacle==true)
         {
             Debug.Log(hitObstacle);
@@ -80,6 +86,7 @@ public class EnemyMovement : MonoBehaviour
         spriteRenderer.flipX = true;
         rightdirection *=-1;
         facingRight = !facingRight;
+        widthOfObject *= -1;
     }
     private void ChangeVelocity(float Change)
     {
