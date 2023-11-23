@@ -8,6 +8,7 @@ public class Weapon : WeaponBase
     public void Shoot()
     {
         GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
+        weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
         //Vector2 direction = 
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
         Destroy(weaponBullet,3);
