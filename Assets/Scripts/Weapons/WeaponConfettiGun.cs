@@ -8,32 +8,19 @@ public class WeaponConfettiGun : Weapon
     private void Start()
     {   
         bulletSpeed = 20f;
+        fireRate = 0.8f;
     }
 
 
-    //void Update()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    { 
-    //        if (weaponEquipped)
-    //        {
-    //            Shoot();
-    //            knockback.KnockBackMyself(transform.position);
-    //        }
-    //    }
-    //    if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        if (!weaponEquipped)
-    //        {
-    //            weaponEquipped = true;
-    //            spriterenderer.enabled = true;
-
-    //        }
-    //        else if (weaponEquipped)
-    //        {
-    //            weaponEquipped = false;
-    //            spriterenderer.enabled = false;
-    //        }
-    //    }
-    //}
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (weaponEquipped)
+            {
+                Shoot();
+                knockback.KnockBackMyself(transform.position);
+            }
+        }
+    }
 }

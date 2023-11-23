@@ -7,30 +7,19 @@ public class WeaponGun : Weapon
     private void Start()
     {
         bulletSpeed = 20f;
+        fireRate = .2f;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        fireRateTimer-=Time.deltaTime;
+        if (Input.GetMouseButton(0) && fireRateTimer< 0)
         {
-            Debug.Log("Shoot");
             if (weaponEquipped)
             {
                 Shoot();
+                fireRateTimer = fireRate;
             }
         }
-        //if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    if (!weaponEquipped)
-        //    {
-        //        weaponEquipped = true;
-        //        spriterenderer.enabled = true;
-        //    }
-        //    else if (weaponEquipped)
-        //    {
-        //        weaponEquipped = false;
-        //        spriterenderer.enabled = false;
-        //    }
-        //}
     }
 }

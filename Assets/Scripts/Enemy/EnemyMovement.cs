@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject Player; 
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private int velocity;
+    [SerializeField] private int velocity = 5;
     bool hitObstacle;
     bool groundExists;
     float distanceSide = 0.1f;

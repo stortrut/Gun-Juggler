@@ -10,7 +10,8 @@ public class Sound : MonoBehaviour
     private AudioSource source;
     [SerializeField] private AudioClip[] backgroundMusic;
     [SerializeField] public AudioClip[] shootingSounds;
-    [SerializeField] public AudioClip[] hittingSounds;
+    [SerializeField] public AudioClip[] enemyTakingDamageSounds;
+    [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
 
     private void Awake()
     {
@@ -22,7 +23,8 @@ public class Sound : MonoBehaviour
 
     private void Start()
     {
-        source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex-1]; 
+        source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex-1];
+        source.volume = source.volume * 0.2f;
         source.PlayOneShot(source.clip);
     }
 
@@ -31,9 +33,21 @@ public class Sound : MonoBehaviour
 
     }
 
+    public void EnemyTakingDamage()
+    {
+        int i = Random.Range(0, enemyTakingDamageSounds.Length);
+        source.clip = enemyTakingDamageSounds[i];
+        source.PlayOneShot(source.clip);
+    }
+
+    public void EnemyNotTakingDamage()
+    {
+        int i = Random.Range(0, enemyNotTakingDamageSounds.Length);
+        source.clip = enemyNotTakingDamageSounds[i];
+        source.PlayOneShot(source.clip);
+    }
     //public void Kaboom()
     //{
-    //    //randomize a soundclip from the kaboom list and play without interruption when called
     //    int i = Random.Range(0, kaboom.Length);
     //    source.clip = kaboom[i];
     //    source.PlayOneShot(source.clip);
