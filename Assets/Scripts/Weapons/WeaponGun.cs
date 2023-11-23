@@ -23,12 +23,12 @@ public class WeaponGun : Weapon
             if (!weaponEquipped)
             {
                 weaponEquipped = true;
-                spriterenderer.enabled = true;
+                //spriterenderer.enabled = true;
             }
             else if (weaponEquipped)
             {
                 weaponEquipped = false;
-                spriterenderer.enabled = false;
+                //spriterenderer.enabled = false;
             }
         }
     }
