@@ -8,26 +8,12 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
     private EnemyProtection ProtectionScript;
-    private int protection=0;
-    private Health Parent;
-    
-    
+    private bool isProtected;
+    private EnemyProtection Parent;
 
-    [HideInInspector] public int Protection
-    {
-        get {
-            if (ProtectionScript == null)
-            {
-                return protection;
-            }
-                return ProtectionScript.numberOfProtection; 
-        }
-        set { if (value < 0)
-            {
-                ProtectionScript.numberOfProtection = 0; 
-            }
-                }
-    }
+    public bool hasProtection { get { return isProtected; } set { } }
+
+
     void Start()
     {
         ProtectionScript = GetComponent<EnemyProtection>();
@@ -47,18 +33,10 @@ public class Health : MonoBehaviour, IDamageable
         if (gameObject.transform.parent != null)
         {
             //keep in mind the enemy has to be the ROOT parent for this to actually work
-            Parent = transform.root.GetComponentInParent<Health>();
+            Parent = transform.root.GetComponentInParent<EnemyProtection>();
             Debug.Log(Parent.name);
             Parent.RemoveProtection(1);
-            
+
         }
-    }
-
-    public void RemoveProtection(int amount)
-    {
-
-
-        ProtectionScript.numberOfProtection -= amount;
-        Debug.Log(Protection+gameObject.name);
     }
 }
