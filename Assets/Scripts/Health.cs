@@ -8,15 +8,16 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
     private EnemyProtection ProtectionScript;
-    private bool isProtected;
+    public bool isProtected;
     private EnemyProtection Parent;
 
-    public bool hasProtection { get { return isProtected; } set { } }
+    public bool hasProtection { get { return isProtected; } set {    } }
 
 
     void Start()
     {
         ProtectionScript = GetComponent<EnemyProtection>();
+        
     }
     public void ApplyDamage(int amount)
     {
