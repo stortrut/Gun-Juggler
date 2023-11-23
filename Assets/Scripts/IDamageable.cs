@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface IDamageable 
 {
-
-    int Protection { get; set; }
+   bool hasProtection { get; set; }   
     void ApplyDamage(int amount);
-    void RemoveProtection(int protection);
+    
+    
 }
