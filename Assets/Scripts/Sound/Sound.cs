@@ -11,9 +11,6 @@ public class SoundEffects : MonoBehaviour
     [SerializeField] private AudioClip[] backgroundMusic;
     [SerializeField] public AudioClip[] kaboom;
 
-
-    private float laughTimer = 5;
-
     private void Awake()
     {
         Instance = this;
@@ -29,19 +26,7 @@ public class SoundEffects : MonoBehaviour
 
     private void Update()
     {
-        laughTimer -= Time.deltaTime;
-        if (laughTimer < 0)
-        {
-            EvilLaugh();
-            laughTimer = 5;
-        }
-    }
 
-    public void EvilLaugh()
-    {
-        int i = Random.Range(0, evillaugh.Length);
-        source.clip = evillaugh[i];
-        source.PlayOneShot(source.clip);
     }
 
     public void Kaboom()
@@ -52,44 +37,10 @@ public class SoundEffects : MonoBehaviour
         source.PlayOneShot(source.clip);
     }
 
-    public void PowerUp()
-    {
-        int i = Random.Range(0, powerup.Length);
-        source.clip = powerup[i];
-        source.PlayOneShot(source.clip);
-    }
-
-    public void FrogSound()
-    {
-        int i = Random.Range(0, frogsound.Length);
-        source.clip = frogsound[i];
-        source.PlayOneShot(source.clip);
-    }
-
-    public void StepOnFrog()
-    {
-        int i = Random.Range(0, steponfrog.Length);
-        source.clip = steponfrog[i];
-        source.PlayOneShot(source.clip);
-    }
-
-    public void DisapepearingFrog()
-    {
-        source.clip = disappearingFrog;
-        source.PlayOneShot(source.clip);
-    }
-
-    public void Ultimate()
-    {
-        source.clip = ultimateSound;
-        source.volume = source.volume * 5f;
-        source.PlayOneShot(source.clip);
-    }
-
-    public void Eating()
-    {
-        int i = Random.Range(0, eating.Length);
-        source.clip = eating[i];
-        source.PlayOneShot(source.clip);
-    }
+    //public void Ultimate()
+    //{
+    //    source.clip = ultimateSound;
+    //    source.volume = source.volume * 5f;
+    //    source.PlayOneShot(source.clip);
+    //}
 }
