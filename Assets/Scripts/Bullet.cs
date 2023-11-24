@@ -31,9 +31,9 @@ public class Bullet : Weapon
     private void OnTriggerEnter2D(Collider2D damagedObject)
     {
         IDamageable HitObject=damagedObject.gameObject.GetComponent<IDamageable>();
-        if (HitObject != null)
+        if (HitObject != null && HitObject.hasProtection==true)
         {
-
+            Sound.Instance.EnemyNotTakingDamage();
             Debug.Log(HitObject.hasProtection);
         }
         
@@ -43,6 +43,7 @@ public class Bullet : Weapon
             Sound.Instance.EnemyTakingDamage();
             
         }
+        
         Destroy(this.gameObject);   
     }
 }
