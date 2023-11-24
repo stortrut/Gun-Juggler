@@ -8,7 +8,7 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
     private EnemyProtection ProtectionScript;
-    public bool isProtected;
+    [HideInInspector]public bool isProtected;
     private EnemyProtection Parent;
     private SpriteRenderer spriteRenderer;
     private bool colorischanged;
