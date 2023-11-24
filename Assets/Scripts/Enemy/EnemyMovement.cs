@@ -63,10 +63,11 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         ChangeVelocity(-1f);
-        spriteRenderer.flipX = true;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
         rightdirection *=-1;
         facingRight = !facingRight;
         widthOfObject *= -1;
+        
     }
     private void ChangeVelocity(float Change)
     {
@@ -97,9 +98,13 @@ public class EnemyMovement : MonoBehaviour
     {
         raycastPosition = new Vector2(transform.position.x + (widthOfObject / 2), transform.position.y - (heightOfObject / 2));
         hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
-        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
+        if(!hitObstacle)
+        {
+            hitObstacle = Physics2D.Raycast(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), rightdirection, distanceSide, normal);
+        }
         groundExists = Physics2D.Raycast(raycastPosition, Vector2.down * distanceSide, 5, normal);
         Debug.DrawRay(raycastPosition, rightdirection * distanceSide, Color.blue);
+        Debug.DrawRay(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), rightdirection, Color.red);
         Debug.DrawRay(raycastPosition, Vector2.down * 2, Color.yellow);
         if (hitObstacle == true)
         {

@@ -16,11 +16,15 @@ public class Health : MonoBehaviour, IDamageable
 
     public bool hasProtection { get { return isProtected; } set {    } }
 
-
-    void Start()
+    void Awake()
     {
         ProtectionScript = GetComponent<EnemyProtection>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Start()
+    {
+        
     }
     public void ApplyDamage(int amount)
     {
