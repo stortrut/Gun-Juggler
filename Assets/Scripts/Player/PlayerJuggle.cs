@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class PlayerJuggle : MonoBehaviour
 {
-    [SerializeField] List<WeaponJuggleMovement> weapons = new();
+    List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
-    [SerializeField] private WeaponJuggleMovement weaponInHand;
+    private WeaponJuggleMovement weaponInHand;
 
 
     private void Start()
     {
-        weapons[1].ThrowUpWeapon();
+        WeaponJuggleMovement[] weaponsOnPlayer = GetComponentsInChildren<WeaponJuggleMovement>();
+        foreach (WeaponJuggleMovement weapon in weaponsOnPlayer)
+        {
+            weaponsCurrentlyInJuggleLoop.Add(weapon);
+        }
+
+        weaponInHand = weaponsCurrentlyInJuggleLoop[0];
+
+        weaponsCurrentlyInJuggleLoop[0].weaponBase.EquipWeapon();
+
+        for (int i = 1; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
+            weaponsCurrentlyInJuggleLoop[i].curveDeltaTime = (i * 2) - 0.6f;
+        }
+
     }
+
+    
 
 
     public void CatchWeapon(WeaponJuggleMovement newWeapon)

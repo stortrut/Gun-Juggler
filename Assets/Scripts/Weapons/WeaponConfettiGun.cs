@@ -11,7 +11,6 @@ public class WeaponConfettiGun : Weapon
         fireRate = 0.8f;
     }
 
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -19,7 +18,7 @@ public class WeaponConfettiGun : Weapon
             if (weaponEquipped)
             {
                 Shoot();
-                knockback.KnockBackMyself(transform.position);
+                //knockback.KnockBackMyself(transform.position);
             }
         }
     }
