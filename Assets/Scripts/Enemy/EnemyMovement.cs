@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     {
         heightOfObject=GetComponent<BoxCollider2D > ().bounds.size.y;
         widthOfObject = GetComponent<BoxCollider2D>().bounds.size.x;
-       normal =LayerMask.GetMask("Default");
+        normal =LayerMask.GetMask("Default");
         ChangeVelocity(1);
         ChangeVelocity(5f);
     }
