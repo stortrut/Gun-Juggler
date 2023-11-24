@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IStunnable
 {
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float velocityToAddX;
 
     [HideInInspector] public bool isFacingRight;
-
+    [HideInInspector] public bool isStunned = false;
 
     [Header("Jump")]
     [SerializeField] private float jumpHeight;
@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool onGround = false;
     private bool isJumping = false;
-
+    
+    public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
 
 
 
@@ -38,7 +39,10 @@ public class PlayerMovement : MonoBehaviour
     {
         calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider;
 
-
+        if (isStunned==true) 
+        {
+            return;
+        }
         Walk();
         Jump();
 

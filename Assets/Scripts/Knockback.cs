@@ -7,6 +7,7 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     Rigidbody2D rb2D;
+    IStunnable stunnable;
     [SerializeField] float knockbackSpeedX, knockbackSpeedY, knockbackDuration;
 
     private float knockbackStart;
@@ -17,6 +18,7 @@ public class Knockback : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        stunnable = GetComponent<IStunnable>();
     }
     private void Update()
     {
@@ -27,16 +29,15 @@ public class Knockback : MonoBehaviour
         {
             Vector2 testPos = new Vector2(transform.position.x + 2, transform.position.y + 2);
 
-            KnockBackMyself(testPos);
+            KnockBackMyself(knockbackSpeedX,knockbackSpeedY,knockbackDuration,testPos);
         }
     }
-    public void KnockBackMyself(Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
+    public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDuration, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
     {
+        stunnable.isStunnable = true;
         knockback = true;
         knockbackStart = Time.time;
 
-
-        currentVelocity = rb2D.velocity;        //save velocity before knockback
 
         Vector2 distanceToKnockbackCauser = new Vector2(transform.position.x - referenceTransformPosition.x, 0);
         distanceToKnockbackCauser.Normalize();
@@ -47,7 +48,7 @@ public class Knockback : MonoBehaviour
         //rb2D.AddForce(new Vector2(knockbackForce.x, knockbackForce.y));
 
 
-        rb2D.velocity = new Vector2(currentVelocity.x + knockbackDirection.x * knockbackSpeedX, knockbackSpeedY);
+        rb2D.velocity = new Vector2(knockbackDirection.x * knockbackSpeedX, knockbackSpeedY);
 
     }
 
@@ -55,8 +56,9 @@ public class Knockback : MonoBehaviour
     {
         if (Time.time >= knockbackStart + knockbackDuration && knockback)
         {
+            stunnable.isStunnable = false;
             knockback = false;
-            rb2D.velocity = new Vector3(0f, currentVelocity.y);
+            rb2D.velocity = Vector3.zero;
         }
     }
 

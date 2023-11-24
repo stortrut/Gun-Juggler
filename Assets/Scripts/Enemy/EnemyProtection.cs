@@ -13,7 +13,7 @@ public class EnemyProtection : MonoBehaviour
     {
        
         health = GetComponent<Health>();
-        health.isProtected = true;
+        health.hasProtection = true;
         for (int i = 1; i < numberOfProtection+1; i++) 
         { 
           CurrentProtection=Instantiate(Protection,new Vector2(i,i),Quaternion.identity,gameObject.transform);
@@ -25,7 +25,7 @@ public class EnemyProtection : MonoBehaviour
         numberOfProtection-=amount;
         if (numberOfProtection==0)
         {
-            health.isProtected=false;
+            health.hasProtection=false;
         }
     }
 }
