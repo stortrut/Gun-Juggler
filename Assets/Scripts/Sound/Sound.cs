@@ -28,15 +28,11 @@ public class Sound : MonoBehaviour
         source.PlayOneShot(source.clip);
     }
 
-    private void Update()
-    {
-
-    }
-
     public void EnemyTakingDamage()
     {
         int i = Random.Range(0, enemyTakingDamageSounds.Length);
         source.clip = enemyTakingDamageSounds[i];
+        source.volume = source.volume * 1.2f;
         source.PlayOneShot(source.clip);
     }
 
