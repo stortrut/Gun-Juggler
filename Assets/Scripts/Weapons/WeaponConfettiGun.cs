@@ -8,17 +8,20 @@ public class WeaponConfettiGun : Weapon
     private void Start()
     {   
         bulletSpeed = 20f;
-        fireRate = 0.8f;
+        fireRate = 1f;
     }
 
     void Update()
     {
+        fireRateTimer -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
-            if (weaponEquipped)
+            if (this.weaponEquipped)
             {
                 Shoot();
-                //knockback.KnockBackMyself(transform.position);
+                knockback.KnockBackMyself(5,3f,.4f,transform.position);
+                Sound.Instance.ConfettiGunShoot();
+                fireRateTimer = fireRate;
             }
         }
     }
