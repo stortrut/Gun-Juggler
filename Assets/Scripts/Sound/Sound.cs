@@ -25,8 +25,10 @@ public class Sound : MonoBehaviour
 
     private void Start()
     {
-        source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex-1];
+        source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex-1];  //build index starts at 1!!
         //source.volume = source.volume * 0.1f;
+        if (source.clip = null)
+        { source.clip = backgroundMusic[0]; }      //default music
         source.PlayOneShot(source.clip);
     }
 
@@ -34,28 +36,40 @@ public class Sound : MonoBehaviour
     {
         int i = Random.Range(0, enemyTakingDamageSounds.Length);
         source.clip = enemyTakingDamageSounds[i];
-        source.PlayOneShot(source.clip);
+        if (source.clip != null)
+        {
+            source.PlayOneShot(source.clip);
+        }
     }
 
     public void EnemyNotTakingDamage()
     {
         int i = Random.Range(0, enemyNotTakingDamageSounds.Length);
         source.clip = enemyNotTakingDamageSounds[i];
-        source.PlayOneShot(source.clip);
+        if (source.clip != null)
+        {
+            source.PlayOneShot(source.clip);
+        }
     }
 
     public void ChangingWeapon()
     {
         int i = Random.Range(0, changingWeaponSounds.Length);
         source.clip = changingWeaponSounds[i];
-        source.PlayOneShot(source.clip);
+        if (source.clip != null)
+        {
+            source.PlayOneShot(source.clip);
+        }
     }
     
     public void ConfettiGunShoot()
     {
         int i = Random.Range(0, shootingSoundsConfettiGun.Length);
         source.clip = shootingSoundsConfettiGun[i];
-        source.PlayOneShot(source.clip);
+        if (source.clip != null)
+        {
+            source.PlayOneShot(source.clip);
+        }
     }
 
     //public void Kaboom()
