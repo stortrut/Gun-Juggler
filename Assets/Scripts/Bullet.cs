@@ -31,24 +31,6 @@ public class Bullet : Weapon
 
     private void OnTriggerEnter2D(Collider2D damagedObject)
     {
-        IDamageable HitObject=damagedObject.gameObject.GetComponent<IDamageable>();
-        if (HitObject != null && HitObject.hasProtection==true)
-        {
-            Sound.Instance.EnemyNotTakingDamage();
-            Debug.Log(HitObject.hasProtection);
-        }
-        
-        if (HitObject != null && HitObject.hasProtection==false)
-        {
-            HitObject.ApplyDamage(1);
-            Sound.Instance.EnemyTakingDamage();
-            if (damagedObject.TryGetComponent(out Knockback knockbackComponent))        
-            {
-                Debug.Log("enemy knockback");
-                knockbackComponent.KnockBackMyself(15,10,.4f,transform.position);
-            }
-        }
-        
         Destroy(this.gameObject);   
     }
 }

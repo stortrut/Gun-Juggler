@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7802860336086120099}
   - component: {fileID: 4508581924713800456}
   - component: {fileID: 2431371702140913906}
-  - component: {fileID: 6590448627080958339}
   - component: {fileID: 4365442678409280003}
   - component: {fileID: 2347798522258355239}
+  - component: {fileID: 9200150898018625337}
   m_Layer: 7
   m_Name: Enemy_Patrolling
   m_TagString: Enemy
@@ -132,19 +132,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6590448627080958339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8989953743101133587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085f3906c01fc0f4e86e53daa7160c47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
 --- !u!114 &4365442678409280003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +191,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0361023, y: 2.7757025}
   m_EdgeRadius: 0
+--- !u!114 &9200150898018625337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989953743101133587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6d3ef22fccbaf448413483bc093c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
