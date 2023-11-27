@@ -4,7 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemyHealth : Health
+    
 {
+    private EnemyProtection enemyProtection;
+    
+    private void Start()
+    {
+        var enemyProtection= TryGetComponent(out EnemyProtection component);
+        enemyProtection = component;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         

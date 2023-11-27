@@ -21,7 +21,7 @@ public class Health : MonoBehaviour, IDamageable
     void Awake()
     {
         ProtectionScript = GetComponent<EnemyProtection>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Start()
@@ -45,7 +45,7 @@ public class Health : MonoBehaviour, IDamageable
         if (gameObject.transform.parent != null)
         {
             //keep in mind the enemy has to be the ROOT parent for this to actually work
-            Parent = transform.root.GetComponentInParent<EnemyProtection>();
+            Parent = GetComponentInParent<EnemyProtection>();
             Parent.RemoveProtection(1);
 
         }

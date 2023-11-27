@@ -7,34 +7,32 @@ public class EnemyProtection : MonoBehaviour
     [SerializeField] private GameObject Protection;
     public int numberOfProtection = 1;
     private Health health;
-
-    private GameObject CurrentProtection;
+    public List<GameObject> protectingItems;
+    private GameObject currentProtection;
     public void Start()
     {
        
         health = GetComponent<Health>();
         health.hasProtection = true;
-        for (int i = 1; i < numberOfProtection+1; i++) 
+        for (int i = 0; i < numberOfProtection; i++) 
         { 
-          CurrentProtection=Instantiate(Protection,new Vector2(i,i),Quaternion.identity,gameObject.transform);
-            
+          
+          currentProtection = Instantiate(Protection,new Vector2(i,i),Quaternion.identity,gameObject.transform); 
+          protectingItems.Add(currentProtection);
         }
+
     }
     public void RemoveProtection(int amount)
     {
-        numberOfProtection-=amount;
+        numberOfProtection -= amount;
+        
+        
         if (numberOfProtection==0)
         {
-            health.hasProtection=false;
-        }
-    }
-    public void RemoveProtection()
-    {
-        numberOfProtection--;
-        if (numberOfProtection == 0)
-        {
-            Debug.LogWarning("IT HAPPENS");
+            Debug.Log("list is cleared");
+            protectingItems.Clear();
             health.hasProtection = false;
+            
         }
     }
 }

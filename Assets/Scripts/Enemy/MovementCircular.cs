@@ -20,9 +20,10 @@ public class MovementCircular : MonoBehaviour
 
     void Update()
     {
-        x =Mathf.Cos((Time.time+offSet)* frequency)*amplitude;
-        y =Mathf.Sin((Time.time+ offSet) * frequency)*amplitude;
+        x = Mathf.Cos((Time.time + offSet)* frequency) * amplitude;
+        y = Mathf.Sin((Time.time + offSet) * frequency) * amplitude;
 
-        transform.position = new Vector2(transform.parent.position.x+x,transform.parent.position.y+y);
+        transform.localPosition = new Vector3 (transform.root.position.x + x , transform.root.position.y + y,0);
     }   
-}
+}   
+    
