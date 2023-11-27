@@ -14,7 +14,7 @@ public class WeaponConfettiGun : Weapon
     void Update()
     {
         fireRateTimer -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && fireRateTimer < 0)
         {
             if (this.weaponEquipped)
             {
