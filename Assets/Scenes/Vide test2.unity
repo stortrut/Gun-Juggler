@@ -2122,7 +2122,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weaponBase: {fileID: 8349812459038931331}
+  weaponBase: {fileID: 8349812459038931332}
   curveDeltaTime: 0
   beingThrown: 0
 --- !u!50 &7942935874556625403
@@ -2164,9 +2164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec2ddf4102bcac4ba8f2768a32e689c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackSpeedX: -15
-  knockbackSpeedY: 5
-  knockbackDuration: 1
+  knockbackSpeedX: 0
+  knockbackSpeedY: 0
+  knockbackDuration: 0
 --- !u!114 &7942935874556625405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2207,7 +2207,7 @@ GameObject:
   - component: {fileID: 6959670368685650841}
   - component: {fileID: 6943303063241845760}
   - component: {fileID: 7603810378526535280}
-  - component: {fileID: 8349812459038931331}
+  - component: {fileID: 8349812459038931332}
   m_Layer: 0
   m_Name: small_red
   m_TagString: Untagged
@@ -2230,7 +2230,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7316569150743186537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8349812459038931331
+--- !u!114 &8349812459038931332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2239,17 +2239,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8069640899357353574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf4d881a66f89f4cbbbcf8031fd2313, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f57e9a90ec0d264689c2bd603e48e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
   damage: 0
-  bulletSpeed: 0
-  fireRate: 0
+  bulletSpeed: 20
+  fireRate: 1
   spriterenderer: {fileID: 0}
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 9136343518832835487}
   fireRateTimer: 0
+  knockback: {fileID: 7942935874556625404}
 --- !u!4 &8461433687587121292
 Transform:
   m_ObjectHideFlags: 0

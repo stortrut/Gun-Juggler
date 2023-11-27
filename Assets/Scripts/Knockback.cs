@@ -43,11 +43,11 @@ public class Knockback : MonoBehaviour
 
     private void CheckKnockback()
     {
-        if (Time.time >= knockbackStart + knockbackDuration && knockback)
+        if (knockback)
         {
             rb2D.velocity = Vector2.zero;
             rb2D.AddForce(new Vector2(0, -50f));
-            Invoke(nameof(NoForce),.2f);
+            Invoke(nameof(NoForce), .2f);
             Invoke(nameof(AllowMovement), .2f);
         }
     }
