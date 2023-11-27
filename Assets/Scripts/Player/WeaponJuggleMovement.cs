@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class WeaponJuggleMovement : MonoBehaviour
 {
+    [SerializeField] public WeaponBase weaponBase;
+
+    [Header("Juggle Loop Curves")]
     [SerializeField] AnimationCurve gunThrowAnimationCurveY;
     [SerializeField] AnimationCurve gunThrowAnimationCurveX;
+    public bool beingThrown;
 
-    [SerializeField] public WeaponBase weaponBase;
+    [Header("Drop Weapon Curves")]
+    [SerializeField] AnimationCurve gunDropAnimationCurveY;
+    [SerializeField] AnimationCurve gunDropAnimationCurveX;
+    public bool beingDropped;
+
 
     //[SerializeField] private float speed = 100.0f;
 
     [HideInInspector] public float curveDeltaTime = 0.0f;
-    public bool beingThrown;
 
     private float endOfCurveYTimeValue;
     private float endOfCurveXTimeValue;
@@ -53,7 +60,6 @@ public class WeaponJuggleMovement : MonoBehaviour
             currentPosition.y = gunThrowAnimationCurveY.Evaluate(curveDeltaTime);
             currentPosition.x = gunThrowAnimationCurveX.Evaluate(curveDeltaTime);
 
-
             // Update the current position of the sphere
             transform.localPosition = currentPosition;
         }
@@ -61,15 +67,28 @@ public class WeaponJuggleMovement : MonoBehaviour
 
         if (curveDeltaTime >= endOfCurveYTimeValue && curveDeltaTime >= endOfCurveXTimeValue)
         {
-            weaponBase.EquipWeapon();
-            playerJuggle.CatchWeapon(thisWeaponJuggleMovement);
+            if (beingThrown)
+            {
+                weaponBase.EquipWeapon();
+                playerJuggle.CatchWeapon(thisWeaponJuggleMovement);
+            }
         }
 
-        //Throw up
-        //if (Input.GetKeyDown(KeyCode.Mouse1) && weaponBase.weaponEquipped)
-        //{
-        //    ThrowUpWeapon();
-        //}
+
+        if (beingDropped)
+        {
+            Vector3 currentPosition = transform.localPosition;
+            Vector3 offSet = transform.localPosition;
+
+            // Call evaluate on that time   
+            curveDeltaTime += Time.deltaTime;
+
+            currentPosition.y = gunDropAnimationCurveY.Evaluate(curveDeltaTime) + offSet.y;
+            currentPosition.x = gunDropAnimationCurveX.Evaluate(curveDeltaTime) + offSet.x;
+
+            // Update the current position of the sphere
+            transform.localPosition = currentPosition;
+        }
     }
 
 
@@ -79,5 +98,10 @@ public class WeaponJuggleMovement : MonoBehaviour
         beingThrown = true;
     }
 
-
+    public void DropWeapon()
+    {
+        beingDropped = true;
+        beingThrown = false;
+        curveDeltaTime = 0;
+    }
 }

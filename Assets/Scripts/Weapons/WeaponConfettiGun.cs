@@ -19,7 +19,8 @@ public class WeaponConfettiGun : Weapon
             if (this.weaponEquipped)
             {
                 Shoot();
-                knockback.KnockBackMyself(5,3f,.4f,transform.position);
+                if(knockback != null)
+                    knockback.KnockBackMyself(5,3f,.4f,transform.position);
                 Sound.Instance.ConfettiGunShoot();
                 fireRateTimer = fireRate;
             }
