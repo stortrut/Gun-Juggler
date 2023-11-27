@@ -21,6 +21,10 @@ public class Knockback : MonoBehaviour
         stunnable = GetComponent<IStunnable>();
     }
 
+    private void Update()
+    {
+        CheckKnockback();
+    }
     public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
     {
         stunnable.isStunnable = true;
@@ -37,13 +41,13 @@ public class Knockback : MonoBehaviour
         knockbackForce.x = knockbackSpeedX * knockbackDirection;
         knockbackForce.y = knockbackSpeedY;
         rb2D.velocity = knockbackForce;
-        Invoke(nameof(CheckKnockback), knockbackDuration);
+        
         //rb2D.velocity = new Vector2(knockbackDirection * knockbackSpeedX, knockbackSpeedY); 
     }
 
     private void CheckKnockback()
     {
-        if (knockback)
+        if (Time.time >= knockbackStart + knockbackDuration && knockback)
         {
             rb2D.velocity = Vector2.zero;
             rb2D.AddForce(new Vector2(0, -50f));
