@@ -6,8 +6,8 @@ public class PlayerJuggle : MonoBehaviour
 {
     List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
+    private bool isJuggling;
     private WeaponJuggleMovement weaponInHand;
-
 
     private void Start()
     {
@@ -20,11 +20,18 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand = weaponsCurrentlyInJuggleLoop[0];
 
         weaponsCurrentlyInJuggleLoop[0].weaponBase.EquipWeapon();
-
-
-        StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), 3 / weaponsCurrentlyInJuggleLoop.Count);
-
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && !isJuggling)
+        {
+            isJuggling = true;
+            StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), 4 / weaponsCurrentlyInJuggleLoop.Count);
+        }
+    }
+
+
 
     IEnumerator ThrowUpAllWeaponsWithSameInterval(float waitTimeBetweenEachThrow)
     {
