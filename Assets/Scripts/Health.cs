@@ -44,14 +44,12 @@ public class Health : MonoBehaviour, IDamageable
         {
             //keep in mind the enemy has to be the ROOT parent for this to actually work
             Parent = transform.root.GetComponentInParent<EnemyProtection>();
-            Debug.Log(Parent.name);
             Parent.RemoveProtection(1);
 
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
         ColorChange(1);
         Invoke(nameof(ColorChange),0.3f);
     }
