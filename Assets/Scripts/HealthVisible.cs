@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HealthVisible : MonoBehaviour
 {
+    [SerializeField] private Sprite Shield;
     [SerializeField] private Sprite Full;
     [SerializeField] private Sprite Half;
     [SerializeField] private Sprite Empty;
@@ -16,13 +17,19 @@ public class HealthVisible : MonoBehaviour
     void Start()
     {
         health = GetComponentInParent<Health>();
-        Sprite.sprite = Full;
+        Sprite.sprite = Shield;
+        Sprite.color = Color.blue;
         currentHealth = health.health;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health.health == 2 && Sprite.sprite != Full)
+        {
+            Sprite.color = Color.white;
+            Sprite.sprite = Full;
+        }
         if (health.health == 1 && Sprite.sprite != Half)
         {
             Sprite.sprite = Half;
