@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6366511132854808516}
   - component: {fileID: 3112071654629854382}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,8 +61,8 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.06025982, y: 0.048208117}
   m_Size: {x: 2.1149807, y: 2.2113974}
@@ -78,9 +78,9 @@ GameObject:
   - component: {fileID: 3711507111127822552}
   - component: {fileID: 5083139085591558852}
   - component: {fileID: 2939687135213298414}
-  - component: {fileID: -8045318533795588669}
   - component: {fileID: -6055048033844398865}
-  m_Layer: 8
+  - component: {fileID: -1046888738463056618}
+  m_Layer: 0
   m_Name: balloon_attachment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,19 +170,6 @@ MonoBehaviour:
   frequency: 1.5
   amplitude: 3
   AttachedEnemy: {fileID: 8989953743101133587, guid: d56267c24a2f4a14aae3bba884e6e7e6, type: 3}
---- !u!114 &-8045318533795588669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8031808563312221336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085f3906c01fc0f4e86e53daa7160c47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
 --- !u!58 &-6055048033844398865
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -218,3 +205,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.015510559}
   serializedVersion: 2
   m_Radius: 1.0040936
+--- !u!114 &-1046888738463056618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031808563312221336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6d3ef22fccbaf448413483bc093c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
