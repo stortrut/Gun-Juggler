@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     [HideInInspector] public bool isFacingRight;
     [HideInInspector] public bool isStunned = false;
+    [HideInInspector] public float timeStun;
 
     [Header("Jump")]
     [SerializeField] private float jumpHeight;
@@ -30,13 +31,15 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private bool isJumping = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
-
+    public float timeStunned { get { return timeStun; } set { timeStun = value; } }
+        
     void Update()
     {
         calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider;
 
         if (isStunned==true) 
         {
+           
             return;
         }
         Walk();

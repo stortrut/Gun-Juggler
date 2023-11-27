@@ -11,7 +11,7 @@ public class Bullet : Weapon
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        Debug.Log(bulletSpeed);
+        
     }
 
     private void Update()

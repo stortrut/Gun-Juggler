@@ -24,6 +24,7 @@ public class Knockback : MonoBehaviour
     private void Update()
     {
         CheckKnockback();
+    
     }
     public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
     {
@@ -41,8 +42,8 @@ public class Knockback : MonoBehaviour
         knockbackForce.x = knockbackSpeedX * knockbackDirection;
         knockbackForce.y = knockbackSpeedY;
         rb2D.velocity = knockbackForce;
+       
         
-        //rb2D.velocity = new Vector2(knockbackDirection * knockbackSpeedX, knockbackSpeedY); 
     }
 
     private void CheckKnockback()
@@ -57,8 +58,11 @@ public class Knockback : MonoBehaviour
     }
     private void AllowMovement()
     {
+
         stunnable.isStunnable = false;
         knockback = false;
+  
+       
     }
 
     private void NoForce()
