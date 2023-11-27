@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealth : Health
 {
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         
     
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet")&&hasProtection==false)
         {
             OnTrigger();
-            Debug.Log("the trigger happens :D");
+            Debug.Log("the BIG trigger happens :D");
             if (hasProtection == false)
             {
                 Sound.Instance.EnemyTakingDamage();

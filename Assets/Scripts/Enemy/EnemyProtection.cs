@@ -28,4 +28,13 @@ public class EnemyProtection : MonoBehaviour
             health.hasProtection=false;
         }
     }
+    public void RemoveProtection()
+    {
+        numberOfProtection--;
+        if (numberOfProtection == 0)
+        {
+            Debug.LogWarning("IT HAPPENS");
+            health.hasProtection = false;
+        }
+    }
 }
