@@ -27,7 +27,7 @@ public class PlayerJuggle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && !isJuggling)
         {
             isJuggling = true;
-            StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), 4 / weaponsCurrentlyInJuggleLoop.Count);
+            StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), 2.41808f / weaponsCurrentlyInJuggleLoop.Count);
         }
     }
 
