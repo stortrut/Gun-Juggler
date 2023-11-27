@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int health;
+    public int health;
     private EnemyProtection ProtectionScript;
     private bool isProtected;
    
-    private EnemyProtection Parent;
+    public EnemyProtection Parent;
     private SpriteRenderer spriteRenderer;
     private bool colorischanged;
     
@@ -33,12 +33,14 @@ public class Health : MonoBehaviour, IDamageable
         health -= amount;
         if (health <= 0)
         {
+            
+            
             HasParent();
             Destroy(gameObject);
         }
     }
 
-    private void HasParent()
+    public void HasParent()
     {
         if (gameObject.transform.parent != null)
         {
@@ -48,11 +50,13 @@ public class Health : MonoBehaviour, IDamageable
 
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTrigger()
     {
         ColorChange(1);
         Invoke(nameof(ColorChange),0.3f);
     }
+   
+
     private void ColorChange(int color)
     {
         if (colorischanged==false)

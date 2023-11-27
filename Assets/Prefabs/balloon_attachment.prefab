@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6366511132854808516}
   - component: {fileID: 3112071654629854382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,8 +79,8 @@ GameObject:
   - component: {fileID: 5083139085591558852}
   - component: {fileID: 2939687135213298414}
   - component: {fileID: -6055048033844398865}
-  - component: {fileID: -1046888738463056618}
-  m_Layer: 0
+  - component: {fileID: 8439358771223675345}
+  m_Layer: 7
   m_Name: balloon_attachment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.015510559}
   serializedVersion: 2
   m_Radius: 1.0040936
---- !u!114 &-1046888738463056618
+--- !u!114 &8439358771223675345
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +214,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8031808563312221336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d6d3ef22fccbaf448413483bc093c3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 87ae851dbffd5bd48987c20857970c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  Parent: {fileID: 0}

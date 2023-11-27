@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : Health
+public class ProtectionHealth : Health
 {
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    
-        if (other.gameObject.CompareTag("Bullet"))
+
+        if (other.CompareTag("Bullet"))
         {
             OnTrigger();
             Debug.Log("the trigger happens :D");
@@ -21,15 +20,7 @@ public class EnemyHealth : Health
             {
                 Sound.Instance.EnemyNotTakingDamage();
             }
-          
-                if (TryGetComponent(out Knockback knockbackComponent))
-                {
-                    Debug.Log("enemy knockback");
-                    knockbackComponent.KnockBackMyself(15, 10, .4f, transform.position);
-                }
-            }
+
+        }
     }
-
 }
-    
-
