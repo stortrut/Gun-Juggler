@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IStunnable 
 {
     bool isStunnable { get; set; }   
+   // float timeStunned { get; set; }
 }
