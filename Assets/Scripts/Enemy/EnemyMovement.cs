@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
     float distanceSide = 0.1f;
 
     LayerMask normal;
-    Vector3 rightdirection = Vector2.right;
+    Vector3 raycastRightDirection = Vector2.right;
     Vector2 savedVelocity;
     Vector2 raycastPosition;
     float heightOfObject;
@@ -30,8 +30,6 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         heightOfObject=GetComponent<BoxCollider2D > ().bounds.size.y;
         widthOfObject = GetComponent<BoxCollider2D>().bounds.size.x;
         normal =LayerMask.GetMask("Default");
-        ChangeVelocity(1);
-        ChangeVelocity(5f);
     }
 
 
@@ -70,17 +68,13 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         }
         ChangeVelocity(-1f);
         spriteRenderer.flipX = !spriteRenderer.flipX;
-        rightdirection *=-1;
+        raycastRightDirection *=-1;
         facingRight = !facingRight;
         widthOfObject *= -1;
     }
     private void ChangeVelocity(float Change)
     {
         rigidBody.velocity *= Change;
-    }
-    private void ChangeVelocity(int Change)
-    {
-        rigidBody.velocity += new Vector2(Change,0);
     }
     public void Stop()
     {
@@ -97,19 +91,18 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
                 rigidBody.velocity=savedVelocity;
                 break;
         }
-      
     }
     private void RayCast() 
     { 
         raycastPosition = new Vector2(transform.position.x + (widthOfObject / 2), transform.position.y - (heightOfObject / 2));
-        hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
+        hitObstacle = Physics2D.Raycast(raycastPosition, raycastRightDirection, distanceSide, normal);
         if(!hitObstacle)
         {
-            hitObstacle = Physics2D.Raycast(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), rightdirection, distanceSide, normal);
+            hitObstacle = Physics2D.Raycast(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), raycastRightDirection, distanceSide, normal);
         }
         groundExists = Physics2D.Raycast(raycastPosition, Vector2.down * distanceSide, 5, normal);
-        Debug.DrawRay(raycastPosition, rightdirection * distanceSide, Color.blue);
-        Debug.DrawRay(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), rightdirection, Color.red);
+        Debug.DrawRay(raycastPosition, raycastRightDirection * distanceSide, Color.blue);
+        Debug.DrawRay(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), raycastRightDirection, Color.red);
         Debug.DrawRay(raycastPosition, Vector2.down * 2, Color.yellow);
         if (hitObstacle == true)
         {

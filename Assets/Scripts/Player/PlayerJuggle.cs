@@ -21,12 +21,18 @@ public class PlayerJuggle : MonoBehaviour
 
         weaponsCurrentlyInJuggleLoop[0].weaponBase.EquipWeapon();
 
-        for (int i = 1; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+
+        StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), 3 / weaponsCurrentlyInJuggleLoop.Count);
+
+    }
+
+    IEnumerator ThrowUpAllWeaponsWithSameInterval(float waitTimeBetweenEachThrow)
+    {
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
-            weaponsCurrentlyInJuggleLoop[i].curveDeltaTime = (i * 2) - 0.6f;
+            yield return new WaitForSeconds(waitTimeBetweenEachThrow);
         }
-
     }
 
     
@@ -42,6 +48,9 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand = newWeapon;
     }
 
-
+    public void RemoveWeaponFromLoop(WeaponJuggleMovement weaponToRemoved)
+    {
+        weaponsCurrentlyInJuggleLoop.Remove(weaponToRemoved);
+    }
 
 }
