@@ -13,6 +13,7 @@ public class Bullet : Weapon
         rb2D = GetComponent<Rigidbody2D>();
         Debug.Log(bulletSpeed);
     }
+
     private void Update()
     {
         rb2D.velocity = transform.right*20;
@@ -41,7 +42,11 @@ public class Bullet : Weapon
         {
             HitObject.ApplyDamage(1);
             Sound.Instance.EnemyTakingDamage();
-            
+            if (damagedObject.TryGetComponent(out Knockback knockbackComponent))        
+            {
+                Debug.Log("enemy knockback");
+                knockbackComponent.KnockBackMyself(15,10,.4f,transform.position);
+            }
         }
         
         Destroy(this.gameObject);   

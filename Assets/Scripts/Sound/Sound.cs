@@ -9,9 +9,11 @@ public class Sound : MonoBehaviour
 
     private AudioSource source;
     [SerializeField] private AudioClip[] backgroundMusic;
+    [SerializeField] public AudioClip[] shootingSoundsConfettiGun;
     [SerializeField] public AudioClip[] shootingSounds;
     [SerializeField] public AudioClip[] enemyTakingDamageSounds;
     [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
+    [SerializeField] public AudioClip[] changingWeaponSounds;
 
     private void Awake()
     {
@@ -24,13 +26,8 @@ public class Sound : MonoBehaviour
     private void Start()
     {
         source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex-1];
-        source.volume = source.volume * 0.2f;
+        //source.volume = source.volume * 0.1f;
         source.PlayOneShot(source.clip);
-    }
-
-    private void Update()
-    {
-
     }
 
     public void EnemyTakingDamage()
@@ -46,6 +43,21 @@ public class Sound : MonoBehaviour
         source.clip = enemyNotTakingDamageSounds[i];
         source.PlayOneShot(source.clip);
     }
+
+    public void ChangingWeapon()
+    {
+        int i = Random.Range(0, changingWeaponSounds.Length);
+        source.clip = changingWeaponSounds[i];
+        source.PlayOneShot(source.clip);
+    }
+    
+    public void ConfettiGunShoot()
+    {
+        int i = Random.Range(0, shootingSoundsConfettiGun.Length);
+        source.clip = shootingSoundsConfettiGun[i];
+        source.PlayOneShot(source.clip);
+    }
+
     //public void Kaboom()
     //{
     //    int i = Random.Range(0, kaboom.Length);

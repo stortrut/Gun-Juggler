@@ -14,6 +14,7 @@ public class WeaponBase : MonoBehaviour
 
     public void EquipWeapon()
     {
+        //Sound.Instance.ChangingWeapon();
         weaponEquipped = true;
     }
 

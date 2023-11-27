@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour //, IStunnable
 {
     [SerializeField] private GameObject Player; 
     [SerializeField] private Rigidbody2D rigidBody;
@@ -13,7 +13,6 @@ public class EnemyMovement : MonoBehaviour
     bool hitObstacle;
     bool groundExists;
     float distanceSide = 0.1f;
-
 
     LayerMask normal;
     Vector3 rightdirection = Vector2.right;
@@ -25,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     bool facingRight;
     float currentTime=0;
 
+    //public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
     void Start()
     {
         heightOfObject=GetComponent<BoxCollider2D > ().bounds.size.y;
@@ -37,17 +37,23 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        //if (isStunned == true)
+        //{
+        //    return;
+        //}
+        Walk();
         RayCast();
-     
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             Flip();
         }
-        
-        
-
     }
 
+    public void Walk()
+    {
+
+    }
    
     public void Flip()
     {
@@ -67,7 +73,6 @@ public class EnemyMovement : MonoBehaviour
         rightdirection *=-1;
         facingRight = !facingRight;
         widthOfObject *= -1;
-        
     }
     private void ChangeVelocity(float Change)
     {
@@ -94,8 +99,8 @@ public class EnemyMovement : MonoBehaviour
         }
       
     }
-    private void RayCast()
-    {
+    private void RayCast() 
+    { 
         raycastPosition = new Vector2(transform.position.x + (widthOfObject / 2), transform.position.y - (heightOfObject / 2));
         hitObstacle = Physics2D.Raycast(raycastPosition, rightdirection, distanceSide, normal);
         if(!hitObstacle)
@@ -119,10 +124,7 @@ public class EnemyMovement : MonoBehaviour
             Flip();
             //Invoke(nameof(Flip), 0.4f);
             // Invoke(nameof(Stop),0.3f);
-
-
         }
-
     }
 }
 //private void OnTriggerEnter2D(Collider2D other)

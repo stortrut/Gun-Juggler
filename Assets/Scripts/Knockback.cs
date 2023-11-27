@@ -12,8 +12,8 @@ public class Knockback : MonoBehaviour
 
     private float knockbackStart;
     private bool knockback;
-    private Vector2 currentVelocity, knockbackForce;
-    private Vector2 knockbackDirection = new Vector2(0f,0f);
+    private Vector2 knockbackForce;
+    private float knockbackDirection;
 
     private void Start()
     {
@@ -24,42 +24,52 @@ public class Knockback : MonoBehaviour
     {
         CheckKnockback();
 
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    Vector2 testPos = new Vector2(transform.position.x + 2, transform.position.y + 2);
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Vector2 testPos = new Vector2(transform.position.x + 2, transform.position.y + 2);
-
-            KnockBackMyself(knockbackSpeedX,knockbackSpeedY,knockbackDuration,testPos);
-        }
+        //    KnockBackMyself(knockbackSpeedX,knockbackSpeedY,knockbackDuration,testPos);
+        //}
     }
-    public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDuration, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
+    public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
     {
         stunnable.isStunnable = true;
         knockback = true;
         knockbackStart = Time.time;
+        knockbackDuration = knockbackDurationInput;
 
+        float distanceToKnockbackCauser = referenceTransformPosition.x - transform.position.x;  //knockbackdirection
+        if (distanceToKnockbackCauser > 0)
+        { knockbackDirection = -1f; }
+        else 
+        { knockbackDirection = 1f;  }
 
-        Vector2 distanceToKnockbackCauser = new Vector2(transform.position.x - referenceTransformPosition.x, 0);
-        distanceToKnockbackCauser.Normalize();
-        knockbackDirection.x = -distanceToKnockbackCauser.x; //direction is negative (-1) right now bacause the weapon is on the right side of the player
-        //Vector2 knockbackDirection = (transform.position - (Vector3)referenceTransformPosition).normalized;
+        knockbackForce.x = knockbackSpeedX * knockbackDirection;
+        knockbackForce.y = knockbackSpeedY;
+        rb2D.velocity = knockbackForce;
 
-        knockbackForce.x += knockbackSpeedX * distanceToKnockbackCauser.x + 20;
-        //rb2D.AddForce(new Vector2(knockbackForce.x, knockbackForce.y));
-
-
-        rb2D.velocity = new Vector2(knockbackDirection.x * knockbackSpeedX, knockbackSpeedY);
-
+        //rb2D.velocity = new Vector2(knockbackDirection * knockbackSpeedX, knockbackSpeedY); 
     }
 
     private void CheckKnockback()
     {
         if (Time.time >= knockbackStart + knockbackDuration && knockback)
         {
-            stunnable.isStunnable = false;
-            knockback = false;
-            rb2D.velocity = Vector3.zero;
+            rb2D.velocity = Vector2.zero;
+            rb2D.AddForce(new Vector2(0, -50f));
+            Invoke(nameof(NoForce),.2f);
+            Invoke(nameof(AllowMovement), .2f);
         }
+    }
+    private void AllowMovement()
+    {
+        stunnable.isStunnable = false;
+        knockback = false;
+    }
+
+    private void NoForce()
+    {
+        rb2D.AddForce(new Vector2(0, 0));
     }
 
 }

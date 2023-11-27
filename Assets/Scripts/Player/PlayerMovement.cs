@@ -31,10 +31,6 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
 
-
-
-
-    // Update is called once per frame
     void Update()
     {
         calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider;
