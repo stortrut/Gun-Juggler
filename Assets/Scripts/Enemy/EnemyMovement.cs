@@ -76,10 +76,6 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
     {
         rigidBody.velocity *= Change;
     }
-    private void ChangeVelocity(int Change)
-    {
-        rigidBody.velocity += new Vector2(Change,0);
-    }
     public void Stop()
     {
         startStop = !startStop;
@@ -95,7 +91,6 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
                 rigidBody.velocity=savedVelocity;
                 break;
         }
-      
     }
     private void RayCast() 
     { 
