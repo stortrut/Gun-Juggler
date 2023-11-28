@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour, IStunnable
         optionsPanel.SetActive(false);  
         escMenu.SetActive(false);
         optionsPanelActive = false;
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End")
         {
             startMenu.SetActive(true);
         }
