@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour, IStunnable
     [SerializeField] GameObject optionsPanel;
     [SerializeField] bool optionsPanelActive = false;
     [SerializeField] GameObject escMenu;
-    [SerializeField] bool escMenuActive = false;
+    [SerializeField] GameObject startMenu;
     [SerializeField] IStunnable stunnable;
 
     public bool isStunnable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -21,6 +21,14 @@ public class Menu : MonoBehaviour, IStunnable
         stunnable = GetComponent<IStunnable>();
         optionsPanel.SetActive(false);  
         escMenu.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            startMenu.SetActive(true);
+        }
+        else
+        {
+            startMenu.SetActive(false);
+        }
     }
     private void Update()
     {
@@ -29,11 +37,12 @@ public class Menu : MonoBehaviour, IStunnable
             if (optionsPanelActive)
             {
                 optionsPanel.SetActive(false);
+                startMenu.SetActive(true);
+                optionsPanelActive = false;
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape) && !(SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End"))
         {
-            Debug.Log(SceneManager.GetActiveScene().name);
             escMenu.SetActive(true);
             stunnable.isStunnable = true;
             stunnable.timeStop = true;
@@ -51,6 +60,7 @@ public class Menu : MonoBehaviour, IStunnable
     {
         optionsPanel.SetActive(true);
         optionsPanelActive = true;
+        startMenu.SetActive(false);
     }
     public void BackToMenuButton()
     {
@@ -59,10 +69,7 @@ public class Menu : MonoBehaviour, IStunnable
     public void BackToGameButton()
     {
         escMenu.SetActive(false);
-        escMenuActive = false;
-        optionsPanel.SetActive(false);
         optionsPanelActive = false;
-        
     }
     public void RestartLevel()
     {

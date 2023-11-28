@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Sound : MonoBehaviour
 {
     public static Sound Instance { get; private set; }
 
     private AudioSource source;
+    private float soundVolume;
     [SerializeField] private AudioClip[] backgroundMusic;
     [SerializeField] public AudioClip[] shootingSoundsConfettiGun;
     [SerializeField] public AudioClip[] shootingSounds;
     [SerializeField] public AudioClip[] enemyTakingDamageSounds;
     [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
     [SerializeField] public AudioClip[] changingWeaponSounds;
+
+    [SerializeField] Slider volumeSlider;
+
 
     private void Awake()
     {
@@ -27,10 +32,21 @@ public class Sound : MonoBehaviour
     {
         source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex];
         //source.volume = source.volume * 0.1f;
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         if (source.clip = null)
         { source.clip = backgroundMusic[0]; }      //default music
         source.PlayOneShot(source.clip);
+    }
+
+    public void ChangeVolume()
+    {
+        source.volume = volumeSlider.value;
+        Debug.Log(volumeSlider.value);
+        Save();
+    }
+
+    void Save()
+    {
+        PlayerPrefs.SetFloat("musicvolume",volumeSlider.value);
     }
 
     public void EnemyTakingDamage()
