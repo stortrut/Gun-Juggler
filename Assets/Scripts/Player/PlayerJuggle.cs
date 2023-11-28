@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerJuggle : MonoBehaviour
 {
+    [SerializeField] private float timeInBetweenEachThrowAtTheStart;
+
+
     List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
     private bool isJuggling;
@@ -17,9 +20,11 @@ public class PlayerJuggle : MonoBehaviour
             weaponsCurrentlyInJuggleLoop.Add(weapon);
         }
 
-        weaponInHand = weaponsCurrentlyInJuggleLoop[0];
+        int lastWeaponID = weaponsCurrentlyInJuggleLoop.Count - 1;
 
-        weaponsCurrentlyInJuggleLoop[0].weaponBase.EquipWeapon();
+        weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
+
+        weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
     }
 
     private void Update()
@@ -27,15 +32,15 @@ public class PlayerJuggle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && !isJuggling)
         {
             isJuggling = true;
-            StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), 2.41808f / weaponsCurrentlyInJuggleLoop.Count);
+            StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
         }
     }
 
 
-
+    //Throws up all weapons except the last one
     IEnumerator ThrowUpAllWeaponsWithSameInterval(float waitTimeBetweenEachThrow)
     {
-        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count - 1; i++)
         {
             weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
             yield return new WaitForSeconds(waitTimeBetweenEachThrow);

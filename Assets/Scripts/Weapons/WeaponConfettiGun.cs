@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponConfettiGun : Weapon
+public class WeaponConfettiGun : Gun
 {
     [SerializeField] private Knockback knockback;
     private void Start()

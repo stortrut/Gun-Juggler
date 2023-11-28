@@ -10,7 +10,10 @@ public class RandomColorAtStart : MonoBehaviour
     {
         spriterenderer = GetComponent<SpriteRenderer>();
 
-        Color randomWeaponColor = new Color(Random.Range(0, 255), Random.Range(0, 255), Random.Range(0, 255), 255);
+        Color randomWeaponColor = new Color(
+            Random.Range(0f, 1f),
+            Random.Range(0f, 1f),
+            Random.Range(0f, 1f));
 
         spriterenderer.color = randomWeaponColor;
     }

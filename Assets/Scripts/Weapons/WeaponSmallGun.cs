@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSmallGun : Weapon
+public class WeaponSmallGun : Gun
 {
     private void Start()
     {

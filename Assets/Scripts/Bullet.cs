@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : Weapon
+public class Bullet : Gun
 {
     [SerializeField] SpriteRenderer spriteRenderer;
      Rigidbody2D rb2D;

@@ -16,6 +16,9 @@ public class WeaponJuggleMovement : MonoBehaviour
     [SerializeField] AnimationCurve gunDropAnimationCurveX;
     public bool beingDropped;
 
+    [Header("Spin while thrown curve")]
+    [SerializeField] AnimationCurve rotationAnimationCurve;
+
 
     //[SerializeField] private float speed = 100.0f;
 
@@ -41,18 +44,18 @@ public class WeaponJuggleMovement : MonoBehaviour
 
         //curveDeltaTime += Random.Range(0.1f, 1f);
 
-        Keyframe[] keys1 = gunThrowAnimationCurveY.keys;
-        Keyframe keyFrame = keys1[1];
-        keyFrame.value = Random.Range(4f, 5f);
-        keys1[1] = keyFrame;
-        gunThrowAnimationCurveY.keys = keys1; // This is copying the keys back into the AnimationCurve's array.
+        //Keyframe[] keys1 = gunThrowAnimationCurveY.keys;
+        //Keyframe keyFrame = keys1[1];
+        //keyFrame.value = Random.Range(4f, 5f);
+        //keys1[1] = keyFrame;
+        //gunThrowAnimationCurveY.keys = keys1; // This is copying the keys back into the AnimationCurve's array.
     }
 
     void Update()
     {
         if (beingThrown)
         {
-            // Get the current position of the sphere
+            // Get the current position of the weapon
             Vector3 currentPosition = transform.localPosition;
             // Call evaluate on that time   
             curveDeltaTime += Time.deltaTime;
@@ -60,8 +63,12 @@ public class WeaponJuggleMovement : MonoBehaviour
             currentPosition.y = gunThrowAnimationCurveY.Evaluate(curveDeltaTime);
             currentPosition.x = gunThrowAnimationCurveX.Evaluate(curveDeltaTime);
 
-            // Update the current position of the sphere
+            // Update the current position of the weapon
             transform.localPosition = currentPosition;
+
+            float rotationValue = rotationAnimationCurve.Evaluate(curveDeltaTime);
+            transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
+
         }
 
 

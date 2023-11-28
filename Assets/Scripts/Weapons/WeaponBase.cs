@@ -8,6 +8,8 @@ public class WeaponBase : MonoBehaviour
     [SerializeField] public bool weaponEquipped;
     [SerializeField] protected float damage, bulletSpeed, fireRate;
     [SerializeField] protected SpriteRenderer spriterenderer;
+    [SerializeField] private Rigidbody2D rb2D;
+
 
     public GameObject bullet;
     public Transform gunPoint; 

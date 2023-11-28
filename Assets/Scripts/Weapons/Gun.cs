@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Weapon : WeaponBase
+public class Gun : WeaponBase
 {
     [SerializeField] protected float fireRateTimer;
     public void Shoot()
