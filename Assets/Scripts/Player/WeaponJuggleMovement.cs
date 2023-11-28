@@ -82,20 +82,20 @@ public class WeaponJuggleMovement : MonoBehaviour
         }
 
 
-        if (beingDropped)
-        {
-            Vector3 currentPosition = transform.localPosition;
-            Vector3 offSet = transform.localPosition;
+        //if (beingDropped)
+        //{
+        //    Vector3 currentPosition = transform.localPosition;
+        //    Vector3 offSet = transform.localPosition;
 
-            // Call evaluate on that time   
-            curveDeltaTime += Time.deltaTime;
+        //    // Call evaluate on that time   
+        //    curveDeltaTime += Time.deltaTime;
 
-            currentPosition.y = gunDropAnimationCurveY.Evaluate(curveDeltaTime) + offSet.y;
-            currentPosition.x = gunDropAnimationCurveX.Evaluate(curveDeltaTime) + offSet.x;
+        //    currentPosition.y = gunDropAnimationCurveY.Evaluate(curveDeltaTime) + offSet.y;
+        //    currentPosition.x = gunDropAnimationCurveX.Evaluate(curveDeltaTime) + offSet.x;
 
-            // Update the current position of the sphere
-            transform.localPosition = currentPosition;
-        }
+        //    // Update the current position of the sphere
+        //    transform.localPosition = currentPosition;
+        //}
     }
 
 
@@ -110,5 +110,9 @@ public class WeaponJuggleMovement : MonoBehaviour
         beingDropped = true;
         beingThrown = false;
         curveDeltaTime = 0;
+
+        weaponBase.rb2D.bodyType = RigidbodyType2D.Dynamic;
+        weaponBase.rb2D.AddForce(new Vector2(-200, 400));
+        weaponBase.weaponCollider.isTrigger = false;
     }
 }
