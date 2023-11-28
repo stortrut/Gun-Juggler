@@ -27,7 +27,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
     //public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
     void Start()
     {
-        heightOfObject=GetComponent<BoxCollider2D > ().bounds.size.y;
+        heightOfObject=GetComponent<BoxCollider2D>().bounds.size.y;
         widthOfObject = GetComponent<BoxCollider2D>().bounds.size.x;
         normal =LayerMask.GetMask("Default");
     }

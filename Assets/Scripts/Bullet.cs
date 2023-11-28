@@ -26,11 +26,11 @@ public class Bullet : Weapon
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(this.gameObject);  
+        Destroy(gameObject);  
     }
 
     private void OnTriggerEnter2D(Collider2D damagedObject)
     {
-        Destroy(this.gameObject);   
+        Destroy(gameObject);   
     }
 }
