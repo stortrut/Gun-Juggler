@@ -18,7 +18,7 @@ public class EnemyProtection : MonoBehaviour
         { 
           
           currentProtection = Instantiate(Protection,transform.position+new Vector3(0,0,i),Quaternion.identity,gameObject.transform); 
-          protectingItems.Add(currentProtection);
+          protectingItems.Add(currentProtection);           
         }
 
     }
