@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour, IStunnable
     [SerializeField] bool optionsPanelActive = false;
     [SerializeField] GameObject escMenu;
     [SerializeField] GameObject startMenu;
+    [SerializeField] GameObject endMenu;
     [SerializeField] IStunnable stunnable;
 
     public bool isStunnable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -22,13 +23,21 @@ public class Menu : MonoBehaviour, IStunnable
         optionsPanel.SetActive(false);  
         escMenu.SetActive(false);
         optionsPanelActive = false;
-        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End")
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             startMenu.SetActive(true);
         }
         else
         {
             startMenu.SetActive(false);
+        }
+        if (SceneManager.GetActiveScene().name == "End")
+        {
+            endMenu.SetActive(true);
+        }
+        else if (SceneManager.GetActiveScene().name != "End")
+        {
+            endMenu.SetActive(false);
         }
     }
     private void Update()
@@ -66,6 +75,7 @@ public class Menu : MonoBehaviour, IStunnable
     public void BackToMenuButton()
     {
         SceneManager.LoadScene(0);
+        endMenu.SetActive(false);   
     }
     public void BackToGameButton()
     {
