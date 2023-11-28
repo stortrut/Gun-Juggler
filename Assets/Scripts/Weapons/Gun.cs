@@ -8,7 +8,6 @@ public class Gun : WeaponBase
     [SerializeField] protected float fireRateTimer;
     public void Shoot()
     {
-        Debug.Log("Bullet created");
         GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
         //Sound.Instance.EnemyNotTakingDamage();
         weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
