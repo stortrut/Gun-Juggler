@@ -80,12 +80,12 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if(horizontalInput > 0) 
         { 
             isFacingRight = true;
-            spriteRenderer.flipX = false;
+            //spriteRenderer.flipX = false;
         }
         if (horizontalInput < 0) 
         { 
             isFacingRight = false;
-            spriteRenderer.flipX = true;
+            //spriteRenderer.flipX = true;
         }
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;

@@ -5,18 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
+    public static Manager Instance { get; private set; }
+
     [SerializeField] Camera menuCamera;
     private void Start()
     {
+        Instance = this;
         if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End")
         {
             menuCamera.enabled = true;
-            Debug.Log("camera enabled");
         }
         else
         {
             menuCamera.enabled = false;
-            Debug.Log("camera not enabled");
         }
     }
     private void Update()
@@ -26,7 +27,7 @@ public class Manager : MonoBehaviour
             ProceedToNextLevel();
         }
     }
-    void ProceedToNextLevel()
+    public void ProceedToNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

@@ -17,7 +17,7 @@ public class Menu : MonoBehaviour, IStunnable
     public float timeStunned { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public bool timeStop { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-    private void Start()
+    private void Awake()
     {
         stunnable = GetComponent<IStunnable>();
         optionsPanel.SetActive(false);  
