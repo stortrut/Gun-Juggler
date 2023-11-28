@@ -23,7 +23,7 @@ public class MovementCircular : MonoBehaviour
         x = Mathf.Cos((Time.time + offSet)* frequency) * amplitude;
         y = Mathf.Sin((Time.time + offSet) * frequency) * amplitude;
 
-        transform.position = new Vector3 (transform.root.position.x + x , transform.root.position.y + y,0);
+        transform.position = new Vector3 (transform.parent.position.x + x , transform.parent.position.y + y,0);
     }   
 }   
     
