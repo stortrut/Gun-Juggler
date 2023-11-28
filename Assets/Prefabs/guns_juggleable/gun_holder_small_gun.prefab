@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7381853955586364798}
   - component: {fileID: 4289261401675878463}
   - component: {fileID: 479796848167063856}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: small_gun
   m_TagString: WeaponBeingJuggled
   m_Icon: {fileID: 0}
@@ -355,6 +355,8 @@ MonoBehaviour:
   bulletSpeed: 0
   fireRate: 0
   spriterenderer: {fileID: 7428532420087018504}
+  rb2D: {fileID: 4289261401675878463}
+  weaponCollider: {fileID: 7381853955586364798}
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 4590076397312297963}
   fireRateTimer: 0

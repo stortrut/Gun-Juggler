@@ -150,6 +150,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4590076397312297963, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
   m_PrefabInstance: {fileID: 3873740999613543868}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1028173589917705603 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4289261401675878463, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
+  m_PrefabInstance: {fileID: 3873740999613543868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4530918989539057755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 802560178331899367, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
@@ -172,6 +177,8 @@ MonoBehaviour:
   bulletSpeed: 0
   fireRate: 0
   spriterenderer: {fileID: 5968738499100574132}
+  rb2D: {fileID: 1028173589917705603}
+  weaponCollider: {fileID: 6031401707200405698}
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 752506583897914967}
   fireRateTimer: 0
@@ -179,5 +186,10 @@ MonoBehaviour:
 --- !u!212 &5968738499100574132 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7428532420087018504, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
+  m_PrefabInstance: {fileID: 3873740999613543868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &6031401707200405698 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7381853955586364798, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
   m_PrefabInstance: {fileID: 3873740999613543868}
   m_PrefabAsset: {fileID: 0}
