@@ -29,7 +29,7 @@ public class JuggleCatchCircle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (canCatchWeapon)
+            if (canCatchWeapon && !caughtWeapon && !currentCatchableGun.beingDropped)
             {
                 gunCaughtEffect.Play();
                 spriteRenderer.color = caughtWeaponColor;
@@ -65,7 +65,6 @@ public class JuggleCatchCircle : MonoBehaviour
         {
             playerJuggle.RemoveWeaponFromLoop(currentCatchableGun);
             currentCatchableGun.DropWeapon();
-            Debug.Log("FAIL!");
         }
         spriteRenderer.color = waitForWeaponColor;
         caughtWeapon = false;
