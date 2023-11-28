@@ -8,7 +8,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Manager.Instance.ProceedToNextLevel();
+            Manager.Instance.Invoke("ProceedToNextLevel", .2f);
         }
     }
 }
