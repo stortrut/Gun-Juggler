@@ -25,8 +25,9 @@ public class Sound : MonoBehaviour
 
     private void Start()
     {
-        source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex-1];  //build index starts at 1!!
+        source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex];
         //source.volume = source.volume * 0.1f;
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         if (source.clip = null)
         { source.clip = backgroundMusic[0]; }      //default music
         source.PlayOneShot(source.clip);

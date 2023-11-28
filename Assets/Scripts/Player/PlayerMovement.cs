@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +33,8 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
     public float timeStunned { get { return timeStun; } set { timeStun = value; } }
-        
+    public bool timeStop { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
     void Update()
     {
         calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider;
