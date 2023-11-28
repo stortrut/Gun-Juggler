@@ -12,7 +12,7 @@ public class EnemyHealth : Health
     {
         
     
-        if (other.gameObject.CompareTag("Bullet") && hasProtection==false)
+        if (other.gameObject.CompareTag("Bullet"))
         {
             OnTrigger();
             Debug.Log("the BIG trigger happens :D");

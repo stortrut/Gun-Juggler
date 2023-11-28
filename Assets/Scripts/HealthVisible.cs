@@ -25,10 +25,10 @@ public class HealthVisible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health.health == 2 && Sprite.sprite != Full)
+        if (health.health == 2 && Sprite.sprite != Full && health.hasProtection==false)
         {
             Sprite.color = Color.white;
-            Sprite.sprite = Full;
+            Sprite.sprite = Full;   
         }
         if (health.health == 1 && Sprite.sprite != Half)
         {

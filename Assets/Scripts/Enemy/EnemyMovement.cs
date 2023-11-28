@@ -106,7 +106,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         Debug.DrawRay(raycastPosition, Vector2.down * 2, Color.yellow);
         if (hitObstacle == true)
         {
-            Debug.Log(hitObstacle);
+            //Debug.Log(hitObstacle);
         }
         if ((hitObstacle == true || groundExists == false) && (Time.time - currentTime > 1.5f || currentTime == 0))
         {
