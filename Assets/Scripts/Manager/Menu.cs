@@ -21,6 +21,7 @@ public class Menu : MonoBehaviour, IStunnable
         stunnable = GetComponent<IStunnable>();
         optionsPanel.SetActive(false);  
         escMenu.SetActive(false);
+        optionsPanelActive = false;
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             startMenu.SetActive(true);
