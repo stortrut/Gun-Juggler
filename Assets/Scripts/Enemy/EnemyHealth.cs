@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class EnemyHealth : Health
 {
+    
+
+    [SerializeField] EnemyAnimator animatorScript;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -15,6 +18,7 @@ public class EnemyHealth : Health
             { 
                 ApplyDamage(1);
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
+                animatorScript.EnemyTakeDamage();
             }
             else if (hasProtection == true)
             {
@@ -26,11 +30,6 @@ public class EnemyHealth : Health
                 knockbackComponent.KnockBackMyself(15, 10, .4f, transform.position);
             }
         }
-    }
-
-    protected void EnemyTakeDamage()
-    {
-
     }
 }
     
