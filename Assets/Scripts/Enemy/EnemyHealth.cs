@@ -15,7 +15,7 @@ public class EnemyHealth : Health
         if (other.gameObject.CompareTag("Bullet"))
         {
             OnTrigger();
-            Debug.Log("the BIG trigger happens :D");
+
             if (hasProtection == false)
             {
                 Sound.Instance.EnemyTakingDamage();
