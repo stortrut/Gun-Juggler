@@ -4,6 +4,31 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
-  
- 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            OnTrigger();
+
+            if (hasProtection == false)
+            {
+                ApplyDamage(1);
+                Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
+
+            }
+            else if (hasProtection == true)
+            {
+                Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
+            }
+
+            if (TryGetComponent(out Knockback knockbackComponent))
+            {
+                Debug.Log("enemy knockback");
+                knockbackComponent.KnockBackMyself(15, 10, .4f, transform.position);
+            }
+        }
+    }
+
 }
