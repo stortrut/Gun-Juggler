@@ -18,12 +18,12 @@ public class EnemyHealth : Health
             Debug.Log("the BIG trigger happens :D");
             if (hasProtection == false)
             {
-                Sound.Instance.EnemyTakingDamage();
+                Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
                 ApplyDamage(1);
             }
             else if (hasProtection == true)
             {
-                Sound.Instance.EnemyNotTakingDamage();
+                Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
             }
           
                 if (TryGetComponent(out Knockback knockbackComponent))

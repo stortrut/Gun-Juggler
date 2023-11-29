@@ -51,62 +51,18 @@ public class Sound : MonoBehaviour
     {
         PlayerPrefs.SetFloat("musicvolume",volumeSlider.value);
     }
-
-    public void EnemyTakingDamage()
-    {
-        int i = Random.Range(0, enemyTakingDamageSounds.Length);
-        source.clip = enemyTakingDamageSounds[i];
-        if (source.clip != null)
-        {
-            source.PlayOneShot(source.clip);
-        }
-    }
-
-    public void EnemyNotTakingDamage()
-    {
-        int i = Random.Range(0, enemyNotTakingDamageSounds.Length);
-        source.clip = enemyNotTakingDamageSounds[i];
-        if (source.clip != null)
-        {
-            source.PlayOneShot(source.clip);
-        }
-    }
-
-    public void ChangingWeapon()
-    {
-        int i = Random.Range(0, changingWeaponSounds.Length);
-        source.clip = changingWeaponSounds[i];
-        if (source.clip != null)
-        {
-            source.PlayOneShot(source.clip);
-        }
-    }
-    
-    public void ConfettiGunShoot()
-    {
-        int i = Random.Range(0, shootingSoundsConfettiGun.Length);
-        source.clip = shootingSoundsConfettiGun[i];
-        if (source.clip != null)
-        {
-            source.PlayOneShot(source.clip);
-        }
-    }
-    public void CatchingWeaponSounds()
-    {
-        int i = Random.Range(0, catchingWeaponSounds.Length);
-        source.clip = catchingWeaponSounds[i];
-        if (source.clip != null)
-        {
-            source.PlayOneShot(source.clip);
-        }
-    }
-    public void NotCatchingWeaponSounds()
-    {
-
-    }
     public void SoundRandomized(AudioClip[] currentsound)
     {
         int i = Random.Range(0, currentsound.Length);
+        source.clip = currentsound[i];
+        if (source.clip != null)
+        {
+            source.PlayOneShot(source.clip);
+        }
+    }
+    public void SoundSet(AudioClip[] currentsound, int orderedNumber)
+    {
+        int i = orderedNumber;
         source.clip = currentsound[i];
         if (source.clip != null)
         {

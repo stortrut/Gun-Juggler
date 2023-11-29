@@ -21,7 +21,7 @@ public class WeaponConfettiGun : Gun
                 Shoot();
                 if(knockback != null)
                     knockback.KnockBackMyself(5,3f,.4f,transform.position);
-                Sound.Instance.ConfettiGunShoot();
+                Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsConfettiGun);
                 fireRateTimer = fireRate;
             }
         }
