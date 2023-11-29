@@ -19,6 +19,7 @@ public class WeaponJuggleMovement : MonoBehaviour
     [Header("Spin while thrown curve")]
     [SerializeField] AnimationCurve rotationAnimationCurve;
 
+    [HideInInspector] public bool gotCaught;
 
     //[SerializeField] private float speed = 100.0f;
 
@@ -68,7 +69,6 @@ public class WeaponJuggleMovement : MonoBehaviour
 
             float rotationValue = rotationAnimationCurve.Evaluate(curveDeltaTime);
             transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
-
         }
 
 
@@ -101,6 +101,8 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void ThrowUpWeapon()
     {
+        playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayThrowUpWeaponAnimation));
+
         curveDeltaTime = 0;
         beingThrown = true;
     }
