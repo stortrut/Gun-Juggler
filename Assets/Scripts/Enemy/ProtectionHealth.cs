@@ -9,6 +9,7 @@ public class ProtectionHealth : Health
 
         if (other.CompareTag("Bullet"))
         {
+            Destroy(other.gameObject);
             OnTrigger();
 
             if (hasProtection == false)

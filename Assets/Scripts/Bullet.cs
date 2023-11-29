@@ -11,7 +11,7 @@ public class Bullet : Gun
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        
+        Destroy(gameObject, 5);
     }
 
     private void Update()
@@ -32,6 +32,6 @@ public class Bullet : Gun
 
     private void OnTriggerEnter2D(Collider2D damagedObject)
     {   
-        Destroy(gameObject);   
+           
     }
 }

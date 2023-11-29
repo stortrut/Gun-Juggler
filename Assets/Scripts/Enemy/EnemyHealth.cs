@@ -9,6 +9,7 @@ public class EnemyHealth : Health
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
+            Destroy(other.gameObject);
             OnTrigger();
             if (hasProtection == false)
             { 
