@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7675071201918211907}
   - component: {fileID: 6449796975554610992}
   - component: {fileID: 5329618115246817492}
+  - component: {fileID: -8644103166983176269}
   m_Layer: 0
   m_Name: sound_manager
   m_TagString: Untagged
@@ -46,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58804d6ff5088294b80baeae227848ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundSource: {fileID: 6449796975554610992}
+  source: {fileID: 6449796975554610992}
   backgroundMusic:
   - {fileID: 8300000, guid: 2af0c2d31c657cd4a9c11fea78d7b99a, type: 3}
   - {fileID: 8300000, guid: 2a69ffbb22bdc744c8163cdcd18812e9, type: 3}
@@ -57,8 +60,10 @@ MonoBehaviour:
   enemyTakingDamageSounds:
   - {fileID: 8300000, guid: 0365fff41765e9243a5e6e045f389173, type: 3}
   enemyNotTakingDamageSounds:
-  - {fileID: 8300000, guid: ef745011c39eaa34c8ed22698183ac26, type: 3}
-  - {fileID: 8300000, guid: 9f76defc7c9924f49af348f82b561e85, type: 3}
+  - {fileID: 8300000, guid: 7322b2e95e89abc49831693e3f85c968, type: 3}
+  - {fileID: 8300000, guid: 95f350f7d7599484986a9cbb91dc2403, type: 3}
+  - {fileID: 8300000, guid: 80a9d1bc3280f0d4cb4720526d38cf24, type: 3}
+  - {fileID: 8300000, guid: fc6c12d77bcdafb48b772da065619808, type: 3}
   changingWeaponSounds:
   - {fileID: 8300000, guid: c2452bc34e9956f489c608facf075a7e, type: 3}
   catchingWeaponSounds: []
@@ -66,8 +71,114 @@ MonoBehaviour:
   equipWeaponSounds:
   - {fileID: 8300000, guid: 9606f4274772bfb409b6fe9ec9e8c3ec, type: 3}
   - {fileID: 8300000, guid: a4c9f51442f4c17409f96ad081ab26d5, type: 3}
+  playerTakingDamageSounds:
+  - {fileID: 8300000, guid: a17271ef4368b654da5789750f83314c, type: 3}
   volumeSlider: {fileID: 0}
 --- !u!82 &6449796975554610992
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126328324595758414}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.271
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!81 &5329618115246817492
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126328324595758414}
+  m_Enabled: 1
+--- !u!82 &-8644103166983176269
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,11 +274,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &5329618115246817492
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126328324595758414}
-  m_Enabled: 1

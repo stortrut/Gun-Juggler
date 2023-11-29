@@ -8,7 +8,8 @@ public class Sound : MonoBehaviour
 {
     public static Sound Instance { get; private set; }
 
-    private AudioSource source;
+    [SerializeField] private AudioSource backgroundSource;
+    [SerializeField] private AudioSource source;
     private float soundVolume;
     [SerializeField] private AudioClip[] backgroundMusic;
     [SerializeField] public AudioClip[] shootingSoundsConfettiGun;
@@ -28,18 +29,18 @@ public class Sound : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        source = GetComponent<AudioSource>();
+        //backgroundSource = GetComponent<AudioSource>();
         //backgroundMusic = GetComponent<AudioClip[]>();
         //kaboom = GetComponent<AudioClip[]>();
     }
 
     private void Start()
     {
-        source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex];
+        backgroundSource.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex];
         //source.volume = source.volume * 0.1f;
-        if (source.clip == null)
-        { source.clip = backgroundMusic[0]; }      //default music
-        source.PlayOneShot(source.clip);    
+        if (backgroundSource.clip == null)
+        { backgroundSource.clip = backgroundMusic[0]; }      //default music
+        backgroundSource.PlayOneShot(source.clip);    
     }
 
     public void ChangeVolume()

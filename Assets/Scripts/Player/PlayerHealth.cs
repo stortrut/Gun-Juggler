@@ -15,7 +15,7 @@ public class PlayerHealth : Health
             if (hasProtection == false)
             {
                 ApplyDamage(1);
-                Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
+                Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
 
             }
             else if (hasProtection == true)
