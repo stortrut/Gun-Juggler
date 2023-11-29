@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class WeaponConfettiGun : Gun
 {
-    [SerializeField] private Knockback knockback;
+    private Knockback knockback;
     private void Start()
-    {   
+    {
+        knockback = GetComponentInParent<Knockback>();
+
         bulletSpeed = 20f;
         fireRate = 1f;
     }

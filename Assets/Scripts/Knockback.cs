@@ -8,6 +8,8 @@ public class Knockback : MonoBehaviour
 {
     Rigidbody2D rb2D;
     IStunnable stunnable;
+
+    [Header("Test Values")]
     [SerializeField] float knockbackSpeedX, knockbackSpeedY, knockbackDuration;
 
     private float knockbackStart;
@@ -24,7 +26,6 @@ public class Knockback : MonoBehaviour
     private void Update()
     {
         CheckKnockback();
-    
     }
     public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
     {

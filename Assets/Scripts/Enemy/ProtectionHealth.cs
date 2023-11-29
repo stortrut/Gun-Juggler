@@ -10,7 +10,7 @@ public class ProtectionHealth : Health
         if (other.CompareTag("Bullet"))
         {
             OnTrigger();
-            Debug.Log("the trigger happens :D");
+
             if (hasProtection == false)
             {
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
