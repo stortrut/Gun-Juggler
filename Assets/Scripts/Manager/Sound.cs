@@ -45,7 +45,7 @@ public class Sound : MonoBehaviour
     {
         source.volume = volumeSlider.value;
         Debug.Log(volumeSlider.value);
-        Save();
+        Save(); 
     }
 
     void Save()

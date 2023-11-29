@@ -6,6 +6,7 @@ public class WeaponSmallGun : Gun
 {
     private void Start()
     {
+        weaponType = WeaponType.SmallGun;
         bulletSpeed = 20f;
         fireRate = .2f;
     }

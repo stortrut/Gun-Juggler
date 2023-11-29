@@ -7,6 +7,7 @@ public class WeaponConfettiGun : Gun
     private Knockback knockback;
     private void Start()
     {
+        weaponType = WeaponType.ShotGun;
         knockback = GetComponentInParent<Knockback>();
 
         bulletSpeed = 20f;
