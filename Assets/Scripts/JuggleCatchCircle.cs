@@ -34,10 +34,10 @@ public class JuggleCatchCircle : MonoBehaviour
                 gunCaughtEffect.Play();
                 spriteRenderer.color = caughtWeaponColor;
                 caughtWeapon = true;
+                playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayCatchWeaponAnimation));
             }
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
 
 
     [Header("Walk")]
@@ -41,9 +42,9 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
         if (isStunned==true) 
         {
-           
             return;
         }
+
         Walk();
         Jump();
 
@@ -80,11 +81,13 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if(horizontalInput > 0) 
         { 
             isFacingRight = true;
+            animator.SetBool("Reverse", false);
             //spriteRenderer.flipX = false;
         }
         if (horizontalInput < 0) 
         { 
             isFacingRight = false;
+            animator.SetBool("Reverse", true);
             //spriteRenderer.flipX = true;
         }
 
@@ -94,6 +97,11 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if (horizontalInput == 0 || (horizontalInput < 0 == velocityToAddX > 0))
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
+            animator.speed = 0;
+        }
+        else
+        {
+            animator.speed = 1;
         }
 
         rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);

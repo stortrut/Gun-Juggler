@@ -11,9 +11,12 @@ public class PlayerJuggle : MonoBehaviour
 
     private bool isJuggling;
     private WeaponJuggleMovement weaponInHand;
+    [HideInInspector] public ArmAnimationHandler armAnimationHandler;
 
     private void Start()
     {
+        armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
+
         WeaponJuggleMovement[] weaponsOnPlayer = GetComponentsInChildren<WeaponJuggleMovement>();
         foreach (WeaponJuggleMovement weapon in weaponsOnPlayer)
         {
