@@ -26,7 +26,7 @@ public class WeaponBase : MonoBehaviour
 
         Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
         weaponEquipped = true;
-    }
+    }   
 
     public void UnEquipWeapon()
     {
