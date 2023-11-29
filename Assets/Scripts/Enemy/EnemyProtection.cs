@@ -7,13 +7,16 @@ public class EnemyProtection : MonoBehaviour
     [SerializeField] private GameObject Protection;
     public int numberOfProtection = 1;
     private Health health;
+    public HealthUI healthImage;
     public List<GameObject> protectingItems;
     private GameObject currentProtection;
+    
+   
     public void Start()
     {
-       
         health = GetComponent<Health>();
-        health.hasProtection = true;
+        healthImage.ColorChange(Color.blue);
+        health.hasProtection = true;    
         for (int i = 0; i < numberOfProtection; i++) 
         { 
           
@@ -32,6 +35,7 @@ public class EnemyProtection : MonoBehaviour
             Debug.Log("list is cleared");
             protectingItems.Clear();
             health.hasProtection = false;
+            healthImage.ColorChange(Color.red);
             
         }
     }
