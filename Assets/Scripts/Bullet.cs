@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : Gun
+public class Bullet : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
-     Rigidbody2D rb2D;
+    Rigidbody2D rb2D;
     //better bulletspeed logic system?
 
     private void Start()
@@ -31,6 +31,6 @@ public class Bullet : Gun
 
     private void OnTriggerEnter2D(Collider2D damagedObject)
     {
-        Destroy(gameObject);   
+        //Destroy(gameObject);   
     }
 }

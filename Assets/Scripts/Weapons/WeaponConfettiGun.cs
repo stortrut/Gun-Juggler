@@ -21,7 +21,7 @@ public class WeaponConfettiGun : Gun
         {
             if (this.weaponEquipped)
             {
-                Shoot();
+                ShootWideSpread();
                 if(knockback != null)
                     knockback.KnockBackMyself(5,3f,.4f,transform.position);
                 fireRateTimer = fireRate;
