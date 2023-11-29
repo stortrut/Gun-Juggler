@@ -12,7 +12,7 @@ public class Health : MonoBehaviour, IDamageable
     private EnemyProtection ProtectionScript;
     [SerializeField]private HealthUI healthImage; 
     private bool isProtected;
-   
+    
     public EnemyProtection Parent;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private bool colorischanged;
