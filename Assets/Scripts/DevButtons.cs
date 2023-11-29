@@ -13,19 +13,19 @@ public class DevButtons : MonoBehaviour
         // Restart Level
         if (Input.GetKeyUp(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         // Next Level
         if (Input.GetKeyUp(KeyCode.N))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
 
         // Previous Level
         if (Input.GetKeyUp(KeyCode.P))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-2);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
         }
 
         // Set Development Checkpoint

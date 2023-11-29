@@ -18,7 +18,9 @@ public class Menu : MonoBehaviour, IStunnable
     public bool timeStop { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     private void Awake()
+        
     {
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
         stunnable = GetComponent<IStunnable>();
         optionsPanel.SetActive(false);  
         escMenu.SetActive(false);
@@ -84,6 +86,6 @@ public class Menu : MonoBehaviour, IStunnable
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }
