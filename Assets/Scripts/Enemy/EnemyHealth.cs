@@ -17,9 +17,10 @@ public class EnemyHealth : Health
             OnTrigger();
 
             if (hasProtection == false)
-            {
-                Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
+            { 
                 ApplyDamage(1);
+                Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
+               
             }
             else if (hasProtection == true)
             {
