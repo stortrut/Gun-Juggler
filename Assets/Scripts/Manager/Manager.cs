@@ -7,17 +7,17 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; private set; }
 
-    [SerializeField] Camera menuCamera;
+    [SerializeField] private Camera UICamera; 
     private void Start()
     {
         Instance = this;
         if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End")
         {
-            menuCamera.enabled = true;
+            UICamera.enabled = true;
         }
         else
         {
-            menuCamera.enabled = false;
+            UICamera.enabled = false;
         }
     }
     private void Update()
