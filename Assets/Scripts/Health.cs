@@ -3,34 +3,36 @@ using System.Collections.Generic;
 using System.Security.Authentication.ExtendedProtection;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable
 {
+    private int maxHealth;
     public int health;
     private EnemyProtection ProtectionScript;
+    [SerializeField]private HealthUI healthImage; 
     private bool isProtected;
    
     public EnemyProtection Parent;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool colorischanged;
     
 
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
-    
-     
+
+
     void Awake()
     {
+        maxHealth = health;
         ProtectionScript = GetComponent<EnemyProtection>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-    }
-
-    void Start()
-    {
-        
     }
     public void ApplyDamage(int amount)
     {
         health -= amount;
+        if(healthImage!=null)
+        {
+            healthImage.UpdateHealth(health , maxHealth);
+        }
         if (health <= 0)
         {
             
