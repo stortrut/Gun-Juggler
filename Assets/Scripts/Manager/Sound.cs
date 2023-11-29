@@ -36,9 +36,9 @@ public class Sound : MonoBehaviour
     {
         source.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex];
         //source.volume = source.volume * 0.1f;
-        if (source.clip = null)
+        if (source.clip == null)
         { source.clip = backgroundMusic[0]; }      //default music
-        source.PlayOneShot(source.clip);
+        source.PlayOneShot(source.clip);    
     }
 
     public void ChangeVolume()
