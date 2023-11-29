@@ -16,6 +16,9 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] enemyTakingDamageSounds;
     [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
     [SerializeField] public AudioClip[] changingWeaponSounds;
+    [SerializeField] public AudioClip[] catchingWeaponSounds;
+    [SerializeField] public AudioClip[] notCatchingWeaponSounds;
+
 
     [SerializeField] Slider volumeSlider;
 
@@ -83,6 +86,28 @@ public class Sound : MonoBehaviour
     {
         int i = Random.Range(0, shootingSoundsConfettiGun.Length);
         source.clip = shootingSoundsConfettiGun[i];
+        if (source.clip != null)
+        {
+            source.PlayOneShot(source.clip);
+        }
+    }
+    public void CatchingWeaponSounds()
+    {
+        int i = Random.Range(0, catchingWeaponSounds.Length);
+        source.clip = catchingWeaponSounds[i];
+        if (source.clip != null)
+        {
+            source.PlayOneShot(source.clip);
+        }
+    }
+    public void NotCatchingWeaponSounds()
+    {
+
+    }
+    public void SoundRandomized(AudioClip[] currentsound)
+    {
+        int i = Random.Range(0, currentsound.Length);
+        source.clip = currentsound[i];
         if (source.clip != null)
         {
             source.PlayOneShot(source.clip);
