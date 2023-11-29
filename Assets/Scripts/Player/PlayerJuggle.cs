@@ -25,6 +25,9 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
 
         weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
+
+        isJuggling = true;
+        StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
     }
 
     private void Update()
