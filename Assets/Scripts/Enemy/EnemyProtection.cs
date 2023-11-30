@@ -16,14 +16,14 @@ public class EnemyProtection : MonoBehaviour
     {
         health = GetComponent<Health>();
         healthImage.ColorChange(Color.blue);
-        health.hasProtection = true;    
+            
         for (int i = 0; i < numberOfProtection; i++) 
         { 
           
           currentProtection = Instantiate(Protection,transform.position+new Vector3(0,0,i),Quaternion.identity,gameObject.transform); 
           protectingItems.Add(currentProtection);           
         }
-
+        health.hasProtection = true;
     }
     public void RemoveProtection(int amount)
     {
