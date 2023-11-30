@@ -11,19 +11,13 @@ public class WeaponBase : MonoBehaviour
     [SerializeField] public Rigidbody2D rb2D;
     [SerializeField] public Collider2D weaponCollider;
 
-    public WeaponType weaponType;
+    [HideInInspector] public WeaponType weaponType;
 
     public GameObject bullet;
     public Transform gunPoint; 
 
     public void EquipWeapon()
     {
-        if(weaponType == WeaponType.SmallGun)
-        {
-
-        }
-
-
         Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
         weaponEquipped = true;
     }   
