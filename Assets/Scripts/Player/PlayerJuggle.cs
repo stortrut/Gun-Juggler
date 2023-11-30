@@ -37,6 +37,7 @@ public class PlayerJuggle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isJuggling)
         {
+            Debug.Log("Start Juggling");
             StartJuggling();
         }
     }
