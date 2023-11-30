@@ -31,13 +31,19 @@ public class EnemyMovementPatrolling : MonoBehaviour
         }
         if(((int)transform.localPosition.x == (int)sliderJoint.limits.min ||(int)transform.localPosition.x == (int)sliderJoint.limits.max) && once==true)
         {
-            BoolChange();
-            JointMotor2D jointMotor=sliderJoint.motor;
-            jointMotor.motorSpeed *= -1;
-            sliderJoint.motor = jointMotor;
-            Invoke(nameof(BoolChange),1f);
+            Turn();
         }
     }
+
+    public void Turn()
+    {
+        BoolChange();
+        JointMotor2D jointMotor = sliderJoint.motor;
+        jointMotor.motorSpeed *= -1;
+        sliderJoint.motor = jointMotor;
+        Invoke(nameof(BoolChange), 1f);
+    }
+
     private void BoolChange()
     {
         once = !once;

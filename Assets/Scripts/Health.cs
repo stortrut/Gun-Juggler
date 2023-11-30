@@ -15,7 +15,7 @@ public class Health : MonoBehaviour, IDamageable
     public EnemyProtection parent;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private bool colorischanged;
-    bool oneShot;
+    bool oneShot=true;
    
 
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
@@ -29,8 +29,9 @@ public class Health : MonoBehaviour, IDamageable
     public void ApplyDamage(int amount)
     {
         if(oneShot ==true)
+        { 
         BoolChange();
-        Invoke(nameof(BoolChange), 1f);
+        Invoke(nameof(BoolChange), 0.3f);
         health -= amount;
         Mathf.Clamp(health, 0, maxHealth);
         if(healthImage!=null)
@@ -41,6 +42,7 @@ public class Health : MonoBehaviour, IDamageable
         {
             
             Destroy(gameObject);
+        }
         }
     }
 

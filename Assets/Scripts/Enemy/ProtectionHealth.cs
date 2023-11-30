@@ -32,12 +32,10 @@ public class ProtectionHealth : Health
     {
         //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
         EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
-<<<<<<< Updated upstream
         Debug.Log(this.gameObject.transform.position);
-=======
-        Debug.Log("this.gameObject.transform.position");
+
         HasParent();
->>>>>>> Stashed changes
+
         Destroy(this.gameObject);
 
     }

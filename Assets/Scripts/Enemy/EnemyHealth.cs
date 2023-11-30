@@ -20,7 +20,7 @@ public class EnemyHealth : Health
             { 
                 ApplyDamage(1);
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
-                animatorScript.EnemyTakeDamage();
+                  animatorScript.EnemyTakeDamage();
                 if (health==0)
                 {
                 Death();

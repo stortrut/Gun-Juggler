@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour //, IStunnable
 {
-    [SerializeField] private GameObject Player; 
+    [SerializeField] private EnemyMovementPatrolling patrolling; 
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int velocity = 5;
     bool hitObstacle;
     bool groundExists;
-    float distanceSide = 0.1f;
+    float distanceSide = 1f;
 
     LayerMask normal;
-    Vector3 raycastRightDirection = Vector2.right;
+    Vector3 raycastRightDirection = -Vector2.right;
     Vector2 savedVelocity;
     Vector2 raycastPosition;
     float heightOfObject;
@@ -29,8 +29,9 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         heightOfObject=GetComponent<BoxCollider2D>().bounds.size.y;
         widthOfObject = GetComponent<BoxCollider2D>().bounds.size.x;
         normal =LayerMask.GetMask("Default");
-        rigidBody.velocity = Vector2.right * velocity;
-        
+        widthOfObject *= -1;
+        //rigidBody.velocity = Vector2.right * velocity;
+
     } 
 
 
@@ -41,7 +42,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         //    return;
         //}
         RayCast();
-        Walk();     
+        //Walk();     
         
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -57,22 +58,22 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
    
     public void Flip()
     {
-        if(rigidBody.velocity==Vector2.zero||rigidBody.velocity!=Vector2.right*5)
-        {
-            if(facingRight)
-            {
-             rigidBody.velocity = Vector2.right * -velocity;
-            }
-            else
-            {
-             rigidBody.velocity = Vector2.right * velocity;
-            }
-        }
-        ChangeVelocity(-1f);
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+        //if(rigidBody.velocity==Vector2.zero||rigidBody.velocity!=Vector2.right*5)
+        //{
+        //    if(facingRight)
+        //    {
+        //     rigidBody.velocity = Vector2.right * -velocity;
+        //    }
+        //    else
+        //    {
+        //     rigidBody.velocity = Vector2.right * velocity;
+        //    }
+        //}
+        //ChangeVelocity(-1f);
+        //spriteRenderer.flipX = !spriteRenderer.flipX;
         raycastRightDirection *=-1;
         facingRight = !facingRight;
-        widthOfObject *= -1;
+        
     }
     private void ChangeVelocity(float Change)
     {
@@ -96,7 +97,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
     }
     private void RayCast() 
     { 
-        raycastPosition = new Vector2(transform.position.x + (widthOfObject / 2), transform.position.y - (heightOfObject / 2.2f));
+        raycastPosition = new Vector2(transform.position.x - (widthOfObject / 2), transform.position.y - (heightOfObject / 2.2f));
         hitObstacle = Physics2D.Raycast(raycastPosition, raycastRightDirection, distanceSide, normal);
         if(!hitObstacle)
         {
@@ -115,6 +116,8 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
             currentTime = Time.time;
             hitObstacle = false;
             groundExists = true;
+            patrolling.Turn();
+            
             //Stop();
             Flip();
             //Invoke(nameof(Flip), 0.4f);
