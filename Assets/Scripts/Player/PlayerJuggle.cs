@@ -28,19 +28,25 @@ public class PlayerJuggle : MonoBehaviour
 
         weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
 
-        weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
+        //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
 
-        isJuggling = true;
-        StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
+        //StartJuggling();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !isJuggling)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isJuggling)
         {
-            isJuggling = true;
-            StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
+            StartJuggling();
         }
+    }
+
+
+
+    private void StartJuggling()
+    {
+        isJuggling = true;
+        StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
     }
 
 
@@ -55,8 +61,6 @@ public class PlayerJuggle : MonoBehaviour
     }
 
     
-
-
     public void CatchWeapon(WeaponJuggleMovement newWeapon)
     {
         weaponInHand.ThrowUpWeapon();

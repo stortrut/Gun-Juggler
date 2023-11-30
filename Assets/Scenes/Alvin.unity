@@ -345,7 +345,7 @@ Transform:
   m_GameObject: {fileID: 148010843}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 0.48, z: 0}
+  m_LocalPosition: {x: 0.09, y: 0.14, z: 0}
   m_LocalScale: {x: 0.0468601, y: 0.43113333, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2206,6 +2206,18 @@ PrefabInstance:
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879431181391973891, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879431181391973891, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879431181391973891, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -11476009
       objectReference: {fileID: 0}
     - target: {fileID: 6247798075502522073, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_Name
@@ -7419,7 +7431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeInBetweenEachThrowAtTheStart: 5.5
-  playerHolder: {fileID: 0}
   armAnimationHandler: {fileID: 0}
 --- !u!4 &8370784992570009774
 Transform:
