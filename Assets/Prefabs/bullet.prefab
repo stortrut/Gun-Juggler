@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,6 +99,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f472156cb771aa4d9b7d402ac2dcb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponEquipped: 0
+  damage: 0
+  bulletSpeed: 0
+  fireRate: 0
+  spriterenderer: {fileID: 0}
+  rb2D: {fileID: 0}
+  weaponCollider: {fileID: 0}
+  weaponType: 0
+  bullet: {fileID: 0}
+  gunPoint: {fileID: 0}
+  fireRateTimer: 0
+  bulletSmall: {fileID: 0}
+  spawnBulletPos: {x: 0, y: 0}
+  rotationAngle: 0
   spriteRenderer: {fileID: 5217752957291536575}
 --- !u!61 &8488967240196596775
 BoxCollider2D:

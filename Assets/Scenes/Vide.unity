@@ -278,7 +278,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -363,7 +363,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3424185532160099899, guid: 99d206ce8d1cccc4a9243476fa17edba, type: 3}
   m_PrefabInstance: {fileID: 242437423}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268436064}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ec2ddf4102bcac4ba8f2768a32e689c, type: 3}
@@ -484,6 +484,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  healthImage: {fileID: 0}
+  Parent: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1530846656
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +662,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -744,7 +747,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1019,7 +1022,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1071,7 +1074,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1177,6 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 1602839035740750958}
   gunThrowAnimationCurveY:
     serializedVersion: 2
     m_Curve:
@@ -1243,9 +1247,28 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weaponBase: {fileID: 1602839035740750958}
-  curveDeltaTime: 0
   beingThrown: 0
+  gunDropAnimationCurveY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunDropAnimationCurveX:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  beingDropped: 0
+  rotationAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gotCaught: 0
+  curveDeltaTime: 0
 --- !u!4 &1203339295968400737
 Transform:
   m_ObjectHideFlags: 0
@@ -1274,6 +1297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 7346828290300746863}
   gunThrowAnimationCurveY:
     serializedVersion: 2
     m_Curve:
@@ -1340,9 +1364,28 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weaponBase: {fileID: 7346828290300746863}
-  curveDeltaTime: 0
   beingThrown: 0
+  gunDropAnimationCurveY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunDropAnimationCurveX:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  beingDropped: 0
+  rotationAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gotCaught: 0
+  curveDeltaTime: 0
 --- !u!70 &1382661822231929120
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1431,8 +1474,15 @@ MonoBehaviour:
   bulletSpeed: 0
   fireRate: 0
   spriterenderer: {fileID: 0}
+  rb2D: {fileID: 0}
+  weaponCollider: {fileID: 0}
+  weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 1951399678950590066}
+  fireRateTimer: 0
+  bulletSmall: {fileID: 0}
+  spawnBulletPos: {x: 0, y: 0}
+  rotationAngle: 0
 --- !u!4 &1816214103290374029
 Transform:
   m_ObjectHideFlags: 0
@@ -1565,7 +1615,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1660,10 +1710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce438ef879a37d4f8f846cdb812cb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1317376473593964798}
-  - {fileID: 889525719222244253}
-  weaponInHand: {fileID: 1317376473593964798}
+  timeInBetweenEachThrowAtTheStart: 0
+  armAnimationHandler: {fileID: 0}
 --- !u!1 &4498643923718364004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,6 +1774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 0}
   gunThrowAnimationCurveY:
     serializedVersion: 2
     m_Curve:
@@ -1792,9 +1841,28 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
-  weaponBase: {fileID: 0}
-  curveDeltaTime: 0
   beingThrown: 0
+  gunDropAnimationCurveY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunDropAnimationCurveX:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  beingDropped: 0
+  rotationAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gotCaught: 0
+  curveDeltaTime: 0
 --- !u!1 &6761932909896080303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,10 +1913,13 @@ MonoBehaviour:
   rigidBody: {fileID: 857066793980132374}
   mainPlayerCollider: {fileID: 3839624091820801645}
   spriteRenderer: {fileID: 3714242921751911867}
+  animator: {fileID: 0}
   acceleration: 10
   speed: 7
   deacceleration: 10
   isFacingRight: 0
+  isStunned: 0
+  timeStun: 0
   jumpHeight: 3
   groundCheckDistanceFromCollider: 0.1
 --- !u!1 &7291035802177265952
@@ -1884,8 +1955,15 @@ MonoBehaviour:
   bulletSpeed: 0
   fireRate: 0
   spriterenderer: {fileID: 0}
+  rb2D: {fileID: 0}
+  weaponCollider: {fileID: 0}
+  weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 7697524591596772773}
+  fireRateTimer: 0
+  bulletSmall: {fileID: 0}
+  spawnBulletPos: {x: 0, y: 0}
+  rotationAngle: 0
 --- !u!20 &7538633375299543344
 Camera:
   m_ObjectHideFlags: 0
@@ -2027,7 +2105,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2090,10 +2168,13 @@ MonoBehaviour:
   rigidBody: {fileID: 8683175587714000621}
   mainPlayerCollider: {fileID: 1382661822231929120}
   spriteRenderer: {fileID: 573274233542139524}
+  animator: {fileID: 0}
   acceleration: 10
   speed: 7
   deacceleration: 10
   isFacingRight: 0
+  isStunned: 0
+  timeStun: 0
   jumpHeight: 3
   groundCheckDistanceFromCollider: 0.1
 --- !u!4 &8343632300592786259

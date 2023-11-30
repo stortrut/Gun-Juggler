@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,9 +104,15 @@ MonoBehaviour:
   bulletSpeed: 0
   fireRate: 0
   spriterenderer: {fileID: 8446159208739660955}
+  rb2D: {fileID: 0}
+  weaponCollider: {fileID: 0}
+  weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 1286843282832632854}
-  knockback: {fileID: 0}
+  fireRateTimer: 0
+  bulletSmall: {fileID: 0}
+  spawnBulletPos: {x: 0, y: 0}
+  rotationAngle: 0
 --- !u!114 &5331792648429078863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 4004771119036506655}
   gunThrowAnimationCurveY:
     serializedVersion: 2
     m_Curve:
@@ -185,7 +192,28 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  weaponBase: {fileID: 4004771119036506655}
+  beingThrown: 0
+  gunDropAnimationCurveY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunDropAnimationCurveX:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  beingDropped: 0
+  rotationAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gotCaught: 0
+  curveDeltaTime: 0
 --- !u!1 &4141879939821872340
 GameObject:
   m_ObjectHideFlags: 0

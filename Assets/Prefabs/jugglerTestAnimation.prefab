@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,10 +187,13 @@ MonoBehaviour:
   rigidBody: {fileID: 3232082964473358352}
   mainPlayerCollider: {fileID: 7947902577995699080}
   spriteRenderer: {fileID: 1529271173362807262}
+  animator: {fileID: 0}
   acceleration: 10
   speed: 7
   deacceleration: 10
   isFacingRight: 0
+  isStunned: 0
+  timeStun: 0
   jumpHeight: 0
   groundCheckDistanceFromCollider: 0
 --- !u!1 &7709031611617488994
@@ -279,7 +282,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -323,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 0}
   gunThrowAnimationCurveY:
     serializedVersion: 2
     m_Curve:
@@ -389,7 +393,28 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
-  weaponBase: {fileID: 0}
+  beingThrown: 0
+  gunDropAnimationCurveY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunDropAnimationCurveX:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  beingDropped: 0
+  rotationAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gotCaught: 0
+  curveDeltaTime: 0
 --- !u!1001 &6778150340009693067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -494,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBase: {fileID: 0}
   gunThrowAnimationCurveY:
     serializedVersion: 2
     m_Curve:
@@ -560,4 +586,25 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
-  weaponBase: {fileID: 0}
+  beingThrown: 0
+  gunDropAnimationCurveY:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunDropAnimationCurveX:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  beingDropped: 0
+  rotationAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gotCaught: 0
+  curveDeltaTime: 0
