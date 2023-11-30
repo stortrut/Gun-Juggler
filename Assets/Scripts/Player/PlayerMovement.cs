@@ -97,11 +97,18 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if (horizontalInput == 0 || (horizontalInput < 0 == velocityToAddX > 0))
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
-            animator.speed = 0;
+
+            if (!animator.GetBool("Dead"))
+            {
+                animator.speed = 0;
+            }
         }
         else
         {
-            animator.speed = 1;
+            if (!animator.GetBool("Dead"))
+            {
+                animator.speed = 1;
+            }
         }
 
         rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);

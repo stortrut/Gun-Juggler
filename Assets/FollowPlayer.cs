@@ -12,11 +12,9 @@ public class FollowPlayer : MonoBehaviour
         offset = transform.localPosition;
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if(playerToFollow == null) { return; }
+        if (playerToFollow == null) { return; }
 
         Vector3 followPos;
         followPos.x = playerToFollow.transform.position.x + offset.x;
@@ -25,4 +23,5 @@ public class FollowPlayer : MonoBehaviour
 
         transform.position = followPos;
     }
+
 }
