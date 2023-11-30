@@ -18,12 +18,6 @@ public class WeaponBase : MonoBehaviour
 
     public void EquipWeapon()
     {
-        if(weaponType == WeaponType.SmallGun)
-        {
-
-        }
-
-
         Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
         weaponEquipped = true;
     }   
