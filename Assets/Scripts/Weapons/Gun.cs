@@ -8,6 +8,7 @@ public class Gun : WeaponBase
     [SerializeField] protected float fireRateTimer;
     [SerializeField] protected GameObject bulletSmall;
     [SerializeField] protected Vector2 spawnBulletPos;
+    [SerializeField] protected float bulletSpread = 40;
     public float rotationAngle;
     //public float radius = 10f; //how far from gunpoint the bullets spawn
     
@@ -21,9 +22,8 @@ public class Gun : WeaponBase
     }
     public void ShootWideSpread()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
-            Debug.Log("gunPoint" + gunPoint.transform.localPosition);
             rotationAngle = Random.Range(-45, 45);
             //spawnBulletPos.x = gunPoint.position.x + radius * Mathf.Sin(rotationAngle * Mathf.Deg2Rad);
             //spawnBulletPos.y = gunPoint.position.y + radius * Mathf.Cos(rotationAngle * Mathf.Deg2Rad);
@@ -31,7 +31,27 @@ public class Gun : WeaponBase
             GameObject weaponBullet = Instantiate(bulletSmall, gunPoint.position, offsetRotation);
             weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
             Destroy(weaponBullet, 3);
+
+            Quaternion offsetRotationMirrored = Quaternion.Euler(0, 0, -rotationAngle);
+            GameObject weaponBullet2 = Instantiate(bulletSmall, gunPoint.position, offsetRotation);
+            weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
+            Destroy(weaponBullet2, 3);
         }
+        GameObject weaponBullet3 = Instantiate(bulletSmall, gunPoint.position, Quaternion.identity);
+        weaponBullet3.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
+        Destroy(weaponBullet3, 3);
+
+        rotationAngle = bulletSpread;
+        Quaternion width = Quaternion.Euler(0, 0, rotationAngle);
+        GameObject weaponBullet4 = Instantiate(bulletSmall, gunPoint.position, width);
+        weaponBullet3.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
+        Destroy(weaponBullet3, 3);
+
+        rotationAngle = -bulletSpread;
+        Quaternion widthMirrored = Quaternion.Euler(0, 0, rotationAngle);
+        GameObject weaponBullet5 = Instantiate(bulletSmall, gunPoint.position, widthMirrored);
+        weaponBullet3.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
+        Destroy(weaponBullet3, 3);
     }
 }
 //weapon scriptet kallar på spelaren, ref rigidbody, funktion direktion, power, force - trygetcomponent
