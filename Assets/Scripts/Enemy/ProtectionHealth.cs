@@ -8,25 +8,27 @@ public class ProtectionHealth : Health
     {
         if (other.CompareTag("Bullet"))
         {
+            Death();
             Destroy(other.gameObject);
             OnTrigger();
 
-            if (hasProtection == false)
-            {
-                ApplyDamage(1);
-                Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
+            //if (hasProtection == false)       Protection protection
+            //{
+            //    ApplyDamage(1);
                 
-            }
-            else if (hasProtection == true)
-            {
-                Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
-            }
+            //}
+            //else if (hasProtection == true)
+            //{
+            //    
+            //}
         }
     }
 
     void Death()
     {
+        //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
         EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
+        Debug.Log("this.gameObject.transform.position");
         Destroy(this.gameObject);
     }
 }
