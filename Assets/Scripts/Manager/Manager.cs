@@ -7,18 +7,9 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; private set; }
 
-    [SerializeField] private FollowPlayer UICamera; 
     private void Start()
     {
         Instance = this;
-        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End")
-        {
-            UICamera.enabled = true;
-        }
-        else
-        {
-            UICamera.enabled = false;
-        }
     }
     private void Update()
     {

@@ -21,6 +21,7 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] notCatchingWeaponSounds;
     [SerializeField] public AudioClip[] equipWeaponSounds;
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
+    [SerializeField] public AudioClip[] balloonPop;
 
 
     [SerializeField] Slider volumeSlider;

@@ -16,6 +16,7 @@ public class EnemyHealth : Health
         {
             Destroy(other.gameObject);
             OnTrigger();
+            Death();
             if (hasProtection == false)
             { 
                 ApplyDamage(1);
@@ -32,6 +33,12 @@ public class EnemyHealth : Health
                 knockbackComponent.KnockBackMyself(15, 10, .4f, transform.position);
             }
         }
+    }
+
+    void Death()
+    {
+        EffectAnimations.Instance.ConfettiExplosion(this.gameObject.transform.position);
+        Destroy(this.gameObject);
     }
 }
     

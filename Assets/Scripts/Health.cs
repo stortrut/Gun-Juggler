@@ -34,7 +34,6 @@ public class Health : MonoBehaviour, IDamageable
         }
         if (health == 0)
         {
-            EffectAnimations.Instance.EnemyPoof(this.gameObject.transform.position);
             HasParent();
             Destroy(gameObject);
         }

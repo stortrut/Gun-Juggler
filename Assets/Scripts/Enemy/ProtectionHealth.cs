@@ -6,7 +6,6 @@ public class ProtectionHealth : Health
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
@@ -15,14 +14,19 @@ public class ProtectionHealth : Health
             if (hasProtection == false)
             {
                 ApplyDamage(1);
-                Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
+                Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
                 
             }
             else if (hasProtection == true)
             {
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
             }
-
         }
+    }
+
+    void Death()
+    {
+        EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
+        Destroy(this.gameObject);
     }
 }
