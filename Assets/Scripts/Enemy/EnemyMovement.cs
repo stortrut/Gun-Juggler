@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         normal =LayerMask.GetMask("Default");
         rigidBody.velocity = Vector2.right * velocity;
         
-    }
+    } 
 
 
     void Update()
@@ -104,7 +104,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         }
         groundExists = Physics2D.Raycast(raycastPosition, Vector2.down * distanceSide, 5, normal);
         Debug.DrawRay(raycastPosition, raycastRightDirection * distanceSide, Color.blue);
-        Debug.DrawRay(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), raycastRightDirection, Color.red);
+        Debug.DrawRay(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/4), raycastRightDirection, Color.red);
         Debug.DrawRay(raycastPosition, Vector2.down * 2, Color.yellow);
         if (hitObstacle == true)
         {
