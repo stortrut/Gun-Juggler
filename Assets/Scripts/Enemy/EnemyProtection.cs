@@ -19,7 +19,7 @@ public class EnemyProtection : MonoBehaviour
         for (int i = 0; i < numberOfProtection; i++) 
         { 
           currentProtection = Instantiate(Protection,transform.position+new Vector3(0,0,i),Quaternion.identity,gameObject.transform); 
-          protectingItems.Add(currentProtection);           
+          //protectingItems.Add(currentProtection);           
         }
             health.hasProtection = true;
     }
@@ -28,7 +28,7 @@ public class EnemyProtection : MonoBehaviour
         numberOfProtection -= amount;
         if (numberOfProtection==0)
         {
-            protectingItems.Clear();
+            //protectingItems.Clear();
             health.hasProtection = false;
             healthImage.ColorChange(Color.red);
         }

@@ -8,7 +8,11 @@ public class ProtectionHealth : Health
     {
         if (other.CompareTag("Bullet"))
         {
-            Death();
+            ApplyDamage(1);
+            if (health == 0)
+            {
+                Death();
+            }
             Destroy(other.gameObject);
             OnTrigger();
 
@@ -28,7 +32,23 @@ public class ProtectionHealth : Health
     {
         //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
         EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
+<<<<<<< Updated upstream
         Debug.Log(this.gameObject.transform.position);
+=======
+        Debug.Log("this.gameObject.transform.position");
+        HasParent();
+>>>>>>> Stashed changes
         Destroy(this.gameObject);
+
+    }
+    public void HasParent()
+    {
+        if (gameObject.transform.parent != null)
+        {
+            //keep in  mind the enemy has to be the ROOT parent for this to actually work
+            parent = GetComponentInParent<EnemyProtection>();
+            parent.RemoveProtection(1);
+
+        }
     }
 }

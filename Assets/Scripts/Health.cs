@@ -12,10 +12,11 @@ public class Health : MonoBehaviour, IDamageable
     private EnemyProtection ProtectionScript;
     [SerializeField]private HealthUI healthImage; 
     private bool isProtected;
-    public EnemyProtection Parent;
+    public EnemyProtection parent;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private bool colorischanged;
-    
+    bool oneShot;
+   
 
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
 
@@ -27,28 +28,23 @@ public class Health : MonoBehaviour, IDamageable
     }
     public void ApplyDamage(int amount)
     {
+        if(oneShot ==true)
+        BoolChange();
+        Invoke(nameof(BoolChange), 1f);
         health -= amount;
+        Mathf.Clamp(health, 0, maxHealth);
         if(healthImage!=null)
         {
             healthImage.UpdateHealth(health , maxHealth);
         }
         if (health == 0)
         {
-            HasParent();
+            
             Destroy(gameObject);
         }
     }
 
-    public void HasParent()
-    {
-        if (gameObject.transform.parent != null)
-        {
-            //keep in mind the enemy has to be the ROOT parent for this to actually work
-            Parent = GetComponentInParent<EnemyProtection>();
-            Parent.RemoveProtection(1);
-
-        }
-    }
+   
     public void OnTrigger()
     {
         ColorChange(1);
@@ -74,5 +70,9 @@ public class Health : MonoBehaviour, IDamageable
     {
         spriteRenderer.color = Color.white;
         colorischanged = false;
+    }
+    private void BoolChange()
+    {
+        oneShot = !oneShot;
     }
 }

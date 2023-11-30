@@ -452,6 +452,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &277265992 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2247213882596999678, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+  m_PrefabInstance: {fileID: 836433971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &277265993 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1623408595972219545, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+  m_PrefabInstance: {fileID: 836433971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &391254394
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +717,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4926106795506005085, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: numberOfProtection
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993151658727147299, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514885354684134138, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: enemyAnimator
+      value: 
+      objectReference: {fileID: 277265992}
+    - target: {fileID: 8514885354684134138, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: dummySpriterenderer
+      value: 
+      objectReference: {fileID: 277265993}
     - target: {fileID: 8725429723657020437, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
