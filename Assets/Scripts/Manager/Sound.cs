@@ -36,7 +36,7 @@ public class Sound : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex <= backgroundMusic.Length)
+        if(SceneManager.GetActiveScene().buildIndex < backgroundMusic.Length)
         {
             backgroundSource.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex];
         }
