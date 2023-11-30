@@ -41,5 +41,5 @@ public class EnemyMovementPatrolling : MonoBehaviour
     private void BoolChange()
     {
         once = !once;
-    }
+    }   
 }
