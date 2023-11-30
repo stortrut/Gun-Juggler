@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6993151658727147299, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: health
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -976,6 +976,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4791889162527882209, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245033612030023940, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6247798075502522073, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_Name
       value: player_and_camera_V6
@@ -986,6 +994,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982598221663798060, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_RequiresDepthTextureOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822213928176715279, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855029474854014241, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
@@ -1060,6 +1072,10 @@ PrefabInstance:
     - target: {fileID: 3487606950033004765, guid: ecd2f793dfc28464b91fca4389bd47fc, type: 3}
       propertyPath: m_Points.Array.data[1].x
       value: 0.00000062584877
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756289681766512846, guid: ecd2f793dfc28464b91fca4389bd47fc, type: 3}
+      propertyPath: health
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7426168430352910614, guid: ecd2f793dfc28464b91fca4389bd47fc, type: 3}
       propertyPath: m_Name
@@ -1638,11 +1654,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 1260653224}
   - {fileID: 164364465}
+  - {fileID: 616041445}
   - {fileID: 72420438}
   - {fileID: 1601805611}
   - {fileID: 1818515666}
   - {fileID: 64302638}
-  - {fileID: 616041445}
   - {fileID: 705680291}
   - {fileID: 485802437}
   - {fileID: 765421249}
