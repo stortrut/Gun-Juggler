@@ -10,9 +10,7 @@ public class EnemyProtection : MonoBehaviour
     public HealthUI healthImage;
     public List<GameObject> protectingItems;
     private GameObject currentProtection;
-
     
-   
     public void Start()
     {
         health = GetComponent<Health>();
@@ -20,7 +18,6 @@ public class EnemyProtection : MonoBehaviour
             
         for (int i = 0; i < numberOfProtection; i++) 
         { 
-          
           currentProtection = Instantiate(Protection,transform.position+new Vector3(0,0,i),Quaternion.identity,gameObject.transform); 
           protectingItems.Add(currentProtection);           
         }
@@ -29,15 +26,11 @@ public class EnemyProtection : MonoBehaviour
     public void RemoveProtection(int amount)
     {
         numberOfProtection -= amount;
-        
         if (numberOfProtection==0)
         {
-            Debug.Log("list is cleared");
             protectingItems.Clear();
             health.hasProtection = false;
             healthImage.ColorChange(Color.red);
-            
         }
-        
     }
 }

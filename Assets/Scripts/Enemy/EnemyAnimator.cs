@@ -4,30 +4,45 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    Animator enemyAnimator;
+    [SerializeField] Animator enemyAnimator;
+    [SerializeField] SpriteRenderer dummySpriterenderer;
+    const string ENEMY_IDLE = "enemy_idle";
+    const string ENEMY_TAKING_DAMAGE = "enemy_taking_damage";
+    const string ENEMY_DYING = "enemy_dying";
+    const string ENEMY_ATTACKING = "enemy_attacking";
 
     private void Start()
     {
-        enemyAnimator = this.GetComponent<Animator>();
+        //enemyAnimator = this.GetComponent<Animator>();
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.V)) 
         {
-            enemyAnimator.SetBool("Enemy_damage_0", true);
-
+            enemyAnimator.SetBool(ENEMY_TAKING_DAMAGE, true);
+            Invoke(nameof(EnemyIdle), .2f);
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            enemyAnimator.SetTrigger(ENEMY_DYING);
+            //Invoke(nameof(EnemyIdle), .2f);
         }
     }
 
     public void EnemyTakeDamage()
     {
-        Debug.Log("enemy takes damage");
-        enemyAnimator.SetBool("Enemy_damage_0", true);
+        enemyAnimator.SetBool(ENEMY_TAKING_DAMAGE, true);
         Invoke(nameof(EnemyIdle), .2f);
+    }
+
+    public void EnemyDying()
+    {
+        enemyAnimator.SetBool(ENEMY_DYING, true);
     }
 
     public void EnemyIdle()
     {
-        enemyAnimator.SetBool("Enemy_damage_0", false);
+        enemyAnimator.SetBool(ENEMY_TAKING_DAMAGE, false);
     }
+
 }
