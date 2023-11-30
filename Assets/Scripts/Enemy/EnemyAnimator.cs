@@ -30,7 +30,4 @@ public class EnemyAnimator : MonoBehaviour
     {
         enemyAnimator.SetBool("Enemy_damage_0", false);
     }
-
-
-
 }

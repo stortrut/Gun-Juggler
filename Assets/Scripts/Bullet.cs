@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bullet : Gun
 {
     [SerializeField] SpriteRenderer spriteRenderer;
-     Rigidbody2D rb2D;
     //better bulletspeed logic system?
 
     private void Start()
