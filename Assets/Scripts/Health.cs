@@ -15,44 +15,39 @@ public class Health : MonoBehaviour, IDamageable
     public EnemyProtection parent;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private bool colorischanged;
-    bool oneShot=true;
-   
-
+    public bool oneShot = true;
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
-
 
     void Awake()
     {
         maxHealth = health;
         ProtectionScript = GetComponent<EnemyProtection>();
     }
+
     public void ApplyDamage(int amount)
     {
-        if(oneShot ==true)
+        if(oneShot == true)
         { 
-        BoolChange();
-        Invoke(nameof(BoolChange), 0.3f);
-        health -= amount;
-        Mathf.Clamp(health, 0, maxHealth);
-        if(healthImage!=null)
-        {
-            healthImage.UpdateHealth(health , maxHealth);
-        }
-        if (health == 0)
-        {
-            
-            Destroy(gameObject);
-        }
+            BoolChange();
+            Invoke(nameof(BoolChange), 0.3f);
+            health -= amount;
+            Mathf.Clamp(health, 0, maxHealth);
+            if(healthImage!=null)
+            {
+                healthImage.UpdateHealth(health , maxHealth);
+            }
+            if (health == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
-
    
     public void OnTrigger()
     {
         ColorChange(1);
         Invoke(nameof(ColorChange),0.3f);
     }
-   
 
     private void ColorChange(int color)
     {
@@ -64,9 +59,7 @@ public class Health : MonoBehaviour, IDamageable
         {
             spriteRenderer.color = Color.blue;
         }
-
         colorischanged = true;
-     
     }
     private void ColorChange()
     {

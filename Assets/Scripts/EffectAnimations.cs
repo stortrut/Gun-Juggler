@@ -28,7 +28,8 @@ public class EffectAnimations : MonoBehaviour
 
     public void EnemyPoof(Vector2 pos)
     {
-        Instantiate(enemyPoof, pos, Quaternion.identity);
+        GameObject pof = Instantiate(enemyPoof, pos, Quaternion.identity);
+        Destroy(pof, .3f);
     }
 
     public void ConfettiExplosion(Vector2 pos)

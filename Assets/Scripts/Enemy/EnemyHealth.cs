@@ -23,9 +23,8 @@ public class EnemyHealth : Health
                   animatorScript.EnemyTakeDamage();
                 if (health==0)
                 {
-                Death();
+                    Death();
                 }
-                
             }
             else if (hasProtection == true)
             {
@@ -41,7 +40,8 @@ public class EnemyHealth : Health
 
     void Death()
     {
-        EffectAnimations.Instance.ConfettiExplosion(this.gameObject.transform.position);
+        Vector2 animPos = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + .5f);
+        EffectAnimations.Instance.EnemyPoof(animPos);
         Destroy(this.gameObject);
     }
 }
