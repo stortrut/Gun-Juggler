@@ -29,6 +29,8 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         heightOfObject=GetComponent<BoxCollider2D>().bounds.size.y;
         widthOfObject = GetComponent<BoxCollider2D>().bounds.size.x;
         normal =LayerMask.GetMask("Default");
+        rigidBody.velocity = Vector2.right * velocity;
+        
     }
 
 
@@ -38,8 +40,9 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
         //{
         //    return;
         //}
-        Walk();
         RayCast();
+        Walk();     
+        
 
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -49,7 +52,7 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
 
     public void Walk()
     {
-
+      
     }
    
     public void Flip()
@@ -93,11 +96,11 @@ public class EnemyMovement : MonoBehaviour //, IStunnable
     }
     private void RayCast() 
     { 
-        raycastPosition = new Vector2(transform.position.x + (widthOfObject / 2), transform.position.y - (heightOfObject / 2));
+        raycastPosition = new Vector2(transform.position.x + (widthOfObject / 2), transform.position.y - (heightOfObject / 2.2f));
         hitObstacle = Physics2D.Raycast(raycastPosition, raycastRightDirection, distanceSide, normal);
         if(!hitObstacle)
         {
-            hitObstacle = Physics2D.Raycast(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/2), raycastRightDirection, distanceSide, normal);
+            hitObstacle = Physics2D.Raycast(new Vector2(raycastPosition.x, raycastPosition.y + heightOfObject/  2), raycastRightDirection, distanceSide, normal);
         }
         groundExists = Physics2D.Raycast(raycastPosition, Vector2.down * distanceSide, 5, normal);
         Debug.DrawRay(raycastPosition, raycastRightDirection * distanceSide, Color.blue);

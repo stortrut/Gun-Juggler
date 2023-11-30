@@ -16,7 +16,7 @@ public class EnemyProtection : MonoBehaviour
     public void Start()
     {
         health = GetComponent<Health>();
-        healthImage.ColorChange(Color.blue);
+        healthImage.ColorChange(Color.blue);        
             
         for (int i = 0; i < numberOfProtection; i++) 
         { 
