@@ -6,9 +6,19 @@ public class EffectAnimations : MonoBehaviour
 {
     public static EffectAnimations Instance { get; private set; }
     [SerializeField] GameObject balloonPop;
+    [SerializeField] GameObject enemyPoof;
+    [SerializeField] GameObject confettiExplosion;
     private void Awake()
     {
         Instance = this; 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            BalloonPop(transform.position);
+        }
     }
 
     public void BalloonPop(Vector2 pos)
@@ -16,4 +26,13 @@ public class EffectAnimations : MonoBehaviour
         Instantiate(balloonPop, pos, Quaternion.identity);
     }
 
+    public void EnemyPoof(Vector2 pos)
+    {
+        Instantiate(enemyPoof, pos, Quaternion.identity);
+    }
+
+    public void ConfettiExplosion(Vector2 pos)
+    {
+        Instantiate(confettiExplosion, pos, Quaternion.identity);
+    }
 }
