@@ -431,9 +431,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130782178137776533, guid: 7c91b2097f0515f478d1bdd203a2b0c1, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1975404171213016995, guid: 7c91b2097f0515f478d1bdd203a2b0c1, type: 3}
       propertyPath: m_Name
       value: Enemy_Patrolling
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376458782692974771, guid: 7c91b2097f0515f478d1bdd203a2b0c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3885476463300700519, guid: 7c91b2097f0515f478d1bdd203a2b0c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -476,7 +484,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8524749776921797468, guid: 7c91b2097f0515f478d1bdd203a2b0c1, type: 3}
+    - {fileID: 7127185426937555908, guid: 7c91b2097f0515f478d1bdd203a2b0c1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c91b2097f0515f478d1bdd203a2b0c1, type: 3}
