@@ -38,6 +38,6 @@ public class EnemyProtection : MonoBehaviour
             healthImage.ColorChange(Color.red);
             
         }
-        takingDamage=false;
+        
     }
 }
