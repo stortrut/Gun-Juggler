@@ -28,7 +28,7 @@ public class ProtectionHealth : Health
     {
         //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
         EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
-        Debug.Log("this.gameObject.transform.position");
+        Debug.Log(this.gameObject.transform.position);
         Destroy(this.gameObject);
     }
 }
