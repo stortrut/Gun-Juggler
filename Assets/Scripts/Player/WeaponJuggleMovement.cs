@@ -112,6 +112,8 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void DropWeapon()
     {
+        //playerJuggle.RemoveWeaponFromLoop
+
         beingDropped = true;
         beingThrown = false;
         curveDeltaTime = 0;

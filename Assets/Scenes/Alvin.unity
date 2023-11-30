@@ -902,7 +902,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439554564}
   m_CullTransparentMesh: 1
---- !u!1001 &529644846
+--- !u!1001 &450959744
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -910,13 +910,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 112082257614451078, guid: 57c16280c26bb3f45b6105255df19487, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4376070303765503223, guid: 57c16280c26bb3f45b6105255df19487, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.46
+      value: 3.02
       objectReference: {fileID: 0}
     - target: {fileID: 4376070303765503223, guid: 57c16280c26bb3f45b6105255df19487, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11
+      value: -0.76
       objectReference: {fileID: 0}
     - target: {fileID: 4376070303765503223, guid: 57c16280c26bb3f45b6105255df19487, type: 3}
       propertyPath: m_LocalPosition.z
@@ -952,7 +956,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6462463710097363961, guid: 57c16280c26bb3f45b6105255df19487, type: 3}
       propertyPath: m_Name
-      value: CAMERA_and_player
+      value: player_and_camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348536464135156973, guid: 57c16280c26bb3f45b6105255df19487, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7836,4 +7844,4 @@ SceneRoots:
   - {fileID: 1457005174}
   - {fileID: 983121369}
   - {fileID: 4077581705637216045}
-  - {fileID: 529644846}
+  - {fileID: 450959744}

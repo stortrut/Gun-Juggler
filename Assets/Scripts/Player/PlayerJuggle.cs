@@ -69,6 +69,17 @@ public class PlayerJuggle : MonoBehaviour
     public void RemoveWeaponFromLoop(WeaponJuggleMovement weaponToRemoved)
     {
         weaponsCurrentlyInJuggleLoop.Remove(weaponToRemoved);
+        if(weaponsCurrentlyInJuggleLoop.Count < 2)
+        {
+            StartCoroutine(nameof(PlayerDied));
+        }
+    }
+
+    IEnumerator PlayerDied()
+    {
+        Debug.Log("Player Died");
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
     }
 
 }
