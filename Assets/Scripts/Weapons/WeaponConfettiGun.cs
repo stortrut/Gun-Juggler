@@ -11,7 +11,7 @@ public class WeaponConfettiGun : Gun
         knockback = GetComponentInParent<Knockback>();
 
         bulletSpeed = 20f;
-        fireRate = 1f;
+        fireRate = .8f;
     }
 
     void Update()
