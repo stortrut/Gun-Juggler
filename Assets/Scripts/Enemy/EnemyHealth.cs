@@ -16,12 +16,12 @@ public class EnemyHealth : Health
         {
             Destroy(other.gameObject);
             OnTrigger();
-            Death();
             if (hasProtection == false)
             { 
                 ApplyDamage(1);
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
                 animatorScript.EnemyTakeDamage();
+                Death();
             }
             else if (hasProtection == true)
             {
