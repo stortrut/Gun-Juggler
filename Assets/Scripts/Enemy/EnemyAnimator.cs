@@ -17,22 +17,18 @@ public class EnemyAnimator : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V)) 
-        {
-            enemyAnimator.SetBool(ENEMY_TAKING_DAMAGE, true);
-            Invoke(nameof(EnemyIdle), .2f);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            enemyAnimator.SetTrigger(ENEMY_DYING);
-            //Invoke(nameof(EnemyIdle), .2f);
-        }
+        //if (Input.GetKeyDown(KeyCode.V)) 
+        //{
+        //    enemyAnimator.SetBool(ENEMY_TAKING_DAMAGE, true);
+        //    Invoke(nameof(EnemyIdle), .2f);
+        //}
+        
     }
 
     public void EnemyTakeDamage()
     {
         enemyAnimator.SetBool(ENEMY_TAKING_DAMAGE, true);
-        Invoke(nameof(EnemyIdle), .2f);
+        Invoke(nameof(EnemyIdle), .1f);
     }
 
     public void EnemyDying()

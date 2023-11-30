@@ -45,8 +45,10 @@ public class ProtectionHealth : Health
         {
             //keep in  mind the enemy has to be the ROOT parent for this to actually work
             parent = GetComponentInParent<EnemyProtection>();
-            parent.RemoveProtection(1);
-
+            if (oneShot == false)
+            {
+                parent.RemoveProtection(1);
+            }
         }
     }
 }
