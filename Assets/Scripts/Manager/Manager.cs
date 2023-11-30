@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; private set; }
 
-    [SerializeField] private CameraScript UICamera; 
+    [SerializeField] private FollowPlayer UICamera; 
     private void Start()
     {
         Instance = this;
