@@ -191,6 +191,7 @@ MonoBehaviour:
   rigidBody: {fileID: 8445667349961211586}
   mainPlayerCollider: {fileID: 2862007272141963042}
   spriteRenderer: {fileID: 1646083501040785736}
+  animator: {fileID: 0}
   acceleration: 10
   speed: 7
   deacceleration: 10
@@ -212,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeInBetweenEachThrowAtTheStart: 5.5
+  armAnimationHandler: {fileID: 0}
 --- !u!114 &6259416155029822111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,7 +5226,7 @@ Transform:
   m_GameObject: {fileID: 5283401038500902646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.94, y: 2.1, z: -10}
+  m_LocalPosition: {x: 1.94, y: 2.1, z: -34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5263,8 +5265,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 22
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
