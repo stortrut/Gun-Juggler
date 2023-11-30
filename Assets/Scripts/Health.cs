@@ -28,10 +28,10 @@ public class Health : MonoBehaviour, IDamageable
     {
         if(oneShot == true)
         { 
-            BoolChange();
-            Invoke(nameof(BoolChange), 0.3f);
+            BoolChange();                   //so that multible bullets only make one damage (so that number of protection dont get less than the actual number of protaction)
+            Invoke(nameof(BoolChange), 1f);
             health -= amount;
-            Mathf.Clamp(health, 0, maxHealth);
+            //Mathf.Clamp(health, 0, maxHealth);
             if(healthImage!=null)
             {
                 healthImage.UpdateHealth(health , maxHealth);
