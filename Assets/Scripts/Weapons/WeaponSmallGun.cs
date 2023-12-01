@@ -20,6 +20,7 @@ public class WeaponSmallGun : Gun
             {
                 Shoot();
                 fireRateTimer = fireRate;
+                Sound.Instance.SoundRandomized(Sound.Instance.shootingSounds);
             }
         }
     }
