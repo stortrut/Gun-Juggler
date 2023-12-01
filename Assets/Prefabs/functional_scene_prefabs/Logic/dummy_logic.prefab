@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2347798522258355239}
   - component: {fileID: 1856763542069463421}
   - component: {fileID: 8943103383526820422}
-  - component: {fileID: 303541210242595678}
   m_Layer: 7
   m_Name: dummy_logic
   m_TagString: Enemy
@@ -141,8 +140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   healthImage: {fileID: 6722963061640639848}
-  Parent: {fileID: 0}
+  parent: {fileID: 0}
   spriteRenderer: {fileID: 7948756031538113735}
+  oneShot: 1
 --- !u!114 &8943103383526820422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,27 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 5041925452692554111}
   dummySpriterenderer: {fileID: 7948756031538113735}
---- !u!95 &303541210242595678
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8989953743101133587}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33a850afdb1ca4847b41e200be280594, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2261205046269613778
 PrefabInstance:
   m_ObjectHideFlags: 0
