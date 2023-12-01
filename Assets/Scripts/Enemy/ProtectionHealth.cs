@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProtectionHealth : Health
 {
+    private bool hasFunctionBeenCalled = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
@@ -30,14 +31,21 @@ public class ProtectionHealth : Health
 
     void Death()
     {
-        //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
-        EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
-        Debug.Log(this.gameObject.transform.position);
+        if (hasFunctionBeenCalled == false)
+        {
 
-        HasParent();
 
-        Destroy(this.gameObject);
+            hasFunctionBeenCalled = true;
+            //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
+            EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
+            Debug.Log(this.gameObject.transform.position);
 
+            HasParent();
+
+            Destroy(this.gameObject);
+        }
+        else
+            Debug.Log("Tried to fuck you up");
     }
     public void HasParent()
     {
