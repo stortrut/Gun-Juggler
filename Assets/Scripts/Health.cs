@@ -36,7 +36,7 @@ public class Health : MonoBehaviour, IDamageable
             {
                 healthImage.UpdateHealth(health , maxHealth);
             }   
-            if (health == 0)
+            if (health < -2)
             {
                 //Destroy(gameObject);
             }

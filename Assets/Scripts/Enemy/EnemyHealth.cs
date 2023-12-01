@@ -14,7 +14,7 @@ public class EnemyHealth : Health
         {
             dummy = true;   
         }
-        else
+        else if (animatorScript == null)
         {
             dummy = false;
         }
@@ -28,8 +28,11 @@ public class EnemyHealth : Health
             if (hasProtection == false)
             { 
                 ApplyDamage(1);
+                if (dummy)
+                {
+                    animatorScript.EnemyTakeDamage();
+                }
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
-                  animatorScript.EnemyTakeDamage();
                 if (health==0)
                 {
                     Death();
@@ -56,7 +59,7 @@ public class EnemyHealth : Health
             Debug.Log("dummy, not balloon");
             //StartCoroutine("WaitSeconds", 2f);
 
-            Invoke(nameof(DummyDeath), 2f);
+            Invoke(nameof(DummyDeath), 1f);
             animatorScript.EnemyDying();
         }
         else if (this.dummy == false) 
