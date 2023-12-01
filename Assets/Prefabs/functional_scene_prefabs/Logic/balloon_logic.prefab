@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  Parent: {fileID: 0}
+  healthImage: {fileID: 0}
+  parent: {fileID: 0}
+  spriteRenderer: {fileID: 339481949180048853}
+  oneShot: 1
 --- !u!50 &6844402742414502077
 Rigidbody2D:
   serializedVersion: 4
@@ -179,11 +182,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: balloon_art
       objectReference: {fileID: 0}
+    - target: {fileID: 6831461352722059135, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+--- !u!212 &339481949180048853 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6831461352722059135, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+  m_PrefabInstance: {fileID: 6519009867326716586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7270323827950233234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4511848090760535096, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
