@@ -12,7 +12,7 @@ public class Manager : MonoBehaviour
         Instance = this;
         if(SceneManager.GetActiveScene().name == "WinScene" )
         {
-            Invoke(nameof(ProceedToNextLevel),3);
+            Invoke(nameof(ProceedToNextLevel),5);
         }
     }
     private void Update()
