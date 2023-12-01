@@ -18,7 +18,7 @@ public class Gun : WeaponBase
         //Sound.Instance.EnemyNotTakingDamage();
         weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
         //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
-        Destroy(weaponBullet,3);
+        Destroy(weaponBullet, 1.75f);
     }
     public void ShootWideSpread()
     {
