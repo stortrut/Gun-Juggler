@@ -32,6 +32,7 @@ public class JuggleCatchCircle : MonoBehaviour
             if (canCatchWeapon && !caughtWeapon && !currentCatchableGun.beingDropped)
             {
                 gunCaughtEffect.Play();
+                Sound.Instance.SoundRandomized(Sound.Instance.catchingWeaponSounds);
                 spriteRenderer.color = caughtWeaponColor;
                 caughtWeapon = true;
                 playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayCatchWeaponAnimation));
@@ -64,6 +65,7 @@ public class JuggleCatchCircle : MonoBehaviour
         else
         {
             playerJuggle.RemoveWeaponFromLoop(currentCatchableGun);
+            Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
             currentCatchableGun.DropWeapon();
         }
         spriteRenderer.color = waitForWeaponColor;
