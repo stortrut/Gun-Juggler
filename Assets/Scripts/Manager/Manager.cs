@@ -10,6 +10,10 @@ public class Manager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        if(SceneManager.GetActiveScene().name == "WinScene" )
+        {
+            Invoke(nameof(ProceedToNextLevel),3);
+        }
     }
     private void Update()
     {
@@ -22,4 +26,5 @@ public class Manager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    
 }
