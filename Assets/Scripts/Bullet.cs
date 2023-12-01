@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : Gun
+public class Bullet : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Rigidbody2D rb2D;
+
     //better bulletspeed logic system?
 
     private void Start()

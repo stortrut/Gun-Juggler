@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8888622273928473693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.048849784, w: 0.9988062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.75, y: 2.75, z: 2.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.6}
 --- !u!212 &5217752957291536575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,22 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f472156cb771aa4d9b7d402ac2dcb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponEquipped: 0
-  damage: 0
-  bulletSpeed: 0
-  fireRate: 0
-  spriterenderer: {fileID: 0}
-  rb2D: {fileID: 0}
-  weaponCollider: {fileID: 0}
-  weaponType: 0
-  bullet: {fileID: 0}
-  gunPoint: {fileID: 0}
-  fireRateTimer: 0
-  bulletSmall: {fileID: 0}
-  spawnBulletPos: {x: 0, y: 0}
-  bulletSpread: 40
-  rotationAngle: 0
   spriteRenderer: {fileID: 5217752957291536575}
+  rb2D: {fileID: 8419481548297343151}
 --- !u!61 &8488967240196596775
 BoxCollider2D:
   m_ObjectHideFlags: 0
