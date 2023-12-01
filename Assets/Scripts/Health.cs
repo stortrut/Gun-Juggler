@@ -38,7 +38,7 @@ public class Health : MonoBehaviour, IDamageable
             }   
             if (health == 0)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
     }

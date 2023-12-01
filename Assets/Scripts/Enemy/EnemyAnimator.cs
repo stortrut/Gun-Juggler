@@ -34,6 +34,7 @@ public class EnemyAnimator : MonoBehaviour
     public void EnemyDying()
     {
         enemyAnimator.SetBool(ENEMY_DYING, true);
+        Debug.Log("should die");
     }
 
     public void EnemyIdle()
