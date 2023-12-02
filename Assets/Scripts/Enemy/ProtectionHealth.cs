@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProtectionHealth : Health
 {
     private bool hasFunctionBeenCalled = false;
+    private EnemyProtection parent;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
@@ -53,10 +55,10 @@ public class ProtectionHealth : Health
         {
             //keep in  mind the enemy has to be the ROOT parent for this to actually work
             parent = GetComponentInParent<EnemyProtection>();
-            if (oneShot == false)
-            {
+            //if (oneShot == false)
+            //{
                 parent.RemoveProtection(1);
-            }
+            //}
         }
     }
 }

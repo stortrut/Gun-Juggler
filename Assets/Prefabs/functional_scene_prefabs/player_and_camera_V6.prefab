@@ -482,8 +482,8 @@ GameObject:
   - component: {fileID: 2601480124588530163}
   - component: {fileID: 2168797720198748124}
   - component: {fileID: 5832234309490168024}
-  - component: {fileID: 7979930521809826811}
   - component: {fileID: 7419300733805608355}
+  - component: {fileID: 6148740716495877877}
   m_Layer: 6
   m_Name: FULLY FUNCTIONAL PLAYER v4
   m_TagString: Player
@@ -669,21 +669,6 @@ MonoBehaviour:
   timeStun: 0
   jumpHeight: 1
   groundCheckDistanceFromCollider: 0.1
---- !u!114 &7979930521809826811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3610263452003768476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce438ef879a37d4f8f846cdb812cb25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeInBetweenEachThrowAtTheStart: 5.5
-  animator: {fileID: 6251728425550066738}
-  armAnimationHandler: {fileID: 0}
 --- !u!114 &7419300733805608355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +684,21 @@ MonoBehaviour:
   knockbackSpeedX: 5
   knockbackSpeedY: 5
   knockbackDuration: 1
+--- !u!114 &6148740716495877877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610263452003768476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826dc9e08d17a794abe226a5d40bc836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeInBetweenEachThrowAtTheStart: 3
+  animator: {fileID: 6251728425550066738}
+  armAnimationHandler: {fileID: 0}
 --- !u!1 &5557615097500906824
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class EnemyProtection : MonoBehaviour
         //protectingItems.RemoveAt(randomIndex);
         if (numberOfProtection==0)//protectingItems.Count==0)
         {
-            health.oneShot = true;
+            //health.oneShot = true;
             health.hasProtection = false;
             healthImage.ColorChange(Color.red);
         }
