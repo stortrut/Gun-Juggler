@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Gun : WeaponBase
 {
+    [SerializeField] protected float bulletDamage, bulletSpeed, fireRate;
+
     [SerializeField] protected float fireRateTimer;
     [SerializeField] protected GameObject bulletSmall;
     [SerializeField] protected Vector2 spawnBulletPos;
     [SerializeField] protected float bulletSpread = 40;
-
 
     public float rotationAngle;
     //public float radius = 10f; //how far from gunpoint the bullets spawn

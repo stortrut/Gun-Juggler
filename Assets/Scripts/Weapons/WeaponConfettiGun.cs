@@ -4,20 +4,36 @@ using UnityEngine;
 
 public class WeaponConfettiGun : Gun
 {
-    [SerializeField] ConfettiGunData[] upgradeStates;
+    [SerializeField] ConfettiGunData[] upgradeStatus;
     private Knockback knockback;
+    [SerializeField] private int currentWeaponLevel = 0;
+
     private void Start()
     {
         weaponType = WeaponType.ShotGun;
         knockback = GetComponentInParent<Knockback>();
+        fireRateTimer = fireRate;
 
-        bulletSpeed = 20f;
-        fireRate = .8f;
-        Debug.Log("hej");
+        GetCurrentData();
+    }
+    public void UpgradeWeaponLevel()
+    {
+        currentWeaponLevel++;
+        GetCurrentData();
+    }
+    protected void GetCurrentData()
+    {
+        bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
+        bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
+        fireRate = upgradeStatus[currentWeaponLevel].fireRate;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H)) 
+        {
+            GetCurrentData();
+        }
         fireRateTimer -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && fireRateTimer < 0)
         {
@@ -25,7 +41,7 @@ public class WeaponConfettiGun : Gun
             {
                 ShootWideSpread();
                 if(knockback != null)
-                    knockback.KnockBackMyself(5,3f,.4f,transform.position);
+                    knockback.KnockBackMyself(3,1.5f,.2f,transform.position);
                 fireRateTimer = fireRate;
                 Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsConfettiGun);
             }
@@ -36,5 +52,5 @@ public class WeaponConfettiGun : Gun
 [System.Serializable]
 class ConfettiGunData : WeaponUpgradeStatus
 {
-    [SerializeField] public int hej = 111111;
+    //[SerializeField] int bulletCount;
 }
