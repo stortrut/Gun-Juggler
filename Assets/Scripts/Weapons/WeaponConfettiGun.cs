@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponConfettiGun : Gun
 {
+    [SerializeField] ConfettiGunData[] upgradeStates;
     private Knockback knockback;
     private void Start()
     {
@@ -12,6 +13,7 @@ public class WeaponConfettiGun : Gun
 
         bulletSpeed = 20f;
         fireRate = .8f;
+        Debug.Log("hej");
     }
 
     void Update()
@@ -29,4 +31,10 @@ public class WeaponConfettiGun : Gun
             }
         }
     }
+}
+
+[System.Serializable]
+class ConfettiGunData : WeaponUpgradeStatus
+{
+    [SerializeField] public int hej = 111111;
 }
