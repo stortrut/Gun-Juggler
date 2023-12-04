@@ -6,13 +6,16 @@ public class WeaponConfettiGun : Gun
 {
     [SerializeField] ConfettiGunData[] upgradeStatus;
     private Knockback knockback;
-    [SerializeField] private int currentWeaponLevel = 0;
 
     private void Start()
     {
         weaponType = WeaponType.ShotGun;
         knockback = GetComponentInParent<Knockback>();
         fireRateTimer = fireRate;
+
+        //default values
+        bulletSpeed = 20f;
+        fireRate = .7f;
 
         GetCurrentData();
     }
@@ -23,16 +26,19 @@ public class WeaponConfettiGun : Gun
     }
     protected void GetCurrentData()
     {
-        bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
-        bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
-        fireRate = upgradeStatus[currentWeaponLevel].fireRate;
+        if (upgradeStatus[currentWeaponLevel] != null)
+        {
+            this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
+            this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
+            this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H)) 
         {
-            GetCurrentData();
+            UpgradeWeaponLevel();
         }
         fireRateTimer -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && fireRateTimer < 0)

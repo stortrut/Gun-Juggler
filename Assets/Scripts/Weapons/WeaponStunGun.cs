@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class WeaponStunGun : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    //tryck för att spela: deflecta bullets och stunna enemies
+    //raycast, stun interface, deflect script
     void Update()
     {
         

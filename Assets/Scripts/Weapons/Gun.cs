@@ -6,6 +6,7 @@ using UnityEngine;
 public class Gun : WeaponBase
 {
     [SerializeField] protected float bulletDamage, bulletSpeed, fireRate;
+    [SerializeField] protected int currentWeaponLevel = 0;
 
     [SerializeField] protected float fireRateTimer;
     [SerializeField] protected GameObject bulletSmall;
