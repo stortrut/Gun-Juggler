@@ -8,6 +8,7 @@ public class WeaponSmallGun : Gun
     private void Start()
     {
         weaponType = WeaponType.SmallGun;
+        fireRateTimer = fireRate;
 
         //default values
         bulletSpeed = 20f;
