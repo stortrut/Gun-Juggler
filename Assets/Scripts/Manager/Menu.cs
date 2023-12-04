@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour, IStunnable
 
     public bool isStunnable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public float timeStunned { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public bool timeStop { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public bool timeStopped { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     private void Awake()
         
@@ -57,7 +57,7 @@ public class Menu : MonoBehaviour, IStunnable
         {
             escMenu.SetActive(true);
             stunnable.isStunnable = true;
-            stunnable.timeStop = true;
+            stunnable.timeStopped = true;       
         }
     }
     public void StartButton()

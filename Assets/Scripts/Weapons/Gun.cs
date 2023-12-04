@@ -9,6 +9,8 @@ public class Gun : WeaponBase
     [SerializeField] protected GameObject bulletSmall;
     [SerializeField] protected Vector2 spawnBulletPos;
     [SerializeField] protected float bulletSpread = 40;
+
+
     public float rotationAngle;
     //public float radius = 10f; //how far from gunpoint the bullets spawn
     
@@ -62,6 +64,8 @@ public class Gun : WeaponBase
         }
     }
 }
+
+
 //weapon scriptet kallar på spelaren, ref rigidbody, funktion direktion, power, force - trygetcomponent
 //gamemanager, singleton?
 
