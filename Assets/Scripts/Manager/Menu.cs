@@ -20,7 +20,7 @@ public class Menu : MonoBehaviour, IStunnable
     private void Awake()
         
     {
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         stunnable = GetComponent<IStunnable>();
         optionsPanel.SetActive(false);  
         escMenu.SetActive(false);

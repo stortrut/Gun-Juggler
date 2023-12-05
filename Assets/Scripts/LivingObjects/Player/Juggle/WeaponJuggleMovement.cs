@@ -71,7 +71,6 @@ public class WeaponJuggleMovement : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
         }
 
-
         if (curveDeltaTime >= endOfCurveYTimeValue && curveDeltaTime >= endOfCurveXTimeValue)
         {
             if (beingThrown)

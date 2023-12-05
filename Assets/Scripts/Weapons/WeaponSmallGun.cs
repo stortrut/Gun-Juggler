@@ -15,20 +15,17 @@ public class WeaponSmallGun : Gun
         GetCurrentData();
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            UpgradeWeaponLevel();
-        }
-        
-        fireRateTimer -=Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireRateTimer< 0)
+        fireRateTimer += Time.deltaTime;
+        if (Input.GetMouseButton(0) && fireRateTimer > fireRate)
         {
             if (weaponEquipped)
             {
+                Debug.Log("Shoot");
+
                 Shoot(bulletSpeed, bulletDamage);
-                fireRateTimer = fireRate;
+                fireRateTimer = 0;
                 Sound.Instance.SoundRandomized(Sound.Instance.shootingSounds);
             }
         }

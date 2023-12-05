@@ -90,7 +90,7 @@ public class JuggleCatchCircle : MonoBehaviour
 
         if (caughtWeapon)
         {
-            //Upgrade weapon here
+            currentCatchableGun.gameObject.GetComponent<Gun>().UpgradeWeaponLevel();
             yield return new WaitForSeconds(0.3f);
         }
         else

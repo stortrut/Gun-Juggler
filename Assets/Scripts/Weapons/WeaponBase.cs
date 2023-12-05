@@ -30,8 +30,8 @@ public class WeaponBase : MonoBehaviour
     public enum WeaponType
     {
         SmallGun,
-        ShotGun
+        ShotGun,
+        StunGun
     }
-
 }
 

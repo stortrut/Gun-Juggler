@@ -40,14 +40,14 @@ public class ProtectionHealth : Health
             hasFunctionBeenCalled = true;
             //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
             EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
-            Debug.Log(this.gameObject.transform.position);
+            //Debug.Log(this.gameObject.transform.position);
 
             HasParent();
 
             Destroy(this.gameObject);
         }
         else
-            Debug.Log("Tried to fuck you up");
+            Debug.Log("");
     }
     public void HasParent()
     {

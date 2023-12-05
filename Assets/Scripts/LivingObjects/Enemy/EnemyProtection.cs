@@ -23,12 +23,15 @@ public class EnemyProtection : MonoBehaviour
         }
         if (numberOfProtection > 0) 
         { 
-        health = GetComponent<Health>();
-         healthImage.ColorChange(Color.blue);    
-         health.hasProtection = true;
+             health = GetComponent<Health>();
+             healthImage.ColorChange(Color.blue);    
+             health.hasProtection = true;
+
         }
-        health.hasProtection = false;
-           
+        else
+        {
+            health.hasProtection = false;
+        }
     }
     public void RemoveProtection(int amount)
     {

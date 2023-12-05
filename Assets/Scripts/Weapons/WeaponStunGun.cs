@@ -5,9 +5,16 @@ using UnityEngine;
 public class WeaponStunGun : Gun
 {
     [SerializeField] private StunZone stunZone;
-    
+
 
     //[SerializeField] private GameObject StunZone;
+
+
+    private void Start()
+    {
+        weaponType = WeaponType.StunGun;
+    }
+
 
     IEnumerator UnFreeze(float timeStunned, IStunnable stunnable)
    {
@@ -34,6 +41,8 @@ public class WeaponStunGun : Gun
     {
         foreach (GameObject obj in stunZone.objectsInField)
         {
+            if(obj == null) { return; }
+
             if (obj.CompareTag("EnemyBullet"))
             {
                 var enemyBullet = obj.GetComponent<EnemyBullet>();
