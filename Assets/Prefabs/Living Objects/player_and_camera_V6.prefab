@@ -524,7 +524,7 @@ MonoBehaviour:
   isStunned: 0
   timeStop: 0
   timeStun: 0
-  jumpHeight: 1
+  jumpHeight: 2.35
   groundCheckDistanceFromCollider: 0.1
 --- !u!114 &7419300733805608355
 MonoBehaviour:
@@ -555,6 +555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInBetweenEachThrowAtTheStart: 4.5
   bodyAnimator: {fileID: 7764587249132070641}
+  weaponsCurrentlyInJuggleLoop: []
+  weaponInHand: {fileID: 0}
   armAnimationHandler: {fileID: 0}
 --- !u!1 &3796236512374236796
 GameObject:

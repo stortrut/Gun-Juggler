@@ -51,7 +51,11 @@ public class WeaponStunGun : Gun
             }
             else if (obj.CompareTag("Enemy"))
             {
+
                 var stunnable = obj.GetComponent<IStunnable>();
+
+                if (stunnable == null) { return; }
+
                 stunnable.isStunnable = true;
                 StartCoroutine(UnFreeze(2,stunnable));
                 Debug.Log(obj);
@@ -59,5 +63,6 @@ public class WeaponStunGun : Gun
             
         }
     }
+
 }
 

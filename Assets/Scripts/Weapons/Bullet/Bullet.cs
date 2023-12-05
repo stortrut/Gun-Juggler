@@ -17,10 +17,6 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 5);
     }
 
-    private void Update()
-    {
-
-    }
 
     public void SetBulletData(float inputSpeed, float inputDamage)
     {

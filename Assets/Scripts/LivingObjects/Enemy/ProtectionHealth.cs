@@ -17,7 +17,6 @@ public class ProtectionHealth : Health
                 Death();
             }
             Destroy(other.gameObject);
-            OnTrigger();
 
             //if (hasProtection == false)       Protection protection
             //{

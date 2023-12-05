@@ -10,8 +10,6 @@ public class PlayerHealth : Health
 
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
-            OnTrigger();
-
             if (hasProtection == false)
             {
                 ApplyDamage(1);
