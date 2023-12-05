@@ -17,6 +17,11 @@ public class EnemyMovementPatrolling : MonoBehaviour,IStunnable
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
     public float timeStunned { get { return timeStun; } set { timeStun = value; } }
     public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
+    IEnumerator UnFreeze(float timeStopped)
+    {
+        yield return new WaitForSeconds(timeStopped);
+        isStunnable = false;
+    }
 
     void Start()
     {

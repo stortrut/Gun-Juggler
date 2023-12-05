@@ -36,8 +36,9 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private bool isJumping = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
-    public float timeStunned { get { return timeStun; } set { timeStun = value; } }
+   // public float timeStunned { get { return timeStun; } set { timeStun = value; } }
     public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
+  
 
     void Update()
     {
