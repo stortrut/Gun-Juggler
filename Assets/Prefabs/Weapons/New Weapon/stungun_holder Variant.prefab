@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6844992478901216293}
   - component: {fileID: 9137764993067626253}
+  - component: {fileID: 6524226119385354095}
   m_Layer: 0
   m_Name: stungun_zone
   m_TagString: Untagged
@@ -83,6 +84,19 @@ PolygonCollider2D:
       - {x: 3.2175074, y: -0.94088984}
       - {x: 3.1463497, y: 1.3199515}
   m_UseDelaunayMesh: 0
+--- !u!114 &6524226119385354095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456577613044037321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c8395e651a2b344838a3a188c735b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsInField: []
 --- !u!1001 &1080377158753045640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,7 +217,7 @@ MonoBehaviour:
   spawnBulletPos: {x: 0, y: 0}
   bulletSpread: 40
   rotationAngle: 0
-  objectsInField: []
+  stunZone: {fileID: 6524226119385354095}
 --- !u!58 &5784730685233064529 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6825548993933977305, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
