@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     [SerializeField] public bool weaponEquipped;
-    [SerializeField] float riteRate;
+    [SerializeField] public float fireRate;
     [SerializeField] protected float fireRateTimer;
     [SerializeField] protected SpriteRenderer spriterenderer;
     [SerializeField] public Rigidbody2D rb2D;

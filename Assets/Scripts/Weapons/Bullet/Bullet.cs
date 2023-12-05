@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        rb2D.velocity = transform.right*20;
+        //rb2D.velocity = transform.right*20;
     }
 
     public void SetColor(Color newColor)
