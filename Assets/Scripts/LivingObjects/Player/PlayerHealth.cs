@@ -28,7 +28,7 @@ public class PlayerHealth : Health
             {
                 Debug.Log("enemy knockback");
               
-                 knockback=new Vector3(10, 5, 0.4f);  
+                 knockback=new Vector3(10, 5, 0.2f);  
                // if(other.transform.position.x > transform.position.x)
                // {
                     knockback.x *= -1;
