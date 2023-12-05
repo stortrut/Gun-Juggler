@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponSmallGun : Gun
 {
-    [SerializeField] SmallGunData[] upgradeStatus;
     private void Start()
     {
         weaponType = WeaponType.SmallGun;
@@ -15,17 +14,7 @@ public class WeaponSmallGun : Gun
         fireRate = 0.2f;
         GetCurrentData();
     }
-    public void UpgradeWeaponLevel()
-    { //if weaponEquipped?
-        currentWeaponLevel++;
-        GetCurrentData();
-    }
-    protected void GetCurrentData()
-    {
-        this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
-        this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
-        this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
-    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
@@ -45,9 +34,9 @@ public class WeaponSmallGun : Gun
         }
     }
 
-    [System.Serializable]
-    class SmallGunData : WeaponUpgradeStatus
-    {
+    //[System.Serializable]
+    //class SmallGunData : WeaponUpgradeStatus
+    //{
 
-    }
+    //}
 }

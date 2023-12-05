@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Gun : WeaponBase
 {
+    [SerializeField] GunData[] upgradeStatus;
+
     [SerializeField] protected float bulletDamage, bulletSpeed;
     [SerializeField] protected int currentWeaponLevel = 0;
 
@@ -14,7 +16,19 @@ public class Gun : WeaponBase
 
     public float rotationAngle;
     //public float radius = 10f; //how far from gunpoint the bullets spawn
-    
+    public void UpgradeWeaponLevel()
+    {
+        //if weaponEquipped?
+        currentWeaponLevel++;
+    }
+
+    protected void GetCurrentData()
+    {
+        this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
+        this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
+        this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
+    }
+
     public void Shoot(float bulletSpeedInput, float bulletDamageInput)
     {
         bulletSpeed = bulletSpeedInput;
@@ -59,4 +73,10 @@ public class Gun : WeaponBase
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
         Destroy(weaponBullet, 1);
     }
+}
+
+[System.Serializable]
+class GunData : WeaponUpgradeStatus
+{
+    
 }

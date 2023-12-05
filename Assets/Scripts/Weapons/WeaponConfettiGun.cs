@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponConfettiGun : Gun
 {
-    [SerializeField] ConfettiGunData[] upgradeStatus;
     private Knockback knockback;
     public int bulletCount;
 
@@ -20,19 +19,6 @@ public class WeaponConfettiGun : Gun
         bulletCount = 15;
 
         GetCurrentData();
-    }
-    public void UpgradeWeaponLevel()
-    {
-        //if weaponEquipped?
-        currentWeaponLevel++;
-        GetCurrentData();
-    }
-    protected void GetCurrentData()
-    {
-        this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
-        this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
-        this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
-        this.bulletCount = upgradeStatus[currentWeaponLevel].bulletCount;
     }
 
     void Update()
@@ -56,8 +42,8 @@ public class WeaponConfettiGun : Gun
     }
 }
 
-[System.Serializable]
-class ConfettiGunData : WeaponUpgradeStatus
-{
-    [SerializeField] public int bulletCount;
-}
+//[System.Serializable]
+//class ConfettiGunData : WeaponUpgradeStatus
+//{
+//    [SerializeField] public int bulletCount;
+//}
