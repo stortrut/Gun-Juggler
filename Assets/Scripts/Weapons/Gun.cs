@@ -18,13 +18,15 @@ public class Gun : WeaponBase
     //public float radius = 10f; //how far from gunpoint the bullets spawn
     public void UpgradeWeaponLevel()
     {
-        //if weaponEquipped?
+        if(currentWeaponLevel >= upgradeStatus.Length - 1) { return; } 
+
         currentWeaponLevel++;
+        GetCurrentData();
     }
 
     protected void GetCurrentData()
     {
-        if(upgradeStatus.Length <= 0) { return; }
+        if(upgradeStatus.Length <= 0) { Debug.Log("No upgrade ERROR"); return; }
 
         this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
         this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
@@ -58,7 +60,7 @@ public class Gun : WeaponBase
 
             for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
             {
-                Debug.Log(i);
+                //Debug.Log(i);
                 float rotationAngle = Random.Range(5, 35);
                 CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
             }
@@ -75,6 +77,8 @@ public class Gun : WeaponBase
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
         Destroy(weaponBullet, 1);
     }
+
+
 }
 
 [System.Serializable]

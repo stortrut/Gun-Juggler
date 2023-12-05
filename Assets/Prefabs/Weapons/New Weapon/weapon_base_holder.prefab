@@ -393,6 +393,16 @@ MonoBehaviour:
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 5816978791661700974}
+  upgradeStatus:
+  - bulletSpeed: 1
+    bulletDamage: 1
+    fireRate: 1
+  - bulletSpeed: 10
+    bulletDamage: 10
+    fireRate: 10
+  - bulletSpeed: 100
+    bulletDamage: 100
+    fireRate: 100
   bulletDamage: 0
   bulletSpeed: 0
   currentWeaponLevel: 0
@@ -400,7 +410,6 @@ MonoBehaviour:
   spawnBulletPos: {x: 0, y: 0}
   bulletSpread: 40
   rotationAngle: 0
-  upgradeStatus: []
 --- !u!58 &6825548993933977305
 CircleCollider2D:
   m_ObjectHideFlags: 0
