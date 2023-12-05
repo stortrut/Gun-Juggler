@@ -30,7 +30,10 @@ public class EnemyProtection : MonoBehaviour
         }
         else
         {
+            if(health != null)
+            { 
             health.hasProtection = false;
+            }
         }
     }
     public void RemoveProtection(int amount)
