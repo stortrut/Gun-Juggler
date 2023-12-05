@@ -64,9 +64,11 @@ public class JuggleCatchCircle : MonoBehaviour
         }
         else
         {
-            playerJuggle.RemoveWeaponFromLoop(currentCatchableGun);
-            Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
-            currentCatchableGun.DropWeapon();
+            Debug.Log("Failed Perfect Catch");
+
+            //playerJuggle.RemoveWeaponFromLoop(currentCatchableGun);
+            //Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
+            //currentCatchableGun.DropWeapon();
         }
         spriteRenderer.color = waitForWeaponColor;
         caughtWeapon = false;
