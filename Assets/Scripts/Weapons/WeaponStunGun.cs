@@ -41,6 +41,8 @@ public class WeaponStunGun : Gun
     {
         foreach (GameObject obj in stunZone.objectsInField)
         {
+            if(obj == null) { return; }
+
             if (obj.CompareTag("EnemyBullet"))
             {
                 var enemyBullet = obj.GetComponent<EnemyBullet>();
