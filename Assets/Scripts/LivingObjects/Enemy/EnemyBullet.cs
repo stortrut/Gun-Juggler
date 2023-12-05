@@ -12,6 +12,7 @@ public class EnemyBullet : Bullet
         transform.localScale *= 1.5f;
         rb2D.velocity *= -Vector2.one;
         canDamageEnemies = true;
+        spriteRenderer.color = Color.yellow;
         transform.gameObject.tag = "Bullet";
     }
         private void OnTriggerEnter2D(Collider2D damagedobject)

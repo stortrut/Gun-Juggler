@@ -15,7 +15,7 @@ public class MovementCircular : MonoBehaviour,IStunnable
 
     [HideInInspector] public bool isStunned = false;
     [HideInInspector] public bool timeStop;
-    [HideInInspector] public float timeStun;
+    [HideInInspector] public float timeStunned;
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
     // public float timeStunned { get { return timeStun; } set { timeStun = value; } }
     public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
@@ -37,10 +37,11 @@ public class MovementCircular : MonoBehaviour,IStunnable
     {
         if (isStunned == true)
         {
+            timeStunned += Time.deltaTime;
             return;
         }
-        x = Mathf.Cos((Time.time + offSet)* frequency) * amplitude;
-        y = Mathf.Sin((Time.time + offSet) * frequency) * amplitude;
+        x = Mathf.Cos((Time.time + offSet-timeStunned) * frequency) * amplitude;
+        y = Mathf.Sin((Time.time + offSet-timeStunned) * frequency) * amplitude;
 
         transform.position = new Vector3 (transform.parent.position.x + x , transform.parent.position.y + y,0);
     }   
