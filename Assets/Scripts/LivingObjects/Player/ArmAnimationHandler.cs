@@ -16,7 +16,7 @@ public class ArmAnimationHandler : MonoBehaviour
     }
     public IEnumerator PlayCatchWeaponAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         gunCatcherArm.SetBool("Catch", true);
         yield return new WaitForEndOfFrame();
         gunCatcherArm.SetBool("Catch", false);

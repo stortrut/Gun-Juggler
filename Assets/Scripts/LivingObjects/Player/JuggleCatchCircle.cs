@@ -40,9 +40,6 @@ public class JuggleCatchCircle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift))
         {
-
-
-
             if (canCatchWeapon && !caughtWeapon && !catchOnCoolDown/* !currentCatchableGun.beingDropped*/)
             {
                 gunCaughtEffect.Play();

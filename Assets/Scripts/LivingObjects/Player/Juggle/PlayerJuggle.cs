@@ -7,7 +7,7 @@ public class PlayerJuggle : MonoBehaviour
 {
     [SerializeField] private float timeInBetweenEachThrowAtTheStart;
 
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator bodyAnimator;
 
     List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
@@ -85,8 +85,8 @@ public class PlayerJuggle : MonoBehaviour
     IEnumerator PlayerDied()
     {
         Debug.Log("Player Died");
-        animator.speed = 1;
-        animator.SetBool("Dead", true);
+        bodyAnimator.speed = 1;
+        bodyAnimator.SetBool("Dead", true);
         yield return new WaitForSeconds(1.65f);
         SceneManager.LoadScene(0);
     }
