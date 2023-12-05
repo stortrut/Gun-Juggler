@@ -5,9 +5,16 @@ using UnityEngine;
 public class WeaponStunGun : Gun
 {
     [SerializeField] private StunZone stunZone;
-    
+
 
     //[SerializeField] private GameObject StunZone;
+
+
+    private void Start()
+    {
+        weaponType = WeaponType.StunGun;
+    }
+
 
     IEnumerator UnFreeze(float timeStunned, IStunnable stunnable)
    {
