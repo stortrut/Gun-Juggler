@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponQueueElements : MonoBehaviour
+public class WeaponQueueElementsVariant : MonoBehaviour
 {
-    [SerializeField] GameObject arrow;
     [SerializeField] GameObject smallGun;
     [SerializeField] GameObject shotGun;
     [SerializeField] GameObject stunGun;
@@ -58,6 +57,11 @@ public class WeaponQueueElements : MonoBehaviour
         }
     }
 
+    void MoveQueueObjects()
+    {
+
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -66,4 +70,4 @@ public class WeaponQueueElements : MonoBehaviour
         }
     }
 }
-        //    int enumIndex = (int)weaponEnum;
+//    int enumIndex = (int)weaponEnum;
