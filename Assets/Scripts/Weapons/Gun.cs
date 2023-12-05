@@ -15,61 +15,48 @@ public class Gun : WeaponBase
     public float rotationAngle;
     //public float radius = 10f; //how far from gunpoint the bullets spawn
     
-    public void Shoot()
+    public void Shoot(float bulletSpeedInput, float bulletDamageInput)
     {
+        bulletSpeed = bulletSpeedInput;
         GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
         //Sound.Instance.EnemyNotTakingDamage();
-        weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
-        Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
-        bulletRigidbody.velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTime;
-        //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
-        Destroy(weaponBullet, 1.75f);
+
+        Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
+        bulletScript.SetColor(GetComponent<SpriteRenderer>().color);
+        bulletScript.SetBulletData(bulletSpeedInput, bulletDamageInput);
+
+        weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
+        Destroy(weaponBullet, 2f);
     }
-    public void ShootWideSpread(int bulletCount)
+
+    public void ShootWideSpread(float bulletSpeed, float bulletDamageInput, int halfAmountOfBulletCount)
     {
-        GameObject weaponBullet = Instantiate(bulletSmall, gunPoint.position, Quaternion.identity);
-        weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
-        Destroy(weaponBullet, 1);
+        CreateNewBullet(bulletSpeed, bulletDamageInput, GetComponent<SpriteRenderer>().color, Quaternion.identity);
 
-        EdgeBullets(1);
-        EdgeBullets(-1);
-        ShootWideSpreadRandom();
+        inverseBullets(1, halfAmountOfBulletCount);
+        inverseBullets(-1, halfAmountOfBulletCount);
 
-        void EdgeBullets(int bulletSpreadMultiplier)
+        void inverseBullets(int inverseMultiplier, int halfAmountOfBulletCount)      
         {
-            rotationAngle = bulletSpread*bulletSpreadMultiplier;
-            Quaternion width = Quaternion.Euler(0, 0, rotationAngle);
-            GameObject weaponBullet = Instantiate(bulletSmall, gunPoint.position, width);
-            weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
-            Destroy(weaponBullet, 1);
-        }
+            CreateNewBullet(bulletSpeed, bulletDamageInput, GetComponent<SpriteRenderer>().color, Quaternion.Euler(0, 0, bulletSpread * inverseMultiplier));
 
-        void ShootWideSpreadRandom()
-        {
-            for (int i = 0; i < bulletCount; i++)
+            for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
             {
-                float rotationAngle = Random.Range(5, 40);
-                //spawnBulletPos.x = gunPoint.position.x + radius * Mathf.Sin(rotationAngle * Mathf.Deg2Rad);
-                //spawnBulletPos.y = gunPoint.position.y + radius * Mathf.Cos(rotationAngle * Mathf.Deg2Rad);
-                Quaternion offsetRotation = Quaternion.Euler(0, 0, rotationAngle);
-                GameObject weaponBullet = Instantiate(bulletSmall, gunPoint.position, offsetRotation);
-                weaponBullet.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
-                Destroy(weaponBullet, 1);
-
-                Quaternion offsetRotationMirrored = Quaternion.Euler(0, 0, -rotationAngle);
-                GameObject weaponBullet2 = Instantiate(bulletSmall, gunPoint.position, offsetRotationMirrored);
-                weaponBullet2.GetComponent<Bullet>().SetColor(GetComponent<SpriteRenderer>().color);
-                Destroy(weaponBullet2, 1);
+                Debug.Log(i);
+                float rotationAngle = Random.Range(5, 35);
+                CreateNewBullet(bulletSpeed, bulletDamageInput, GetComponent<SpriteRenderer>().color, Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
             }
         }
     }
+
+    private void CreateNewBullet(float bulletSpeed, float bulletDamageInput, Color color, Quaternion rotation)
+    {
+        GameObject weaponBullet = Instantiate(bulletSmall, gunPoint.position, rotation);
+        Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
+        bulletScript.SetColor(color);
+        bulletScript.SetBulletData(bulletSpeed, bulletDamageInput);
+
+        weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
+        Destroy(weaponBullet, 1);
+    }
 }
-
-//weapon scriptet kallar på spelaren, ref rigidbody, funktion direktion, power, force - trygetcomponent
-//gamemanager, singleton?
-
-//if (weaponBullet.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb2d))
-//{
-//    rb2d.velocity = bulletVelocity;
-//    Debug.Log("Bullet spawned with rotation: " + rotationAngle);
-//}

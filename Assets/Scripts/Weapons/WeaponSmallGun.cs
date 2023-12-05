@@ -12,22 +12,19 @@ public class WeaponSmallGun : Gun
 
         //default values
         bulletSpeed = 20f;
-        fireRate = .2f;
+        fireRate = 0.2f;
         GetCurrentData();
     }
     public void UpgradeWeaponLevel()
-    {
+    { //if weaponEquipped?
         currentWeaponLevel++;
         GetCurrentData();
     }
     protected void GetCurrentData()
     {
-        if (upgradeStatus[currentWeaponLevel] != null)
-        {
-            this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
-            this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
-            this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
-        }
+        this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
+        this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
+        this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
     }
     void Update()
     {
@@ -41,7 +38,7 @@ public class WeaponSmallGun : Gun
         {
             if (weaponEquipped)
             {
-                Shoot();
+                Shoot(bulletSpeed, bulletDamage);
                 fireRateTimer = fireRate;
                 Sound.Instance.SoundRandomized(Sound.Instance.shootingSounds);
             }

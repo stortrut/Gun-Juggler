@@ -16,39 +16,37 @@ public class WeaponConfettiGun : Gun
 
         //default values
         bulletSpeed = 20f;
-        fireRate = .7f;
+        fireRate = 0.7f;
         bulletCount = 15;
 
         GetCurrentData();
     }
     public void UpgradeWeaponLevel()
     {
+        //if weaponEquipped?
         currentWeaponLevel++;
         GetCurrentData();
     }
     protected void GetCurrentData()
     {
-        if (upgradeStatus[currentWeaponLevel] != null)
-        {
-            this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
-            this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
-            this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
-            this.bulletCount = upgradeStatus[currentWeaponLevel].bulletCount;
-        }
+        this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
+        this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
+        this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
+        this.bulletCount = upgradeStatus[currentWeaponLevel].bulletCount;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H)) 
+        if (Input.GetKeyDown(KeyCode.G)) 
         {
             UpgradeWeaponLevel();
         }
         fireRateTimer -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && fireRateTimer < 0)
+        if (Input.GetMouseButton(0) && fireRateTimer < 0)
         {
             if (this.weaponEquipped)
             {
-                ShootWideSpread(bulletCount);
+                ShootWideSpread(bulletSpeed, bulletDamage, bulletCount);
                 if(knockback != null)
                     knockback.KnockBackMyself(3,1.5f,.2f,transform.position);
                 fireRateTimer = fireRate;

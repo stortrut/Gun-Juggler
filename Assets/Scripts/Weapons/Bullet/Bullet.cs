@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Rigidbody2D rb2D;
+    public float bulletSpeed;
+    public float bulletDamage;
 
     //better bulletspeed logic system?
 
@@ -17,7 +19,13 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        //rb2D.velocity = transform.right*20;
+
+    }
+
+    public void SetBulletData(float inputSpeed, float inputDamage)
+    {
+        bulletSpeed = inputSpeed;
+        bulletDamage = inputDamage;
     }
 
     public void SetColor(Color newColor)
@@ -25,13 +33,8 @@ public class Bullet : MonoBehaviour
         spriteRenderer.color = newColor;
     }
 
-
-
-
-
-
-    private void OnTriggerEnter2D(Collider2D damagedObject)
+    private void OnCollisionEnter2D(Collision2D other)
     {   
-           
+        Destroy(gameObject);
     }
 }
