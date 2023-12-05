@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 9004603145288060792}
   - component: {fileID: 7381853955586364798}
   - component: {fileID: 4289261401675878463}
-  - component: {fileID: 442591024792240673}
   m_Layer: 8
   m_Name: small_gun
   m_TagString: WeaponBeingJuggled
@@ -199,7 +198,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.35087505
     - serializedVersion: 3
-      time: 1.1141217
+      time: 1.213856
       value: 0.26695263
       inSlope: -0.013821385
       outSlope: -0.21101357
@@ -208,8 +207,8 @@ MonoBehaviour:
       inWeight: 0.027748544
       outWeight: 0.76436734
     - serializedVersion: 3
-      time: 3.8302772
-      value: -1.7122122
+      time: 3.7847624
+      value: -1.7040012
       inSlope: -0.19364108
       outSlope: -0.07713551
       tangentMode: 1
@@ -218,35 +217,35 @@ MonoBehaviour:
       outWeight: 0.8719269
     - serializedVersion: 3
       time: 4.5
-      value: -1.5397065
-      inSlope: 0.2575778
-      outSlope: 0
+      value: -1.5453151
+      inSlope: 0.22186479
+      outSlope: -0.110475354
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 5.002296
-      value: -1.5397065
-      inSlope: 0
+      time: 4.501354
+      value: -1.5454648
+      inSlope: -0.110475354
       outSlope: -1.0572534
       tangentMode: 5
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 5.200803
-      value: -1.7039256
+      time: 4.5778666
+      value: -1.7096839
       inSlope: 1.4306743
-      outSlope: 1.4306743
+      outSlope: -0.29612505
       tangentMode: 1
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 1
     - serializedVersion: 3
-      time: 5.5
-      value: 0
-      inSlope: 5.694992
+      time: 4.693186
+      value: -0.0057582855
+      inSlope: 14.775725
       outSlope: 0.025260855
       tangentMode: 5
       weightedMode: 0
@@ -353,20 +352,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  damage: 0
-  bulletSpeed: 0
   fireRate: 0
+  fireRateTimer: 0
   spriterenderer: {fileID: 7428532420087018504}
   rb2D: {fileID: 4289261401675878463}
   weaponCollider: {fileID: 7381853955586364798}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 4590076397312297963}
-  fireRateTimer: 0
+  bulletDamage: 0
+  bulletSpeed: 0
+  currentWeaponLevel: 0
   bulletSmall: {fileID: 0}
   spawnBulletPos: {x: 0, y: 0}
   bulletSpread: 40
   rotationAngle: 0
+  upgradeStatus: []
 --- !u!58 &7381853955586364798
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -429,18 +430,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &442591024792240673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802560178331899367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ee7a4067d4d15f46b7def42687939fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1992858686778113069
 GameObject:
   m_ObjectHideFlags: 0

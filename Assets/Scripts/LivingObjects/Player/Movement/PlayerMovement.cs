@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour, IStunnable
 {
+    [Header("References")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator bodyAnimator;
 
 
     [Header("Walk")]
@@ -84,13 +84,13 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if(horizontalInput > 0) 
         { 
             isFacingRight = true;
-            animator.SetBool("Reverse", false);
+            bodyAnimator.SetBool("Reverse", false);
             //spriteRenderer.flipX = false;
         }
         if (horizontalInput < 0) 
         { 
             isFacingRight = false;
-            animator.SetBool("Reverse", true);
+            bodyAnimator.SetBool("Reverse", true);
             //spriteRenderer.flipX = true;
         }
 
@@ -101,16 +101,16 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
 
-            if (!animator.GetBool("Dead"))
+            if (!bodyAnimator.GetBool("Dead"))
             {
-                animator.speed = 0;
+                bodyAnimator.speed = 0;
             }
         }
         else
         {
-            if (!animator.GetBool("Dead"))
+            if (!bodyAnimator.GetBool("Dead"))
             {
-                animator.speed = 1;
+                bodyAnimator.speed = 1;
             }
         }
 
