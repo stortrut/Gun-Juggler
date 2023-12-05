@@ -13,15 +13,22 @@ public class EnemyProtection : MonoBehaviour
     
     public void Start()
     {
-        health = GetComponent<Health>();
-        healthImage.ColorChange(Color.blue);        
+        
+           
             
         for (int i = 0; i < numberOfProtection; i++) 
         { 
           currentProtection = Instantiate(Protection,transform.position+new Vector3(0,0,i),Quaternion.identity,gameObject.transform); 
           protectingItems.Add(currentProtection);           
         }
-            health.hasProtection = true;
+        if (numberOfProtection > 0) 
+        { 
+        health = GetComponent<Health>();
+         healthImage.ColorChange(Color.blue);    
+         health.hasProtection = true;
+        }
+        health.hasProtection = false;
+           
     }
     public void RemoveProtection(int amount)
     {
@@ -32,7 +39,7 @@ public class EnemyProtection : MonoBehaviour
         {
             //health.oneShot = true;
             health.hasProtection = false;
-            healthImage.ColorChange(Color.red);
+            healthImage.ColorChange(Color.yellow);
         }
     }
 }
