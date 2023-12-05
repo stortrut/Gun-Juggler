@@ -40,14 +40,10 @@ public class WeaponStunGun : Gun
     {
         foreach (GameObject obj in objectsInField)
         {
-            Debug.Log(obj.name);    
             if (obj.CompareTag("EnemyBullet"))
             {
-                var rigidbody = obj.GetComponent<Rigidbody2D>();
-                var collider= obj.GetComponent<BoxCollider2D>();
-                collider.size *= 2;
-                obj.transform.localScale *= 2;
-                rigidbody.velocity *= -Vector2.one;
+                var enemyBullet = obj.GetComponent<EnemyBullet>();
+                enemyBullet.Deflected();
                 //add bool so that enemy bullets now can damage enemies,
             }
             else if (obj.CompareTag("Enemy"))
