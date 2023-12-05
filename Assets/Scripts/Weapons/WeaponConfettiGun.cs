@@ -6,6 +6,7 @@ public class WeaponConfettiGun : Gun
 {
     [SerializeField] ConfettiGunData[] upgradeStatus;
     private Knockback knockback;
+    public int bulletCount;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class WeaponConfettiGun : Gun
         //default values
         bulletSpeed = 20f;
         fireRate = .7f;
+        bulletCount = 15;
 
         GetCurrentData();
     }
@@ -31,6 +33,7 @@ public class WeaponConfettiGun : Gun
             this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
             this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
             this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
+            this.bulletCount = upgradeStatus[currentWeaponLevel].bulletCount;
         }
     }
 
@@ -45,7 +48,7 @@ public class WeaponConfettiGun : Gun
         {
             if (this.weaponEquipped)
             {
-                ShootWideSpread();
+                ShootWideSpread(bulletCount);
                 if(knockback != null)
                     knockback.KnockBackMyself(3,1.5f,.2f,transform.position);
                 fireRateTimer = fireRate;
@@ -58,5 +61,5 @@ public class WeaponConfettiGun : Gun
 [System.Serializable]
 class ConfettiGunData : WeaponUpgradeStatus
 {
-    //[SerializeField] int bulletCount;
+    [SerializeField] public int bulletCount;
 }
