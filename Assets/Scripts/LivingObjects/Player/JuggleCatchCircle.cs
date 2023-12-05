@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class JuggleCatchCircle : MonoBehaviour
 {
-    [SerializeField] float catchTime = 0.85f;
+    [Header("Catch Values")]
+    [SerializeField] float maxCatchAttemptCooldown = 0.4f;
+    float currentCatchAttemptCooldownTimer;
+    bool catchOnCoolDown;
 
-    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] float catchTimeWindow = 0.85f;
+
+
+    [Header("Catch Circle Colors")]
     [SerializeField] Color canCatchWeaponColor;
     [SerializeField] Color waitForWeaponColor;
     [SerializeField] Color caughtWeaponColor;
+
+    [Header("References")]
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] ParticleSystem gunCaughtEffect;
 
 
@@ -23,13 +32,18 @@ public class JuggleCatchCircle : MonoBehaviour
         playerJuggle = GetComponentInParent<PlayerJuggle>();
 
         spriteRenderer.color = waitForWeaponColor;
+
+        currentCatchAttemptCooldownTimer = maxCatchAttemptCooldown;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (canCatchWeapon && !caughtWeapon && !currentCatchableGun.beingDropped)
+
+
+
+            if (canCatchWeapon && !caughtWeapon && !catchOnCoolDown/* !currentCatchableGun.beingDropped*/)
             {
                 gunCaughtEffect.Play();
                 Sound.Instance.SoundRandomized(Sound.Instance.catchingWeaponSounds);
@@ -37,7 +51,26 @@ public class JuggleCatchCircle : MonoBehaviour
                 caughtWeapon = true;
                 playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayCatchWeaponAnimation));
             }
+
+            catchOnCoolDown = true;
+            currentCatchAttemptCooldownTimer = 0;
         }
+
+        if (catchOnCoolDown)
+        {
+            if (currentCatchAttemptCooldownTimer < maxCatchAttemptCooldown)
+            {
+                currentCatchAttemptCooldownTimer += Time.deltaTime;
+            }
+            else
+            {
+                catchOnCoolDown = false;
+                currentCatchAttemptCooldownTimer = 0;
+            }
+        }
+
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,20 +79,21 @@ public class JuggleCatchCircle : MonoBehaviour
         {
             currentCatchableGun = collision.GetComponent<WeaponJuggleMovement>();
 
-            StopCoroutine(nameof(CanCatchWeapon));
-            StartCoroutine(nameof(CanCatchWeapon));
+            StopCoroutine(nameof(CaughtWeaponCheckHandler));
+            StartCoroutine(nameof(CaughtWeaponCheckHandler));
         }
     }
   
-    IEnumerator CanCatchWeapon()
+    IEnumerator CaughtWeaponCheckHandler()
     {
         canCatchWeapon = true;
         spriteRenderer.color = canCatchWeaponColor;
 
-        yield return new WaitForSeconds(catchTime);
+        yield return new WaitForSeconds(catchTimeWindow);
 
         if (caughtWeapon)
         {
+            //Upgrade weapon here
             yield return new WaitForSeconds(0.3f);
         }
         else
@@ -73,7 +107,6 @@ public class JuggleCatchCircle : MonoBehaviour
         spriteRenderer.color = waitForWeaponColor;
         caughtWeapon = false;
         canCatchWeapon = false;
-
     }
 
 
