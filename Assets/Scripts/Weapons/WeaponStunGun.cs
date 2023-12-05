@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class WeaponStunGun : Gun
 {
+    [SerializeField] private StunZone stunZone;
     
-    public List <GameObject> objectsInField;
+
     //[SerializeField] private GameObject StunZone;
 
-   IEnumerator UnFreeze(float timeStunned, IStunnable stunnable)
+    IEnumerator UnFreeze(float timeStunned, IStunnable stunnable)
    {
      yield return new WaitForSeconds(timeStunned);
         stunnable.isStunnable = false;
     }
     //tryck för att spela: deflecta bullets och stunna enemies
     //raycast, stun interface, deflect script
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        objectsInField.Add(other.gameObject);
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        objectsInField.Remove(other.gameObject);
-    }
+  
     private void Update()
     {
         fireRateTimer -= Time.deltaTime;
@@ -38,7 +32,7 @@ public class WeaponStunGun : Gun
     private void ReflectStun()
         
     {
-        foreach (GameObject obj in objectsInField)
+        foreach (GameObject obj in stunZone.objectsInField)
         {
             if (obj.CompareTag("EnemyBullet"))
             {

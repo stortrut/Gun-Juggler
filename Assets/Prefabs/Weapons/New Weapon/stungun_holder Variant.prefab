@@ -1,5 +1,88 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1456577613044037321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6844992478901216293}
+  - component: {fileID: 9137764993067626253}
+  m_Layer: 0
+  m_Name: stungun_zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6844992478901216293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456577613044037321}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.02278242}
+  m_LocalScale: {x: 6.666666, y: 6.666666, z: 6.666666}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4947516750633868800}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &9137764993067626253
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456577613044037321}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8, y: 8}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.6204267, y: 1.2533597}
+      - {x: 0.5063653, y: 0.5183884}
+      - {x: 0.5027174, y: -0.4448387}
+      - {x: 1.5386736, y: -0.9810128}
+      - {x: 3.2175074, y: -0.94088984}
+      - {x: 3.1463497, y: 1.3199515}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &1080377158753045640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,7 +150,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2173005482234326438, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5356848176084570760, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 6844992478901216293}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4973627003982700860, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
       insertIndex: -1
@@ -76,6 +162,11 @@ PrefabInstance:
 --- !u!212 &2950035515051931817 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2742380901884179489, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+  m_PrefabInstance: {fileID: 1080377158753045640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4947516750633868800 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5356848176084570760, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
   m_PrefabInstance: {fileID: 1080377158753045640}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5475139259516464564 stripped
