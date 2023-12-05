@@ -7,20 +7,18 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    private int maxHealth;
+    public int maxHealth;
     public int health;
 
     [SerializeField] private EnemyProtection protection;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private HealthUI healthImage;
-    private bool colorischanged;
+   
     private bool oneShot = true;
     private bool isProtected;
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
 
     void Awake()
     {
-        maxHealth = health;
+        
         protection = GetComponent<EnemyProtection>();
     }
 
@@ -32,39 +30,12 @@ public class Health : MonoBehaviour, IDamageable
             Invoke(nameof(BoolChange), .2f);
             health -= amount;
             health = Mathf.Clamp(health, 0, maxHealth);
-            if(healthImage != null)
-            {
-                healthImage.UpdateHealth(health , maxHealth);
-            }   
+           
             if (health < -2)
             {
                 //Destroy(gameObject);
             }
         }
-    }
-   
-    public void OnTrigger()
-    {
-        ColorChange(1);
-        Invoke(nameof(ColorChange), 0.3f);
-    }
-
-    private void ColorChange(int color)
-    {
-        if (colorischanged == false)
-        {
-        spriteRenderer.color = Color.red;
-        }
-        if (isProtected == true)
-        {
-            spriteRenderer.color = Color.blue;
-        }
-        colorischanged = true;
-    }
-    private void ColorChange()
-    {
-        spriteRenderer.color = Color.white;
-        colorischanged = false;
     }
     private void BoolChange()
     {

@@ -37,7 +37,8 @@ public class Bullet : MonoBehaviour
     {   
         if(other.gameObject.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            
+            Destroy(gameObject); 
         }
         
     }

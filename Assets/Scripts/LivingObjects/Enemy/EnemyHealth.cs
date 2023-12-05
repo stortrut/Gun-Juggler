@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class EnemyHealth : Health
 {
     EnemyAnimator animatorScript;
+    
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private HealthUI healthImage;
+    private bool colorischanged;
     private bool dummy;
     private void Start()
     {
+        maxHealth = health;
         animatorScript = GetComponent<EnemyAnimator>();
         if (animatorScript != null )
         {
@@ -24,10 +29,12 @@ public class EnemyHealth : Health
         if (other.gameObject.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
-            OnTrigger();
+            ColorChange(1);
+            Invoke(nameof(ColorChange), 0.3f);
             if (hasProtection == false)
             { 
                 ApplyDamage(1);
+                healthImage.UpdateHealth(health, maxHealth);
                 if (dummy)
                 {
                     animatorScript.EnemyTakeDamage();
@@ -49,7 +56,23 @@ public class EnemyHealth : Health
             }
         }
     }
-
+    private void ColorChange(int color)
+    {
+        if (colorischanged == false)
+        {
+            spriteRenderer.color = Color.red;
+        }
+        if (hasProtection == true)
+        {
+            spriteRenderer.color = Color.blue;
+        }
+        colorischanged = true;
+    }
+    private void ColorChange()
+    {
+        spriteRenderer.color = Color.white;
+        colorischanged = false;
+    }
     void Death()
     {
         Vector2 animPos = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + .5f);

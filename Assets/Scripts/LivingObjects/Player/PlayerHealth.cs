@@ -8,7 +8,7 @@ public class PlayerHealth : Health
     {
 
 
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("EnemyBullet"))
         {
             OnTrigger();
 
