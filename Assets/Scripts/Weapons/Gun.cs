@@ -24,6 +24,8 @@ public class Gun : WeaponBase
 
     protected void GetCurrentData()
     {
+        if(upgradeStatus.Length <= 0) { return; }
+
         this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
         this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
         this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
@@ -36,7 +38,7 @@ public class Gun : WeaponBase
         //Sound.Instance.EnemyNotTakingDamage();
 
         Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
-        bulletScript.SetColor(GetComponent<SpriteRenderer>().color);
+        bulletScript.SetColor(spriterenderer.color);
         bulletScript.SetBulletData(bulletSpeedInput, bulletDamageInput);
 
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
@@ -45,20 +47,20 @@ public class Gun : WeaponBase
 
     public void ShootWideSpread(float bulletSpeed, float bulletDamageInput, int halfAmountOfBulletCount)
     {
-        CreateNewBullet(bulletSpeed, bulletDamageInput, GetComponent<SpriteRenderer>().color, Quaternion.identity);
+        CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.identity);
 
         inverseBullets(1, halfAmountOfBulletCount);
         inverseBullets(-1, halfAmountOfBulletCount);
 
         void inverseBullets(int inverseMultiplier, int halfAmountOfBulletCount)      
         {
-            CreateNewBullet(bulletSpeed, bulletDamageInput, GetComponent<SpriteRenderer>().color, Quaternion.Euler(0, 0, bulletSpread * inverseMultiplier));
+            CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.Euler(0, 0, bulletSpread * inverseMultiplier));
 
             for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
             {
                 Debug.Log(i);
                 float rotationAngle = Random.Range(5, 35);
-                CreateNewBullet(bulletSpeed, bulletDamageInput, GetComponent<SpriteRenderer>().color, Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
+                CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
             }
         }
     }

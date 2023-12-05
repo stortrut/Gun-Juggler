@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 622274207747717768, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 622274207747717768, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -0.38
       objectReference: {fileID: 0}
     - target: {fileID: 622274207747717768, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1992858686778113069, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
       propertyPath: m_Name
-      value: gun_holder_confetti_gun Variant
+      value: confetti_gun_holder
       objectReference: {fileID: 0}
     - target: {fileID: 1992858686778113069, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
       propertyPath: m_TagString
@@ -213,25 +213,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  damage: 0
-  bulletSpeed: 0
   fireRate: 0
-  spriterenderer: {fileID: 5968738499100574132}
+  fireRateTimer: 0
+  spriterenderer: {fileID: 0}
   rb2D: {fileID: 1028173589917705603}
   weaponCollider: {fileID: 6031401707200405698}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 752506583897914967}
-  fireRateTimer: 0
+  bulletDamage: 0
+  bulletSpeed: 0
+  currentWeaponLevel: 0
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
   spawnBulletPos: {x: 0, y: 0}
   bulletSpread: 40
   rotationAngle: 0
---- !u!212 &5968738499100574132 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7428532420087018504, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
-  m_PrefabInstance: {fileID: 3873740999613543868}
-  m_PrefabAsset: {fileID: 0}
+  upgradeStatus: []
+  bulletCount: 0
 --- !u!58 &6031401707200405698 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 7381853955586364798, guid: a7c43581a82e5ce43bd2e9058e767c47, type: 3}
