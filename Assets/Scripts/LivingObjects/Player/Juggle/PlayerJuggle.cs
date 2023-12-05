@@ -9,10 +9,10 @@ public class PlayerJuggle : MonoBehaviour
 
     [SerializeField] private Animator bodyAnimator;
 
-    List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
+    public List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
     private bool isJuggling;
-    private WeaponJuggleMovement weaponInHand;
+    public WeaponJuggleMovement weaponInHand;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
 
     private void Start()
@@ -43,14 +43,11 @@ public class PlayerJuggle : MonoBehaviour
         }
     }
 
-
-
     private void StartJuggling()
     {
         isJuggling = true;
         StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
     }
-
 
     //Throws up all weapons except the last one
     IEnumerator ThrowUpAllWeaponsWithSameInterval(float waitTimeBetweenEachThrow)
@@ -62,7 +59,6 @@ public class PlayerJuggle : MonoBehaviour
         }
     }
 
-    
     public void CatchWeapon(WeaponJuggleMovement newWeapon)
     {
         weaponInHand.ThrowUpWeapon();
@@ -81,7 +77,6 @@ public class PlayerJuggle : MonoBehaviour
             StartCoroutine(nameof(PlayerDied));
         }
     }
-
     IEnumerator PlayerDied()
     {
         Debug.Log("Player Died");
@@ -90,5 +85,4 @@ public class PlayerJuggle : MonoBehaviour
         yield return new WaitForSeconds(1.65f);
         SceneManager.LoadScene(0);
     }
-
 }
