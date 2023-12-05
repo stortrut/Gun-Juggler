@@ -175,17 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stungun_holder Variant (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5313302217846188744, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
-      propertyPath: stunZone
-      value: 
-      objectReference: {fileID: 159860214}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1456577613044037321, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 159860214}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
 --- !u!1 &72420435
 GameObject:
@@ -663,24 +656,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!1 &159860211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1456577613044037321, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
-  m_PrefabInstance: {fileID: 65077709}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &159860214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159860211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c8395e651a2b344838a3a188c735b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsInField: []
 --- !u!1001 &164364465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3049,6 +3024,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4659166942110116703, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: numberOfProtection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021906958400765304, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4079103
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021906958400765304, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4079103
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021906958400765304, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680290002533020425, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3374325
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680290002533020425, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680290002533020425, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680290002533020425, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680290002533020425, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

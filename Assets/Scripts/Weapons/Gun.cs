@@ -60,7 +60,6 @@ public class Gun : WeaponBase
 
             for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
             {
-                //Debug.Log(i);
                 float rotationAngle = Random.Range(5, 35);
                 CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
             }
