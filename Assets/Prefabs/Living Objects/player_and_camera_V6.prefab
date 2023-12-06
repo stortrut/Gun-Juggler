@@ -770,6 +770,7 @@ GameObject:
   - component: {fileID: 5678481859050342782}
   - component: {fileID: 8162501361930568342}
   - component: {fileID: 5934105458784319413}
+  - component: {fileID: 972270664894505500}
   m_Layer: 6
   m_Name: autoaim_zone
   m_TagString: Untagged
@@ -855,6 +856,33 @@ MonoBehaviour:
   aimDirection: 0
   bullet: {fileID: 0}
   gunPoint: {fileID: 4678468717913076533}
+--- !u!50 &972270664894505500
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094414767044123345}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6247798075502522073
 GameObject:
   m_ObjectHideFlags: 0
