@@ -19,6 +19,8 @@ public class PlayerJuggle : MonoBehaviour
     {
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
 
+        WeaponQueueElementsVariant weaponQueueElementsScript = FindObjectOfType<WeaponQueueElementsVariant>();
+
         WeaponJuggleMovement[] weaponsOnPlayer = GetComponentsInChildren<WeaponJuggleMovement>();
         foreach (WeaponJuggleMovement weapon in weaponsOnPlayer)
         {
@@ -64,6 +66,7 @@ public class PlayerJuggle : MonoBehaviour
         newWeapon.beingThrown = false;
         newWeapon.weaponBase.EquipWeapon();
         weaponInHand = newWeapon;
+
     }
 
     public void ThrowUpWeaponInHand()
@@ -71,6 +74,7 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
+        //call function
     }
 
 
