@@ -15,6 +15,8 @@ public class WeaponConfettiGun : Gun
     {
         weaponType = WeaponType.ShotGun;
         knockback = GetComponentInParent<Knockback>();
+
+        SetWeaponUpgradeData();
     }
 
 
@@ -56,7 +58,7 @@ public class WeaponConfettiGun : Gun
 
     public override void UpgradeWeapon()
     {
-        if (currentWeaponLevel >= shotGunLevelUpgradeData.Length) { return; }
+        if (currentWeaponLevel >= shotGunLevelUpgradeData.Length - 1) { return; }
 
         base.UpgradeWeapon();
 
@@ -66,14 +68,13 @@ public class WeaponConfettiGun : Gun
     public override void SetWeaponUpgradeData()
     {
         //General
-        ShotGunUpgradeData currentSmallGunUpgradeData = shotGunLevelUpgradeData[currentWeaponLevel];
-
-        currentGunBaseUpgradeData = currentSmallGunUpgradeData.gunUpgradeData;
-        currentWeaponBaseUpgradeData = currentSmallGunUpgradeData.weaponBaseUpgradeData;
+        ShotGunUpgradeData currentShotGunUpgradeData = shotGunLevelUpgradeData[currentWeaponLevel];
+        currentWeaponBaseUpgradeData = shotGunLevelUpgradeData[currentWeaponLevel];
+        currentGunBaseUpgradeData = shotGunLevelUpgradeData[currentWeaponLevel];
 
         //Specifics
-        currentBulletCount = currentSmallGunUpgradeData.bulletCount;
-        currentSpread = currentSmallGunUpgradeData.spread;
+        currentBulletCount = currentShotGunUpgradeData.bulletCount;
+        currentSpread = currentShotGunUpgradeData.spread;
 
         //Base
         base.SetWeaponUpgradeData();
@@ -82,12 +83,8 @@ public class WeaponConfettiGun : Gun
 
 
 [System.Serializable]
-public class ShotGunUpgradeData
+public class ShotGunUpgradeData : GunBaseUpgradeData
 {
-    [Header("Genereic")]
-    [SerializeField] public WeaponBaseUpgradeData weaponBaseUpgradeData;
-    [SerializeField] public GunBaseUpgradeData gunUpgradeData;
-
     [Header("Confetti Gun Specific")]
     [SerializeField] public int bulletCount;
     [SerializeField] public float spread;

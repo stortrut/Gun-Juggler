@@ -127,21 +127,18 @@ MonoBehaviour:
     weaponCooldown: 0
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
   currentGunBaseUpgradeData:
+    weaponCooldown: 0
     bulletDamage: 0
     bulletSpeed: 0
   shotGunLevelUpgradeData:
-  - weaponBaseUpgradeData:
-      weaponCooldown: 1
-    gunUpgradeData:
-      bulletDamage: 1
-      bulletSpeed: 1
+  - weaponCooldown: 1
+    bulletDamage: 1
+    bulletSpeed: 5
     bulletCount: 6
     spread: 90
-  - weaponBaseUpgradeData:
-      weaponCooldown: 0
-    gunUpgradeData:
-      bulletDamage: 1
-      bulletSpeed: 5
+  - weaponCooldown: 0.5
+    bulletDamage: 1
+    bulletSpeed: 10
     bulletCount: 12
     spread: 45
 --- !u!58 &8635591160967388790 stripped

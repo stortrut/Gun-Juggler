@@ -14,6 +14,8 @@ public class WeaponStunGun : WeaponBase
     private void Start()
     {
         weaponType = WeaponType.StunGun;
+
+        SetWeaponUpgradeData();
     }
 
 
@@ -55,7 +57,7 @@ public class WeaponStunGun : WeaponBase
 
     public override void UpgradeWeapon()
     {
-        if (currentWeaponLevel >= stunGunLevelUpgradeData.Length) { return; }
+        if (currentWeaponLevel >= stunGunLevelUpgradeData.Length - 1) { return; }
 
         base.UpgradeWeapon();
 
@@ -65,23 +67,14 @@ public class WeaponStunGun : WeaponBase
     public override void SetWeaponUpgradeData()
     {
         //General
-        StunGunUpgradeData currentSmallGunUpgradeData = stunGunLevelUpgradeData[currentWeaponLevel];
-
-        currentWeaponBaseUpgradeData = currentSmallGunUpgradeData.weaponBaseUpgradeData;
+        StunGunUpgradeData currentStunGunUpgradeData = stunGunLevelUpgradeData[currentWeaponLevel];
+        currentWeaponBaseUpgradeData = stunGunLevelUpgradeData[currentWeaponLevel];
 
         //Specifics
-
 
         //Base
         base.SetWeaponUpgradeData();
     }
-
-
-
-
-
-
-
 
 
     IEnumerator UnFreeze(float timeStunned, IStunnable stunnable)
@@ -89,39 +82,13 @@ public class WeaponStunGun : WeaponBase
         yield return new WaitForSeconds(timeStunned);
         stunnable.isStunnable = false;
     }
-
-    //tryck för att spela: deflecta bullets och stunna enemies
-    //raycast, stun interface, deflect script
-  
-    private void Update()
-    {
-        fireCooldownTimer -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && fireCooldownTimer < 0)
-        {
-            if (this.weaponEquipped)
-            {
-                ReflectStun();
-            }
-        }
-    }
-
-
-
-
-
-
-
-
 }
 
 
 
 [System.Serializable]
-public class StunGunUpgradeData
+public class StunGunUpgradeData : WeaponBaseUpgradeData
 {
-    [Header("Genereic")]
-    [SerializeField] public WeaponBaseUpgradeData weaponBaseUpgradeData;
-
     //[Header("Stun Gun Specific")]
 
 }

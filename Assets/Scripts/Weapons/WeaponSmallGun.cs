@@ -36,7 +36,7 @@ public class WeaponSmallGun : Gun
 
     public override void UpgradeWeapon()
     {
-        if(currentWeaponLevel >= smallGunLevelUpgradeData.Length) { return; }
+        if(currentWeaponLevel >= smallGunLevelUpgradeData.Length - 1) { return; }
 
         base.UpgradeWeapon();
 
@@ -47,12 +47,10 @@ public class WeaponSmallGun : Gun
     {
         //General
         SmallGunUpgradeData currentSmallGunUpgradeData = smallGunLevelUpgradeData[currentWeaponLevel];
-
-        currentGunBaseUpgradeData = currentSmallGunUpgradeData.gunUpgradeData;
-        currentWeaponBaseUpgradeData = currentSmallGunUpgradeData.weaponBaseUpgradeData;
+        currentWeaponBaseUpgradeData = smallGunLevelUpgradeData[currentWeaponLevel];
+        currentGunBaseUpgradeData = smallGunLevelUpgradeData[currentWeaponLevel];
 
         //Specifics
-
 
         //Base
         base.SetWeaponUpgradeData();
@@ -60,13 +58,8 @@ public class WeaponSmallGun : Gun
 }
 
 [System.Serializable]
-public class SmallGunUpgradeData
+public class SmallGunUpgradeData : GunBaseUpgradeData
 {
-    [Header("Genereic")]
-    [SerializeField] public WeaponBaseUpgradeData weaponBaseUpgradeData;
-    [SerializeField] public GunBaseUpgradeData gunUpgradeData;
-
     [Header("Small Gun Specific")]
-    [SerializeField] public string name;
-
+    [SerializeField] public string funny;
 }
