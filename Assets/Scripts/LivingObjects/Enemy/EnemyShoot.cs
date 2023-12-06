@@ -17,8 +17,8 @@ public class EnemyShoot : WeaponBase
     // Update is called once per frame
     void Update()
     {
-        var i = Random.Range(0, 100);
-        if(i==8)
+        var i = Random.Range(0, 25);
+        if(i == 8)
         {
             Shoot();
         }

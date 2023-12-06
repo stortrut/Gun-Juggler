@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c589c40b91745a4b8fd08074bd8d036, type: 3}
+  m_Sprite: {fileID: 993752218, guid: 742bfd86a64b3e94ebb05874c6479cb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9170094342643316090}
   m_Layer: 0
-  m_Name: pie_holder
+  m_Name: popcorn_holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f6b6e43d7fc7a41bdb8f0905cd519a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2D: {fileID: 4969519294027727997}
+  rb2D: {fileID: 0}
   speed: 10
   height: 300
   rotationSpeed: 106.5
@@ -182,9 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
   rb2D: {fileID: 0}
-  bulletSpeed: 10
+  bulletSpeed: 0
   bulletDamage: 0
-  direction: {x: -1, y: 0}
   bulletLifeTime: 5
   collider: {fileID: 2923478834057369672}
 --- !u!50 &4969519294027727997
@@ -243,9 +242,9 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006389257, y: -0.031911436}
-  m_Size: {x: 1.2935947, y: 0.93618286}
+  m_Offset: {x: -0.0017811955, y: 0.00079129665}
+  m_Size: {x: 0.18713461, y: 0.18401782}
   m_Direction: 1

@@ -9,19 +9,29 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed;
     public float bulletDamage;
 
+    public Vector2 direction = Vector2.right;
+
 
     [SerializeField] float bulletLifeTime = 5f;
 
+    public bool bulletDirectionRight
+    {
+        get { return bulletDirectionRight; }
+        set
+        {
+            direction = -direction;
+            return;
+        }
+    }
 
-    private void Start()
+            private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
 
-        rb2D.velocity = transform.right * bulletSpeed;
+        rb2D.velocity = direction * bulletSpeed;
 
         Destroy(gameObject, bulletLifeTime);
     }
-
 
     public void SetBulletData(float inputSpeed, float inputDamage)
     {
