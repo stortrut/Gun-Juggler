@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    public int maxHealth;
+    [HideInInspector]public int maxHealth;
     public int health;
 
-    [SerializeField] private EnemyProtection protection;
+     private EnemyProtection protection;
    
     private bool oneShot = true;
     private bool isProtected;
