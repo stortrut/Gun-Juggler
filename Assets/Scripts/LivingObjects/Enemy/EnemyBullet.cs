@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : Bullet
 {
-    [SerializeField] private new BoxCollider2D collider;
+    [SerializeField] private new CapsuleCollider2D collider;
     bool canDamageEnemies=false;
     public void Deflected()
     {
