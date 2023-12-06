@@ -123,16 +123,27 @@ MonoBehaviour:
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 8778922679068098497}
-  upgradeLevelData:
-  - bulletSpeed: 2
-    bulletDamage: 1
-    fireRate: 1
-  - bulletSpeed: 5
-    bulletDamage: 2
-    fireRate: 1
+  currentWeaponBaseUpgradeData:
+    weaponCooldown: 0
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
-  bulletSpread: 40
-  bulletCount: 0
+  currentGunBaseUpgradeData:
+    bulletDamage: 0
+    bulletSpeed: 0
+  shotGunLevelUpgradeData:
+  - weaponBaseUpgradeData:
+      weaponCooldown: 1
+    gunUpgradeData:
+      bulletDamage: 1
+      bulletSpeed: 1
+    bulletCount: 6
+    spread: 90
+  - weaponBaseUpgradeData:
+      weaponCooldown: 0
+    gunUpgradeData:
+      bulletDamage: 1
+      bulletSpeed: 5
+    bulletCount: 12
+    spread: 45
 --- !u!58 &8635591160967388790 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6825548993933977305, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
