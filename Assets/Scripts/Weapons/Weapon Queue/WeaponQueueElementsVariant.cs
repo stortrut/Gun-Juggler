@@ -1,22 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponQueueElementsVariant : MonoBehaviour
 {
-    [SerializeField] GameObject smallGun;
-    [SerializeField] GameObject shotGun;
-    [SerializeField] GameObject stunGun;
-    [SerializeField] GameObject heart;
-    //SmallGun,
-    //    ShotGun,
-    //    StunGun
+    [SerializeField] GameObject[] weaponsInQueueEnumsOrder;
+    List<GameObject> weaponsInQueueDisplayedOrder = new List<GameObject>();
 
     PlayerJuggle playerJuggleScript;
     private float firstQueueObjectPos;
     private float posGapBetweenQueueObjects = 4;
     public Vector3 firstObjectInQueuePos;
-
 
     void Start()
     {
@@ -26,45 +21,44 @@ public class WeaponQueueElementsVariant : MonoBehaviour
 
     public void InstantiateAppropriateQueueElements()
     {
-        //playerJuggleScript.weaponsCurrentlyInJuggleLoop.weaponBase.WeaponType
-        int loopLength = playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count;
-
-        int posOffsetMultiplier = 0;
-
-        for (int i = 0; i < loopLength; i++)
+        for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
-            //playerJuggleScript.weaponsCurrentlyInJuggleLoop[i].weaponType;
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
             WeaponBase.WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
-            if (weaponEnum == WeaponBase.WeaponType.SmallGun)
-            {
-                firstObjectInQueuePos = new Vector2(posGapBetweenQueueObjects * posOffsetMultiplier, 0);
-                Instantiate(smallGun, firstObjectInQueuePos, Quaternion.identity, transform);
-                posOffsetMultiplier++;
-            }
-            else if (weaponEnum == WeaponBase.WeaponType.ShotGun)
-            {
-                firstObjectInQueuePos = new Vector2(posGapBetweenQueueObjects * posOffsetMultiplier, 0);
-                Instantiate(shotGun, firstObjectInQueuePos, Quaternion.identity, transform);
-                posOffsetMultiplier++;
-            }
-            else if (weaponEnum == WeaponBase.WeaponType.StunGun)
-            {
-                firstObjectInQueuePos = new Vector2(posGapBetweenQueueObjects * posOffsetMultiplier, 0);
-                Instantiate(stunGun, firstObjectInQueuePos, Quaternion.identity, transform);
-                posOffsetMultiplier++;
-            }
+            int enumIndex = (int)weaponEnum;
+
+            Vector3 queueObjectSpawnPos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y);
+            Instantiate(weaponsInQueueEnumsOrder[enumIndex], queueObjectSpawnPos, Quaternion.identity, transform);
+            weaponsInQueueDisplayedOrder.Insert(i, weaponsInQueueEnumsOrder[enumIndex]);
+
+            //Vector3 indexObjectInQueuePos = new Vector3(posGapBetweenQueueObjects * i, 0);
+            ////GameObject newSmallGun = Instantiate(smallGun, rectTransform);
+            //RectTransform gunTransform = newSmallGun.GetComponent<RectTransform>();
+            //gunTransform.anchoredPosition = indexObjectInQueuePos;
+
+            //SetSiblingIndex(int index);
         }
     }
 
     void MoveQueueObjects()
     {
-
+        GameObject movingObject = weaponsInQueueDisplayedOrder[0];
+        weaponsInQueueDisplayedOrder.RemoveAt(0);
+        weaponsInQueueDisplayedOrder.Add(movingObject);
+        for (int i = 0; i < weaponsInQueueDisplayedOrder.Count; i++)
+        {
+            Vector3 position = new Vector3(firstObjectInQueuePos.x * i, 0);
+            weaponsInQueueDisplayedOrder[i].transform.position = position;
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
+        {
+            InstantiateAppropriateQueueElements();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
         {
             InstantiateAppropriateQueueElements();
         }
