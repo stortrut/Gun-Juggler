@@ -29,7 +29,8 @@ public class WeaponQueueElementsVariant : MonoBehaviour
 
             Vector3 queueObjectSpawnPos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y);
             Instantiate(weaponsInQueueEnumsOrder[enumIndex], queueObjectSpawnPos, Quaternion.identity, transform);
-            weaponsInQueueDisplayedOrder.Insert(i, weaponsInQueueEnumsOrder[enumIndex]);
+            Debug.Log(weaponsInQueueDisplayedOrder[enumIndex]);
+            weaponsInQueueDisplayedOrder.Insert(i, weaponsInQueueDisplayedOrder[enumIndex]);
 
             //weaponsInQueueDisplayedOrder.Add(newWeaponImage.GetComponent<RectTransform>());
 
@@ -67,6 +68,11 @@ public class WeaponQueueElementsVariant : MonoBehaviour
         Debug.Log("transform"+queuedObjectTransform);
     }
 
+    public void ShowNextWeaponInQueueArrow()
+    {
+        
+    }
+
     //gameObject.transform.GetChild(0);
 
     //void MoveQueueObjects()     //based off their index and transform sibling position
@@ -91,7 +97,7 @@ public class WeaponQueueElementsVariant : MonoBehaviour
     //        weaponsInQueueDisplayedOrder[i].transform.position = position;
     //    }
     //}
-    
+
 
 
     void Update()

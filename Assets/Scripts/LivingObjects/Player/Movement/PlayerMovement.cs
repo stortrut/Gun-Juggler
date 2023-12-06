@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] private float jumpHeight;
     [SerializeField] private float groundCheckDistanceFromCollider;
 
+    [SerializeField] private FollowPlayer followPlayer;
+
     private float calculatedGroundCheckLenght;
       
     private bool onGround = false;
@@ -119,6 +121,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     private void Jump()
     {
+        //followPlayer.
         if (onGround && Input.GetButtonDown("Jump"))
         {
             float jumpVelocity = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
