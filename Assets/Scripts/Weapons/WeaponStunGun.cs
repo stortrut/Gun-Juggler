@@ -26,8 +26,8 @@ public class WeaponStunGun : Gun
   
     private void Update()
     {
-        fireRateTimer -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && fireRateTimer < 0)
+        fireCooldownTimer -= Time.deltaTime;
+        if (Input.GetMouseButtonDown(0) && fireCooldownTimer < 0)
         {
             if (this.weaponEquipped)
             {

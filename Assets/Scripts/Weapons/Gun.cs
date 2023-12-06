@@ -30,7 +30,7 @@ public class Gun : WeaponBase
 
         this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
         this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
-        this.fireRate = upgradeStatus[currentWeaponLevel].fireRate;
+        this.fireCooldown = upgradeStatus[currentWeaponLevel].fireRate;
     }
 
     public void Shoot(float bulletSpeedInput, float bulletDamageInput)

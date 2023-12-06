@@ -61,13 +61,19 @@ public class PlayerJuggle : MonoBehaviour
 
     public void CatchWeapon(WeaponJuggleMovement newWeapon)
     {
-        weaponInHand.ThrowUpWeapon();
-        weaponInHand.weaponBase.UnEquipWeapon();
-
         newWeapon.beingThrown = false;
         newWeapon.weaponBase.EquipWeapon();
         weaponInHand = newWeapon;
     }
+
+    public void ThrowUpWeaponInHand()
+    {
+        weaponInHand.ThrowUpWeapon();
+        weaponInHand.weaponBase.UnEquipWeapon();
+        weaponInHand = null;
+    }
+
+
 
     public void RemoveWeaponFromLoop(WeaponJuggleMovement weaponToRemoved)
     {

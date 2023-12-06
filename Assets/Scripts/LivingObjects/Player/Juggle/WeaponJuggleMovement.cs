@@ -79,7 +79,13 @@ public class WeaponJuggleMovement : MonoBehaviour
                 playerJuggle.CatchWeapon(thisWeaponJuggleMovement);
             }
         }
-
+        if (curveDeltaTime >= endOfCurveYTimeValue && curveDeltaTime >= endOfCurveXTimeValue / 2)
+        {
+            if(playerJuggle.weaponInHand != null && beingThrown)
+            {
+                playerJuggle.ThrowUpWeaponInHand();
+            }
+        }
 
         //if (beingDropped)
         //{

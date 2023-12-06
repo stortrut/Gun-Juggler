@@ -5,8 +5,8 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     [SerializeField] public bool weaponEquipped;
-    [SerializeField] public float fireRate;
-    [SerializeField] protected float fireRateTimer;
+    [SerializeField] public float fireCooldown;
+    [SerializeField] protected float fireCooldownTimer;
     [SerializeField] protected SpriteRenderer spriterenderer;
     [SerializeField] public Rigidbody2D rb2D;
     [SerializeField] public Collider2D weaponCollider;
