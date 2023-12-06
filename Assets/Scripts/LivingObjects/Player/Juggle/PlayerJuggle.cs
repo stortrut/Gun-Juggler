@@ -14,6 +14,7 @@ public class PlayerJuggle : MonoBehaviour
     private bool isJuggling;
     public WeaponJuggleMovement weaponInHand;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
+    WeaponQueueElementsVariant weaponQueueElementsScript;
 
     private void Start()
     {
@@ -74,7 +75,7 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
-        //call function
+        //weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
     }
 
 
