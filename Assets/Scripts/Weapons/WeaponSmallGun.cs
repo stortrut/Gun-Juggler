@@ -7,25 +7,25 @@ public class WeaponSmallGun : Gun
     private void Start()
     {
         weaponType = WeaponType.SmallGun;
-        fireRateTimer = fireRate;
+        fireCooldownTimer = fireCooldown;
 
         //default values
         bulletSpeed = 20f;
-        fireRate = 0.2f;
+        fireCooldown = 0.2f;
         GetCurrentData();
     }
 
     private void Update()
     {
-        fireRateTimer += Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireRateTimer > fireRate)
+        fireCooldownTimer += Time.deltaTime;
+        if (Input.GetMouseButton(0) && fireCooldownTimer > fireCooldown)
         {
             if (weaponEquipped)
             {
                 Debug.Log("Shoot");
 
                 Shoot(bulletSpeed, bulletDamage);
-                fireRateTimer = 0;
+                fireCooldownTimer = 0;
                 Sound.Instance.SoundRandomized(Sound.Instance.shootingSounds);
             }
         }

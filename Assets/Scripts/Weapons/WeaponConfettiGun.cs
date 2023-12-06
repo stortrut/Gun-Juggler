@@ -11,11 +11,11 @@ public class WeaponConfettiGun : Gun
     {
         weaponType = WeaponType.ShotGun;
         knockback = GetComponentInParent<Knockback>();
-        fireRateTimer = fireRate;
+        fireCooldownTimer = fireCooldown;
 
         //default values
         bulletSpeed = 20f;
-        fireRate = 0.7f;
+        fireCooldown = 0.7f;
         bulletCount = 15;
 
         GetCurrentData();
@@ -27,15 +27,15 @@ public class WeaponConfettiGun : Gun
         {
             UpgradeWeaponLevel();
         }
-        fireRateTimer -= Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireRateTimer < 0)
+        fireCooldownTimer -= Time.deltaTime;
+        if (Input.GetMouseButton(0) && fireCooldownTimer < 0)
         {
             if (this.weaponEquipped)
             {
                 ShootWideSpread(bulletSpeed, bulletDamage, bulletCount);
                 if(knockback != null)
                     knockback.KnockBackMyself(3,1.5f,.2f,transform.position);
-                fireRateTimer = fireRate;
+                fireCooldownTimer = fireCooldown;
                 Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsConfettiGun);
             }
         }
