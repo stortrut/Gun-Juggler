@@ -29,9 +29,9 @@ public class EnemyShoot : WeaponBase
         GameObject weaponBullet = Instantiate(enemyBullet, gunPoint.position, gunPoint.rotation);
         //Sound.Instance.EnemyNotTakingDamage();
         Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
-        bulletRigidbody.velocity = bulletSpeed  * (-weaponBullet.transform.right) ;
+        //bulletRigidbody.velocity = bulletSpeed  * (-weaponBullet.transform.right) ;
         //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
-        Destroy(weaponBullet, 10);
+        Destroy(weaponBullet, 10);  
     }
 
 }
