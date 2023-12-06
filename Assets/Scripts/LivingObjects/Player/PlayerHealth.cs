@@ -15,7 +15,7 @@ public class PlayerHealth : Health
             {
                 
                 ApplyDamage(1);
-                Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
+                //Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
                 Destroy(other.gameObject);
 
             }
@@ -24,17 +24,17 @@ public class PlayerHealth : Health
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
             }
 
-            if (TryGetComponent(out Knockback knockbackComponent))
-            {
-                Debug.Log("enemy knockback");
+            //if (TryGetComponent(out Knockback knockbackComponent))
+            //{
+            //     Debug.Log("enemy knockback");
               
-                 knockback=new Vector3(10, 5, 0.2f);  
-               // if(other.transform.position.x > transform.position.x)
-               // {
-                    knockback.x *= -1;
-               // }
-                knockbackComponent.KnockBackMyself(knockback.x, knockback.y, knockback.z, transform.position);
-            }
+            //     knockback = new Vector3(10, 5, 0.2f);  
+            //   // if(other.transform.position.x > transform.position.x)
+            //   // {
+            //     knockback.x *= -1;
+            //   // }
+            //     knockbackComponent.KnockBackMyself(knockback.x, knockback.y, knockback.z, transform.position);
+            //}
         }
     }
 

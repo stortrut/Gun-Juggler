@@ -6,8 +6,8 @@ public class WeaponBase : MonoBehaviour
 {
     [Header("References")]
     [HideInInspector] public bool weaponEquipped;
-    [HideInInspector] public float fireCooldown;
-    [HideInInspector] protected float fireCooldownTimer;
+    [SerializeField] public float fireCooldown;
+    [SerializeField] protected float fireCooldownTimer;
     [SerializeField] protected SpriteRenderer spriterenderer;
     [SerializeField] public Rigidbody2D rb2D;
     [SerializeField] public Collider2D weaponCollider;
@@ -17,11 +17,9 @@ public class WeaponBase : MonoBehaviour
     public GameObject bullet;
     public Transform gunPoint;
 
-    [HideInInspector] protected int currentWeaponLevel = 0;
+    [SerializeField] protected int currentWeaponLevel = 0;
 
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
-
-
 
     private void Update()
     {
@@ -30,8 +28,6 @@ public class WeaponBase : MonoBehaviour
         {
             if (weaponEquipped)
             {
-                Debug.Log("Shoot");
-
                 UseWeapon();
 
                 fireCooldownTimer = 0;
@@ -41,7 +37,7 @@ public class WeaponBase : MonoBehaviour
 
     public void EquipWeapon()
     {
-        Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
+        //Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
         weaponEquipped = true;
     }
 
@@ -52,7 +48,7 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
-        Debug.Log("You Used Weapon /From weapon base");
+
     }
 
 
@@ -65,10 +61,9 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void SetWeaponUpgradeData()
     {
-
         fireCooldown = currentWeaponBaseUpgradeData.weaponCooldown;
 
-        Debug.Log("Weapon base upgrade data is set");
+        Debug.Log("Weapon base upgrade data is set in " + gameObject.name);
     }
 
 
@@ -87,5 +82,6 @@ public class WeaponBase : MonoBehaviour
 [System.Serializable]
 public class WeaponBaseUpgradeData
 {
+    [Header("Weapon General Data")]
     [SerializeField] public float weaponCooldown;
 }

@@ -2,29 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Gun : WeaponBase
 {
     [Header("Gun Specifics")]
     [SerializeField] protected GameObject bulletSmall;
 
-    [HideInInspector] public GunBaseUpgradeData currentGunBaseUpgradeData;
     [HideInInspector] protected float currentBulletDamage, currentBulletSpeed;
 
-
-
-
-   
+    [HideInInspector] public GunBaseUpgradeData currentGunBaseUpgradeData;
     public override void SetWeaponUpgradeData()
     {
         base.SetWeaponUpgradeData();
 
         currentBulletDamage = currentGunBaseUpgradeData.bulletDamage;
         currentBulletSpeed = currentGunBaseUpgradeData.bulletSpeed;
-        
-
-
 
         //if(upgradeLevelData.Length <= 0) { Debug.Log("No upgrade ERROR"); return; }
 
@@ -66,8 +59,9 @@ public class Gun : WeaponBase
 
 
 [System.Serializable]
-public class GunBaseUpgradeData
+public class GunBaseUpgradeData : WeaponBaseUpgradeData
 {
+    [Header("Gun Specific Data")]
     [SerializeField] public float bulletDamage;
     [SerializeField] public float bulletSpeed;
 }
