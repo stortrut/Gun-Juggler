@@ -12,7 +12,7 @@ public class AutoAim : MonoBehaviour
     [SerializeField] private float aimDirection;
     public GameObject bullet;
     public Transform gunPoint;
-    private Quaternion BulletRotation;
+    private Quaternion bulletRotation;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,7 +34,7 @@ public class AutoAim : MonoBehaviour
     public void Aim()
     {
         closestEnemy = Vector2.one * 100;
-        Debug.Log("Tried to aim");
+        
         foreach(GameObject obj in objectsInField)
         {
             currentEnemy = obj.transform.position-player.transform.position;
@@ -47,32 +47,12 @@ public class AutoAim : MonoBehaviour
             }
             //aimDirection = Vector3.Angle(Target.transform.position, player.transform.position);
             aimDirection = Mathf.Atan2(closestEnemy.y, closestEnemy.x) * Mathf.Rad2Deg;
-            BulletRotation = Quaternion.Euler(0, 0, aimDirection);
+            bulletRotation = Quaternion.Euler(0, 0, aimDirection);
         }
     }
     private void Update()
     {
-        if(Target!= null)
-        {
-            Debug.DrawLine(player.transform.position, Target.transform.position, Color.yellow);
-        }
      Aim();
-       if(Input.GetKeyDown(KeyCode.T))
-        {
-            Shoot();
-            Debug.Log(aimDirection);
-        }
-    }
-    public void Shoot()
-    {
-        
-        GameObject weaponBullet = Instantiate(bullet, gunPoint.position, BulletRotation);
-        //Sound.Instance.EnemyNotTakingDamage();
 
-        Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
-   
-
-        weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * 5;
-        
     }
 }
