@@ -116,31 +116,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  fireRate: 0
-  fireRateTimer: 0
+  fireCooldown: 0
   spriterenderer: {fileID: 1107907684811426958}
   rb2D: {fileID: 8929002792855396274}
   weaponCollider: {fileID: 8635591160967388790}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 8778922679068098497}
-  upgradeStatus:
-  - bulletSpeed: 1
+  upgradeLevelData:
+  - bulletSpeed: 2
     bulletDamage: 1
     fireRate: 1
-  - bulletSpeed: 10
-    bulletDamage: 10
+  - bulletSpeed: 5
+    bulletDamage: 2
     fireRate: 1
-  - bulletSpeed: 50
-    bulletDamage: 100
-    fireRate: 1
-  bulletDamage: 0
-  bulletSpeed: 0
-  currentWeaponLevel: 0
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
-  spawnBulletPos: {x: 0, y: 0}
   bulletSpread: 40
-  rotationAngle: 0
   bulletCount: 0
 --- !u!58 &8635591160967388790 stripped
 CircleCollider2D:
