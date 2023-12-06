@@ -9,12 +9,17 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed;
     public float bulletDamage;
 
-    //better bulletspeed logic system?
+
+    [SerializeField] float bulletLifeTime = 5f;
+
 
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 5);
+
+        rb2D.velocity = transform.right * bulletSpeed;
+
+        Destroy(gameObject, bulletLifeTime);
     }
 
 
