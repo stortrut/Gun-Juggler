@@ -935,133 +935,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa72ca8ce4ff814d8ec5197f2ca815c, type: 3}
---- !u!1 &342770616
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 342770617}
-  m_Layer: 6
-  m_Name: gun_point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &342770617
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342770616}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 2.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 407239420}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &407239419
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 407239420}
-  - component: {fileID: 407239421}
-  - component: {fileID: 407239422}
-  m_Layer: 6
-  m_Name: autoaim_zone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &407239420
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407239419}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 342770617}
-  m_Father: {fileID: 1114297863}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &407239421
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407239419}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.07097244, y: 6.654648}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 31.42342, y: 15.823372}
-  m_EdgeRadius: 0
---- !u!114 &407239422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407239419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5174a70e922f0554d9509d3df54f7157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 342770616}
-  Target: {fileID: 0}
-  aimDirection: 0
-  bullet: {fileID: 2039847980}
-  gunPoint: {fileID: 342770617}
 --- !u!1001 &410038379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1889,30 +1762,6 @@ RectTransform:
   m_AnchoredPosition: {x: 808.93005, y: 500.12}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1114297862 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3610263452003768476, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
-  m_PrefabInstance: {fileID: 1988576586}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1114297863 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1413156519888943586, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
-  m_PrefabInstance: {fileID: 1988576586}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1114297869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114297862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4351a9eb9898a848bb24d645ebefd60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 3
 --- !u!1 &1121633135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,6 +3002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stungun_logic
       objectReference: {fileID: 0}
+    - target: {fileID: 5934105458784319413, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 2039847980}
     - target: {fileID: 6247798075502522073, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_Name
       value: player_and_camera_V6
@@ -3172,19 +3025,13 @@ PrefabInstance:
     - {fileID: 8136317667517447286, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
     - {fileID: 4694623725594413836, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1413156519888943586, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 407239420}
     - targetCorrespondingSourceObject: {fileID: 2856971930392272266, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       insertIndex: 0
       addedObject: {fileID: 770701785}
     - targetCorrespondingSourceObject: {fileID: 2856971930392272266, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       insertIndex: 1
       addedObject: {fileID: 2048135369}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3610263452003768476, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1114297869}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
 --- !u!1001 &2039847979
 PrefabInstance:
@@ -4309,22 +4156,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  fireRate: 0
-  fireRateTimer: 0
+  fireCooldown: 0
   spriterenderer: {fileID: 4457461206216204995}
   rb2D: {fileID: 7011510048215320308}
   weaponCollider: {fileID: 4376085650350408629}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 7311696882872343840}
-  upgradeStatus: []
-  bulletDamage: 0
-  bulletSpeed: 0
-  currentWeaponLevel: 0
+  currentWeaponBaseUpgradeData:
+    weaponCooldown: 0
   bulletSmall: {fileID: 0}
-  spawnBulletPos: {x: 0, y: 0}
-  bulletSpread: 40
-  rotationAngle: 0
+  currentGunBaseUpgradeData:
+    bulletDamage: 0
+    bulletSpeed: 0
+  smallGunLevelUpgradeData: []
 --- !u!212 &2791263935768866050
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10580,23 +10425,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  fireRate: 0
-  fireRateTimer: 0
+  fireCooldown: 0
   spriterenderer: {fileID: 8912720211994465887}
   rb2D: {fileID: 2819712600142705256}
   weaponCollider: {fileID: 8851464568326862633}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 2527679399045228988}
-  upgradeStatus: []
-  bulletDamage: 0
-  bulletSpeed: 0
-  currentWeaponLevel: 0
+  currentWeaponBaseUpgradeData:
+    weaponCooldown: 0
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
-  spawnBulletPos: {x: 0, y: 0}
-  bulletSpread: 40
-  rotationAngle: 0
-  bulletCount: 0
+  currentGunBaseUpgradeData:
+    bulletDamage: 0
+    bulletSpeed: 0
+  shotGunLevelUpgradeData: []
 --- !u!212 &6294619260077654253
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11285,22 +11127,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  fireRate: 0
-  fireRateTimer: 0
+  fireCooldown: 0
   spriterenderer: {fileID: 8213009113812300986}
   rb2D: {fileID: 3272865832970932365}
   weaponCollider: {fileID: 8114527382307083724}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 2980873383528745817}
-  upgradeStatus: []
-  bulletDamage: 0
-  bulletSpeed: 0
-  currentWeaponLevel: 0
+  currentWeaponBaseUpgradeData:
+    weaponCooldown: 0
   bulletSmall: {fileID: 0}
-  spawnBulletPos: {x: 0, y: 0}
-  bulletSpread: 40
-  rotationAngle: 0
+  currentGunBaseUpgradeData:
+    bulletDamage: 0
+    bulletSpeed: 0
+  smallGunLevelUpgradeData: []
 --- !u!4 &7728535203775105845
 Transform:
   m_ObjectHideFlags: 0
@@ -11564,23 +11404,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  fireRate: 0
-  fireRateTimer: 0
+  fireCooldown: 0
   spriterenderer: {fileID: 4854509669422558129}
   rb2D: {fileID: 2292148277330333574}
   weaponCollider: {fileID: 4771635539338758855}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 2016176774774740050}
-  upgradeStatus: []
-  bulletDamage: 0
-  bulletSpeed: 0
-  currentWeaponLevel: 0
+  currentWeaponBaseUpgradeData:
+    weaponCooldown: 0
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
-  spawnBulletPos: {x: 0, y: 0}
-  bulletSpread: 40
-  rotationAngle: 0
-  bulletCount: 0
+  currentGunBaseUpgradeData:
+    bulletDamage: 0
+    bulletSpeed: 0
+  shotGunLevelUpgradeData: []
 --- !u!58 &8114527382307083724
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11987,22 +11824,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  fireRate: 0
-  fireRateTimer: 0
+  fireCooldown: 0
   spriterenderer: {fileID: 7174773519900024712}
   rb2D: {fileID: 4539660192180616127}
   weaponCollider: {fileID: 7131174512062562046}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 4266494662626451563}
-  upgradeStatus: []
-  bulletDamage: 0
-  bulletSpeed: 0
-  currentWeaponLevel: 0
+  currentWeaponBaseUpgradeData:
+    weaponCooldown: 0
   bulletSmall: {fileID: 0}
-  spawnBulletPos: {x: 0, y: 0}
-  bulletSpread: 40
-  rotationAngle: 0
+  currentGunBaseUpgradeData:
+    bulletDamage: 0
+    bulletSpeed: 0
+  smallGunLevelUpgradeData: []
 --- !u!70 &8799512637306626472
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
