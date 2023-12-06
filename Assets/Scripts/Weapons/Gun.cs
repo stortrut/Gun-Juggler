@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Gun : WeaponBase
 {
-    [SerializeField] GunData[] upgradeStatus;
+    [SerializeField] GunData[] upgradeLevelData;
 
-    [SerializeField] protected float bulletDamage, bulletSpeed;
-    [SerializeField] protected int currentWeaponLevel = 0;
+    [HideInInspector] protected float bulletDamage, bulletSpeed;
+    [HideInInspector] protected int currentWeaponLevel = 0;
 
+    [Header("Specific")]
     [SerializeField] protected GameObject bulletSmall;
-    [SerializeField] protected Vector2 spawnBulletPos;
     [SerializeField] protected float bulletSpread = 40;
 
-    public float rotationAngle;
     //public float radius = 10f; //how far from gunpoint the bullets spawn
+
     public void UpgradeWeaponLevel()
     {
-        if(currentWeaponLevel >= upgradeStatus.Length - 1) { return; } 
+        if(currentWeaponLevel >= upgradeLevelData.Length - 1) { return; } 
 
         currentWeaponLevel++;
         GetCurrentData();
@@ -26,11 +26,11 @@ public class Gun : WeaponBase
 
     protected void GetCurrentData()
     {
-        if(upgradeStatus.Length <= 0) { Debug.Log("No upgrade ERROR"); return; }
+        if(upgradeLevelData.Length <= 0) { Debug.Log("No upgrade ERROR"); return; }
 
-        this.bulletSpeed = upgradeStatus[currentWeaponLevel].bulletSpeed;
-        this.bulletDamage = upgradeStatus[currentWeaponLevel].bulletDamage;
-        this.fireCooldown = upgradeStatus[currentWeaponLevel].fireRate;
+        this.bulletSpeed = upgradeLevelData[currentWeaponLevel].bulletSpeed;
+        this.bulletDamage = upgradeLevelData[currentWeaponLevel].bulletDamage;
+        this.fireCooldown = upgradeLevelData[currentWeaponLevel].fireRate;
     }
 
     public void Shoot(float bulletSpeedInput, float bulletDamageInput)
