@@ -38,7 +38,8 @@ public class PlayerJuggle : MonoBehaviour
         //StartJuggling();
 
         weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
-        weaponQueueElementsScript.InstantiateAppropriateQueueElements();
+        //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
+        Debug.Log(weaponQueueElementsScript);
         arrowScript = FindObjectOfType<Arrow>();
         
     }
