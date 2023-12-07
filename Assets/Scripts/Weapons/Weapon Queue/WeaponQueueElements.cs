@@ -32,7 +32,6 @@ public class WeaponQueueElements : MonoBehaviour
 
     public void InstantiateAppropriateQueueElements()
     {
-        Debug.Log(playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count);
         for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
