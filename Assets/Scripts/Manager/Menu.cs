@@ -46,10 +46,16 @@ public class Menu : MonoBehaviour, IStunnable
     {
         if (Input.GetMouseButton(0))
         {
-            if (optionsPanelActive)
+            if (optionsPanelActive && SceneManager.GetActiveScene().buildIndex == 0)
             {
                 optionsPanel.SetActive(false);
                 startMenu.SetActive(true);
+                optionsPanelActive = false;
+            }
+            else if (optionsPanelActive && SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                optionsPanel.SetActive(false);
+                escMenu.SetActive(true);
                 optionsPanelActive = false;
             }
         }
@@ -74,6 +80,7 @@ public class Menu : MonoBehaviour, IStunnable
         optionsPanel.SetActive(true);
         optionsPanelActive = true;
         startMenu.SetActive(false);
+        escMenu.SetActive(false);
     }
     public void BackToMenuButton()
     {

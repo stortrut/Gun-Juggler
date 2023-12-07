@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     private float calculatedGroundCheckLenght;
       
-    private bool onGround = false;
-    public bool isJumping = false;
+    public bool onGround = false;
+    private bool isJumping = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
    // public float timeStunned { get { return timeStun; } set { timeStun = value; } }
@@ -59,7 +59,6 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
         if (onGround)
         {
-            //followPlayer.AllowCameraFollowInYAxis();
             isJumping = false;
         }
     }
@@ -94,13 +93,11 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         { 
             isFacingRight = true;
             bodyAnimator.SetBool("Reverse", false);
-            //spriteRenderer.flipX = false;
         }
         if (horizontalInput < 0) 
         { 
             isFacingRight = false;
             bodyAnimator.SetBool("Reverse", true);
-            //spriteRenderer.flipX = true;
         }
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
@@ -110,18 +107,18 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
 
-            if (!bodyAnimator.GetBool("Dead"))
-            {
-                bodyAnimator.speed = 0;
-            }
+            //if (!bodyAnimator.GetBool("Dead"))
+            //{
+            //    bodyAnimator.speed = 0;
+            //}
         }
-        else
-        {
-            if (!bodyAnimator.GetBool("Dead"))
-            {
-                bodyAnimator.speed = 1;
-            }
-        }
+        //else
+        //{
+        //    if (!bodyAnimator.GetBool("Dead"))
+        //    {
+        //        bodyAnimator.speed = 1;
+        //    }
+        //}
 
         rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);
     }
