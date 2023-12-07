@@ -28,6 +28,8 @@ public class EnemyHealth : Health
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
+            Debug.Log("Dummy hit by bullet");
+
             Destroy(other.gameObject);
             ColorChange(1);
             Invoke(nameof(ColorChange), 0.3f);
