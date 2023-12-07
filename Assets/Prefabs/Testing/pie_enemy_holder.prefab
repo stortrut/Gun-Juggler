@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975404171213016995, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_Name
-      value: pie_enemy
+      value: pie_enemy_holder
       objectReference: {fileID: 0}
     - target: {fileID: 1975404171213016995, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_TagString
@@ -122,6 +122,14 @@ PrefabInstance:
     - target: {fileID: 4926106795506005085, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: numberOfProtection
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122157640687008279, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122157640687008279, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6298213541683700346, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_Color.b
@@ -203,12 +211,10 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
-  autoAim: {fileID: 0}
   bulletDamage: 0
   bulletSpeed: 10
   enemyBullet: {fileID: 5211496738980703960, guid: 1069d6280b497cb49b46a75bb11205f8, type: 3}
   spawnBulletPos: {x: 0, y: 0}
-  player: {fileID: 0}
 --- !u!4 &1219167413676131934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1449870923268577628, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
