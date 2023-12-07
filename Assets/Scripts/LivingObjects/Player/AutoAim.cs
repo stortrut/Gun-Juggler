@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class AutoAim : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    private List<GameObject> objectsInField=new List<GameObject>();
+    private GameObject player;
+
     private Vector2 closestEnemy=Vector2.one*100;
     private Vector2 currentEnemy;
-    [HideInInspector]public GameObject Target;
-    [SerializeField] public float aimDirection;
-    public GameObject bullet;
-    public Transform gunPoint;
-    public Quaternion bulletRotation;
+
+    private GameObject target;
+    private float aimDirection;
+
+    [HideInInspector] public Quaternion bulletRotation;
+
+    private List<GameObject> objectsInField = new List<GameObject>();
+
+
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerJuggle>().gameObject;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
             objectsInField.Add(other.gameObject);
-            
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
             objectsInField.Remove(other.gameObject);
         }
- 
     }
 
     public void Aim()
@@ -37,14 +45,15 @@ public class AutoAim : MonoBehaviour
         
         foreach(GameObject obj in objectsInField)
         {
-            currentEnemy = obj.transform.position-player.transform.position;
+            currentEnemy = obj.transform.position - player.transform.position;
             //currentEnemy = new Vector2(Mathf.Abs(currentEnemy.x),Mathf.Abs(currentEnemy.y));
 
             if (currentEnemy.sqrMagnitude<closestEnemy.sqrMagnitude)
             {
-                 Target = obj;
+                 target = obj;
                  closestEnemy = currentEnemy;
             }
+
             //aimDirection = Vector3.Angle(Target.transform.position, player.transform.position);
             aimDirection = Mathf.Atan2(closestEnemy.y, closestEnemy.x) * Mathf.Rad2Deg;
             bulletRotation = Quaternion.Euler(0, 0, aimDirection);
@@ -52,7 +61,6 @@ public class AutoAim : MonoBehaviour
     }
     private void Update()
     {
-     Aim();
-
+        Aim();
     }
 }

@@ -6,13 +6,22 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Rigidbody2D rb2D;
-    public float bulletSpeed;
-    public float bulletDamage;
+
+    [HideInInspector] public float bulletSpeed;
+    [HideInInspector] public float bulletDamage;
 
     public Vector2 direction = Vector2.right;
 
-
     [SerializeField] float bulletLifeTime = 5f;
+
+
+    private void Start()
+    {
+        rb2D.velocity = transform.right * bulletSpeed;
+
+        Destroy(gameObject, bulletLifeTime);
+    }
+
 
     public bool bulletDirectionRight
     {
@@ -24,14 +33,6 @@ public class Bullet : MonoBehaviour
         }
     }
 
-            private void Start()
-    {
-        rb2D = GetComponent<Rigidbody2D>();
-
-        rb2D.velocity = transform.right * bulletSpeed;
-
-        Destroy(gameObject, bulletLifeTime);
-    }
 
     public void SetBulletData(float inputSpeed, float inputDamage)
     {
