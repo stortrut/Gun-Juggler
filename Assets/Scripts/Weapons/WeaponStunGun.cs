@@ -26,6 +26,7 @@ public class WeaponStunGun : WeaponBase
        
 
         base.UseWeapon();
+        stunZone.SoundWave();
     }
 
     private void ReflectStun()
