@@ -10,15 +10,16 @@ public class ArmAnimationHandler : MonoBehaviour
 
     public IEnumerator PlayThrowUpWeaponAnimation()
     {
+        Debug.Log("Play Arm Throw Up");
+
         gunHolderArm.SetBool("ThrowUp", true);
         yield return new WaitForEndOfFrame();
         gunHolderArm.SetBool("ThrowUp", false);
     }
     public IEnumerator PlayCatchWeaponAnimation()
     {
-        //yield return new WaitForSeconds(0.5f);
         gunCatcherArm.SetBool("Catch", true);
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.1f);
         gunCatcherArm.SetBool("Catch", false);
     }
 

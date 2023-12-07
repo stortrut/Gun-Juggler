@@ -36,7 +36,7 @@ public class WeaponStunGun : WeaponBase
 
             if (obj.CompareTag("EnemyBullet"))
             {
-                var enemyBullet = obj.GetComponent<EnemyBullet>();
+                var enemyBullet = obj.GetComponent<IAim>();
                 enemyBullet.Deflected();
 
                 Debug.Log("Stunned bullet");

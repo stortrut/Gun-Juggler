@@ -126,7 +126,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6188777326716023507}
   - component: {fileID: 5288719497384761457}
-  - component: {fileID: 648766868475414523}
   - component: {fileID: 4969519294027727997}
   - component: {fileID: 2923478834057369672}
   m_Layer: 0
@@ -165,28 +164,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 4969519294027727997}
+  collider: {fileID: 2923478834057369672}
+  aim: {x: 0, y: 0, z: 0}
+  direction: {x: 1, y: 0}
   speed: 10
   heightMultiplier: 1
   rotationSpeed: 106.5
---- !u!114 &648766868475414523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8447225682501245073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 353a02dd7ccd564448dc04a05f760734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  rb2D: {fileID: 0}
-  bulletSpeed: 10
-  bulletDamage: 0
-  direction: {x: -1, y: 0}
-  bulletLifeTime: 5
-  collider: {fileID: 2923478834057369672}
 --- !u!50 &4969519294027727997
 Rigidbody2D:
   serializedVersion: 4

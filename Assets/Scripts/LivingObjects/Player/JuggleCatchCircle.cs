@@ -9,7 +9,7 @@ public class JuggleCatchCircle : MonoBehaviour
     float currentCatchAttemptCooldownTimer;
     bool catchOnCoolDown;
 
-    [SerializeField] float catchTimeWindow = 0.85f;
+    [SerializeField] float catchTimeWindow = 0.7f;
 
 
     [Header("Catch Circle Colors")]
@@ -46,7 +46,6 @@ public class JuggleCatchCircle : MonoBehaviour
                 Sound.Instance.SoundRandomized(Sound.Instance.catchingWeaponSounds);
                 spriteRenderer.color = caughtWeaponColor;
                 caughtWeapon = true;
-                playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayCatchWeaponAnimation));
             }
 
             catchOnCoolDown = true;
@@ -88,6 +87,8 @@ public class JuggleCatchCircle : MonoBehaviour
 
         yield return new WaitForSeconds(catchTimeWindow);
 
+
+        playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayCatchWeaponAnimation));
         if (caughtWeapon)
         {
             currentCatchableGun.gameObject.GetComponent<WeaponBase>().UpgradeWeapon();
@@ -101,6 +102,9 @@ public class JuggleCatchCircle : MonoBehaviour
             //Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
             //currentCatchableGun.DropWeapon();
         }
+
+
+
         spriteRenderer.color = waitForWeaponColor;
         caughtWeapon = false;
         canCatchWeapon = false;
