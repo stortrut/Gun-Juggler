@@ -27,7 +27,7 @@ public class WeaponBase : MonoBehaviour
 
     private void Start()
     {
-        //autoAim = GetComponentInParent<PlayerMovement>().gameObject.GetComponentInChildren<AutoAim>();
+        autoAim = PlayerHealth.s_player.GetComponent<AutoAim>();
         if(autoAim == null) { Debug.Log("ERRROROROROOROR"); }
     }
 

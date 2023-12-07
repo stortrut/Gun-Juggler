@@ -16,8 +16,10 @@ public class EnemyShoot : WeaponBase
 
     {
         player = PlayerHealth.s_player;
-       
-        AdjustAim();
+
+        var dog = player.GetComponent<AutoAim>();
+        Debug.Log(dog.objectsInField + "ALVIN WAS WRONG");
+            AdjustAim();
     }
 
     // Update is called once per frame
