@@ -84,7 +84,10 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
-        weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
+        if (weaponQueueElementsScript != null)
+        {
+            weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
+        }
     }
 
 

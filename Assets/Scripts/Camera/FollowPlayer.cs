@@ -1,61 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerToFollow;
-    Vector3 offset = new Vector3(1, 2, -34);
-
+    Vector3 offset = new Vector3(5, 3, -34);
+    Vector3 targetPos = Vector3.zero;
     public bool yAxisLocked = false;
     float followPosSave;
+    [SerializeField] private float smoothnessFactor = 4;
 
     private void Awake()
     {
         playerToFollow = FindObjectOfType<PlayerMovement>();
+        smoothnessFactor = 9;
+        
     }
 
-    private void FixedUpdate()
+    private void Start()
     {
-        if (playerToFollow.isJumping)
+    }
+
+    private void Update()
+    {
+        if (!playerToFollow.onGround)
         {
             yAxisLocked = true;
-            Debug.Log(yAxisLocked);
-
         }
-        else if (!playerToFollow.isJumping)
+        else if (playerToFollow.onGround)
         {
             yAxisLocked = false;
-            Debug.Log(yAxisLocked);
         }
-        if (playerToFollow == null) { return; }
+    }
+    private void FixedUpdate()
+    {
 
-        Vector3 followPos = Vector3.zero; 
-
-        followPos.x = playerToFollow.transform.position.x + offset.x;
+        targetPos.x = playerToFollow.transform.position.x + offset.x;
         if (!yAxisLocked)
         {
-            followPos.y = playerToFollow.transform.position.y + offset.y;
-            followPosSave = followPos.y;
+            targetPos.y = playerToFollow.transform.position.y + offset.y;
+            followPosSave = transform.position.y;
         }
         else if (yAxisLocked)
         {
-            followPos.y = followPosSave;
+            targetPos.y = followPosSave;
         }
         //followPos.y = playerToFollow.transform.position.y + offset.y;
-        followPos.z = offset.z;
-
-        transform.position = followPos;
-    }
-
-    public void StopCameraFollowInYAxis()
-    {
-        yAxisLocked = true;
-        Debug.Log(yAxisLocked);
-    }
-    public void AllowCameraFollowInYAxis()
-    {
-        yAxisLocked = false;
-        Debug.Log(yAxisLocked);
+        targetPos.z = offset.z;
+        Vector3 posY = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
+        Vector3 posX = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
+        transform.position = new Vector3(posX.x, posY.y, -34);
+        //transform.position = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
+        //transform.position = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
     }
 }

@@ -5,19 +5,22 @@ public class WeaponQueueElements : MonoBehaviour
 {
     [SerializeField] GameObject[] weaponsInQueueEnumsOrder;
     [SerializeField] GameObject arrow;
+    [SerializeField] GameObject circle;
     List<GameObject> weaponsInQueueDisplayedOrder = new List<GameObject>();
 
     PlayerJuggle playerJuggleScript;
     private float firstQueueObjectPos;
     private float posGapBetweenQueueObjects = 2.5f;
-    [SerializeField] Vector3 firstObjectInQueuePos = new Vector3(-6, -5, 0);
+    [SerializeField] Vector3 firstObjectInQueuePos = new Vector3(-6, -5, 34);
+    private Vector3 zOffset = new Vector3(0, 0, 34);
 
     protected int i = 0;
     void Start()
     {
+        transform.localPosition += zOffset;
         playerJuggleScript = FindObjectOfType<PlayerJuggle>();
         //InstantiateAppropriateQueueElements();
-        Transform childTransform = GetComponent<Transform>().GetChild(0);
+        circle.transform.position += zOffset;
     }
 
     public void InstantiateAppropriateQueueElements()
@@ -32,13 +35,14 @@ public class WeaponQueueElements : MonoBehaviour
             Vector3 queueObjectSpawnPos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y);
             GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], queueObjectSpawnPos, Quaternion.identity, transform);  //instantiate the right prefab based of the enums index and weapons in queue enums order list
             //Debug.Log("weapons in order "+weaponsInQueueDisplayedOrder[enumIndex]+ queueObjectSpawnPos);
+            instantiatedPrefab.GetComponent<Transform>().position += zOffset;
             weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);                    //add the prefab
             Debug.Log(weaponsInQueueDisplayedOrder[enumIndex]);
         }
         ///
         //ShowNextWeaponInQueueMoving();
         arrow.GetComponent<Transform>().position = weaponsInQueueDisplayedOrder[i].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
-        Vector3 pos = new Vector3(0, 1, 0);
+        Vector3 pos = new Vector3(0, 1, 34);
         arrow.GetComponent<Transform>().position += pos;
         ///
     }
@@ -47,7 +51,7 @@ public class WeaponQueueElements : MonoBehaviour
     {
         Debug.Log(i);
         arrow.GetComponent<Transform>().position = weaponsInQueueDisplayedOrder[i].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
-        Vector3 pos = new Vector3(0, 1, 0);
+        Vector3 pos = new Vector3(0, 1, 34);
         arrow.GetComponent<Transform>().position += pos;
         i++;
         if (i >= playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
