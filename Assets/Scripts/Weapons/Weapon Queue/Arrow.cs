@@ -11,6 +11,7 @@ public class Arrow : MonoBehaviour
     void Start()
     {
         playerJuggleScript = FindObjectOfType<PlayerJuggle>();
+        i = 0;
     }
 
     // Update is called once per frame
@@ -21,9 +22,12 @@ public class Arrow : MonoBehaviour
 
     public void Positioning()
     {
-        transform.position = new Vector3(startPos.x, posGapBetweenQueueObjects * i, 0);
+        Debug.Log(i);
+        transform.position = new Vector3(startPos.x+ posGapBetweenQueueObjects * i, 0, 0);
+        i++;
         if (i >= playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
         {
+            Debug.Log("nollställ");
             i = 0;
         }
     }
