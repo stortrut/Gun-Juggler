@@ -40,6 +40,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 348026071806510104, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 348026071806510104, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: enemyAnimator
       value: 
       objectReference: {fileID: 3177311115041858021}
@@ -65,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1975404171213016995, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_Name
-      value: dummy_holder Shooting
+      value: pie_enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1975404171213016995, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_TagString
@@ -199,6 +203,7 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  autoAim: {fileID: 0}
   bulletDamage: 0
   bulletSpeed: 10
   enemyBullet: {fileID: 5211496738980703960, guid: 1069d6280b497cb49b46a75bb11205f8, type: 3}

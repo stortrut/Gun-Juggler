@@ -599,6 +599,11 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!1 &124887775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3610263452003768476, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+  m_PrefabInstance: {fileID: 997012801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &164364465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1241,6 +1246,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1574896342726619033, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 124887775}
     - target: {fileID: 6247798075502522073, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_Name
       value: player_and_camera_V6
@@ -3528,7 +3537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 7031613153506655336}
   mainPlayerCollider: {fileID: 6599462864702108231}
-  bodyAnimator: {fileID: 0}
+  legs: {fileID: 0}
   acceleration: 10
   speed: 7
   deacceleration: 10
@@ -3540,6 +3549,7 @@ MonoBehaviour:
   groundCheckDistanceFromCollider: 0.1
   followPlayer: {fileID: 0}
   onGround: 0
+  isJumping: 0
 --- !u!4 &1603081307387375770
 Transform:
   m_ObjectHideFlags: 0
@@ -3990,6 +4000,7 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  autoAim: {fileID: 0}
   bulletSmall: {fileID: 0}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
@@ -10262,6 +10273,7 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  autoAim: {fileID: 0}
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
@@ -10967,6 +10979,7 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  autoAim: {fileID: 0}
   bulletSmall: {fileID: 0}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
@@ -11247,6 +11260,7 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  autoAim: {fileID: 0}
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
@@ -11672,6 +11686,7 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  autoAim: {fileID: 0}
   bulletSmall: {fileID: 0}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
