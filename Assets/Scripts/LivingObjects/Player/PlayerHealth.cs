@@ -11,7 +11,6 @@ public class PlayerHealth : Health
     private void Awake()
     {
         s_player = player;
-        Debug.Log(s_player.name);
         //Singleton.Instance = new Singleton(player);
     }
     private void OnTriggerEnter2D(Collider2D other)

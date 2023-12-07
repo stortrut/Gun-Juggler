@@ -24,6 +24,14 @@ public class Manager : MonoBehaviour
             Invoke(nameof(ProceedToNextLevel), 5);
         }
     }
+
+
+    private void Start()
+    {
+        if(player == null) { Debug.Log("No player dragged into ManagerManager's Manager"); }
+    }
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))

@@ -13,6 +13,7 @@ public class Sound : MonoBehaviour
     private float soundVolume;
     [SerializeField] private AudioClip[] backgroundMusic;
     [SerializeField] public AudioClip[] shootingSoundsConfettiGun;
+    [SerializeField] public AudioClip[] shootingSoundsStunGun;
     [SerializeField] public AudioClip[] shootingSounds;
     [SerializeField] public AudioClip[] enemyTakingDamageSounds;
     [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
@@ -22,6 +23,7 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] equipWeaponSounds;
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
     [SerializeField] public AudioClip[] balloonPop;
+   
 
 
     [SerializeField] Slider volumeSlider;

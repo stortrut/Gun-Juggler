@@ -4633,6 +4633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b575ced59c95214da1429e39d3172f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   nextScene: 0
 --- !u!114 &6711992728078676271
 MonoBehaviour:
@@ -4684,20 +4685,36 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 88f1a9be77dfb324aa4b862517ce9854, type: 3}
     - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
       propertyPath: catchingWeaponSounds.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
       propertyPath: equipWeaponSounds.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: a4c9f51442f4c17409f96ad081ab26d5, type: 3}
     - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
+      propertyPath: shootingSoundsStunGun.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
       propertyPath: catchingWeaponSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: ba57a8de1ca3b754a965f0be3694abe7, type: 3}
+      objectReference: {fileID: 8300000, guid: 22fafc962d7405a46a02caff08c28298, type: 3}
+    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
+      propertyPath: catchingWeaponSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: dd400ae11be4f504dad72adb8ac28043, type: 3}
+    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
+      propertyPath: catchingWeaponSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: dd400ae11be4f504dad72adb8ac28043, type: 3}
     - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
       propertyPath: notCatchingWeaponSounds.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
+      propertyPath: shootingSoundsStunGun.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e36ee774474e2b469bc948155d3bdd5, type: 3}
     - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
       propertyPath: notCatchingWeaponSounds.Array.data[0]
       value: 
