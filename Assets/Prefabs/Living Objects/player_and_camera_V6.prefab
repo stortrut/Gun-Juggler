@@ -406,7 +406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6002962233993121076}
+  - {fileID: 6719098793624090520}
   - {fileID: 7098351346902858318}
   - {fileID: 2352435170979363736}
   m_Father: {fileID: 1413156519888943586}
@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9139287864276233434
 Transform:
   m_ObjectHideFlags: 0
@@ -732,37 +732,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   health: 3
---- !u!1 &3726778954642591333
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4678468717913076533}
-  m_Layer: 6
-  m_Name: gun_point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4678468717913076533
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3726778954642591333}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 2.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5678481859050342782}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3796236512374236796
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,8 +885,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4678468717913076533}
+  m_Children: []
   m_Father: {fileID: 1413156519888943586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8162501361930568342
@@ -977,12 +945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5174a70e922f0554d9509d3df54f7157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3726778954642591333}
-  Target: {fileID: 0}
-  aimDirection: 0
-  bullet: {fileID: 0}
-  gunPoint: {fileID: 4678468717913076533}
   bulletRotation: {x: 0, y: 0, z: 0, w: 0}
+  objectsInField: []
 --- !u!50 &972270664894505500
 Rigidbody2D:
   serializedVersion: 4
@@ -6230,7 +6194,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2347129057286333577, guid: d239a5d5b2bf78c4baa89689d9932c47, type: 3}
   m_PrefabInstance: {fileID: 4760521967705251527}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4990569179361600063
+--- !u!1001 &5418910768388806803
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -6238,13 +6202,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2856971930392272266}
     m_Modifications:
-    - target: {fileID: 133017985112661643, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: autoAim
-      value: 
-      objectReference: {fileID: 5934105458784319413}
     - target: {fileID: 316579486113032499, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
       propertyPath: m_Name
-      value: candygun_holder Variant (1)
+      value: candygun_holder Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6286,21 +6246,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8436513037505136405, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436513037505136405, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.53
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
---- !u!4 &6002962233993121076 stripped
+--- !u!4 &6719098793624090520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-  m_PrefabInstance: {fileID: 4990569179361600063}
+  m_PrefabInstance: {fileID: 5418910768388806803}
   m_PrefabAsset: {fileID: 0}

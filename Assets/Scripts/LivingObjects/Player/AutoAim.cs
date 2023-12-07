@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class AutoAim : MonoBehaviour
 {
-    private GameObject player;
+    private PlayerJuggle gunPoint;
 
     private Vector2 closestEnemy=Vector2.one*100;
     private Vector2 currentEnemy;
 
-    private GameObject target;
+    private Transform target;
     private float aimDirection;
 
     [HideInInspector] public Quaternion bulletRotation;
 
-    public List<GameObject> objectsInField = new List<GameObject>();
+    public List<Transform> objectsInField = new();
 
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerJuggle>().gameObject;
+        gunPoint = FindObjectOfType<PlayerJuggle>();
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if(other.gameObject.TryGetComponent(out TargetableByPlayerAutoAim newTarget))
         {
-            objectsInField.Add(other.gameObject);
+            objectsInField.Add(newTarget.GetAimPos());
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if(other.gameObject.TryGetComponent(out TargetableByPlayerAutoAim newTarget))
         {
-            objectsInField.Remove(other.gameObject);
+            objectsInField.Remove(newTarget.GetAimPos());
         }
     }
 
@@ -43,9 +43,9 @@ public class AutoAim : MonoBehaviour
     {
         closestEnemy = Vector2.one * 100;
         
-        foreach(GameObject obj in objectsInField)
+        foreach(Transform obj in objectsInField)
         {
-            currentEnemy = obj.transform.position - player.transform.position;
+            currentEnemy = obj.position - gunPoint.weaponInHand.weaponBase.gunPoint.transform.position;
             //currentEnemy = new Vector2(Mathf.Abs(currentEnemy.x),Mathf.Abs(currentEnemy.y));
 
             if (currentEnemy.sqrMagnitude<closestEnemy.sqrMagnitude)

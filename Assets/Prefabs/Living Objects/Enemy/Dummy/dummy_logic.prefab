@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2835235601664356549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4602021066986779721}
+  m_Layer: 7
+  m_Name: AimPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4602021066986779721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2835235601664356549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.376, y: 0.007, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7842701091085522690}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8989953743101133587
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +45,7 @@ GameObject:
   - component: {fileID: 2347798522258355239}
   - component: {fileID: 1856763542069463421}
   - component: {fileID: 8943103383526820422}
+  - component: {fileID: 142018786235468963}
   m_Layer: 7
   m_Name: dummy_logic
   m_TagString: Enemy
@@ -34,6 +66,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 4602021066986779721}
   - {fileID: 280963698006664383}
   - {fileID: 2489590923207038067}
   m_Father: {fileID: 0}
@@ -138,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6d3ef22fccbaf448413483bc093c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
   health: 4
-  protection: {fileID: 4365442678409280003}
   spriteRenderer: {fileID: 7948756031538113735}
   healthImage: {fileID: 6722963061640639848}
 --- !u!114 &8943103383526820422
@@ -156,6 +189,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 5041925452692554111}
   dummySpriterenderer: {fileID: 7948756031538113735}
+--- !u!114 &142018786235468963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989953743101133587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be38c57fce5f8e43a3c7d67be006453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionalDifferentAimPos: {fileID: 4602021066986779721}
 --- !u!1001 &2261205046269613778
 PrefabInstance:
   m_ObjectHideFlags: 0
