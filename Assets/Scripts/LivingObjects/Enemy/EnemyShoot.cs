@@ -9,11 +9,14 @@ public class EnemyShoot : WeaponBase
     [SerializeField] protected float bulletDamage, bulletSpeed;
     [SerializeField] protected GameObject enemyBullet;
     [SerializeField] protected Vector2 spawnBulletPos;
-    [SerializeField] protected Transform player;
+     protected GameObject player;
     [HideInInspector] private Vector3 aim;
     // Start is called before the first frame update
     void Start()
+
     {
+        player = PlayerHealth.s_player;
+       
         AdjustAim();
     }
 
@@ -22,7 +25,7 @@ public class EnemyShoot : WeaponBase
     {
         if(player == null) { return; }
 
-        if(gunPoint.position.x - player.position.x<18)
+        if(gunPoint.position.x - player.transform.position.x<18)
         {
             var i = Random.Range(0, 200);
             if(i % 99 == 0)
@@ -50,7 +53,7 @@ public class EnemyShoot : WeaponBase
     {
         if(player == null) { return; }
 
-        aim = gunPoint.position - player.position;
+        aim = gunPoint.position - player.transform.position;
         aim.z = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
         Debug.Log("I am aiming" + aim);
     }

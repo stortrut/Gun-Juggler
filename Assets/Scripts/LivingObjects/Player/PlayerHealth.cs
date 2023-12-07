@@ -5,6 +5,14 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
     Vector3 knockback;
+    public GameObject player;
+    public static GameObject s_player;
+
+    private void Start()
+    {
+        s_player = player;
+        //Singleton.Instance = new Singleton(player);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
 
