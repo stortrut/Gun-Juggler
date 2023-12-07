@@ -11,14 +11,19 @@ public class PlayerJuggle : MonoBehaviour
 
     public List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
+
+    WeaponQueueElements weaponQueueElementsScript;
+    Arrow arrowScript;
+
+
+
+
     private bool isJuggling;
     [HideInInspector] public WeaponJuggleMovement weaponInHand;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
-    
-    WeaponQueueElements weaponQueueElementsScript;
-    Arrow arrowScript;
-    
-    
+
+
+
     private void Start()
     {
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
@@ -37,13 +42,13 @@ public class PlayerJuggle : MonoBehaviour
 
         StartJuggling();
 
-        if(weaponQueueElementsScript == null) { return; }
+        if (weaponQueueElementsScript == null) { return; }
 
         weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
         //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
         Debug.Log(weaponQueueElementsScript);
         arrowScript = FindObjectOfType<Arrow>();
-        
+
     }
 
     private void Update()
@@ -84,7 +89,7 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
 
-        if(arrowScript == null) { return; }
+        if (arrowScript == null) { return; }
         arrowScript.Positioning();
     }
 
@@ -93,7 +98,7 @@ public class PlayerJuggle : MonoBehaviour
     public void RemoveWeaponFromLoop(WeaponJuggleMovement weaponToRemoved)
     {
         weaponsCurrentlyInJuggleLoop.Remove(weaponToRemoved);
-        if(weaponsCurrentlyInJuggleLoop.Count < 2)
+        if (weaponsCurrentlyInJuggleLoop.Count < 2)
         {
         }
     }
