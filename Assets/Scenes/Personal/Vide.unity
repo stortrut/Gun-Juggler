@@ -1846,6 +1846,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1520014722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1181490204 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1413156519888943586, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+  m_PrefabInstance: {fileID: 1988576586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1200768726
 GameObject:
   m_ObjectHideFlags: 0
@@ -3415,6 +3420,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3665749614246689922, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1181490204}
+    - target: {fileID: 3665749614246689922, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -3732,6 +3741,7 @@ MonoBehaviour:
   timeStun: 0
   jumpHeight: 1
   groundCheckDistanceFromCollider: 0.1
+  followPlayer: {fileID: 0}
 --- !u!4 &1603081307387375770
 Transform:
   m_ObjectHideFlags: 0
@@ -11545,6 +11555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 8616835178568776967}
+  YAxisLocked: 0
 --- !u!114 &8443524297157069773
 MonoBehaviour:
   m_ObjectHideFlags: 0
