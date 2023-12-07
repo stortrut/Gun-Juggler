@@ -15,5 +15,7 @@ public interface IAim
 
        // Aim=inputAim;
     }
+    public void Deflected()
+    { }
 
 }
