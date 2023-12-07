@@ -889,11 +889,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!4 &140788550 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2856971930392272266, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
-  m_PrefabInstance: {fileID: 616041445}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &164364465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1233,12 +1228,14 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3726778954642591333, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
     - {fileID: 4694623725594413836, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2856971930392272266, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1274360769}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+--- !u!1 &616041446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6247798075502522073, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+  m_PrefabInstance: {fileID: 616041445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &794990524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,73 +2231,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -339.17834
       objectReference: {fileID: 0}
+    - target: {fileID: 9178452190874808244, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 616041446}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
---- !u!1001 &1274360768
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 140788550}
-    m_Modifications:
-    - target: {fileID: 316579486113032499, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_Name
-      value: candygun_holder Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.761
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
---- !u!4 &1274360769 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-  m_PrefabInstance: {fileID: 1274360768}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1321586530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3649,7 +3588,6 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
-  autoAim: {fileID: 0}
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
@@ -4162,7 +4100,6 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
-  autoAim: {fileID: 0}
   bulletSmall: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
@@ -5050,7 +4987,6 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
-  autoAim: {fileID: 0}
   stunZone: {fileID: 2693689847765800839}
   animator: {fileID: 0}
   stunGunLevelUpgradeData:
@@ -10200,6 +10136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   health: 3
+  player: {fileID: 0}
 --- !u!1 &5683760802060705922
 GameObject:
   m_ObjectHideFlags: 0

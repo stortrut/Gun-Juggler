@@ -34,7 +34,7 @@ public class FollowPlayer : MonoBehaviour
                 return;
             }
             yAxisLocked = true;
-            Debug.Log(Mathf.Abs(playerToFollow.transform.position.y - transform.position.y));
+            //Debug.Log(Mathf.Abs(playerToFollow.transform.position.y - transform.position.y));
             if (Mathf.Abs(playerToFollow.transform.position.y - transform.position.y) > 2.5f)
             {
                 yAxisLocked = false;
