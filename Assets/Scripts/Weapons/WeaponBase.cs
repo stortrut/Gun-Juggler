@@ -21,14 +21,17 @@ public class WeaponBase : MonoBehaviour
 
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
 
-    public AutoAim autoAim;
-    
+    private AutoAim autoAim;
 
-
-    private void Start()
+    private void Awake()
     {
-        autoAim = PlayerHealth.s_player.GetComponent<AutoAim>();
-        if(autoAim == null) { Debug.Log("ERRROROROROOROR"); }
+        //player = PlayerHealth.s_player;
+        //if (player == null) { Debug.Log("awdaowifbahfbajwdbkajwbdk"); }
+
+        //autoAim = player.GetComponentInChildren<AutoAim>();
+
+        autoAim = FindObjectOfType<AutoAim>();
+        if(autoAim == null) { Debug.Log("ERRROROROROOR00000000000000000000000OR"); }
     }
 
 
