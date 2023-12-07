@@ -33,8 +33,8 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] private FollowPlayer followPlayer;
 
     private float calculatedGroundCheckLenght;
-      
-    private bool onGround = false;
+
+    [HideInInspector] public bool onGround = false;
     public bool isJumping = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
