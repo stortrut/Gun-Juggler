@@ -14,7 +14,7 @@ public class AutoAim : MonoBehaviour
 
     [HideInInspector] public Quaternion bulletRotation;
 
-    private List<GameObject> objectsInField = new List<GameObject>();
+    public List<GameObject> objectsInField = new List<GameObject>();
 
 
     private void Start()
@@ -57,6 +57,11 @@ public class AutoAim : MonoBehaviour
             //aimDirection = Vector3.Angle(Target.transform.position, player.transform.position);
             aimDirection = Mathf.Atan2(closestEnemy.y, closestEnemy.x) * Mathf.Rad2Deg;
             bulletRotation = Quaternion.Euler(0, 0, aimDirection);
+        }
+
+        if(objectsInField.Count == 0)
+        {
+            bulletRotation = Quaternion.Euler(0, 0, 0);
         }
     }
     private void Update()
