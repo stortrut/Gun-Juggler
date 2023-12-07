@@ -555,6 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 5832234309490168024}
   yAxisLocked: 0
+  smoothnessFactor: 4
 --- !u!1 &3610263452003768476
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +684,7 @@ MonoBehaviour:
   jumpHeight: 2.35
   groundCheckDistanceFromCollider: 0.4
   followPlayer: {fileID: 0}
+  onGround: 0
   isJumping: 0
 --- !u!114 &7419300733805608355
 MonoBehaviour:
@@ -950,7 +952,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07097244, y: 6.654648}
+  m_Offset: {x: 6.5226774, y: 1.4698949}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -961,7 +963,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 31.42342, y: 15.823372}
+  m_Size: {x: 18.23612, y: 10.976758}
   m_EdgeRadius: 0
 --- !u!114 &5934105458784319413
 MonoBehaviour:
