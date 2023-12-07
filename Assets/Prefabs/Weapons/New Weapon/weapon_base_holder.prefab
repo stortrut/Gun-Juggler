@@ -276,9 +276,18 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 1
     - serializedVersion: 3
+      time: 4.601591
+      value: -0.9806686
+      inSlope: 19.570492
+      outSlope: 18.406311
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 4.693186
       value: -0.0057582855
-      inSlope: 14.775725
+      inSlope: 10.643742
       outSlope: 0.025260855
       tangentMode: 5
       weightedMode: 0
@@ -385,31 +394,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEquipped: 0
-  fireRate: 0
-  fireRateTimer: 0
+  fireCooldown: 0
+  fireCooldownTimer: 0
   spriterenderer: {fileID: 2742380901884179489}
   rb2D: {fileID: 5946089023895152413}
   weaponCollider: {fileID: 6825548993933977305}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 5816978791661700974}
-  upgradeStatus:
-  - bulletSpeed: 1
-    bulletDamage: 1
-    fireRate: 1
-  - bulletSpeed: 10
-    bulletDamage: 10
-    fireRate: 10
-  - bulletSpeed: 100
-    bulletDamage: 100
-    fireRate: 100
-  bulletDamage: 0
-  bulletSpeed: 0
   currentWeaponLevel: 0
+  currentWeaponBaseUpgradeData:
+    weaponCooldown: 0
   bulletSmall: {fileID: 0}
-  spawnBulletPos: {x: 0, y: 0}
-  bulletSpread: 40
-  rotationAngle: 0
+  currentGunBaseUpgradeData:
+    weaponCooldown: 0
+    bulletDamage: 0
+    bulletSpeed: 0
+  smallGunLevelUpgradeData: []
 --- !u!58 &6825548993933977305
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -519,7 +520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8505283584904883843
 Transform:
   m_ObjectHideFlags: 0

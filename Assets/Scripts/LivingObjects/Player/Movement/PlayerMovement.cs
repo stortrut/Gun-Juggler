@@ -110,18 +110,18 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
 
-            if (!bodyAnimator.GetBool("Dead"))
-            {
-                bodyAnimator.speed = 0;
-            }
+            //if (!bodyAnimator.GetBool("Dead"))
+            //{
+            //    bodyAnimator.speed = 0;
+            //}
         }
-        else
-        {
-            if (!bodyAnimator.GetBool("Dead"))
-            {
-                bodyAnimator.speed = 1;
-            }
-        }
+        //else
+        //{
+        //    if (!bodyAnimator.GetBool("Dead"))
+        //    {
+        //        bodyAnimator.speed = 1;
+        //    }
+        //}
 
         rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);
     }

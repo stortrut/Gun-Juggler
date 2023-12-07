@@ -20,6 +20,8 @@ public class EnemyShoot : WeaponBase
     // Update is called once per frame
     void Update()
     {
+        if(player == null) { return; }
+
         if(gunPoint.position.x - player.position.x<18)
         {
             var i = Random.Range(0, 200);
@@ -46,9 +48,10 @@ public class EnemyShoot : WeaponBase
     }
     private void AdjustAim()
     {
+        if(player == null) { return; }
+
         aim = gunPoint.position - player.position;
         aim.z = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
         Debug.Log("I am aiming" + aim);
-       
     }
 }

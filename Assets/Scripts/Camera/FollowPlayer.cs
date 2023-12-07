@@ -26,7 +26,6 @@ public class FollowPlayer : MonoBehaviour
         else if (!playerToFollow.isJumping)
         {
             yAxisLocked = false;
-            Debug.Log(yAxisLocked);
         }
         if (playerToFollow == null) { return; }
 
