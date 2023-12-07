@@ -16,7 +16,7 @@ public class PlayerJuggle : MonoBehaviour
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
     ///
     //WeaponQueueElementsVariant weaponQueueElementsScript;
-    WeaponQueueElements weaponQueueElementsScript;
+    //WeaponQueueElements weaponQueueElementsScript;
     ///
     
     private void Start()
@@ -41,10 +41,10 @@ public class PlayerJuggle : MonoBehaviour
         //weaponQueueElementsScript = FindObjectOfType<WeaponQueueElementsVariant>();
         //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
 
-        if(weaponQueueElementsScript = null) { return; }
+        //if(weaponQueueElementsScript = null) { return; }
 
-        weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
-        weaponQueueElementsScript.InstantiateAppropriateQueueElements();
+        //weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
+        //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
         ///
     }
 
@@ -85,10 +85,10 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
-        if (weaponQueueElementsScript != null)
-        {
-            weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
-        }
+        //if (weaponQueueElementsScript != null)
+        //{
+        //    weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
+        //}
     }
 
 
