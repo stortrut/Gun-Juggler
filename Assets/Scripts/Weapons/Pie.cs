@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pie : EnemyBullet
+public class Pie : EnemyBullet  
 {
     
     [SerializeField] private float speed;

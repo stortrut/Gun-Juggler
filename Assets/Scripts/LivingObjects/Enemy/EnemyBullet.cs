@@ -27,7 +27,12 @@ public class EnemyBullet : MonoBehaviour,IAim
     public void Deflected()
     {
         collider.size *= 1.5f;
-        transform.localScale *= 1.5f;
+        //transform.localScale *= 1.5f;
+       // transform.position -= new Vector3(0,1,0);
+        transform.rotation *= new Quaternion(0,0,-1,0);
+        //rb2D.gravityScale = 0;
+       // rb2D.velocity *= Vector2.right;
+        //rb2D.velocity.y = 0;
         rb2D.velocity *= -Vector2.one;
        // canDamageEnemies = true;
         transform.gameObject.tag = "Bullet";

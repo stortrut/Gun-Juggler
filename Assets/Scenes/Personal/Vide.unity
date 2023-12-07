@@ -3423,26 +3423,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1181490204}
-    - target: {fileID: 3665749614246689922, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665749614246689922, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
-      propertyPath: enemyBullet
-      value: 
-      objectReference: {fileID: 5211496738980703960, guid: 1069d6280b497cb49b46a75bb11205f8, type: 3}
-    - target: {fileID: 4659166942110116703, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
-      propertyPath: numberOfProtection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047951332915568210, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047951332915568210, guid: 2da9f0cc68a87f044ad923fd02f6278f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.03
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3742,6 +3722,7 @@ MonoBehaviour:
   jumpHeight: 1
   groundCheckDistanceFromCollider: 0.1
   followPlayer: {fileID: 0}
+  isJumping: 0
 --- !u!4 &1603081307387375770
 Transform:
   m_ObjectHideFlags: 0
@@ -11555,7 +11536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 8616835178568776967}
-  YAxisLocked: 0
+  yAxisLocked: 0
 --- !u!114 &8443524297157069773
 MonoBehaviour:
   m_ObjectHideFlags: 0
