@@ -9,10 +9,10 @@ public class AutoAim : MonoBehaviour
     private Vector2 closestEnemy=Vector2.one*100;
     private Vector2 currentEnemy;
     [HideInInspector]public GameObject Target;
-    [SerializeField] private float aimDirection;
+    [SerializeField] public float aimDirection;
     public GameObject bullet;
     public Transform gunPoint;
-    private Quaternion bulletRotation;
+    public Quaternion bulletRotation;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

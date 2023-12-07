@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [Header("References")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
-    [SerializeField] private Animator bodyAnimator;
+    [SerializeField] private LegAnimationHandler legs;
 
 
     [Header("Walk")]
@@ -33,9 +33,9 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] private FollowPlayer followPlayer;
 
     private float calculatedGroundCheckLenght;
-      
-    public bool onGround = false;
-    private bool isJumping = false;
+
+    [HideInInspector] public bool onGround = false;
+    public bool isJumping = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
    // public float timeStunned { get { return timeStun; } set { timeStun = value; } }
@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
         if (onGround)
         {
+            //followPlayer.AllowCameraFollowInYAxis();
             isJumping = false;
         }
     }
@@ -92,12 +93,14 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if(horizontalInput > 0) 
         { 
             isFacingRight = true;
-            bodyAnimator.SetBool("Reverse", false);
+
+            legs.SetDirectionToForwards();
         }
         if (horizontalInput < 0) 
         { 
             isFacingRight = false;
-            bodyAnimator.SetBool("Reverse", true);
+
+            legs.SetDirectionToBackwards();
         }
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
@@ -107,10 +110,18 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
 
+
+            legs.PauseAnimation(true);
+
             //if (!bodyAnimator.GetBool("Dead"))
             //{
             //    bodyAnimator.speed = 0;
             //}
+        }
+        else
+        {
+            legs.PauseAnimation(false);
+
         }
         //else
         //{

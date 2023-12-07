@@ -96,8 +96,6 @@ public class JuggleCatchCircle : MonoBehaviour
         }
         else
         {
-            Debug.Log("Failed Perfect Catch");
-
             //playerJuggle.RemoveWeaponFromLoop(currentCatchableGun);
             //Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
             //currentCatchableGun.DropWeapon();

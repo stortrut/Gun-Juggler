@@ -41,6 +41,8 @@ public class PlayerJuggle : MonoBehaviour
         //weaponQueueElementsScript = FindObjectOfType<WeaponQueueElementsVariant>();
         //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
 
+        if(weaponQueueElementsScript = null) { return; }
+
         weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
         weaponQueueElementsScript.InstantiateAppropriateQueueElements();
         ///
@@ -50,7 +52,6 @@ public class PlayerJuggle : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isJuggling)
         {
-            Debug.Log("Start Juggling");
             StartJuggling();
             //weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
         }

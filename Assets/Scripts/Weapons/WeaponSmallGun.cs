@@ -16,8 +16,6 @@ public class WeaponSmallGun : Gun
 
     public override void UseWeapon()
     {
-        Debug.Log("Used small weapon");
-
         Shoot();
 
         base.UseWeapon();

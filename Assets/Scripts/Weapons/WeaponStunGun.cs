@@ -31,8 +31,6 @@ public class WeaponStunGun : WeaponBase
 
     private void ReflectStun()
     {
-        Debug.Log("Used stun gun");
-
         foreach (GameObject obj in stunZone.objectsInField)
         {
             if (obj == null) { return; }

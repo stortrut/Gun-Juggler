@@ -21,8 +21,28 @@ public class WeaponBase : MonoBehaviour
 
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
 
+    public AutoAim autoAim;
+    
+
+
+    private void Start()
+    {
+        //autoAim = GetComponentInParent<PlayerMovement>().gameObject.GetComponentInChildren<AutoAim>();
+        if(autoAim == null) { Debug.Log("ERRROROROROOROR"); }
+    }
+
+
+
     private void Update()
     {
+        if (autoAim == null) { Debug.Log("ERRROROROROOROR"); }
+        if (autoAim.bulletRotation == null) { Debug.Log("ERRROROROROOROR"); }
+
+
+        this.transform.rotation = autoAim.bulletRotation;
+
+
+
         fireCooldownTimer += Time.deltaTime;
         if (Input.GetMouseButton(0) && fireCooldownTimer > fireCooldown)
         {
