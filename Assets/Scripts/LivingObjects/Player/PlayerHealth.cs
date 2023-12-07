@@ -8,7 +8,7 @@ public class PlayerHealth : Health
     public GameObject player;
     public static GameObject s_player;
 
-    private void Start()
+    private void Awake()
     {
         s_player = player;
         //Singleton.Instance = new Singleton(player);
