@@ -35,12 +35,16 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private float calculatedGroundCheckLenght;
       
     private bool onGround = false;
-    private bool isJumping = false;
+    public bool isJumping = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
    // public float timeStunned { get { return timeStun; } set { timeStun = value; } }
     public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
   
+    void Start()
+    {
+        followPlayer = FindObjectOfType<FollowPlayer>();
+    }
 
     void Update()
     {
@@ -55,6 +59,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
         if (onGround)
         {
+            //followPlayer.AllowCameraFollowInYAxis();
             isJumping = false;
         }
     }
@@ -72,7 +77,9 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         foreach (RaycastHit2D rayCastHitObject in groundCheckArray)
         {
             if (rayCastHitObject.collider.CompareTag("Ground"))
+            {
                 isTouchingGround = true;
+            }
         }
 
         return isTouchingGround;
@@ -121,7 +128,6 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     private void Jump()
     {
-        //followPlayer.
         if (onGround && Input.GetButtonDown("Jump"))
         {
             float jumpVelocity = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));

@@ -77,7 +77,6 @@ public class PlayerJuggle : MonoBehaviour
         newWeapon.beingThrown = false;
         newWeapon.weaponBase.EquipWeapon();
         weaponInHand = newWeapon;
-
     }
 
     public void ThrowUpWeaponInHand()

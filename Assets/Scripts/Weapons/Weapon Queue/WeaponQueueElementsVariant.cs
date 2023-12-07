@@ -16,6 +16,10 @@ public class WeaponQueueElementsVariant : MonoBehaviour
     void Start()
     {
         playerJuggleScript = FindObjectOfType<PlayerJuggle>();
+        if (playerJuggleScript != null)
+        {
+            Debug.Log("not null");
+        }
         //InstantiateAppropriateQueueElements();
     }
 
@@ -58,7 +62,7 @@ public class WeaponQueueElementsVariant : MonoBehaviour
         }
     }
 
-    public void ShowNextWeaponInQueueMoving()
+    public void ShowNextWeaponInQueueMoving()  //actually moving
     {
         GameObject movingObject = weaponsInQueueDisplayedOrder[0];
         weaponsInQueueDisplayedOrder.RemoveAt(0);
@@ -115,7 +119,7 @@ public class WeaponQueueElementsVariant : MonoBehaviour
         {
             ShowNextWeaponInQueueMoving();
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             InstantiateAppropriateQueueElements();
         }

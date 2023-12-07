@@ -18,8 +18,8 @@ public class Menu : MonoBehaviour, IStunnable
     public bool timeStopped { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     private void Awake()
-        
     {
+        Time.timeScale = 1f;
         //Debug.Log(SceneManager.GetActiveScene().buildIndex);
         stunnable = GetComponent<IStunnable>();
         optionsPanel.SetActive(false);  
@@ -56,8 +56,9 @@ public class Menu : MonoBehaviour, IStunnable
         if (Input.GetKeyDown(KeyCode.Escape) && !(SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End"))
         {
             escMenu.SetActive(true);
-            stunnable.isStunnable = true;
-            stunnable.timeStopped = true;       
+            //stunnable.isStunnable = true;
+            //stunnable.timeStopped = true;       
+            Time.timeScale = 0f;
         }
     }
     public void StartButton()
@@ -81,6 +82,7 @@ public class Menu : MonoBehaviour, IStunnable
     }
     public void BackToGameButton()
     {
+        Time.timeScale = 1f;
         escMenu.SetActive(false);
         optionsPanelActive = false;
     }
