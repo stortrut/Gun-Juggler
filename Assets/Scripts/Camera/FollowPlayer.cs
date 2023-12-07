@@ -10,7 +10,8 @@ public class FollowPlayer : MonoBehaviour
     Vector3 targetPos = Vector3.zero;
     public bool yAxisLocked = false;
     float followPosSave;
-    [SerializeField] private float smoothnessFactor = 4;
+    bool axisShouldStayUnlockedTilItReachesTarget = false;
+    [SerializeField] private float smoothnessFactor = 3;
 
     private void Awake()
     {
@@ -27,11 +28,23 @@ public class FollowPlayer : MonoBehaviour
     {
         if (!playerToFollow.onGround)
         {
+            if (axisShouldStayUnlockedTilItReachesTarget)
+            {
+                Debug.Log("return");
+                return;
+            }
             yAxisLocked = true;
+            Debug.Log(Mathf.Abs(playerToFollow.transform.position.y - transform.position.y));
+            if (Mathf.Abs(playerToFollow.transform.position.y - transform.position.y) > 2.5f)
+            {
+                yAxisLocked = false;
+                axisShouldStayUnlockedTilItReachesTarget = true;
+            }
         }
         else if (playerToFollow.onGround)
         {
             yAxisLocked = false;
+            axisShouldStayUnlockedTilItReachesTarget = false;
         }
     }
     private void FixedUpdate()
