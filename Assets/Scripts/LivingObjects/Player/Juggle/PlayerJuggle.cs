@@ -16,7 +16,6 @@ public class PlayerJuggle : MonoBehaviour
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
     
     WeaponQueueElements weaponQueueElementsScript;
-    Arrow arrowScript;
     
     
     private void Start()
@@ -38,9 +37,6 @@ public class PlayerJuggle : MonoBehaviour
         StartJuggling();
 
         weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
-        //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
-        Debug.Log(weaponQueueElementsScript);
-        arrowScript = FindObjectOfType<Arrow>();
         
     }
 
