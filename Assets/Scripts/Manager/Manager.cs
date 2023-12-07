@@ -7,12 +7,20 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; private set; }
 
+    public int nextScene = 0;
+
+    private AsyncOperation _asyncOperation;
+
+
+
     private void Start()
     {
+        nextScene= SceneManager.GetActiveScene().buildIndex+1;
         Instance = this;
-        if(SceneManager.GetActiveScene().name == "WinScene" )
+
+        if (SceneManager.GetActiveScene().name == "WinScene")
         {
-            Invoke(nameof(ProceedToNextLevel),5);
+            Invoke(nameof(ProceedToNextLevel), 5);
         }
     }
     private void Update()
@@ -22,9 +30,35 @@ public class Manager : MonoBehaviour
             ProceedToNextLevel();
         }
     }
+    public void LoadNextLevel()
+    {
+        StartCoroutine(LoadSceneAsyncProcess());
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void ProceedToNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Debug.Log("Allowed Scene Activation");
+
+            this._asyncOperation.allowSceneActivation = true;
     }
-    
+        
+
+
+
+
+public IEnumerator LoadSceneAsyncProcess()
+    {
+        // Begin to load the Scene you have specified.
+        this._asyncOperation = SceneManager.LoadSceneAsync(nextScene);
+
+        // Don't let the Scene activate until you allow it to.
+        this._asyncOperation.allowSceneActivation = false;
+
+        while (!this._asyncOperation.isDone)
+        {
+            Debug.Log($"[scene]:{nextScene} [load progress]: {this._asyncOperation.progress}");
+
+            yield return null;
+        }
+    }
 }

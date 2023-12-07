@@ -6,6 +6,7 @@ public class WeaponStunGun : WeaponBase
 {
     [Header("References")]
     [SerializeField] private StunZone stunZone;
+    [SerializeField] private Animator animator;
 
     [Header("Upgrades")]
     [SerializeField] StunGunUpgradeData[] stunGunLevelUpgradeData;
@@ -22,6 +23,7 @@ public class WeaponStunGun : WeaponBase
     public override void UseWeapon()
     {
         ReflectStun();
+       
 
         base.UseWeapon();
     }

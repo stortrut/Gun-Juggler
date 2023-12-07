@@ -42,7 +42,6 @@ public class PlayerJuggle : MonoBehaviour
         //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
 
         weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
-        if(weaponQueueElementsScript == null) { Debug.Log("No Weapon Que Error"); return; }
         weaponQueueElementsScript.InstantiateAppropriateQueueElements();
         ///
     }
@@ -85,11 +84,10 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
-
-
-
-        if(weaponQueueElementsScript == null) { return; }
-        weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
+        if (weaponQueueElementsScript != null)
+        {
+            weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
+        }
     }
 
 
