@@ -252,9 +252,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2352435170979363736}
-  - {fileID: 7098351346902858318}
   - {fileID: 6002962233993121076}
+  - {fileID: 7098351346902858318}
+  - {fileID: 2352435170979363736}
   m_Father: {fileID: 1413156519888943586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3208141775026056221
@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerToFollow: {fileID: 3610263452003768476}
+  YAxisLocked: 0
 --- !u!1 &3610263452003768476
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +529,7 @@ MonoBehaviour:
   timeStun: 0
   jumpHeight: 2.35
   groundCheckDistanceFromCollider: 0.1
+  followPlayer: {fileID: 0}
 --- !u!114 &7419300733805608355
 MonoBehaviour:
   m_ObjectHideFlags: 0

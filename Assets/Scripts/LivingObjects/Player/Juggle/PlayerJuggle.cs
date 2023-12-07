@@ -14,13 +14,14 @@ public class PlayerJuggle : MonoBehaviour
     private bool isJuggling;
     public WeaponJuggleMovement weaponInHand;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
-    WeaponQueueElementsVariant weaponQueueElementsScript;
-
+    ///
+    //WeaponQueueElementsVariant weaponQueueElementsScript;
+    WeaponQueueElements weaponQueueElementsScript;
+    ///
+    
     private void Start()
     {
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
-
-        WeaponQueueElementsVariant weaponQueueElementsScript = FindObjectOfType<WeaponQueueElementsVariant>();
 
         WeaponJuggleMovement[] weaponsOnPlayer = GetComponentsInChildren<WeaponJuggleMovement>();
         foreach (WeaponJuggleMovement weapon in weaponsOnPlayer)
@@ -35,6 +36,14 @@ public class PlayerJuggle : MonoBehaviour
         //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
 
         //StartJuggling();
+
+        ///
+        //weaponQueueElementsScript = FindObjectOfType<WeaponQueueElementsVariant>();
+        //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
+
+        weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
+        weaponQueueElementsScript.InstantiateAppropriateQueueElements();
+        ///
     }
 
     private void Update()
@@ -43,6 +52,7 @@ public class PlayerJuggle : MonoBehaviour
         {
             Debug.Log("Start Juggling");
             StartJuggling();
+            //weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
         }
     }
 

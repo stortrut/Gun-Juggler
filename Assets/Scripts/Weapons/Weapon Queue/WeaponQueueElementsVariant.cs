@@ -10,17 +10,18 @@ public class WeaponQueueElementsVariant : MonoBehaviour
 
     PlayerJuggle playerJuggleScript;
     private float firstQueueObjectPos;
-    private float posGapBetweenQueueObjects = 4;
-    public Vector3 firstObjectInQueuePos;
+    private float posGapBetweenQueueObjects = 2.5f;
+    [SerializeField] Vector3 firstObjectInQueuePos = new Vector3(-6,-5,0);
 
     void Start()
     {
         playerJuggleScript = FindObjectOfType<PlayerJuggle>();
-        InstantiateAppropriateQueueElements();
+        //InstantiateAppropriateQueueElements();
     }
 
     public void InstantiateAppropriateQueueElements()
     {
+        Debug.Log(playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count);
         for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
@@ -28,9 +29,13 @@ public class WeaponQueueElementsVariant : MonoBehaviour
             int enumIndex = (int)weaponEnum;
 
             Vector3 queueObjectSpawnPos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y);
-            Instantiate(weaponsInQueueEnumsOrder[enumIndex], queueObjectSpawnPos, Quaternion.identity, transform);
+            GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], queueObjectSpawnPos, Quaternion.identity, transform);  //instantiate the right prefab based of the enums index and weapons in queue enums order list
+            //Debug.Log("weapons in order "+weaponsInQueueDisplayedOrder[enumIndex]+ queueObjectSpawnPos);
+            weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);                    //add the prefab
             Debug.Log(weaponsInQueueDisplayedOrder[enumIndex]);
-            weaponsInQueueDisplayedOrder.Insert(i, weaponsInQueueDisplayedOrder[enumIndex]);
+
+        }
+    }
 
             //weaponsInQueueDisplayedOrder.Add(newWeaponImage.GetComponent<RectTransform>());
 
@@ -40,9 +45,6 @@ public class WeaponQueueElementsVariant : MonoBehaviour
             //gunTransform.anchoredPosition = indexObjectInQueuePos;
 
             //SetSiblingIndex(int index);
-        }
-    }
-
 
     void MoveQueueObjects()
     {
@@ -58,14 +60,21 @@ public class WeaponQueueElementsVariant : MonoBehaviour
 
     public void ShowNextWeaponInQueueMoving()
     {
-        WeaponBase.WeaponType weaponEnum = playerJuggleScript.weaponInHand.weaponBase.weaponType;
-        int enumIndex = (int)weaponEnum;        //weapon in hand found by its enum index, the same index as the enumsorder list
-        Debug.Log("enum"+weaponEnum);
-        Debug.Log("index"+enumIndex);
-        RectTransform queuedObjectTransform = weaponsInQueueDisplayedOrder[enumIndex].GetComponent<RectTransform>();
+        GameObject movingObject = weaponsInQueueDisplayedOrder[0];
+        weaponsInQueueDisplayedOrder.RemoveAt(0);
+        weaponsInQueueDisplayedOrder.Add(movingObject);
+
+        for (int i = 0; i < weaponsInQueueDisplayedOrder.Count; i++)
+        {
+            Vector3 position = new Vector3(firstObjectInQueuePos.x + (posGapBetweenQueueObjects * i), firstObjectInQueuePos.y);
+
+            weaponsInQueueDisplayedOrder[i].transform.position = position;
+        }
+        //WeaponBase.WeaponType weaponEnum = playerJuggleScript.weaponInHand.weaponBase.weaponType;
+        //int enumIndex = (int)weaponEnum;        //weapon in hand found by its enum index, the same index as the enumsorder list
+        //RectTransform queuedObjectTransform = weaponsInQueueDisplayedOrder[enumIndex].GetComponent<RectTransform>();
         //queuedObjectTransform.SetSiblingIndex(weaponsInQueueDisplayedOrder.Count);
-        queuedObjectTransform.SetAsLastSibling();
-        Debug.Log("transform"+queuedObjectTransform);
+        //queuedObjectTransform.SetAsLastSibling();
     }
 
     public void ShowNextWeaponInQueueArrow()
