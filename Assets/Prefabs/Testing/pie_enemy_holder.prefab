@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5047951332915568210}
   m_Layer: 0
-  m_Name: gun_point
+  m_Name: spawn_pie_pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,11 +81,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3885476463300700519, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.230011
+      value: -112.20978
       objectReference: {fileID: 0}
     - target: {fileID: 3885476463300700519, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.45
+      value: -19.627556
       objectReference: {fileID: 0}
     - target: {fileID: 3885476463300700519, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.z
@@ -125,11 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5122157640687008279, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 5122157640687008279, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 6298213541683700346, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_Color.b
@@ -199,22 +199,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad791e0ff01560246acd2fd548682695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponEquipped: 0
-  fireCooldown: 0
-  fireCooldownTimer: 0
-  spriterenderer: {fileID: 0}
-  rb2D: {fileID: 0}
-  weaponCollider: {fileID: 0}
-  weaponType: 0
-  bullet: {fileID: 0}
-  gunPoint: {fileID: 5047951332915568210}
-  currentWeaponLevel: 0
-  currentWeaponBaseUpgradeData:
-    weaponCooldown: 0
   bulletDamage: 0
-  bulletSpeed: 10
+  bulletSpeed: 0
   enemyBullet: {fileID: 5211496738980703960, guid: 1069d6280b497cb49b46a75bb11205f8, type: 3}
-  spawnBulletPos: {x: 0, y: 0}
+  spawnBulletPos: {fileID: 5047951332915568210}
+  isStunned: 0
+  timeStop: 0
 --- !u!4 &1219167413676131934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1449870923268577628, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}

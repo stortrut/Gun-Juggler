@@ -12,7 +12,7 @@ public class PlayerJuggle : MonoBehaviour
     public List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
     private bool isJuggling;
-    public WeaponJuggleMovement weaponInHand;
+    [HideInInspector] public WeaponJuggleMovement weaponInHand;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
     
     WeaponQueueElements weaponQueueElementsScript;
@@ -35,7 +35,7 @@ public class PlayerJuggle : MonoBehaviour
 
         //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
 
-        //StartJuggling();
+        StartJuggling();
 
         weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
         //weaponQueueElementsScript.InstantiateAppropriateQueueElements();
@@ -91,15 +91,22 @@ public class PlayerJuggle : MonoBehaviour
         weaponsCurrentlyInJuggleLoop.Remove(weaponToRemoved);
         if(weaponsCurrentlyInJuggleLoop.Count < 2)
         {
-            StartCoroutine(nameof(PlayerDied));
         }
     }
-    IEnumerator PlayerDied()
+
+
+    public void ReplaceRandomWeaponWithHeart()
     {
-        Debug.Log("Player Died");
-        bodyAnimator.speed = 1;
-        bodyAnimator.SetBool("Dead", true);
-        yield return new WaitForSeconds(1.65f);
-        SceneManager.LoadScene(0);
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.isHeart)
+            {
+                weaponsCurrentlyInJuggleLoop[i].weaponBase.ReplaceWeaponWithHeart();
+                return;
+            }
+        }
     }
+
+
+
 }

@@ -6,11 +6,15 @@ public class WeaponBase : MonoBehaviour
 {
     [Header("References")]
     [HideInInspector] public bool weaponEquipped;
-    [SerializeField] public float fireCooldown;
-    [SerializeField] protected float fireCooldownTimer;
-    [SerializeField] protected SpriteRenderer spriterenderer;
+    [HideInInspector] public float fireCooldown;
+    [HideInInspector] protected float fireCooldownTimer;
+    [SerializeField] protected SpriteRenderer weaponSpriterenderer;
     [SerializeField] public Rigidbody2D rb2D;
     [SerializeField] public Collider2D weaponCollider;
+    [SerializeField] protected SpriteRenderer heartSpriteRenderer;
+
+    [HideInInspector] public bool isHeart;
+
 
     [HideInInspector] public WeaponType weaponType;
 
@@ -24,7 +28,7 @@ public class WeaponBase : MonoBehaviour
     private AutoAim autoAim;
     private GameObject player;
 
-            private void Update()
+    private void Update()
     {
         if (player == null)
         {
@@ -32,9 +36,7 @@ public class WeaponBase : MonoBehaviour
             autoAim = player.GetComponentInChildren<AutoAim>();
         }
 
-
         AdjustAim();
-
 
         fireCooldownTimer += Time.deltaTime;
         if (Input.GetMouseButton(0) && fireCooldownTimer > fireCooldown)
@@ -50,7 +52,10 @@ public class WeaponBase : MonoBehaviour
 
     public void EquipWeapon()
     {
+        if (isHeart) { return; }
+
         //Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
+
         weaponEquipped = true;
     }
 
@@ -81,7 +86,13 @@ public class WeaponBase : MonoBehaviour
     }
 
 
-
+    public void ReplaceWeaponWithHeart()
+    {
+        UnEquipWeapon();
+        isHeart = true;
+        weaponSpriterenderer.enabled = false;
+        heartSpriteRenderer.enabled = true;
+    }
 
 
 

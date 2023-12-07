@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [HideInInspector]public int maxHealth;
+    [HideInInspector]public int maxHealth = 1000;
     public int health;
 
      private EnemyProtection protection;
@@ -29,8 +29,8 @@ public class Health : MonoBehaviour, IDamageable
             BoolChange();                   //so that multible bullets only make one damage (so that number of protection dont get less than the actual number of protaction)
             Invoke(nameof(BoolChange), .2f);
             health -= amount;
-            health = Mathf.Clamp(health, 0, maxHealth);
-           
+            //health = Mathf.Clamp(health, -1, maxHealth);
+
             if (health < -2)
             {
                 //Destroy(gameObject);

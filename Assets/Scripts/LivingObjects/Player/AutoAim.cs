@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoAim : MonoBehaviour
 {
-    private PlayerJuggle gunPoint;
+    private PlayerJuggle playerJuggle;
 
     private Vector2 closestEnemy=Vector2.one*100;
     private Vector2 currentEnemy;
@@ -19,7 +19,7 @@ public class AutoAim : MonoBehaviour
 
     private void Start()
     {
-        gunPoint = FindObjectOfType<PlayerJuggle>();
+        playerJuggle = FindObjectOfType<PlayerJuggle>();
     }
 
 
@@ -45,7 +45,9 @@ public class AutoAim : MonoBehaviour
         
         foreach(Transform obj in objectsInField)
         {
-            currentEnemy = obj.position - gunPoint.weaponInHand.weaponBase.gunPoint.transform.position;
+            if(playerJuggle.weaponInHand == null) { return; }
+
+            currentEnemy = obj.position - playerJuggle.weaponInHand.weaponBase.gunPoint.transform.position;
             //currentEnemy = new Vector2(Mathf.Abs(currentEnemy.x),Mathf.Abs(currentEnemy.y));
 
             if (currentEnemy.sqrMagnitude<closestEnemy.sqrMagnitude)

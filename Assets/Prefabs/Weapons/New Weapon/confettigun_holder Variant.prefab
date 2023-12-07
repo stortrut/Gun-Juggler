@@ -117,12 +117,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponEquipped: 0
   fireCooldown: 0
-  spriterenderer: {fileID: 1107907684811426958}
+  weaponSpriterenderer: {fileID: 1107907684811426958}
   rb2D: {fileID: 8929002792855396274}
   weaponCollider: {fileID: 8635591160967388790}
+  heartSpriteRenderer: {fileID: 9168413863948824760}
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 8778922679068098497}
+  currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
@@ -154,5 +156,10 @@ Transform:
 --- !u!50 &8929002792855396274 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5946089023895152413, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+  m_PrefabInstance: {fileID: 2985588369918228655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &9168413863948824760 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6220121003623499799, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
   m_PrefabInstance: {fileID: 2985588369918228655}
   m_PrefabAsset: {fileID: 0}

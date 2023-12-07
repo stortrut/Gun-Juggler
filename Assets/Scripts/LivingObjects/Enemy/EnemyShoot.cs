@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 
-public class EnemyShoot : WeaponBase, IStunnable
+public class EnemyShoot : MonoBehaviour, IStunnable
 {
     [SerializeField] protected float bulletDamage, bulletSpeed;
     [SerializeField] protected GameObject enemyBullet;
-    [SerializeField] protected Vector2 spawnBulletPos;
+    [SerializeField] protected Transform spawnBulletPos;
      protected GameObject player;
     [HideInInspector] private Vector3 aim;
 
@@ -28,10 +28,10 @@ public class EnemyShoot : WeaponBase, IStunnable
 
         if (isStunned == true){ return; }
 
-        if (gunPoint.position.x - player.transform.position.x<18)
+        if (spawnBulletPos.position.x - player.transform.position.x<18)
         {
-            var i = Random.Range(0, 200);
-            if(i % 99 == 0)
+            var i = Random.Range(0, 400);
+            if(i < 1)
             {
                 Shoot();
             }
@@ -43,7 +43,7 @@ public class EnemyShoot : WeaponBase, IStunnable
     }
     public void Shoot()
     {
-        GameObject weaponBullet = Instantiate(enemyBullet, gunPoint.position, gunPoint.rotation);
+        GameObject weaponBullet = Instantiate(enemyBullet, spawnBulletPos.position, spawnBulletPos.rotation);
         //Sound.Instance.EnemyNotTakingDamage();
         Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
         var bullet = weaponBullet.GetComponentInChildren<IAim>();
@@ -56,8 +56,8 @@ public class EnemyShoot : WeaponBase, IStunnable
     {
         if(player == null) { return; }
 
-        aim = gunPoint.position - player.transform.position;
+        aim = spawnBulletPos.position - player.transform.position;
         aim.z = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
-        Debug.Log("I am aiming" + aim);
+        //Debug.Log("I am aiming" + aim);
     }
 }

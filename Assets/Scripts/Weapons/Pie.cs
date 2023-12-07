@@ -17,7 +17,6 @@ public class Pie : EnemyBullet
     
 
     void Start()
-
     {
         AimCorrection();
         startRotation = transform.rotation;
@@ -58,7 +57,7 @@ public class Pie : EnemyBullet
         if (other.gameObject.CompareTag("Ground"))
         {
             timeHit = Time.time;
-            Debug.Log(timeHit - timeThrow);
+            //Debug.Log(timeHit - timeThrow);
         }
     }
     public void AimCorrection()
@@ -73,7 +72,7 @@ public class Pie : EnemyBullet
         {
             bulletDirectionRight = true;
         }
-     }
+    }
 }
    
 
