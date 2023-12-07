@@ -1,26 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class WeaponQueueElements : MonoBehaviour
 {
     [SerializeField] GameObject[] weaponsInQueueEnumsOrder;
     [SerializeField] GameObject arrow;
-    [SerializeField] GameObject circle;
+    [SerializeField] GameObject queueBackground;
     List<GameObject> weaponsInQueueDisplayedOrder = new List<GameObject>();
 
     PlayerJuggle playerJuggleScript;
-    private float firstQueueObjectPos;
     private float posGapBetweenQueueObjects = 2.5f;
-    [SerializeField] Vector3 firstObjectInQueuePos = new Vector3(-6, -5, 34);
-    private Vector3 zOffset = new Vector3(0, 0, 34);
+    Vector3 firstObjectInQueuePos = new Vector3(-3.5f, 2.6f, 34);
+    private Vector3 zOffset = new Vector3(0, 0, 33);
+    Vector3 arrowPos;
 
     protected int i = 0;
     void Start()
     {
-        transform.localPosition += zOffset;
+        //transform.localPosition += zOffset;
         playerJuggleScript = FindObjectOfType<PlayerJuggle>();
         //InstantiateAppropriateQueueElements();
-        circle.transform.position += zOffset;
+        //queueBackground.transform.position += zOffset;
+        Vector3 pos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects, firstObjectInQueuePos.y, firstObjectInQueuePos.z);
+        Instantiate(queueBackground, pos, Quaternion.identity, transform);
+        
+        //instantiatedPrefab.GetComponent<Transform>().position += zOffset;
     }
 
     public void InstantiateAppropriateQueueElements()
@@ -39,24 +44,37 @@ public class WeaponQueueElements : MonoBehaviour
             weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);                    //add the prefab
             Debug.Log(weaponsInQueueDisplayedOrder[enumIndex]);
         }
+        Vector3 pos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects, firstObjectInQueuePos.y, firstObjectInQueuePos.z);
+        Instantiate(queueBackground, pos, Quaternion.identity, transform);
+        arrow.transform.position = new Vector3(firstObjectInQueuePos.x, firstObjectInQueuePos.y + 1.5f, firstObjectInQueuePos.z);
         ///
         //ShowNextWeaponInQueueMoving();
-        arrow.GetComponent<Transform>().position = weaponsInQueueDisplayedOrder[i].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
-        Vector3 pos = new Vector3(0, 1, 34);
-        arrow.GetComponent<Transform>().position += pos;
+        //arrow.GetComponent<Transform>().position = weaponsInQueueDisplayedOrder[i].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
+        //Vector3 pos = new Vector3(0, 1, 34);
+        //arrow.GetComponent<Transform>().position += pos;
         ///
     }
 
     public void ShowNextWeaponInQueueMoving()
     {
-        Debug.Log(i);
-        arrow.GetComponent<Transform>().position = weaponsInQueueDisplayedOrder[i].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
-        Vector3 pos = new Vector3(0, 1, 34);
-        arrow.GetComponent<Transform>().position += pos;
         i++;
+        Debug.Log(i);
+        //arrow.GetComponent<Transform>().position = weaponsInQueueDisplayedOrder[i].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
+        //arrow.GetComponent<Transform>().position = new Vector3(arrowPos.x + posGapBetweenQueueObjects *i, arrowPos.y, arrowPos.z); 
+        if (i == 0)
+        {
+            Debug.Log("minus");
+            arrow.transform.position += new Vector3(-playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count* posGapBetweenQueueObjects, 0);
+        }
+        else if (i != 0)
+        {
+            arrow.transform.position += new Vector3(posGapBetweenQueueObjects * i, 0);
+        }
+        
+        
         if (i >= playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
         {
-            i = 0;
+            i = -1;
         }
     }
 
