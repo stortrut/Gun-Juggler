@@ -5,15 +5,15 @@ using static UnityEditor.PlayerSettings;
 public class WeaponQueueElements : MonoBehaviour
 {
     [SerializeField] GameObject[] weaponsInQueueEnumsOrder;
-    //[SerializeField] GameObject arrow;
+    [SerializeField] GameObject arrow;
     [SerializeField] GameObject queueBackground;
     List<GameObject> weaponsInQueueDisplayedOrder = new List<GameObject>();
 
     PlayerJuggle playerJuggleScript;
     private float posGapBetweenQueueObjects = 2.5f;
-    Vector3 firstObjectInQueuePos = new Vector3(-3.5f, 2.6f, 0);
-    private Vector3 zOffset = new Vector3(0, 0, 33);
+    [SerializeField] Vector3 firstObjectInQueuePos = new Vector3(-6f, -5f, 34);
     Vector3 arrowPos;
+    float xOffset = -3.54f;
 
     protected int i = 0;
     void Start()
@@ -25,6 +25,9 @@ public class WeaponQueueElements : MonoBehaviour
 
         Invoke(nameof(InstantiateAppropriateQueueElements), .01f);
         //instantiatedPrefab.GetComponent<Transform>().position += zOffset;
+    }
+    private void Update()
+    {
     }
 
     public void InstantiateAppropriateQueueElements()
@@ -38,21 +41,36 @@ public class WeaponQueueElements : MonoBehaviour
 
             Vector3 queueObjectSpawnPos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y);
             GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], queueObjectSpawnPos, Quaternion.identity, transform);  //instantiate the right prefab based of the enums index and weapons in queue enums order list
-            //Debug.Log("weapons in order "+weaponsInQueueDisplayedOrder[enumIndex]+ queueObjectSpawnPos);
-            //instantiatedPrefab.GetComponent<Transform>().position += zOffset;
             weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);                    //add the prefab
-            //Debug.Log(weaponsInQueueDisplayedOrder[enumIndex]);
         }
         Vector3 pos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects, firstObjectInQueuePos.y);
         Instantiate(queueBackground, pos, Quaternion.identity, transform);
-        //arrow.transform.position = new Vector3(firstObjectInQueuePos.x, firstObjectInQueuePos.y + 1.5f, firstObjectInQueuePos.z);
+        //arrow.transform.SetParent(transform, transform.parent);
+        ArrowPositioning();
+        //arrow.transform.localPosition = new Vector3(firstObjectInQueuePos.x, firstObjectInQueuePos.y + 1.3f, firstObjectInQueuePos.z); 
+        //arrow.transform.localPosition = new Vector3(-10.2f, -4.2f, 0);
         ///
         //ShowNextWeaponInQueueMoving();
-        //arrow.GetComponent<Transform>().position = weaponsInQueueDisplayedOrder[i].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
+        //arrow.GetComponent<Transform>().localPosition = weaponsInQueueDisplayedOrder[0].GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position;
         //Vector3 pos = new Vector3(0, 1, 34);
         //arrow.GetComponent<Transform>().position += pos;
         ///
     }
+
+    public void ArrowPositioning()
+    {
+        if (i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
+        {
+            arrow.transform.localPosition = new Vector3(xOffset +firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y + 1.3f, firstObjectInQueuePos.z);
+        }
+        else
+        {
+            arrow.transform.localPosition = new Vector3(xOffset+firstObjectInQueuePos.x, firstObjectInQueuePos.y + 1.3f, firstObjectInQueuePos.z);
+            i = 0; 
+        }
+        i++;
+    }
+
 
     //public void ShowNextWeaponInQueueMoving()
     //{
@@ -118,11 +136,11 @@ public class WeaponQueueElements : MonoBehaviour
     //    }
     //}
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            InstantiateAppropriateQueueElements();
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.O))
+    //    {
+    //        InstantiateAppropriateQueueElements();
+    //    }
+    //}
 }
