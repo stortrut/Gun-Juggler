@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pie : EnemyBullet, IAim
+public class Pie : EnemyBullet
 {
     
     [SerializeField] private float speed;
@@ -22,14 +22,23 @@ public class Pie : EnemyBullet, IAim
         AimCorrection();
         startRotation = transform.rotation;
         startPosition = transform.position;
-        rb2D.velocity = -Vector3.right * speed;
+        rb2D.velocity = direction * speed;
         rb2D.AddForce(Vector2.up * height*heightMultiplier);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Quaternion wantedRotation = Quaternion.Euler(0, 0, -180f);
+        var rotateangle = 0;
+        if (bulletDirectionRight)
+        {
+            rotateangle = 180;
+        }
+        else
+        {
+            rotateangle = -180;
+        }
+        Quaternion wantedRotation = Quaternion.Euler(0, 0, rotateangle);
 
         // Use RotateTowards to smoothly rotate the object
         transform.rotation = Quaternion.RotateTowards(transform.rotation, wantedRotation, rotationSpeed * Time.deltaTime);
@@ -39,7 +48,7 @@ public class Pie : EnemyBullet, IAim
             timeThrow = Time.time;
             transform.position = startPosition;
             transform.rotation = startRotation;
-            rb2D.velocity = -Vector3.right * speed;
+            rb2D.velocity = direction * speed;
             rb2D.AddForce(Vector2.up * height);
            
 
@@ -58,10 +67,17 @@ public class Pie : EnemyBullet, IAim
     }
     public void AimCorrection()
     {
-       heightMultiplier = aim.x / 10;
-       startRotation = new Quaternion(0,0,aim.z,0);
-
-    }
+       heightMultiplier = Mathf.Abs(aim.x) / 10;
+       //startRotation = new Quaternion(0,0,aim.z,0);
+       if(aim.x > 0)
+        {
+            bulletDirectionRight = false;
+        }
+       else
+        {
+            bulletDirectionRight = true;
+        }
+     }
 }
    
 

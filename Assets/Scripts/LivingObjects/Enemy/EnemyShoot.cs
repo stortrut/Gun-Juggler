@@ -23,7 +23,7 @@ public class EnemyShoot : WeaponBase
         if(gunPoint.position.x - player.position.x<18)
         {
             var i = Random.Range(0, 200);
-            if(i % 25 == 0)
+            if(i % 99 == 0)
             {
                 Shoot();
             }
