@@ -47,12 +47,14 @@ public class WeaponStunGun : WeaponBase
             }
             else if (obj.CompareTag("Enemy") || obj.CompareTag("EnemyNonTargetable"))
             {
-                var stunnable = obj.GetComponent<IStunnable>();
+                var stunnable = obj.GetComponents<IStunnable>();
 
                 if (stunnable == null) { return; }
-
-                stunnable.isStunnable = true;
-                StartCoroutine(UnFreeze(2, stunnable));
+                foreach(var stun in stunnable)
+                { 
+                stun.isStunnable = true;
+                StartCoroutine(UnFreeze(2, stun));
+                }
             }
         }
     }
@@ -60,7 +62,10 @@ public class WeaponStunGun : WeaponBase
 
 
 
-
+    public override void AdjustAim()
+    {
+        transform.rotation = Quaternion.identity;
+    }
 
     public override void UpgradeWeapon()
     {

@@ -22,28 +22,18 @@ public class WeaponBase : MonoBehaviour
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
 
     private AutoAim autoAim;
-
-    private void Awake()
-    {
-        //player = PlayerHealth.s_player;
-        //if (player == null) { Debug.Log("awdaowifbahfbajwdbkajwbdk"); }
-
-        //autoAim = player.GetComponentInChildren<AutoAim>();
-
-        autoAim = FindObjectOfType<AutoAim>();
-        if(autoAim == null) { Debug.Log("ERRROROROROOR00000000000000000000000OR"); }
-    }
-
-
+    private GameObject player;
 
     private void Update()
     {
-        if (autoAim == null) { Debug.Log("ERRROROROROOROR"); }
-        if (autoAim.bulletRotation == null) { Debug.Log("ERRROROROROOROR"); }
+        if (player == null)
+        {
+            player = Manager.Instance.player;
+            autoAim = player.GetComponentInChildren<AutoAim>();
+        }
 
 
-        this.transform.rotation = autoAim.bulletRotation;
-
+        AdjustAim();
 
 
         fireCooldownTimer += Time.deltaTime;
@@ -74,7 +64,10 @@ public class WeaponBase : MonoBehaviour
 
     }
 
-
+    public virtual void AdjustAim()
+    {
+        transform.rotation = autoAim.bulletRotation;
+    }
 
     public virtual void UpgradeWeapon()
     {

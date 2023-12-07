@@ -7,15 +7,16 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; private set; }
 
+    public GameObject player;
     public int nextScene = 0;
 
     private AsyncOperation _asyncOperation;
 
 
 
-    private void Start()
+    private void Awake()
     {
-        nextScene= SceneManager.GetActiveScene().buildIndex+1;
+        nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         Instance = this;
 
         if (SceneManager.GetActiveScene().name == "WinScene")
@@ -37,16 +38,16 @@ public class Manager : MonoBehaviour
     }
     public void ProceedToNextLevel()
     {
-            Debug.Log("Allowed Scene Activation");
+        Debug.Log("Allowed Scene Activation");
 
-            this._asyncOperation.allowSceneActivation = true;
+        this._asyncOperation.allowSceneActivation = true;
     }
-        
 
 
 
 
-public IEnumerator LoadSceneAsyncProcess()
+
+    public IEnumerator LoadSceneAsyncProcess()
     {
         // Begin to load the Scene you have specified.
         this._asyncOperation = SceneManager.LoadSceneAsync(nextScene);

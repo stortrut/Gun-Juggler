@@ -7,7 +7,7 @@ public class Pie : EnemyBullet
     
     [SerializeField] private float speed;
     [SerializeField] private float heightMultiplier=1;
-    private readonly float height = 300;
+    private readonly float height = 250;
     private float timeThrow;
     private float timeHit;
     public float rotationSpeed = 106.5f;
@@ -50,10 +50,6 @@ public class Pie : EnemyBullet
             transform.rotation = startRotation;
             rb2D.velocity = direction * speed;
             rb2D.AddForce(Vector2.up * height);
-           
-
-
-
         }
 
     }

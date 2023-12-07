@@ -2,41 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 
-public class EnemyShoot : WeaponBase
+public class EnemyShoot : WeaponBase, IStunnable
 {
     [SerializeField] protected float bulletDamage, bulletSpeed;
     [SerializeField] protected GameObject enemyBullet;
     [SerializeField] protected Vector2 spawnBulletPos;
      protected GameObject player;
     [HideInInspector] private Vector3 aim;
-    // Start is called before the first frame update
-    void Start()
 
-    {
-        player = PlayerHealth.s_player;
+    [HideInInspector] public bool isStunned = false;
+    [HideInInspector] public bool timeStop;
+    public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
+    public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
 
-        player = FindObjectOfType<PlayerJuggle>().gameObject;
-
-        //var dog = player.GetComponent<AutoAim>();
-        //Debug.Log(dog.objectsInField + "ALVIN WAS WRONG");
-        AdjustAim();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(player == null) { return; }
+        if(player == null) 
+        {
+            player = Manager.Instance.player;
+            AdjustAim();
+        }
 
-        if(gunPoint.position.x - player.transform.position.x<18)
+        if (isStunned == true){ return; }
+
+        if (gunPoint.position.x - player.transform.position.x<18)
         {
             var i = Random.Range(0, 200);
             if(i % 99 == 0)
             {
                 Shoot();
             }
-            if(i == 100)
+            if(i % 25 == 0)
             {
                 AdjustAim();
             }
