@@ -48,7 +48,7 @@ public class Manager : MonoBehaviour
     {
         Debug.Log("Allowed Scene Activation");
 
-        this._asyncOperation.allowSceneActivation = true;
+        this._asyncOperation.allowSceneActivation = true; // error
     }
 
 
