@@ -24,7 +24,7 @@ public class WeaponBase : MonoBehaviour
     private AutoAim autoAim;
     private GameObject player;
 
-    private void Update()
+            private void Update()
     {
         if (player == null)
         {

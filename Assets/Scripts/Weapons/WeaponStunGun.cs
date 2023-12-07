@@ -26,6 +26,7 @@ public class WeaponStunGun : WeaponBase
        
 
         base.UseWeapon();
+        Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsStunGun);
         stunZone.SoundWave();
     }
 
@@ -87,8 +88,7 @@ public class WeaponStunGun : WeaponBase
         //Base
         base.SetWeaponUpgradeData();
     }
-
-
+        
     IEnumerator UnFreeze(float timeStunned, IStunnable stunnable)
     {
         yield return new WaitForSeconds(timeStunned);
@@ -101,6 +101,8 @@ public class WeaponStunGun : WeaponBase
 [System.Serializable]
 public class StunGunUpgradeData : WeaponBaseUpgradeData
 {
-    //[Header("Stun Gun Specific")]
+    [Header("Stun Gun Specific")]
+    [SerializeField] public int soundWaveCount;
+    [SerializeField] public float spread;
 
 }
