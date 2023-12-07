@@ -672,7 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 2601480124588530163}
   mainPlayerCollider: {fileID: 2168797720198748124}
-  bodyAnimator: {fileID: 7764587249132070641}
+  legs: {fileID: 8505661738342763136}
   acceleration: 10
   speed: 7
   deacceleration: 10
@@ -772,6 +772,7 @@ GameObject:
   - component: {fileID: 5721745367121231882}
   - component: {fileID: 3847608492668943929}
   - component: {fileID: 7764587249132070641}
+  - component: {fileID: 8505661738342763136}
   m_Layer: 6
   m_Name: legs
   m_TagString: Untagged
@@ -867,6 +868,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8505661738342763136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796236512374236796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5994d5a5ebe00cc46844232bf5dad3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legs: {fileID: 7764587249132070641}
+  animationFrame: 0
+  length: 0
 --- !u!1 &6094414767044123345
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +980,7 @@ MonoBehaviour:
   aimDirection: 0
   bullet: {fileID: 0}
   gunPoint: {fileID: 4678468717913076533}
+  bulletRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!50 &972270664894505500
 Rigidbody2D:
   serializedVersion: 4
@@ -6131,6 +6148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stungun_holder Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5313302217846188744, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
+      propertyPath: autoAim
+      value: 
+      objectReference: {fileID: 5934105458784319413}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6149,6 +6170,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2856971930392272266}
     m_Modifications:
+    - target: {fileID: 748014011492423179, guid: d239a5d5b2bf78c4baa89689d9932c47, type: 3}
+      propertyPath: autoAim
+      value: 
+      objectReference: {fileID: 5934105458784319413}
     - target: {fileID: 2347129057286333577, guid: d239a5d5b2bf78c4baa89689d9932c47, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.761
@@ -6211,6 +6236,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2856971930392272266}
     m_Modifications:
+    - target: {fileID: 133017985112661643, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
+      propertyPath: autoAim
+      value: 
+      objectReference: {fileID: 5934105458784319413}
     - target: {fileID: 316579486113032499, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
       propertyPath: m_Name
       value: candygun_holder Variant (1)

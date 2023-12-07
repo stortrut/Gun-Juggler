@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [Header("References")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
-    [SerializeField] private Animator bodyAnimator;
+    [SerializeField] private LegAnimationHandler legs;
 
 
     [Header("Walk")]
@@ -93,14 +93,14 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if(horizontalInput > 0) 
         { 
             isFacingRight = true;
-            bodyAnimator.SetBool("Reverse", false);
-            //spriteRenderer.flipX = false;
+
+            legs.SetDirectionToForwards();
         }
         if (horizontalInput < 0) 
         { 
             isFacingRight = false;
-            bodyAnimator.SetBool("Reverse", true);
-            //spriteRenderer.flipX = true;
+
+            legs.SetDirectionToBackwards();
         }
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
@@ -110,10 +110,18 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
 
+
+            legs.PauseAnimation(true);
+
             //if (!bodyAnimator.GetBool("Dead"))
             //{
             //    bodyAnimator.speed = 0;
             //}
+        }
+        else
+        {
+            legs.PauseAnimation(false);
+
         }
         //else
         //{

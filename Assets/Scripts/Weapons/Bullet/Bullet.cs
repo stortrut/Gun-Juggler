@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
 
-        rb2D.velocity = direction * bulletSpeed;
+        rb2D.velocity = transform.right * bulletSpeed;
 
         Destroy(gameObject, bulletLifeTime);
     }

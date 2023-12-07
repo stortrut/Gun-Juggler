@@ -1151,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5832234309490168024, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: legs
+      value: 
+      objectReference: {fileID: 657326926}
     - target: {fileID: 6247798075502522073, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_Name
       value: player_holder
@@ -1158,8 +1162,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3796236512374236796, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 657326926}
   m_SourcePrefab: {fileID: 100100000, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+--- !u!1 &657326922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3796236512374236796, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+  m_PrefabInstance: {fileID: 616041445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &657326924 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7764587249132070641, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+  m_PrefabInstance: {fileID: 616041445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &657326926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657326922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5994d5a5ebe00cc46844232bf5dad3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legs: {fileID: 657326924}
+  animationFrame: 0
 --- !u!1 &794990524
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,7 +3264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 8959509530606873133}
   mainPlayerCollider: {fileID: 5068198952114168834}
-  bodyAnimator: {fileID: 3714793389411095855}
+  legs: {fileID: 0}
   acceleration: 10
   speed: 7
   deacceleration: 10
