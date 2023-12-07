@@ -28,6 +28,8 @@ public class WeaponStunGun : WeaponBase
 
     private void ReflectStun()
     {
+        Debug.Log("Used stun gun");
+
         foreach (GameObject obj in stunZone.objectsInField)
         {
             if (obj == null) { return; }
@@ -36,9 +38,13 @@ public class WeaponStunGun : WeaponBase
             {
                 var enemyBullet = obj.GetComponent<EnemyBullet>();
                 enemyBullet.Deflected();
+
+                Debug.Log("Stunned bullet");
+
+
                 //add bool so that enemy bullets now can damage enemies,
             }
-            else if (obj.CompareTag("Enemy"))
+            else if (obj.CompareTag("Enemy") || obj.CompareTag("EnemyNonTargetable"))
             {
                 var stunnable = obj.GetComponent<IStunnable>();
 

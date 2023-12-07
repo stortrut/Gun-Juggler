@@ -62,8 +62,6 @@ public class WeaponBase : MonoBehaviour
     public virtual void SetWeaponUpgradeData()
     {
         fireCooldown = currentWeaponBaseUpgradeData.weaponCooldown;
-
-        Debug.Log("Weapon base upgrade data is set in " + gameObject.name);
     }
 
 

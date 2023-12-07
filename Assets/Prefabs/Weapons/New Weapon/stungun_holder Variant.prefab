@@ -202,17 +202,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponEquipped: 0
   fireCooldown: 0
+  fireCooldownTimer: 0
   spriterenderer: {fileID: 2950035515051931817}
   rb2D: {fileID: 6663785091039587221}
   weaponCollider: {fileID: 5784730685233064529}
   weaponType: 0
   bullet: {fileID: 0}
   gunPoint: {fileID: 6792635679748770790}
+  currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
   stunZone: {fileID: 6524226119385354095}
   stunGunLevelUpgradeData:
-  - weaponCooldown: 1
+  - weaponCooldown: 0
   - weaponCooldown: 0.5
 --- !u!58 &5784730685233064529 stripped
 CircleCollider2D:
