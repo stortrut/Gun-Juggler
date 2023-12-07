@@ -33,7 +33,7 @@ public class WeaponConfettiGun : Gun
 
     public void ShootWideSpread(float bulletSpeed, float bulletDamageInput, int bulletCount)
     {
-        CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.identity);
+        CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, Quaternion.identity);
 
         int halfAmountOfBulletCount = bulletCount / 2;
 
@@ -42,12 +42,12 @@ public class WeaponConfettiGun : Gun
 
         void inverseBullets(int inverseMultiplier, int halfAmountOfBulletCount)
         {
-            CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
+            CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
 
             for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
             {
                 float rotationAngle = Random.Range(5, 35);
-                CreateNewBullet(bulletSpeed, bulletDamageInput, spriterenderer.color, Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
+                CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
             }
         }
     }

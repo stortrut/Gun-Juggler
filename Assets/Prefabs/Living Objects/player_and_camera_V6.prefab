@@ -406,9 +406,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6719098793624090520}
-  - {fileID: 7098351346902858318}
   - {fileID: 2352435170979363736}
+  - {fileID: 7098351346902858318}
+  - {fileID: 6719098793624090520}
   m_Father: {fileID: 1413156519888943586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3208141775026056221
@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9139287864276233434
 Transform:
   m_ObjectHideFlags: 0
@@ -732,6 +732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   health: 3
+  player: {fileID: 3610263452003768476}
 --- !u!1 &3796236512374236796
 GameObject:
   m_ObjectHideFlags: 0

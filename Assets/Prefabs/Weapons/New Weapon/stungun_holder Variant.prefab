@@ -603,10 +603,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponEquipped: 0
   fireCooldown: 0
-  fireCooldownTimer: 0
-  spriterenderer: {fileID: 2950035515051931817}
+  weaponSpriterenderer: {fileID: 2950035515051931817}
   rb2D: {fileID: 6663785091039587221}
   weaponCollider: {fileID: 5784730685233064529}
+  heartSpriteRenderer: {fileID: 6389493334238758047}
   weaponType: 0
   bullet: {fileID: 0}
   gunPoint: {fileID: 6792635679748770790}
@@ -625,6 +625,11 @@ MonoBehaviour:
 --- !u!58 &5784730685233064529 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6825548993933977305, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+  m_PrefabInstance: {fileID: 1080377158753045640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6389493334238758047 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6220121003623499799, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
   m_PrefabInstance: {fileID: 1080377158753045640}
   m_PrefabAsset: {fileID: 0}
 --- !u!50 &6663785091039587221 stripped

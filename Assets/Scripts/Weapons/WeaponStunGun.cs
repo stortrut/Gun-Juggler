@@ -41,9 +41,6 @@ public class WeaponStunGun : WeaponBase
                 var enemyBullet = obj.GetComponent<IAim>();
                 enemyBullet.Deflected();
 
-                Debug.Log("Stunned bullet");
-
-
                 //add bool so that enemy bullets now can damage enemies,
             }
             else if (obj.CompareTag("Enemy") || obj.CompareTag("EnemyNonTargetable"))

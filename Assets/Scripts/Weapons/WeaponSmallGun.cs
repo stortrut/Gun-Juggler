@@ -27,7 +27,7 @@ public class WeaponSmallGun : Gun
         GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
 
         Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
-        bulletScript.SetColor(spriterenderer.color);
+        bulletScript.SetColor(weaponSpriterenderer.color);
         bulletScript.SetBulletData(currentBulletSpeed, currentBulletDamage);
     }
 
