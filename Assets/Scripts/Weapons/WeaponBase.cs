@@ -111,6 +111,13 @@ public class WeaponBase : MonoBehaviour
         heartSpriteRenderer.enabled = true;
     }
 
+    public void ReplaceHeartWithWeapon()
+    {
+        EquipWeapon();
+        isHeart = false;
+        weaponSpriterenderer.enabled = true;
+        heartSpriteRenderer.enabled = false;
+    }
 
 
     public enum WeaponType

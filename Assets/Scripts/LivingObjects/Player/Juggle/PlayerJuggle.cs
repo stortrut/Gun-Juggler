@@ -105,6 +105,23 @@ public class PlayerJuggle : MonoBehaviour
         }
     }
 
+
+    public void ReplaceRandomHeartWithWeapon()
+    {
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            if (weaponsCurrentlyInJuggleLoop[i].weaponBase.isHeart)
+            {
+                weaponsCurrentlyInJuggleLoop[i].weaponBase.ReplaceHeartWithWeapon();
+                return;
+            }
+        }
+    }
+
+
+
+
+
     public void DropAllWeaponsOnGround()
     {
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)

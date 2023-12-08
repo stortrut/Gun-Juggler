@@ -106,7 +106,7 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void ThrowUpWeapon()
     {
-        if(playerJuggle == null) { Debug.Log("ERROR"); playerJuggle = GetComponentInParent<PlayerJuggle>(); }
+        if (playerJuggle == null) { Debug.Log("ERROR"); playerJuggle = GetComponentInParent<PlayerJuggle>(); }
         if (playerJuggle == null) { Debug.Log("NO PLAYER JUGGLE!!!!!!!!!!!!");}
 
         if (playerJuggle.armAnimationHandler == null) { Debug.Log("ARM ANIMATION ERROR"); }
