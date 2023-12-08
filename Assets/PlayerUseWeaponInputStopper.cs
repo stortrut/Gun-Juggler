@@ -6,10 +6,12 @@ public class PlayerUseWeaponInputStopper : MonoBehaviour
 {
     [SerializeField] bool tutorialLevelStop;
 
-    [HideInInspector] public bool isAbleToUseWeapon;
+    [SerializeField] public bool isAbleToUseWeapon;
 
     private void Start()
     {
+        isAbleToUseWeapon = true;
+
         if (tutorialLevelStop)
         {
             isAbleToUseWeapon = false;
