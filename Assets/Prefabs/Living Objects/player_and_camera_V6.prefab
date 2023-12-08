@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2879431181391973891}
   - component: {fileID: 660597354368754646}
   - component: {fileID: 4580504506597639219}
+  - component: {fileID: 115324910163351300}
   m_Layer: 0
   m_Name: collider_catch_circle
   m_TagString: Untagged
@@ -141,6 +142,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.22715424}
   m_Size: {x: 1, y: 1.4243085}
   m_Direction: 0
+--- !u!50 &115324910163351300
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59862288750460054}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &477172032740367509
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9139287864276233434
 Transform:
   m_ObjectHideFlags: 0
@@ -571,6 +599,7 @@ GameObject:
   - component: {fileID: 7419300733805608355}
   - component: {fileID: 6148740716495877877}
   - component: {fileID: 1574896342726619033}
+  - component: {fileID: 174781620138755076}
   m_Layer: 6
   m_Name: player_logic
   m_TagString: Player
@@ -733,6 +762,20 @@ MonoBehaviour:
   maxHealth: 0
   health: 3
   player: {fileID: 3610263452003768476}
+--- !u!114 &174781620138755076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610263452003768476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de74646b76d8a8b4288f0cd8fa3a20f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialLevelStop: 0
+  isAbleToUseWeapon: 0
 --- !u!1 &3796236512374236796
 GameObject:
   m_ObjectHideFlags: 0
