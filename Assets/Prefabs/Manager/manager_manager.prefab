@@ -2268,10 +2268,10 @@ RectTransform:
   - {fileID: 3026066340483881550}
   m_Father: {fileID: 5731441087921221463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -13.333333}
-  m_SizeDelta: {x: 300, y: 26.666666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4985750391401009309
 CanvasRenderer:
@@ -2603,10 +2603,10 @@ RectTransform:
   - {fileID: 1658153584390504047}
   m_Father: {fileID: 5731441087921221463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -60}
-  m_SizeDelta: {x: 300, y: 26.666666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1390497868830086652
 CanvasRenderer:
@@ -3084,9 +3084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quit
-
-'
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4236a07fc72a5614c8dd9e50732cf4df, type: 2}
   m_sharedMaterial: {fileID: 8906645249006706623, guid: 4236a07fc72a5614c8dd9e50732cf4df, type: 2}
@@ -4121,7 +4119,7 @@ GameObject:
   - component: {fileID: 2717434249115463154}
   - component: {fileID: 7108516293541915680}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4142,10 +4140,10 @@ RectTransform:
   - {fileID: 213395139838091886}
   m_Father: {fileID: 5731441087921221463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -106.666664}
-  m_SizeDelta: {x: 300, y: 26.666666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7462630476454865065
 CanvasRenderer:
@@ -4231,7 +4229,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3976807771287213954}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: QuitButton
+        m_MethodName: BackToMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4272,7 +4270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2272811681648330778
 RectTransform:
   m_ObjectHideFlags: 0
