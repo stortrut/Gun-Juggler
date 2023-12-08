@@ -22,7 +22,9 @@ public class Manager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "WinScene")
         {
             LoadNextLevel();
+
             Invoke(nameof(ProceedToNextLevel), 15);
+
         }
     }
 
@@ -49,7 +51,6 @@ public class Manager : MonoBehaviour
     public void ProceedToNextLevel()
     {
         Debug.Log("Allowed Scene Activation");
-
         asyncOperation.allowSceneActivation = true; // error
     }
 
