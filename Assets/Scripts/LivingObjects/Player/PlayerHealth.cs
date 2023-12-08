@@ -59,7 +59,8 @@ public class PlayerHealth : Health
         player.GetComponentInChildren<DeathAnimationHandler>().TriggerDeathAnimation();
 
         Debug.Log("Player Died");
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene(0);
     }
 }
