@@ -27,6 +27,7 @@ public class PlayerHealth : Health
 
                 player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
 
+
                 if(health <= 0)
                 {
                     StartCoroutine(nameof(PlayerDied));
@@ -54,8 +55,11 @@ public class PlayerHealth : Health
 
     IEnumerator PlayerDied()
     {
+        player.GetComponentInChildren<PlayerJuggle>().DropAllWeaponsOnGround();
+        player.GetComponentInChildren<DeathAnimationHandler>().TriggerDeathAnimation();
+
         Debug.Log("Player Died");
         yield return new WaitForSeconds(0.4f);
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
     }
 }

@@ -124,7 +124,7 @@ public class WeaponJuggleMovement : MonoBehaviour
         curveDeltaTime = 0;
 
         weaponBase.rb2D.bodyType = RigidbodyType2D.Dynamic;
-        weaponBase.rb2D.AddForce(new Vector2(-200, 400));
+        weaponBase.rb2D.AddForce(new Vector2(-10, 10));
         weaponBase.weaponCollider.isTrigger = false;
     }
 }

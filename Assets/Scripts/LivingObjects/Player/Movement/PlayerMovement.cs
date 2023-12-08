@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
     [SerializeField] private LegAnimationHandler legs;
+    [SerializeField] private Health playerHealth;
 
 
     [Header("Walk")]
@@ -50,6 +51,10 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     {
         calculatedGroundCheckLenght = (mainPlayerCollider.bounds.size.y / 2) + groundCheckDistanceFromCollider;
 
+        if (playerHealth.isDead)
+        {
+            return;
+        }
         if (isStunned == true) 
         {
             return;

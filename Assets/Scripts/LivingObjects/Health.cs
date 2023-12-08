@@ -10,7 +10,9 @@ public class Health : MonoBehaviour, IDamageable
     [HideInInspector]public int maxHealth = 1000;
     public int health;
 
-     private EnemyProtection protection;
+    [HideInInspector] public bool isDead;
+
+    private EnemyProtection protection;
    
     private bool oneShot = true;
     private bool isProtected;
@@ -18,7 +20,6 @@ public class Health : MonoBehaviour, IDamageable
 
     void Awake()
     {
-        
         protection = GetComponent<EnemyProtection>();
     }
 
@@ -31,9 +32,9 @@ public class Health : MonoBehaviour, IDamageable
             health -= amount;
             //health = Mathf.Clamp(health, -1, maxHealth);
 
-            if (health < -2)
+            if (health <= 0)
             {
-                //Destroy(gameObject);
+                isDead = true;
             }
         }
     }

@@ -399,12 +399,14 @@ MonoBehaviour:
   rb2D: {fileID: 5946089023895152413}
   weaponCollider: {fileID: 6825548993933977305}
   heartSpriteRenderer: {fileID: 6220121003623499799}
+  isHeart: 0
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 5816978791661700974}
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  canUseWeaponChecker: {fileID: 0}
   bulletSmall: {fileID: 0}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
@@ -521,6 +523,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6441475528548958493, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441475528548958493, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441475528548958493, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.71
       objectReference: {fileID: 0}
@@ -558,6 +568,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6441475528548958493, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188072838981134636, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188072838981134636, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
+      propertyPath: m_Color.g
+      value: 0.056913942
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188072838981134636, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

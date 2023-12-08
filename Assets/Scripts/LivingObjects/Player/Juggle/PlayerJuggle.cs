@@ -105,6 +105,12 @@ public class PlayerJuggle : MonoBehaviour
         }
     }
 
-
+    public void DropAllWeaponsOnGround()
+    {
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            weaponsCurrentlyInJuggleLoop[i].DropWeapon();
+        }
+    }
 
 }
