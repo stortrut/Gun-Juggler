@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
     public GameObject player;
     public int nextScene = 0;
 
-    private AsyncOperation _asyncOperation;
+    private AsyncOperation asyncOperation;
 
 
 
@@ -21,7 +21,8 @@ public class Manager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "WinScene")
         {
-            Invoke(nameof(ProceedToNextLevel), 5);
+            LoadNextLevel();
+            Invoke(nameof(ProceedToNextLevel), 3);
         }
     }
 
@@ -36,6 +37,7 @@ public class Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
+            LoadNextLevel();
             ProceedToNextLevel();
         }
     }
@@ -48,7 +50,7 @@ public class Manager : MonoBehaviour
     {
         Debug.Log("Allowed Scene Activation");
 
-        this._asyncOperation.allowSceneActivation = true; // error
+        asyncOperation.allowSceneActivation = true; // error
     }
 
 
@@ -58,14 +60,14 @@ public class Manager : MonoBehaviour
     public IEnumerator LoadSceneAsyncProcess()
     {
         // Begin to load the Scene you have specified.
-        this._asyncOperation = SceneManager.LoadSceneAsync(nextScene);
+        asyncOperation = SceneManager.LoadSceneAsync(nextScene);
 
         // Don't let the Scene activate until you allow it to.
-        this._asyncOperation.allowSceneActivation = false;
+       asyncOperation.allowSceneActivation = false;
 
-        while (!this._asyncOperation.isDone)
+        while (asyncOperation.isDone)
         {
-            Debug.Log($"[scene]:{nextScene} [load progress]: {this._asyncOperation.progress}");
+            Debug.Log($"[scene]:{nextScene} [load progress]: {asyncOperation.progress}");
 
             yield return null;
         }
