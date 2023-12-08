@@ -7,7 +7,7 @@ public class Pie : EnemyBullet
     
     [SerializeField] private float speed;
     [SerializeField] private float heightMultiplier=1;
-    private readonly float height = 250;
+    private readonly float height = 800;
     private float timeThrow;
     private float timeHit;
     public float rotationSpeed = 106.5f;
@@ -62,7 +62,7 @@ public class Pie : EnemyBullet
     }
     public void AimCorrection()
     {
-       heightMultiplier = Mathf.Abs(aim.x) / 10;
+       heightMultiplier = Mathf.Abs(aim.x) / 6;
        //startRotation = new Quaternion(0,0,aim.z,0);
        if(aim.x > 0)
         {

@@ -22,7 +22,7 @@ public class Manager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "WinScene")
         {
             LoadNextLevel();
-            Invoke(nameof(ProceedToNextLevel), 3);
+            Invoke(nameof(ProceedToNextLevel), 15);
         }
     }
 
