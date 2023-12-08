@@ -28,7 +28,7 @@ public class Checkpoint : MonoBehaviour
 
             Manager.Instance.ProceedToNextLevel();
         }
-        // Manager.Instance.Invoke("ProceedToNextLevel", .2f);
+        //Manager.Instance.Invoke("ProceedToNextLevel", .2f);
     }
 }
 

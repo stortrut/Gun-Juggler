@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     public int nextScene = 0;
 
     private AsyncOperation asyncOperation;
+    [SerializeField] GameObject fadeToBlack;
 
 
 
@@ -22,7 +23,7 @@ public class Manager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "WinScene")
         {
             LoadNextLevel();
-            Invoke(nameof(ProceedToNextLevel), 15);
+            Invoke(nameof(ProceedToNextLevel), 10);
 
         }
     }
@@ -46,15 +47,20 @@ public class Manager : MonoBehaviour
     {
         StartCoroutine(LoadSceneAsyncProcess());
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        fadeToBlack.SetActive(true);
+        Invoke(nameof(SetActiveFalse), 7);
     }
     public void ProceedToNextLevel()
     {
         Debug.Log("Allowed Scene Activation");
-        asyncOperation.allowSceneActivation = true; // error
+        asyncOperation.allowSceneActivation = true; 
     }
 
 
-
+    private void SetActiveFalse()
+    {
+        fadeToBlack.SetActive(false);
+    }
 
 
     public IEnumerator LoadSceneAsyncProcess()
