@@ -15,7 +15,8 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
     [HideInInspector] public bool isStunned = false;
     [HideInInspector] public bool timeStop;
-    private float lastSecond = 0;
+    private float nextShootTime = 0;
+    private bool once;
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
     public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
 
@@ -31,26 +32,38 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
         if (spawnBulletPos.position.x - player.transform.position.x < 14)
         {
-            
-            float currentTime = Time.time;
-            int currentSecond = (int)currentTime;
+            if(once == false)
+            {
+                AdjustAim();
+                once = true;
 
-            if (currentSecond > lastSecond)
-            {
-                lastSecond = currentSecond;
-                var i = 1; // Random.Range(0, 2);
-                if (i == 1)
-                {
-                    Shoot();
-                }
-                
             }
-            if (currentSecond % 4 == 0)
+            float currentTime = Time.time;
+            if (currentTime > nextShootTime)
             {
+                // Set a new random interval between 1 and 2 seconds
+                nextShootTime = currentTime + Random.Range(0.6f, 2f);
+
+                // Perform the shooting and aim adjustment
+                Shoot();
                 AdjustAim();
             }
         }
     }
+            //    float currentTime = Time.time;
+            //int currentSecond = (int)currentTime;
+
+            //if (currentSecond > lastSecond)
+            //{
+            //    lastSecond = currentSecond;
+            //    Shoot();
+            //    AdjustAim();
+
+
+            //}
+          
+        
+    
     public void Shoot()
     {
         GameObject weaponBullet = Instantiate(enemyBullet, spawnBulletPos.position, spawnBulletPos.rotation);

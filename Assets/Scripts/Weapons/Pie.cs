@@ -7,13 +7,13 @@ public class Pie : EnemyBullet
     
     [SerializeField] private float speed;
     [SerializeField] private float heightMultiplier=1;
-    private readonly float height = 800;
+    private readonly float height = 900;
     private float timeThrow;
     private float timeHit;
     public float rotationSpeed = 106.5f;
     private Quaternion startRotation;
     Vector2 startPosition;
-    
+    private bool once = false;
     
 
     void Start()
@@ -28,6 +28,15 @@ public class Pie : EnemyBullet
     // Update is called once per frame
     void Update()
     {
+        
+        //if((int)transform.position.x < (int)(startPosition.x - aim.x/2))
+        //{
+            // Calculate the interpolation factor based on the progress
+            float progress = Mathf.InverseLerp(startPosition.x, startPosition.x + (aim.x * 0.5f), transform.position.x);
+
+            // Use Mathf.Lerp to smoothly transition the gravityScale
+            rb2D.gravityScale = Mathf.Lerp(2.5f, 0.1f, progress);
+      //  }
         var rotateangle = 0;
         if (bulletDirectionRight)
         {
@@ -62,7 +71,7 @@ public class Pie : EnemyBullet
     }
     public void AimCorrection()
     {
-       heightMultiplier = Mathf.Abs(aim.x) / 6;
+        heightMultiplier = Mathf.Abs(aim.x) / 14;
        //startRotation = new Quaternion(0,0,aim.z,0);
        if(aim.x > 0)
         {
