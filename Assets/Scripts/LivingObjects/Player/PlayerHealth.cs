@@ -27,7 +27,6 @@ public class PlayerHealth : Health
 
                 player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
 
-
                 if(health <= 0)
                 {
                     StartCoroutine(nameof(PlayerDied));
@@ -62,5 +61,15 @@ public class PlayerHealth : Health
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene(0);
+    }
+
+
+
+
+    public void GivePlayerWeaponAndHealthBack()
+    {
+        player.GetComponent<PlayerJuggle>().ReplaceRandomHeartWithWeapon();
+        health++;
+        if(health > 3) { health = 3; }
     }
 }

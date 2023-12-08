@@ -11,8 +11,12 @@ public class EnemyHealth : Health
     [SerializeField] private HealthUI healthImage;
     private bool colorischanged;
     private bool dummy;
+
+    private bool died;
+
     private void Start()
     {
+        died = false;
         maxHealth = health;
         animatorScript = GetComponent<EnemyAnimator>();
         if (animatorScript != null )
@@ -42,6 +46,11 @@ public class EnemyHealth : Health
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
                 if (health==0)
                 {
+                    if(died == true) { return; }
+
+                    died = true;
+
+                    FindObjectOfType<PlayerHealth>().GivePlayerWeaponAndHealthBack();
                     Death();
                 }
             }
