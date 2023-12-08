@@ -27,6 +27,13 @@ public class WeaponBase : MonoBehaviour
 
     private AutoAim autoAim;
     private GameObject player;
+    public PlayerUseWeaponInputStopper canUseWeaponChecker;
+
+    private void Start()
+    {
+        canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
+    }
+
 
     private void Update()
     {
@@ -36,10 +43,20 @@ public class WeaponBase : MonoBehaviour
             autoAim = player.GetComponentInChildren<AutoAim>();
         }
 
+        if(canUseWeaponChecker == null)
+        {
+            canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
+        }
+        if (canUseWeaponChecker == null)
+        {
+            canUseWeaponChecker = player.GetComponentInChildren<PlayerUseWeaponInputStopper>();
+        }
+
+
         AdjustAim();
 
         fireCooldownTimer += Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireCooldownTimer > fireCooldown)
+        if (Input.GetMouseButton(0) && fireCooldownTimer > fireCooldown && canUseWeaponChecker.isAbleToUseWeapon)
         {
             if (weaponEquipped)
             {
