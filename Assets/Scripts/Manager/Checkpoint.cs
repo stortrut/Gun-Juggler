@@ -22,7 +22,7 @@ public class Checkpoint : MonoBehaviour
     }
     private void Update()
     {
-        if ((int)Time.time == (int)timeStart + 3)
+        if ((int)Time.time == (int)timeStart + 1)
         {
             Debug.Log("Allowed Scene Activation");
 
