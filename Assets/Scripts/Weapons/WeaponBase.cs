@@ -12,6 +12,7 @@ public class WeaponBase : MonoBehaviour
     [SerializeField] public Rigidbody2D rb2D;
     [SerializeField] public Collider2D weaponCollider;
     [SerializeField] protected SpriteRenderer heartSpriteRenderer;
+    [SerializeField] WeaponJuggleMovement weaponJuggleMovement;
 
     [HideInInspector] public bool isHeart;
 
@@ -44,8 +45,9 @@ public class WeaponBase : MonoBehaviour
             //autoAim = player.GetComponentInChildren<AutoAim>();
             aim = player.GetComponentInChildren<Aim>();
         }
+        aim = player.GetComponentInChildren<Aim>();
 
-        if(canUseWeaponChecker == null)
+        if (canUseWeaponChecker == null)
         {
             canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
         }
@@ -54,8 +56,10 @@ public class WeaponBase : MonoBehaviour
             canUseWeaponChecker = player.GetComponentInChildren<PlayerUseWeaponInputStopper>();
         }
 
-
-        AdjustAim();
+        if (!weaponJuggleMovement.beingThrown)
+        {
+            AdjustAim();
+        }
 
         fireCooldownTimer += Time.deltaTime;
         if (Input.GetMouseButton(0) && fireCooldownTimer > fireCooldown && canUseWeaponChecker.isAbleToUseWeapon)

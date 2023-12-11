@@ -24,14 +24,7 @@ public class WeaponQueueElements : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            InstantiateAppropriateQueueElements();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ReplaceQueueElements(1);
-        }
+        
     }
 
     public void InstantiateAppropriateQueueElements()
@@ -93,6 +86,11 @@ public class WeaponQueueElements : MonoBehaviour
 
     public void ArrowPositioning()
     {
+        if (playerJuggleScript.weaponsCurrentlyInJuggleLoop != null)
+        {
+            Debug.Log("notnull");
+        }
+        
         if (i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
         {
             arrow.transform.localPosition = new Vector3(xOffset + firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y + yOffset, firstObjectInQueuePos.z);
