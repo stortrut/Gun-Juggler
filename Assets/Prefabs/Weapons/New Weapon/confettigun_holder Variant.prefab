@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816978791661700974, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8505283584904883843, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
       propertyPath: m_LocalScale.x
@@ -121,12 +121,14 @@ MonoBehaviour:
   rb2D: {fileID: 8929002792855396274}
   weaponCollider: {fileID: 8635591160967388790}
   heartSpriteRenderer: {fileID: 9168413863948824760}
+  isHeart: 0
   weaponType: 0
   bullet: {fileID: 8888622273928473693, guid: 36796d5c73155b94ba69beef2d4a473e, type: 3}
   gunPoint: {fileID: 8778922679068098497}
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+  canUseWeaponChecker: {fileID: 0}
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
