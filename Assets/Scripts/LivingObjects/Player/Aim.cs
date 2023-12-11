@@ -6,7 +6,7 @@ public class Aim : MonoBehaviour
 {
 
     float aimDirection;
-    [HideInInspector] public Quaternion bulletRotation;
+    /*[HideInInspector] */public Quaternion bulletRotation;
     private Vector3 mousePosition;
     private Vector3 currentAim;
     [SerializeField] private PlayerJuggle playerJuggle;
@@ -24,7 +24,6 @@ public class Aim : MonoBehaviour
 
         if (playerJuggle.weaponInHand != null)
         {
-
             Vector3 playerjuggle = activeCamera.WorldToScreenPoint(playerJuggle.weaponInHand.weaponBase.gunPoint.transform.position);
             currentAim = Input.mousePosition - playerjuggle;
             currentAim.z = 0;
