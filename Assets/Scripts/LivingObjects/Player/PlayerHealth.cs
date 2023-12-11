@@ -8,7 +8,7 @@ public class PlayerHealth : Health
     Vector3 knockback;
     public GameObject player;
     public static GameObject s_player;
-
+    private bool died;
     private void Awake()
     {
         s_player = player;
@@ -29,7 +29,13 @@ public class PlayerHealth : Health
 
                 if(health <= 0)
                 {
-                    StartCoroutine(nameof(PlayerDied));
+                    if(!died)
+                    {
+                        StartCoroutine(nameof(PlayerDied));
+                        died = true;
+                    }
+                    
+
                 } 
             }
             else if (hasProtection == true)
@@ -56,6 +62,7 @@ public class PlayerHealth : Health
     {
         player.GetComponentInChildren<PlayerJuggle>().DropAllWeaponsOnGround();
         player.GetComponentInChildren<DeathAnimationHandler>().TriggerDeathAnimation();
+        Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
 
         Debug.Log("Player Died");
         yield return new WaitForSeconds(2f);

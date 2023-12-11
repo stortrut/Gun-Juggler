@@ -48,6 +48,7 @@ public class WeaponStunGun : WeaponBase
                 var stunnable = obj.GetComponents<IStunnable>();
 
                 if (stunnable == null) { return; }
+                Debug.Log(stunnable);
                 foreach(var stun in stunnable)
                 { 
                 stun.isStunnable = true;

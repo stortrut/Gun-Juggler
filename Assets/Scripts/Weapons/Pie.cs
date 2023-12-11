@@ -35,7 +35,7 @@ public class Pie : EnemyBullet
             float progress = Mathf.InverseLerp(startPosition.x, startPosition.x + (aim.x * 0.5f), transform.position.x);
 
             // Use Mathf.Lerp to smoothly transition the gravityScale
-            rb2D.gravityScale = Mathf.Lerp(2.5f, 0.1f, progress);
+            rb2D.gravityScale = Mathf.Lerp(1.8f, 0.1f, progress);
       //  }
         var rotateangle = 0;
         if (bulletDirectionRight)
