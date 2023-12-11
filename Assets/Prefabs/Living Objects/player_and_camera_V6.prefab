@@ -995,6 +995,7 @@ GameObject:
   - component: {fileID: 8162501361930568342}
   - component: {fileID: 5934105458784319413}
   - component: {fileID: 972270664894505500}
+  - component: {fileID: 8932446331157943160}
   m_Layer: 6
   m_Name: autoaim_zone
   m_TagString: Untagged
@@ -1103,6 +1104,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8932446331157943160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094414767044123345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e306951fdc06c4d9a713b8c58717e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletRotation: {x: 0, y: 0, z: 0, w: 0}
+  playerJuggle: {fileID: 6148740716495877877}
+  activeCamera: {fileID: 8855029474854014241}
 --- !u!1 &6247798075502522073
 GameObject:
   m_ObjectHideFlags: 0
