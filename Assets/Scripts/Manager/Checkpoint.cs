@@ -24,7 +24,7 @@ public class Checkpoint : MonoBehaviour
     {
         if ((int)Time.time == (int)timeStart + 1)
         {
-            Debug.Log("Allowed Scene Activation");
+            //Debug.Log("Allowed Scene Activation");
 
             Manager.Instance.ProceedToNextLevel();
         }

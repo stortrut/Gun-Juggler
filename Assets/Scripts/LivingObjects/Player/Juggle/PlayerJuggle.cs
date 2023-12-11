@@ -17,7 +17,22 @@ public class PlayerJuggle : MonoBehaviour
     
     WeaponQueueElements weaponQueueElementsScript; 
     
-    
+    public void SpeedUpUpcomingWeapon(/*WeaponJuggleMovement oldWeapon*/)
+    {
+        int weaponPosition = weaponsCurrentlyInJuggleLoop.IndexOf(weaponInHand);
+
+        if (weaponPosition == weaponsCurrentlyInJuggleLoop.Count - 1)
+        {
+            weaponPosition = 0;
+        }
+        else
+        {
+            weaponPosition++;
+        }
+
+        weaponsCurrentlyInJuggleLoop[weaponPosition].curveSpeedModifier = 4f;
+    }
+
     private void Start()
     {
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
@@ -32,19 +47,24 @@ public class PlayerJuggle : MonoBehaviour
 
         weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
 
+
+        StartJuggling();
+
+
         //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
 
         weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
+        if(weaponQueueElementsScript == null) { return; }
         weaponQueueElementsScript.InstantiateAppropriateQueueElements();
-        StartJuggling();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isJuggling)
-        {
-            StartJuggling();
-        }
+        //if(weaponInHand == null) { return; }
+        //if (Input.GetKeyDown(KeyCode.Mouse0) && !isJuggling)
+        //{
+        //    StartJuggling();
+        //}
     }
 
     private void StartJuggling()
@@ -67,16 +87,19 @@ public class PlayerJuggle : MonoBehaviour
     {
         newWeapon.beingThrown = false;
         newWeapon.weaponBase.EquipWeapon();
+        
         weaponInHand = newWeapon;
     }
 
     public void ThrowUpWeaponInHand()
     {
+        if(weaponInHand == null) { return; }
+
+        SpeedUpUpcomingWeapon();
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
-
-        //if(weaponQueueElementsScript == null) { return; }
+        if (weaponQueueElementsScript == null) { return; }
         weaponQueueElementsScript.ArrowPositioning();
     }
 

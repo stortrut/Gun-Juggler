@@ -53,7 +53,7 @@ public class Manager : MonoBehaviour
     }
     public void ProceedToNextLevel()
     {
-        Debug.Log("Allowed Scene Activation");
+        //Debug.Log("Allowed Scene Activation");
         asyncOperation.allowSceneActivation = true; 
     }
 
