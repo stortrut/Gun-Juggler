@@ -24,6 +24,7 @@ public class WeaponConfettiGun : Gun
     public override void UseWeapon()
     {
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
+        CameraShake.instance.ShakingRandomly(.2f, .5f, .5f);
 
         if (knockback != null)
             knockback.KnockBackMyself(3.5f, 5f, 0.2f, gunPoint.transform);
