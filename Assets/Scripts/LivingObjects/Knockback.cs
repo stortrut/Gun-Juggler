@@ -38,47 +38,53 @@ public class Knockback : MonoBehaviour
         float distanceToKnockbackCauser = referenceTransformPosition.x - transform.position.x;  //knockbackdirection
         if (distanceToKnockbackCauser > 0)
         { knockbackDirection = -1f; }
-        else 
-        { knockbackDirection = 1f;  }
+        else
+        { knockbackDirection = 1f; }
 
         knockbackForce.x = knockbackSpeedX * knockbackDirection;
         knockbackForce.y = knockbackSpeedY;
         rb2D.velocity = knockbackForce;
-       
-        
+
+
     }
-        public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Transform referenceTransform)  //referenceTransformPosition is the thing that not gets knocked back
+    public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Transform referenceTransform)  //referenceTransformPosition is the thing that not gets knocked back
+    {
+        stunnable.isStunnable = true;
+        knockback = true;
+        knockbackStart = Time.time;
+        knockbackDuration = knockbackDurationInput;
+        var normalizedrotation = (referenceTransform.rotation.eulerAngles.z + 90) % 360;
+        Debug.Log("Normalizedrotation;" + normalizedrotation);
+
+
+
+
+        if (normalizedrotation > 180 && normalizedrotation < 360)
         {
-            stunnable.isStunnable = true;
-            knockback = true;
-            knockbackStart = Time.time;
-            knockbackDuration = knockbackDurationInput;
-
-            Quaternion oppositeRotation = Quaternion.Inverse(referenceTransform.rotation);
-            Vector3 euler = oppositeRotation.eulerAngles;
-             
-       
-        //Quaternion oppositeX = Quaternion.Euler(0, 180, 0);
-
-        // Alternatively, if you want to flip only along the Y-axis:
-
-        knockbackForce = new Vector2(knockbackSpeedX, knockbackSpeedY);
-            // Rotate the knockbackForce vector based on the opposite rotation
-            knockbackForce= oppositeRotation * knockbackForce;
-            knockbackForce = new Vector2(-knockbackForce.x,knockbackForce.y);//new Vector2(knockbackForceX.x, knockbackForceY.y);
-        if (euler.z > 85 && euler.z < 90)
-        {
-            knockbackForce.x = 0;
+            knockbackForce = new Vector2(knockbackSpeedX, 0);
         }
-        if (euler.z < 90f && euler.z > 45f)
+        else
         {
-            knockbackForce = new Vector2(-knockbackForce.x, knockbackForce.y);
+            knockbackForce = new Vector2(-knockbackSpeedX, 0);
         }
-       
+        if (normalizedrotation > 90 && normalizedrotation < 270)
+        {
+            knockbackForce += new Vector2(0, -knockbackSpeedY);
+        }
+        else
+        {
+            knockbackForce += new Vector2(0, knockbackSpeedY);
+        }
+        if (normalizedrotation > 315 || normalizedrotation > 45f)
+        {
+            knockbackForce += new Vector2(0, knockbackSpeedY);
+        }
+
+        Debug.Log(knockbackForce.x + ":X,y:" + knockbackForce.y);
         rb2D.velocity = knockbackForce;
 
 
-        }
+    }
 
     private void CheckKnockback()
     {
@@ -95,8 +101,8 @@ public class Knockback : MonoBehaviour
 
         stunnable.isStunnable = false;
         knockback = false;
-  
-       
+
+
     }
 
     private void NoForce()

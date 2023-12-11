@@ -27,9 +27,9 @@ public class WeaponBase : MonoBehaviour
 
     private AutoAim autoAim;
     private Aim aim;
-    private GameObject player;
+    private GameObject player;  
     public PlayerUseWeaponInputStopper canUseWeaponChecker;
-
+    
     private void Start()
     {
         canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
@@ -85,14 +85,14 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
-        //Fix this without findobjectoftype 
-        FindObjectOfType<PlayerJuggle>().ThrowUpWeaponInHand();
+
     }
 
     public virtual void AdjustAim()
     {
         transform.rotation = aim.bulletRotation;
         //transform.rotation = autoAim.bulletRotation;
+
     }
 
     public virtual void UpgradeWeapon()
@@ -128,8 +128,7 @@ public class WeaponBase : MonoBehaviour
     {
         SmallGun,
         ShotGun,
-        StunGun,
-        Heart
+        StunGun
     }
 }
 
