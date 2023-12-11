@@ -62,8 +62,6 @@ public class Knockback : MonoBehaviour
         // Rotate the knockbackForce vector based on the opposite rotation
         knockbackForce= oppositeRotation * knockbackForce;
         knockbackForce = new Vector2(-knockbackForce.x,knockbackForce.y);//new Vector2(knockbackForceX.x, knockbackForceY.y);
-        Debug.Log("knockbackForce: " + knockbackForce);
-        Debug.Log("oppositeRotation: " + oppositeRotation);
         rb2D.velocity = knockbackForce;
 
 
