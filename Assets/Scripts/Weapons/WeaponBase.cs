@@ -89,7 +89,7 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
-
+        GetComponentInParent<PlayerJuggle>().ThrowUpWeaponInHand();
     }
 
     public virtual void AdjustAim()
