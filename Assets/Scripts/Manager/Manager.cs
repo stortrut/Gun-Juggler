@@ -32,6 +32,7 @@ public class Manager : MonoBehaviour
     private void Start()
     {
         if(player == null) { Debug.Log("No player dragged into ManagerManager's Game Manager"); }
+
     }
 
 

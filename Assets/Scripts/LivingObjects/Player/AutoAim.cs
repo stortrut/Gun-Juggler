@@ -7,7 +7,7 @@ public class AutoAim : MonoBehaviour
     private PlayerJuggle playerJuggle;
 
     private Vector2 closestEnemy=Vector2.one*100;
-    private Vector2 currentEnemy;
+    private Vector2 currentEnemy;   
 
     private Transform target;
     private float aimDirection;

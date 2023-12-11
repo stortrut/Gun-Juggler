@@ -26,6 +26,7 @@ public class WeaponBase : MonoBehaviour
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
 
     private AutoAim autoAim;
+    private Aim aim;
     private GameObject player;
     public PlayerUseWeaponInputStopper canUseWeaponChecker;
 
@@ -40,7 +41,8 @@ public class WeaponBase : MonoBehaviour
         if (player == null)
         {
             player = Manager.Instance.player;
-            autoAim = player.GetComponentInChildren<AutoAim>();
+            //autoAim = player.GetComponentInChildren<AutoAim>();
+            aim = player.GetComponentInChildren<Aim>();
         }
 
         if(canUseWeaponChecker == null)
@@ -88,7 +90,9 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void AdjustAim()
     {
-        transform.rotation = autoAim.bulletRotation;
+        transform.rotation = aim.bulletRotation;
+        //transform.rotation = autoAim.bulletRotation;
+
     }
 
     public virtual void UpgradeWeapon()
