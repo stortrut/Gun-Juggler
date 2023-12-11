@@ -12,7 +12,7 @@ public class PlayerJuggle : MonoBehaviour
     public List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
 
     private bool isJuggling;
-    [HideInInspector] public WeaponJuggleMovement weaponInHand;
+   /* [HideInInspector] */public WeaponJuggleMovement weaponInHand;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;  
     
     WeaponQueueElements weaponQueueElementsScript; 

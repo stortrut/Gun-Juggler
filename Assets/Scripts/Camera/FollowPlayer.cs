@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class FollowPlayer : MonoBehaviour
@@ -17,7 +18,7 @@ public class FollowPlayer : MonoBehaviour
     {
         playerToFollow = FindObjectOfType<PlayerMovement>();
         smoothnessFactor = 9;
-        
+        //transform.parent = null;
     }
 
     private void Start()
