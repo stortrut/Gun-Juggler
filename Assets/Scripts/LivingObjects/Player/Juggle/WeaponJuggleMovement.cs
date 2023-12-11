@@ -21,9 +21,8 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     [HideInInspector] public bool gotCaught;
 
-    //[SerializeField] private float speed = 100.0f;
-
-    [HideInInspector] public float curveDeltaTime = 0.0f;
+    /*[HideInInspector] */public float curveDeltaTime = 0.0f;
+    public float curveSpeedModifier = 1f;
 
     private float endOfCurveYTimeValue;
     private float endOfCurveXTimeValue;
@@ -42,7 +41,6 @@ public class WeaponJuggleMovement : MonoBehaviour
         endOfCurveYTimeValue = allCurveYKeys[allCurveYKeys.Length - 1].time;
         endOfCurveXTimeValue = allCurveXKeys[allCurveXKeys.Length - 1].time;
 
-
         //curveDeltaTime += Random.Range(0.1f, 1f);
 
         //Keyframe[] keys1 = gunThrowAnimationCurveY.keys;
@@ -52,14 +50,26 @@ public class WeaponJuggleMovement : MonoBehaviour
         //gunThrowAnimationCurveY.keys = keys1; // This is copying the keys back into the AnimationCurve's array.
     }
 
+
+    public void SetCurveSpeedModifier(float newCurveSpeedModifier)
+    {
+        curveSpeedModifier = newCurveSpeedModifier;
+    }
+
+    private void ResetCurveSpeedModifier()
+    {
+        curveSpeedModifier = 1f;
+    }
+
     void Update()
     {
         if (beingThrown)
         {
             // Get the current position of the weapon
             Vector3 currentPosition = transform.localPosition;
-            // Call evaluate on that time   
-            curveDeltaTime += Time.deltaTime;
+            
+            curveDeltaTime += Time.deltaTime * curveSpeedModifier;
+                
 
             currentPosition.y = gunThrowAnimationCurveY.Evaluate(curveDeltaTime);
             currentPosition.x = gunThrowAnimationCurveX.Evaluate(curveDeltaTime);
@@ -67,18 +77,24 @@ public class WeaponJuggleMovement : MonoBehaviour
             // Update the current position of the weapon
             transform.localPosition = currentPosition;
 
+
+            // Air Rotation
             float rotationValue = rotationAnimationCurve.Evaluate(curveDeltaTime);
             transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
         }
 
+
+        //Equip 
         if (curveDeltaTime >= endOfCurveYTimeValue && curveDeltaTime >= endOfCurveXTimeValue)
         {
             if (beingThrown)
             {
+                ResetCurveSpeedModifier();
                 weaponBase.EquipWeapon();
                 playerJuggle.CatchWeapon(thisWeaponJuggleMovement);
             }
         }
+        //Throw up old weapon
         if (curveDeltaTime >= endOfCurveYTimeValue && curveDeltaTime >= endOfCurveXTimeValue / 2)
         {
             if(playerJuggle.weaponInHand != null && beingThrown)
@@ -86,6 +102,16 @@ public class WeaponJuggleMovement : MonoBehaviour
                 playerJuggle.ThrowUpWeaponInHand();
             }
         }
+
+        if (curveDeltaTime >= endOfCurveYTimeValue - 0.1)
+        {
+            if (beingThrown)
+            {
+                ResetCurveSpeedModifier();
+            }
+
+        }
+
 
         //if (beingDropped)
         //{
@@ -106,8 +132,8 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void ThrowUpWeapon()
     {
-        if (playerJuggle == null) { Debug.Log("ERROR"); playerJuggle = GetComponentInParent<PlayerJuggle>(); }
-        if (playerJuggle == null) { Debug.Log("NO PLAYER JUGGLE!!!!!!!!!!!!");}
+        if (playerJuggle == null) { /*Debug.Log("ERROR..");*/ playerJuggle = GetComponentInParent<PlayerJuggle>(); }
+        if (playerJuggle == null) { Debug.Log("BIG ERROR!");}
 
         if (playerJuggle.armAnimationHandler == null) { Debug.Log("ARM ANIMATION ERROR"); }
 

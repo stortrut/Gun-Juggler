@@ -24,6 +24,7 @@ public class Aim : MonoBehaviour
 
         if (playerJuggle.weaponInHand != null)
         {
+
             Vector3 playerjuggle = activeCamera.WorldToScreenPoint(playerJuggle.weaponInHand.weaponBase.gunPoint.transform.position);
             currentAim = Input.mousePosition - playerjuggle;
             currentAim.z = 0;

@@ -85,10 +85,10 @@ public class JuggleCatchCircle : MonoBehaviour
         canCatchWeapon = true;
         spriteRenderer.color = canCatchWeaponColor;
 
+
         yield return new WaitForSeconds(catchTimeWindow);
-
-
         playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayCatchWeaponAnimation));
+
         if (caughtWeapon)
         {
             currentCatchableGun.gameObject.GetComponent<WeaponBase>().UpgradeWeapon();

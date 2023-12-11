@@ -13,11 +13,26 @@ public class PlayerJuggle : MonoBehaviour
 
     private bool isJuggling;
     [HideInInspector] public WeaponJuggleMovement weaponInHand;
-    [HideInInspector] public ArmAnimationHandler armAnimationHandler;
+    [HideInInspector] public ArmAnimationHandler armAnimationHandler;  
     
-    //WeaponQueueElements weaponQueueElementsScript;
+    WeaponQueueElements weaponQueueElementsScript; 
     
-    
+    public void SpeedUpUpcomingWeapon(/*WeaponJuggleMovement oldWeapon*/)
+    {
+        int weaponPosition = weaponsCurrentlyInJuggleLoop.IndexOf(weaponInHand);
+
+        if (weaponPosition == weaponsCurrentlyInJuggleLoop.Count - 1)
+        {
+            weaponPosition = 0;
+        }
+        else
+        {
+            weaponPosition++;
+        }
+
+        weaponsCurrentlyInJuggleLoop[weaponPosition].curveSpeedModifier = 4f;
+    }
+
     private void Start()
     {
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
@@ -32,21 +47,24 @@ public class PlayerJuggle : MonoBehaviour
 
         weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
 
-        //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
 
         StartJuggling();
 
-        //weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
-        
+
+        //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
+
+        weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
+        if(weaponQueueElementsScript == null) { return; }
+        weaponQueueElementsScript.InstantiateAppropriateQueueElements();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isJuggling)
-        {
-            StartJuggling();
-            //weaponQueueElementsScript.ShowNextWeaponInQueueMoving();
-        }
+        //if(weaponInHand == null) { return; }
+        //if (Input.GetKeyDown(KeyCode.Mouse0) && !isJuggling)
+        //{
+        //    StartJuggling();
+        //}
     }
 
     private void StartJuggling()
@@ -69,17 +87,20 @@ public class PlayerJuggle : MonoBehaviour
     {
         newWeapon.beingThrown = false;
         newWeapon.weaponBase.EquipWeapon();
+        
         weaponInHand = newWeapon;
     }
 
     public void ThrowUpWeaponInHand()
     {
+        if(weaponInHand == null) { return; }
+
+        SpeedUpUpcomingWeapon();
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
-
-        //if(weaponQueueElementsScript == null) { return; }
-        //weaponQueueElementsScript.ArrowPositioning();
+        if (weaponQueueElementsScript == null) { return; }
+        weaponQueueElementsScript.ArrowPositioning();
     }
 
 
@@ -100,6 +121,7 @@ public class PlayerJuggle : MonoBehaviour
             if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.isHeart)
             {
                 weaponsCurrentlyInJuggleLoop[i].weaponBase.ReplaceWeaponWithHeart();
+                weaponQueueElementsScript.ReplaceQueueElements(i);
                 return;
             }
         }
@@ -113,6 +135,7 @@ public class PlayerJuggle : MonoBehaviour
             if (weaponsCurrentlyInJuggleLoop[i].weaponBase.isHeart)
             {
                 weaponsCurrentlyInJuggleLoop[i].weaponBase.ReplaceHeartWithWeapon();
+                weaponQueueElementsScript.ReplaceQueueElements(i);
                 return;
             }
         }
