@@ -124,7 +124,8 @@ public class WeaponBase : MonoBehaviour
     {
         SmallGun,
         ShotGun,
-        StunGun
+        StunGun,
+        Heart
     }
 }
 
