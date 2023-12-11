@@ -135,8 +135,14 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         //        bodyAnimator.speed = 1;
         //    }
         //}
-
+        if(onGround)
+        {
         rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);
+        }
+        else
+        {
+            rigidBody.velocity += new Vector2(velocityToAddX*Time.deltaTime, 0);
+        }
     }
 
     private void Jump()

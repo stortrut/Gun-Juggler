@@ -26,7 +26,7 @@ public class WeaponConfettiGun : Gun
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
 
         if (knockback != null)
-            knockback.KnockBackMyself(10, 10f, 1f, gunPoint.transform);
+            knockback.KnockBackMyself(3.5f, 5f, 0.2f, gunPoint.transform);
 
         base.UseWeapon();
     }
