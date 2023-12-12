@@ -16,7 +16,7 @@ public class PlayerJuggle : MonoBehaviour
     
     WeaponQueueElements weaponQueueElementsScript;
 
-    public bool isAlive;
+    [HideInInspector] public bool isAlive;
 
     public void SpeedUpUpcomingWeapon(/*WeaponJuggleMovement oldWeapon*/)
     {
