@@ -26,8 +26,6 @@ public class Aim : MonoBehaviour
 
     private void Update()
     {
-
-
         if (playerJuggle.weaponInHand != null)
         {
             Vector3 playerjuggle = mainCamera.WorldToScreenPoint(playerJuggle.weaponInHand.weaponBase.gunPoint.transform.position);
