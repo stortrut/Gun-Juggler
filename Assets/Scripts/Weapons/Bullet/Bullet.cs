@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     public Vector2 direction = Vector2.right;
     private static int bulletNumber;
-    [SerializeField] float bulletLifeTime = 5f;
+    [SerializeField] float bulletLifeTime = 8f;
 
 
     private void Start()
