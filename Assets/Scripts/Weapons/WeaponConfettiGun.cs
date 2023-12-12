@@ -7,7 +7,7 @@ public class WeaponConfettiGun : Gun
     [SerializeField] ShotGunUpgradeData[] shotGunLevelUpgradeData;
     private int currentBulletCount;
     private float currentSpread;
-
+    private List<GameObject> bulletWave;
     private Knockback knockback;
 
 

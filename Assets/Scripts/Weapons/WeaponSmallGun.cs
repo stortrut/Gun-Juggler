@@ -24,11 +24,12 @@ public class WeaponSmallGun : Gun
 
     private void Shoot()
     {
-        GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
+        CreateNewBullet(currentBulletSpeed, currentBulletDamage, weaponSpriterenderer.color, gunPoint.rotation);
+        //GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
 
-        Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
-        bulletScript.SetColor(weaponSpriterenderer.color);
-        bulletScript.SetBulletData(currentBulletSpeed, currentBulletDamage);
+        //Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
+        //bulletScript.SetColor(weaponSpriterenderer.color);
+        //bulletScript.SetBulletData(currentBulletSpeed, currentBulletDamage);
     }
 
 
