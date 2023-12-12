@@ -60,22 +60,15 @@ public class WeaponQueueElements : MonoBehaviour
 
     public void ReplaceQueueElements(int heartIndex)
     {
+        if (!playerJuggleScript.isAlive)
+        {
+            return;
+        }
+
         WeaponJuggleMovement replacingThisItem = playerJuggleScript.weaponsCurrentlyInJuggleLoop[heartIndex];       
         WeaponBase.WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
         int enumIndex = (int)weaponEnum;
 
-        //for (int i = 0; i < weaponsInQueueDisplayedOrder.Count; i++)
-        //{
-        //    WeaponJuggleMovement itemInWeaponQueue = playerJuggleScript.weaponsInQueueDisplayedOrder[i];
-        //    WeaponBase.WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
-        //    int enumIndex = (int)weaponEnum;
-        //    if (weaponsInQueueDisplayedOrder[i] == weaponsInQueueEnumsOrder[3])
-        //    {
-
-        //    }
-        //}
-        
-        
         if (replacingThisItem.weaponBase.isHeart)
         {
             Destroy(weaponsInQueueDisplayedOrder[heartIndex]); 
@@ -85,6 +78,7 @@ public class WeaponQueueElements : MonoBehaviour
             heartPrefab.transform.localPosition = CalculateNewPosition(heartIndex); 
             weaponsInQueueDisplayedOrder.Insert(heartIndex, heartPrefab);
         }
+
         else if (!replacingThisItem.weaponBase.isHeart)
         {
             Destroy(weaponsInQueueDisplayedOrder[heartIndex]);

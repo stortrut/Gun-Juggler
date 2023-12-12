@@ -15,8 +15,10 @@ public class PlayerJuggle : MonoBehaviour
    /* [HideInInspector] */public WeaponJuggleMovement weaponInHand;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;  
     
-    WeaponQueueElements weaponQueueElementsScript; 
-    
+    WeaponQueueElements weaponQueueElementsScript;
+
+    public bool isAlive;
+
     public void SpeedUpUpcomingWeapon(/*WeaponJuggleMovement oldWeapon*/)
     {
         int weaponPosition = weaponsCurrentlyInJuggleLoop.IndexOf(weaponInHand);
@@ -35,6 +37,7 @@ public class PlayerJuggle : MonoBehaviour
 
     private void Start()
     {
+        isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
 
         WeaponJuggleMovement[] weaponsOnPlayer = GetComponentsInChildren<WeaponJuggleMovement>();
@@ -150,6 +153,7 @@ public class PlayerJuggle : MonoBehaviour
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             weaponsCurrentlyInJuggleLoop[i].DropWeapon();
+            isAlive = false;
         }
     }
 
