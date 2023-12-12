@@ -61,10 +61,10 @@ public class WeaponStunGun : WeaponBase
 
 
 
-    public override void AdjustAim()
-    {
-        transform.rotation = Quaternion.identity;
-    }
+    //public override void AdjustAim()
+    //{
+    //    transform.rotation = Quaternion.identity;
+    //}
 
     public override void UpgradeWeapon()
     {
