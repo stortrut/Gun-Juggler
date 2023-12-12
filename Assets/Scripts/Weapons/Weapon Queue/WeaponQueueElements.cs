@@ -98,7 +98,7 @@ public class WeaponQueueElements : MonoBehaviour
         }
         if (playerJuggleScript.weaponsCurrentlyInJuggleLoop != null)
         {
-            Debug.Log("notnull");
+            //Debug.Log("notnull");
         }
         
         if (i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
@@ -198,6 +198,10 @@ public class WeaponQueueElements : MonoBehaviour
     //transform.Getchild.doscale().SetLoops(-1, LoopType.Yoyo);
     //Transform.DOLocalmoveX(14,0.25)
     //GetAdditionalCompilerArguments image.docolor(Color.red,1)
+    //Oncomplete() ropas på när den är klar
+    //OnPointerExit(--)
+    //transform.getchild.dokill
+    //transform.DOlocalmove(0,0.25
     //_
     //transform.DOSCale(vector.one,5).OnComplete(Stop) egengjord timer, ändrar inte skalan   .SetDelay(5)
     //using DG.Tweening;
@@ -207,8 +211,4 @@ public class WeaponQueueElements : MonoBehaviour
     //transform.DORotate(new Vector3(0,0,360),2, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.OutBounce);
     //OnUpdate körs varje frame
     //-
-    //Oncomplete() ropas på när den är klar
-    //OnPointerExit(--)
-    //transform.getchild.dokill
-    //transform.DOlocalmove(0,0.25
 }

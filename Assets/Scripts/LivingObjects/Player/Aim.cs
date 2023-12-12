@@ -11,7 +11,6 @@ public class Aim : MonoBehaviour
     private Vector3 currentAim;
     [SerializeField] private PlayerJuggle playerJuggle;
     private Texture2D cursorImage;
-    [SerializeField] private Camera activeCamera;
     private Manager manager;
     private Camera mainCamera;
 
@@ -27,11 +26,9 @@ public class Aim : MonoBehaviour
 
     private void Update()
     {
-
-
         if (playerJuggle.weaponInHand != null)
         {
-            Vector3 playerjuggle = activeCamera.WorldToScreenPoint(playerJuggle.weaponInHand.weaponBase.gunPoint.transform.position);
+            Vector3 playerjuggle = mainCamera.WorldToScreenPoint(playerJuggle.weaponInHand.weaponBase.gunPoint.transform.position);
             currentAim = Input.mousePosition - playerjuggle;
             currentAim.z = 0;
             if (currentAim.sqrMagnitude < 10000)
