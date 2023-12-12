@@ -12,12 +12,19 @@ public class Aim : MonoBehaviour
     [SerializeField] private PlayerJuggle playerJuggle;
     private Texture2D cursorImage;
     [SerializeField] private Camera activeCamera;
+    private Manager manager;
+    private Camera mainCamera;
 
     private void Start()
     {
+        manager = Manager.Instance;
+        mainCamera = manager.mainCamera;
+
         //playerJuggle = FindObjectOfType<PlayerJuggle>();
         //Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.ForceSoftware);
     }
+
+
     private void Update()
     {
 

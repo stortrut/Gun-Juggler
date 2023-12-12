@@ -8,6 +8,8 @@ public class Manager : MonoBehaviour
     public static Manager Instance { get; private set; }
 
     public GameObject player;
+    public Camera mainCamera;
+
     public int nextScene = 0;
 
     private AsyncOperation asyncOperation;
