@@ -16,7 +16,7 @@ public class StunZone : MonoBehaviour
     }
     public void SoundWave()
     {       
-        soundWave.enabled=true;
+        soundWave.enabled = true;
         StartCoroutine(nameof(Wait));
         
     }

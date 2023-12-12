@@ -141,8 +141,9 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         }
         else
         {
-            rigidBody.velocity += new Vector2(velocityToAddX*Time.deltaTime, 0);
+            rigidBody.velocity += new Vector2(velocityToAddX * Time.deltaTime * 4, 0);
         }
+        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -7, 7),rigidBody.velocity.y);
     }
 
     private void Jump()

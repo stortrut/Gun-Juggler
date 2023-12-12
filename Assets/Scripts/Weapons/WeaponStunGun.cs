@@ -22,12 +22,14 @@ public class WeaponStunGun : WeaponBase
 
     public override void UseWeapon()
     {
-        ReflectStun();
-       
-
-        base.UseWeapon();
-        Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsStunGun);
         stunZone.SoundWave();
+        base.UseWeapon();
+        ReflectStun();
+        Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsStunGun);
+        
+
+        
+        
     }
 
     private void ReflectStun()
