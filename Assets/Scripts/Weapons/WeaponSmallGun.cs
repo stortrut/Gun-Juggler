@@ -15,7 +15,10 @@ public class WeaponSmallGun : Gun
     }
 
     public override void UseWeapon()
-    {
+       
+    { 
+        UpgradeCombo.hitSinceShot = false;
+        StartCoroutine(UpgradeCombo.DestroyCombo());
         Shoot();
 
         base.UseWeapon();

@@ -43,7 +43,7 @@ public class Gun : WeaponBase
 
 
     //Used by guns
-    public void CreateNewBullet(float bulletSpeed, float bulletDamageInput, Color color, Quaternion rotation)
+    public GameObject CreateNewBullet(float bulletSpeed, float bulletDamageInput, Color color, Quaternion rotation)
     {
         GameObject weaponBullet = Instantiate(bulletSmall, gunPoint.position, rotation);
         Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
@@ -51,7 +51,8 @@ public class Gun : WeaponBase
         bulletScript.SetBulletData(bulletSpeed, bulletDamageInput);
 
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
-        Destroy(weaponBullet, 1);
+        //Destroy(weaponBullet, 1);
+        return weaponBullet;
         
     }
 

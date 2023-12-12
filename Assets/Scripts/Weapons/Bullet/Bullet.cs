@@ -11,27 +11,24 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public float bulletDamage;
 
     public Vector2 direction = Vector2.right;
-
+    private static int bulletNumber;
     [SerializeField] float bulletLifeTime = 5f;
 
 
     private void Start()
     {
         rb2D.velocity = transform.right * bulletSpeed;
-
-        Destroy(gameObject, bulletLifeTime);
+        bulletNumber = 0;
+        Invoke(nameof(Death),bulletLifeTime);
     }
 
 
     public bool bulletDirectionRight
     {
-        get { return bulletDirectionRight; }
-        set
-        {
-            direction = -direction;
-            return;
-        }
+        get { return direction.x > 0; }
+        set { direction = value ? Vector2.right : Vector2.left; }
     }
+
 
 
     public void SetBulletData(float inputSpeed, float inputDamage)
@@ -45,23 +42,18 @@ public class Bullet : MonoBehaviour
         spriteRenderer.color = newColor;
     }
 
+    private void Death()
+    {
 
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {   
-        if(other.gameObject.CompareTag("Enemy"))
+    {
+ 
+        if (other.gameObject.CompareTag("Ground"))
         {
-            UpgradeCombo.OnBulletHit(false);    
+            Destroy(gameObject);
         }
-        else
-        {
-            UpgradeCombo.OnBulletHit(false);
-        }
-
-        if(other.gameObject.CompareTag("Ground"))
-        {
-            Destroy(gameObject); 
-        }
-
     }
 }

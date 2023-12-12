@@ -7,8 +7,9 @@ public class WeaponConfettiGun : Gun
     [SerializeField] ShotGunUpgradeData[] shotGunLevelUpgradeData;
     private int currentBulletCount;
     private float currentSpread;
-    private List<GameObject> bulletWave;
+    public static List<GameObject> bulletWave = new();
     private Knockback knockback;
+    private GameObject bullet;
 
 
     private void Start()
@@ -23,6 +24,10 @@ public class WeaponConfettiGun : Gun
 
     public override void UseWeapon()
     {
+        
+        UpgradeCombo.hitSinceShot = false;
+        StartCoroutine(UpgradeCombo.DestroyCombo());
+        bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
         CameraShake.instance.ShakingRandomly(.2f, .5f, .5f);
 
@@ -34,8 +39,8 @@ public class WeaponConfettiGun : Gun
 
     public void ShootWideSpread(float bulletSpeed, float bulletDamageInput, int bulletCount)
     {
-        CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
-
+         bullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
+        bulletWave.Add(bullet);
         int halfAmountOfBulletCount = bulletCount / 2;
 
         inverseBullets(1, halfAmountOfBulletCount);
@@ -43,13 +48,15 @@ public class WeaponConfettiGun : Gun
 
         void inverseBullets(int inverseMultiplier, int halfAmountOfBulletCount)
         {
-            CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
-
+            bullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
+            bulletWave.Add(bullet);
             for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
             {
                 float rotationAngle = Random.Range(5, 35);
-                CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
+                bullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
+                bulletWave.Add(bullet);
             }
+
         }
     }
 

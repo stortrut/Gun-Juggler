@@ -9,19 +9,56 @@ public class UpgradeCombo : MonoBehaviour
     
     private static int _bulletHit;
     private bool hit;
+    private static bool lastOneHit;
+    public static bool hitSinceShot;
+    public static bool onlyOneInWave;
     [SerializeField] private static TextMeshProUGUI comboText;
 
+    private void Start()
+    {
+        _bulletHit = 0;
+        comboText = GetComponent<TextMeshProUGUI>();
+    }
     public static void OnBulletHit(bool didItHit)
     {
        
         {
-            if (_bulletHit > 0 && didItHit == true)
+            if (didItHit)
             {
-                comboText.text = _bulletHit.ToString();
+                _bulletHit++;
+                comboText.text = "Combo "+_bulletHit.ToString();
+                lastOneHit = true;
+                comboText.fontStyle = FontStyles.Normal;
+            }
+            else if (lastOneHit)
+            {
+                comboText.fontStyle = FontStyles.Italic;
+                lastOneHit = false;
+            }
+            else
+            {
+                comboText.text = "";
+                _bulletHit = 0;
             }
         }
-            //AgeChanged(this, EventArgs.Empty);
     }
+ 
+           
+    
+    public static IEnumerator DestroyCombo()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if(hitSinceShot == true)
+        {
+            OnBulletHit(true);
+            Debug.Log("Combo number should appear");
+        }
+        else
+        {
+            OnBulletHit(false);
+        }
 
+       
     }
+}
 
