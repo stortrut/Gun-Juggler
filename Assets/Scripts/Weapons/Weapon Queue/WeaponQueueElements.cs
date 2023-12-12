@@ -60,11 +60,23 @@ public class WeaponQueueElements : MonoBehaviour
 
     public void ReplaceQueueElements(int heartIndex)
     {
-        WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[heartIndex];       
-        WeaponBase.WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
+        WeaponJuggleMovement replacingThisItem = playerJuggleScript.weaponsCurrentlyInJuggleLoop[heartIndex];       
+        WeaponBase.WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
         int enumIndex = (int)weaponEnum;
 
-        if (weaponJuggleMovement.weaponBase.isHeart)
+        //for (int i = 0; i < weaponsInQueueDisplayedOrder.Count; i++)
+        //{
+        //    WeaponJuggleMovement itemInWeaponQueue = playerJuggleScript.weaponsInQueueDisplayedOrder[i];
+        //    WeaponBase.WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
+        //    int enumIndex = (int)weaponEnum;
+        //    if (weaponsInQueueDisplayedOrder[i] == weaponsInQueueEnumsOrder[3])
+        //    {
+
+        //    }
+        //}
+        
+        
+        if (replacingThisItem.weaponBase.isHeart)
         {
             Destroy(weaponsInQueueDisplayedOrder[heartIndex]); 
             weaponsInQueueDisplayedOrder.RemoveAt(heartIndex);
@@ -73,7 +85,7 @@ public class WeaponQueueElements : MonoBehaviour
             heartPrefab.transform.localPosition = CalculateNewPosition(heartIndex); 
             weaponsInQueueDisplayedOrder.Insert(heartIndex, heartPrefab);
         }
-        else if (!weaponJuggleMovement.weaponBase.isHeart)
+        else if (!replacingThisItem.weaponBase.isHeart)
         {
             Destroy(weaponsInQueueDisplayedOrder[heartIndex]);
             weaponsInQueueDisplayedOrder.RemoveAt(heartIndex);
@@ -86,6 +98,10 @@ public class WeaponQueueElements : MonoBehaviour
 
     public void ArrowPositioning()
     {
+        if (playerJuggleScript == null)
+        {
+            playerJuggleScript = FindObjectOfType<PlayerJuggle>();
+        }
         if (playerJuggleScript.weaponsCurrentlyInJuggleLoop != null)
         {
             Debug.Log("notnull");
@@ -167,4 +183,38 @@ public class WeaponQueueElements : MonoBehaviour
     //        }
     //    }
     //}
+
+    //public Ease ..;
+    //Vector3 startPos;
+    //start
+    //startPos = Transform.pos;
+    //upd
+    //transform.position = startPos;
+    //transform.DOMoveX(7,2).SetEase(currentEase);
+    //Transform.DOPunchScale(Vector3.one ...) DOScale: pulsera setease(Ease.InOutSine).setloops() antal loops: -1 = sluta aldrig, 
+    //i OnDisable(): transform.DOKill(); stäng av alla tween som körs på detta objektet
+    //går efter ordningen de skapades inte hur de ligger i listan, 
+    //var buttons = findobjoftypes button
+    // i = 0
+    //foreach item get component recttransform().DOPunchScale().SetDelay(i);
+    //i+= 0.05
+
+    //OnPointerEnter(PointerEventData eventData), (:IPointerEnterHandler, IPointerExitHandler
+    //transform.getchild(0).DOScale
+    //transform.Getchild.doscale().SetLoops(-1, LoopType.Yoyo);
+    //Transform.DOLocalmoveX(14,0.25)
+    //GetAdditionalCompilerArguments image.docolor(Color.red,1)
+    //_
+    //transform.DOSCale(vector.one,5).OnComplete(Stop) egengjord timer, ändrar inte skalan   .SetDelay(5)
+    //using DG.Tweening;
+    //(dofade)
+    //.Onstepcomplete(step) callas varje frame, justera grejer ex slowmotion? Step = egen void
+    //getsetter floats
+    //transform.DORotate(new Vector3(0,0,360),2, RotateMode.FastBeyond360).SetLoops(-1).SetEase(Ease.OutBounce);
+    //OnUpdate körs varje frame
+    //-
+    //Oncomplete() ropas på när den är klar
+    //OnPointerExit(--)
+    //transform.getchild.dokill
+    //transform.DOlocalmove(0,0.25
 }
