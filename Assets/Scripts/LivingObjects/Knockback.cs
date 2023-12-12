@@ -54,7 +54,7 @@ public class Knockback : MonoBehaviour
         knockbackStart = Time.time;
         knockbackDuration = knockbackDurationInput;
         var normalizedrotation = (referenceTransform.rotation.eulerAngles.z + 90) % 360;
-        Debug.Log("Normalizedrotation;" + normalizedrotation);
+        //Debug.Log("Normalizedrotation;" + normalizedrotation);
 
 
 
@@ -80,7 +80,7 @@ public class Knockback : MonoBehaviour
             knockbackForce += new Vector2(0, 0.8f * knockbackSpeedY);
         }
 
-        Debug.Log(knockbackForce.x + ":X,y:" + knockbackForce.y);
+        //Debug.Log(knockbackForce.x + ":X,y:" + knockbackForce.y);
         rb2D.velocity = knockbackForce;
 
 

@@ -34,6 +34,8 @@ public class WeaponBase : MonoBehaviour
     private void Start()
     {
         canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
+        player = Manager.Instance.player;
+
     }
 
 

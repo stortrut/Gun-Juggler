@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PlayerJuggle : MonoBehaviour
 {
     [SerializeField] private float timeInBetweenEachThrowAtTheStart;
-
     [SerializeField] private Animator bodyAnimator;
 
     public List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop = new();
@@ -73,8 +72,46 @@ public class PlayerJuggle : MonoBehaviour
     private void StartJuggling()
     {
         isJuggling = true;
-        StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
+
+        //StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
+
+
+        ThrowUpAllWeapons();
     }
+
+
+    private void ThrowUpAllWeapons()
+    {
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count - 1; i++)
+        {
+            weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
+            StartCoroutine(nameof(DistributeWeaponsInAir));
+        }
+    }
+
+    IEnumerator DistributeWeaponsInAir()
+    {
+
+        //while (CheckDistanceBetweenTwoWeapons)
+        //{
+        //    
+        //}
+        yield return new WaitForEndOfFrame();
+
+
+    }
+
+    private float CheckDistanceBetweenTwoWeapons(int firstWeaponListId, int secondWeaponListId)
+    {
+        float firstWeaponPos = weaponsCurrentlyInJuggleLoop[firstWeaponListId].curveDeltaTime;
+        float secondWeaponPos = weaponsCurrentlyInJuggleLoop[secondWeaponListId].curveDeltaTime;
+
+        float distance = Mathf.Abs(secondWeaponPos - firstWeaponPos);
+
+        return distance;
+    }
+
+
 
     //Throws up all weapons except the last one
     IEnumerator ThrowUpAllWeaponsWithSameInterval(float waitTimeBetweenEachThrow)

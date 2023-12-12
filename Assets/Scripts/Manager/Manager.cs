@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; private set; }
 
-    public GameObject player;
+    [HideInInspector] public GameObject player;
     public Camera mainCamera;
 
     public int nextScene = 0;
@@ -33,7 +33,8 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        if(player == null) { Debug.Log("No player dragged into ManagerManager's Game Manager"); }
+        player = FindObjectOfType<PlayerJuggle>().gameObject;
+        if(player == null) { Debug.Log("Did not find a player ERROR"); }
 
     }
 
