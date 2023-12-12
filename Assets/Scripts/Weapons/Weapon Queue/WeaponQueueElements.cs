@@ -98,7 +98,7 @@ public class WeaponQueueElements : MonoBehaviour
         }
         if (playerJuggleScript.weaponsCurrentlyInJuggleLoop != null)
         {
-            Debug.Log("notnull");
+            //Debug.Log("notnull");
         }
         
         if (i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
