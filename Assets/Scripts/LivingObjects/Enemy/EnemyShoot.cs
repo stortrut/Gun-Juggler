@@ -11,8 +11,9 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     [SerializeField] protected GameObject enemyBullet;
     [SerializeField] protected Transform spawnBulletPos;
     protected GameObject player;
-    [HideInInspector] private Vector3 aim;
+    [HideInInspector] EnemyAnimator enemyAnimator;
 
+    [HideInInspector] private Vector3 aim;
     [HideInInspector] public bool isStunned = false;
     [HideInInspector] public bool timeStop;
     private float nextShootTime = 0;
@@ -20,6 +21,10 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
     public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
 
+    void Awake()
+    {
+        enemyAnimator = GetComponent<EnemyAnimator>();
+    }
     void Update()
     {
         if (player == null)
@@ -61,8 +66,6 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
 
             //}
-          
-        
     
     public void Shoot()
     {
@@ -74,6 +77,8 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         //bulletRigidbody.velocity = bulletSpeed  * (-weaponBullet.transform.right) ;
         //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
         Destroy(weaponBullet, 10);
+        if (enemyAnimator == null) { return; }
+        enemyAnimator.Attacking();
     }
     private void AdjustAim()
     {

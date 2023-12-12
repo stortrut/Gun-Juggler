@@ -1,29 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemyHealth : Health
 {
-    EnemyAnimator animatorScript;
+    EnemyAnimator enemyAnimator;
     
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private HealthUI healthImage;
     private bool colorischanged;
     private bool dummy;
-
     private bool died;
 
+    private void Awake()
+    {
+        enemyAnimator = GetComponent<EnemyAnimator>();
+    }
     private void Start()
     {
         died = false;
         maxHealth = health;
-        animatorScript = GetComponent<EnemyAnimator>();
-        if (animatorScript != null )
+        
+        if (enemyAnimator != null )
         {
             dummy = true;   
         }
-        else if (animatorScript == null)
+        else if (enemyAnimator == null)
         {
             dummy = false;
         }
@@ -41,7 +46,7 @@ public class EnemyHealth : Health
                 healthImage.UpdateHealth(health, maxHealth);
                 if (dummy)
                 {
-                    animatorScript.EnemyTakeDamage();
+                    enemyAnimator.TakingDamage();
                 }
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
                 if (health==0)
@@ -84,20 +89,22 @@ public class EnemyHealth : Health
     }
     void Death()
     {
-        Vector2 animPos = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + .5f);
-        if (this.dummy == true)
+        if(enemyAnimator == null) { Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic"); }
+        Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
+        if (enemyAnimator.enemyType == EnemyType.Dummy)
         {
-            //StartCoroutine("WaitSeconds", 2f);
-
             Invoke(nameof(DummyDeath), 1f);
-            animatorScript.EnemyDying();
+            enemyAnimator.Dying();
         }
-        else if (this.dummy == false) 
+        else if (enemyAnimator.enemyType == EnemyType.Giraffe)
         {
-            Debug.Log(this.dummy+"igen?");
-            Debug.Log("balloon");
-            EffectAnimations.Instance.BalloonPop(animPos);
-            Destroy(this.gameObject);
+            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            Destroy(gameObject);
+        }
+        else if (enemyAnimator.enemyType == EnemyType.PieClown)
+        {
+            enemyAnimator.Dying();
+            EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         }
     }
 
@@ -108,9 +115,9 @@ public class EnemyHealth : Health
 
     void DummyDeath()
     {
-        Vector2 animPos = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y - .5f);
-        EffectAnimations.Instance.EnemyPoof(animPos);
-        Destroy(this.gameObject);
+        Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
+        EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
+        Destroy(gameObject);
     }
 }
     

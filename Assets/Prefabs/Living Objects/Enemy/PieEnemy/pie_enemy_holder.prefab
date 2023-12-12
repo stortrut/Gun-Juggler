@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5647794997465422522}
-  - component: {fileID: 8137592888506859559}
   - component: {fileID: 900131342181095067}
   m_Layer: 7
   m_Name: Art_holder
@@ -34,27 +33,6 @@ Transform:
   - {fileID: 4695288041153239604}
   m_Father: {fileID: 1219167413676131934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8137592888506859559
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594415929672376604}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4fe78887eede4b546b46617eb02fa323, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &900131342181095067
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -147,6 +125,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 348026071806510104, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
+      propertyPath: enemyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 348026071806510104, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -188,11 +170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3885476463300700519, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -112.20978
+      value: 19.285904
       objectReference: {fileID: 0}
     - target: {fileID: 3885476463300700519, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.627556
+      value: 1.7310581
       objectReference: {fileID: 0}
     - target: {fileID: 3885476463300700519, guid: f4fcdfccdfeeb3249a8f498481575629, type: 3}
       propertyPath: m_LocalPosition.z
@@ -412,7 +394,7 @@ Animator:
   m_GameObject: {fileID: 1319898941143555864}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 95a4b323dc03c014db7d58b3920994ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
