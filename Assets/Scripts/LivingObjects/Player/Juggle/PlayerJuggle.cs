@@ -18,16 +18,20 @@ public class PlayerJuggle : MonoBehaviour
 
     [HideInInspector] public bool isAlive;
 
-    public void SpeedUpUpcomingWeapon(/*WeaponJuggleMovement oldWeapon*/)
+    public void SpeedUpUpcomingWeapon()
     {
         int weaponPosition = weaponsCurrentlyInJuggleLoop.IndexOf(weaponInHand);
 
-        if (weaponPosition == weaponsCurrentlyInJuggleLoop.Count - 1)
+        if (weaponPosition == (weaponsCurrentlyInJuggleLoop.Count - 1))
         {
+            Debug.Log("Bingo ");
+
             weaponPosition = 0;
         }
         else
         {
+            Debug.Log("Bongo ");
+
             weaponPosition++;
         }
 
@@ -47,7 +51,7 @@ public class PlayerJuggle : MonoBehaviour
 
         int lastWeaponID = weaponsCurrentlyInJuggleLoop.Count - 1;
 
-        weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
+        //weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
 
 
         StartJuggling();
@@ -60,6 +64,12 @@ public class PlayerJuggle : MonoBehaviour
         weaponQueueElementsScript.InstantiateAppropriateQueueElements();
     }
 
+
+    private bool spreadOutWeaponsInStart;
+    public float timeUntilNextWeapon;
+    public string nextWeapon;
+    public float timeBetweenWeapons;
+
     private void Update()
     {
         //if(weaponInHand == null) { return; }
@@ -67,6 +77,70 @@ public class PlayerJuggle : MonoBehaviour
         //{
         //    StartJuggling();
         //}
+
+        if (!isJuggling) { return; }
+
+        nextWeapon = GetUpcomingWeapon().gameObject.name;
+        timeUntilNextWeapon = GetUpcomingWeapon().GetTimeUntilWeaponIsInHand();
+        timeBetweenWeapons = CheckTimeBetweenTwoWeapons(0, 1);
+
+        int lastWeaponId = weaponsCurrentlyInJuggleLoop.Count - 1;
+        int weaponBeforeLastId = lastWeaponId - 1;
+        float minDistanceBetweenWeapons = 1f;
+
+
+
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped && !(weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon()))
+            {
+                int idOfWeaponBeforeThisWeapon;
+
+                if (i == 0)
+                {
+                    idOfWeaponBeforeThisWeapon = weaponsCurrentlyInJuggleLoop.Count - 1;
+                }
+                else
+                {
+                    idOfWeaponBeforeThisWeapon = i - 1;
+                }
+
+                if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon) < 2)
+                {
+                    weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier -= 0.3f * Time.deltaTime;
+                }
+                else
+                {
+                    weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 1f;
+                }
+            }
+            else if (weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon() && weaponInHand == null)
+            {
+                weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 5f;
+            }
+        }
+
+        //if(CheckTimeBetweenTwoWeapons(0, 1) < 2)
+        //{
+        //    weaponsCurrentlyInJuggleLoop[lastWeaponId].curveSpeedModifier -= 0.3f * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    weaponsCurrentlyInJuggleLoop[lastWeaponId].curveSpeedModifier = 1f;
+        //}
+
+
+
+        //if (CheckDistanceBetweenTwoWeapons(lastWeaponId, weaponBeforeLastId) < minDistanceBetweenWeapons)
+        //{
+        //    weaponsCurrentlyInJuggleLoop[weaponBeforeLastId].curveSpeedModifier += 0.2f * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    weaponsCurrentlyInJuggleLoop[weaponBeforeLastId].curveSpeedModifier = 1f;
+        //}
+
+
     }
 
     private void StartJuggling()
@@ -75,30 +149,38 @@ public class PlayerJuggle : MonoBehaviour
 
         //StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
 
-
         ThrowUpAllWeapons();
     }
 
 
     private void ThrowUpAllWeapons()
     {
-        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count - 1; i++)
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
-            StartCoroutine(nameof(DistributeWeaponsInAir));
+            weaponsCurrentlyInJuggleLoop[i].curveDeltaTime = (weaponsCurrentlyInJuggleLoop.Count - (i * 0.1f)) * 0.1f;
+            //StartCoroutine(nameof(DistributeWeaponsInAir));
         }
     }
 
+
     IEnumerator DistributeWeaponsInAir()
     {
+        while (CheckDistanceBetweenTwoWeapons(0, 1) < 0.5)
+        {
+            Debug.Log(CheckDistanceBetweenTwoWeapons(0, 1));
 
-        //while (CheckDistanceBetweenTwoWeapons)
-        //{
-        //    
-        //}
-        yield return new WaitForEndOfFrame();
+            weaponsCurrentlyInJuggleLoop[0].curveSpeedModifier += 0.001f;
+            yield return null;
+        }
+        while (weaponsCurrentlyInJuggleLoop[0].curveSpeedModifier > 1f)
+        {
+            weaponsCurrentlyInJuggleLoop[0].curveSpeedModifier -= 0.001f;
+            Debug.Log(CheckDistanceBetweenTwoWeapons(0, 1));
+            yield return null;
+        }
 
-
+        Debug.Log("Now sepeerate");
     }
 
     private float CheckDistanceBetweenTwoWeapons(int firstWeaponListId, int secondWeaponListId)
@@ -110,6 +192,18 @@ public class PlayerJuggle : MonoBehaviour
 
         return distance;
     }
+
+
+    private float CheckTimeBetweenTwoWeapons(int firstWeaponListId, int secondWeaponListId)
+    {
+        float firstWeaponTime = weaponsCurrentlyInJuggleLoop[firstWeaponListId].GetTimeUntilWeaponIsInHand();
+        float secondWeaponTime = weaponsCurrentlyInJuggleLoop[secondWeaponListId].GetTimeUntilWeaponIsInHand();
+
+        float timeBetweenWeapons = Mathf.Abs(secondWeaponTime - firstWeaponTime);
+
+        return timeBetweenWeapons;
+    }
+
 
 
 
@@ -135,13 +229,39 @@ public class PlayerJuggle : MonoBehaviour
     {
         if(weaponInHand == null) { return; }
 
-        SpeedUpUpcomingWeapon();
+        //SpeedUpUpcomingWeapon();
         weaponInHand.ThrowUpWeapon();
         weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
         if (weaponQueueElementsScript == null) { return; }
         weaponQueueElementsScript.ArrowPositioning();
     }
+
+
+
+    private WeaponJuggleMovement GetUpcomingWeapon()
+    {
+        WeaponJuggleMovement weaponThatIsFurthestInLoop = null;
+        float furthestLoopTime = 0;
+
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            if(weaponsCurrentlyInJuggleLoop[i].curveDeltaTime > furthestLoopTime)
+            {
+                if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped)
+                {
+                    furthestLoopTime = weaponsCurrentlyInJuggleLoop[i].curveDeltaTime;
+                    weaponThatIsFurthestInLoop = weaponsCurrentlyInJuggleLoop[i];
+                }
+            }
+        }
+
+        return weaponThatIsFurthestInLoop;
+    }
+
+
+    
+
 
 
 
@@ -152,7 +272,6 @@ public class PlayerJuggle : MonoBehaviour
         {
         }
     }
-
 
     public void ReplaceRandomWeaponWithHeart()
     {
@@ -167,7 +286,6 @@ public class PlayerJuggle : MonoBehaviour
         }
     }
 
-
     public void ReplaceRandomHeartWithWeapon()
     {
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
@@ -181,10 +299,6 @@ public class PlayerJuggle : MonoBehaviour
         }
     }
 
-
-
-
-
     public void DropAllWeaponsOnGround()
     {
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
@@ -193,5 +307,4 @@ public class PlayerJuggle : MonoBehaviour
             isAlive = false;
         }
     }
-
 }

@@ -21,7 +21,7 @@ public class UpgradeCombo : MonoBehaviour
     }
     public static void OnBulletHit(bool didItHit)
     {
-       
+       if(comboText == null) { return; }
         {
             if (didItHit)
             {

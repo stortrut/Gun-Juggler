@@ -18,7 +18,7 @@ public class WeaponQueueElements : MonoBehaviour
 
     protected int i = 0;
 
-    void Start()
+    void Awake()
     {
         playerJuggleScript = FindObjectOfType<PlayerJuggle>();
     }
