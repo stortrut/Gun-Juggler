@@ -71,7 +71,7 @@ public class WeaponBase : MonoBehaviour
         }
 
         fireCooldownTimer += Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireCooldownTimer > fireCooldown && canUseWeaponChecker.isAbleToUseWeapon)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && fireCooldownTimer > fireCooldown && canUseWeaponChecker.isAbleToUseWeapon)
         {
             if (weaponEquipped)
             {
