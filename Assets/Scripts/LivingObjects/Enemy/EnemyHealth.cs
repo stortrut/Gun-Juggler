@@ -105,9 +105,9 @@ public class EnemyHealth : Health
         }
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
+            Invoke(nameof(DummyDeath), 1f);
             enemyAnimator.Dying();
             EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
-            Destroy(gameObject);
         }
     }
 
