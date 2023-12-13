@@ -19,6 +19,7 @@ public class UpgradeCombo : MonoBehaviour
     private float duration;
     private GameObject comboObject;
     public Tween comboTween;
+    private Tween badCombo;
     public List<WeaponJuggleMovement> playerjuggle;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private SpriteRenderer comboImage;
@@ -98,8 +99,20 @@ public class UpgradeCombo : MonoBehaviour
         }
 
     }
+    private void ResetCombo()
+    {
+        comboText.enabled = true;
+        comboText.text = "COMBO LOST";
+        _bulletHit = 0;
+    }
+    private void DestroyCombo(float comboTime)
+    {
+         badCombo = comboObject.transform.DOMoveZ(0, comboTime).OnComplete(ResetCombo);
+            
 
-    public IEnumerator DestroyCombo(float comboTime)
+    }
+
+    public IEnumerator Combo(float comboTime)
     {
         comboTween = comboObject.transform.DOMoveZ(0, comboTime);
         yield return comboTween.WaitForKill();
@@ -107,15 +120,19 @@ public class UpgradeCombo : MonoBehaviour
         if (hitSinceShot == false)
         {
             OnBulletHit(false);
-            
+
         }
         else
         {
-          OnBulletHit(true);
-            Debug.Log("Combo number should appear");
-        }
+            OnBulletHit(true);
+            badCombo.Kill();
+            DestroyCombo(2);
+            {
+                Debug.Log("Combo number should appear");
+            }
 
-       
+
+        }
     }
 }
 

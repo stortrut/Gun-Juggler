@@ -26,7 +26,7 @@ public class WeaponStunGun : WeaponBase
     {
         UpgradeCombo.Instance.hitSinceShot = false;
         UpgradeCombo.Instance.comboTween.Kill();
-        StartCoroutine(UpgradeCombo.Instance.DestroyCombo(3f));
+        StartCoroutine(UpgradeCombo.Instance.Combo(3f));
         stunZone.SoundWave();
         base.UseWeapon();
         ReflectStun();
