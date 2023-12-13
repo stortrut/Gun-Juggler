@@ -105,9 +105,8 @@ public class EnemyHealth : Health
         }
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
-            Invoke(nameof(DummyDeath), 1f);
+            Invoke(nameof(ClownDeath), 1.5f);
             enemyAnimator.Dying();
-            EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         }
     }
 
@@ -120,6 +119,13 @@ public class EnemyHealth : Health
     {
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
+        Destroy(gameObject);
+    }
+
+    void ClownDeath()
+    {
+        Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
+        EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
         Destroy(gameObject);
     }
 }
