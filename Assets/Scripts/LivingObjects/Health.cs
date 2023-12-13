@@ -25,17 +25,14 @@ public class Health : MonoBehaviour, IDamageable
 
     public void ApplyDamage(float amount)
     {
-        if(oneShot == true)
+        if(oneShot)
         { 
-            BoolChange();                   //so that multible bullets only make one damage (so that number of protection dont get less than the actual number of protaction)
-            Invoke(nameof(BoolChange), .2f);
+            //BoolChange();                   //so that multible bullets only make one damage (so that number of protection dont get less than the actual number of protaction)
+            //Invoke(nameof(BoolChange), .2f);
             health -= amount;
             health = Mathf.Clamp(health, 0, maxHealth);
-
-            if (health <= 0)
-            {
-                isDead = true;
-            }
+            isDead = health == 0;
+           
         }
     }
     private void BoolChange()
