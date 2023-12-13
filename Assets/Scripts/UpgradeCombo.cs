@@ -51,6 +51,8 @@ public class UpgradeCombo : MonoBehaviour
                 comboEffect1.SetActive(true);
                 comboEffect2.SetActive(true);
                 comboImage.enabled = true;
+                transform.DOMoveZ(0, 0.7f).OnComplete(Flash);
+                    
             }
             else if (lastOneHit)
             {
@@ -69,6 +71,13 @@ public class UpgradeCombo : MonoBehaviour
                 comboImage.enabled = false;
             }
         }
+    }
+    private void Flash()
+    {
+        comboEffect1.SetActive(false);
+        comboEffect2.SetActive(false);
+        comboText.enabled = false;
+        comboImage.enabled = false;
     }
     private  void Upgrade() 
     
