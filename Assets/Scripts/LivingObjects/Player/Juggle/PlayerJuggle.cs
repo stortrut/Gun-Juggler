@@ -115,8 +115,15 @@ public class PlayerJuggle : MonoBehaviour
             }
             else if (weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon() && weaponInHand == null)
             {
-                weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 5f;
+                weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 3.85f;
             }
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            ThrowUpWeaponInHand();
         }
 
         //if(CheckTimeBetweenTwoWeapons(0, 1) < 2)

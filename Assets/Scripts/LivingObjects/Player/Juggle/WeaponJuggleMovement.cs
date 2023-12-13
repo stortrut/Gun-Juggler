@@ -18,7 +18,7 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     [Header("Spin while thrown curve")]
     [SerializeField] AnimationCurve rotationAnimationCurve;
-
+    [SerializeField] float startRotationZ;
     [HideInInspector] public bool gotCaught;
 
     /*[HideInInspector] */public float curveDeltaTime = 0.0f;
@@ -32,8 +32,6 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     private void Start()
     {
-
-
         thisWeaponJuggleMovement = GetComponent<WeaponJuggleMovement>();
         playerJuggle = GetComponentInParent<PlayerJuggle>();
 
@@ -63,6 +61,10 @@ public class WeaponJuggleMovement : MonoBehaviour
         curveSpeedModifier = 1f;
     }
 
+
+
+
+
     void Update()
     {
         if (beingThrown)
@@ -82,7 +84,12 @@ public class WeaponJuggleMovement : MonoBehaviour
 
             // Air Rotation
             float rotationValue = rotationAnimationCurve.Evaluate(curveDeltaTime);
-            transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
+
+            transform.localRotation = Quaternion.Euler(0, 0, rotationValue + startRotationZ);
+        }
+        else
+        {
+            startRotationZ = transform.eulerAngles.z;
         }
 
 
