@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class WeaponStunGun : WeaponBase
     [SerializeField] private StunZone stunZone;
     [SerializeField] private Animator animator;
 
+    private bool hit = false;
     [Header("Upgrades")]
     [SerializeField] StunGunUpgradeData[] stunGunLevelUpgradeData;
 
@@ -22,6 +24,9 @@ public class WeaponStunGun : WeaponBase
 
     public override void UseWeapon()
     {
+        UpgradeCombo.hitSinceShot = false;
+        UpgradeCombo.comboTween.Kill();
+        StartCoroutine(UpgradeCombo.DestroyCombo(3f));
         stunZone.SoundWave();
         base.UseWeapon();
         ReflectStun();
@@ -30,6 +35,7 @@ public class WeaponStunGun : WeaponBase
 
     private void ReflectStun()
     {
+        hit = false;
         foreach (GameObject obj in stunZone.objectsInField)
         {
             if (obj == null) { return; }
@@ -43,8 +49,9 @@ public class WeaponStunGun : WeaponBase
             }
             else if (obj.CompareTag("Enemy") || obj.CompareTag("EnemyNonTargetable"))
             {
-                var stunnable = obj.GetComponents<IStunnable>();
 
+                var stunnable = obj.GetComponents<IStunnable>();
+                hit = true;
                 if (stunnable == null) { return; }
                 Debug.Log(stunnable);
                 foreach(var stun in stunnable)
@@ -53,6 +60,11 @@ public class WeaponStunGun : WeaponBase
                 StartCoroutine(UnFreeze(2, stun));
                 }
             }
+        }
+        if(hit == true)
+        {
+            UpgradeCombo.hitSinceShot = true;
+            UpgradeCombo.comboTween.Kill();
         }
     }
 
