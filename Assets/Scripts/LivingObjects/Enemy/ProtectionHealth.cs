@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class ProtectionHealth : Health
     {
         if (other.CompareTag("Bullet"))
         {
+            UpgradeCombo.hitSinceShot = true;
+            UpgradeCombo.comboTween.Kill();
             ApplyDamage(1);
             if (health == 0)
             {
