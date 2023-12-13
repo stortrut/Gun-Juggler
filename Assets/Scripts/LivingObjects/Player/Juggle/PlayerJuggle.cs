@@ -72,7 +72,7 @@ public class PlayerJuggle : MonoBehaviour
     private void StartJuggling()
     {
         isJuggling = true;
-
+        UpgradeCombo.playerjuggle = weaponsCurrentlyInJuggleLoop;
         //StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
 
 

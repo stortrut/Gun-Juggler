@@ -18,7 +18,7 @@ public class WeaponSmallGun : Gun
        
     { 
         UpgradeCombo.hitSinceShot = false;
-        StartCoroutine(UpgradeCombo.DestroyCombo());
+        StartCoroutine(UpgradeCombo.DestroyCombo(1));
         Shoot();
 
         base.UseWeapon();

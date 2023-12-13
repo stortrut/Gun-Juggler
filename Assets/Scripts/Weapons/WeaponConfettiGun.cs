@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class WeaponConfettiGun : Gun
 {
@@ -26,7 +27,8 @@ public class WeaponConfettiGun : Gun
     {
         
         UpgradeCombo.hitSinceShot = false;
-        StartCoroutine(UpgradeCombo.DestroyCombo());
+        UpgradeCombo.comboTween.Kill();
+        StartCoroutine(UpgradeCombo.DestroyCombo(1.5f));
         bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
         CameraShake.instance.ShakingRandomly(.2f, .5f, .5f);

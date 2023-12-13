@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using DG.Tweening;
 public class EnemyHealth : Health
 {
     EnemyAnimator enemyAnimator;
@@ -38,6 +38,7 @@ public class EnemyHealth : Health
         if (other.gameObject.CompareTag("Bullet"))
         {
             UpgradeCombo.hitSinceShot = true;
+            UpgradeCombo.comboTween.Kill();
             Destroy(other.gameObject);
             ColorChange(1);
             Invoke(nameof(ColorChange), 0.3f);
