@@ -35,7 +35,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
         if (isStunned == true) { return; }
 
-        if (spawnBulletPos.position.x - player.transform.position.x < 14)
+        if (spawnBulletPos.position.x - player.transform.position.x < 18)
         {
             if(once == false)
             {
