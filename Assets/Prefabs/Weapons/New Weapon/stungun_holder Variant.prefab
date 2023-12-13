@@ -992,6 +992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponEquipped: 0
   fireCooldown: 0
+  _waitUntilThrowTime: 0
   weaponSpriterenderer: {fileID: 2950035515051931817}
   rb2D: {fileID: 6663785091039587221}
   weaponCollider: {fileID: 5784730685233064529}
@@ -1004,14 +1005,17 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+    waitUntilThrowTime: 0
   canUseWeaponChecker: {fileID: 0}
   stunZone: {fileID: 6524226119385354095}
   animator: {fileID: 0}
   stunGunLevelUpgradeData:
   - weaponCooldown: 0
+    waitUntilThrowTime: 1
     soundWaveCount: 0
     spread: 0
   - weaponCooldown: 0.5
+    waitUntilThrowTime: 1
     soundWaveCount: 0
     spread: 0
 --- !u!58 &5784730685233064529 stripped

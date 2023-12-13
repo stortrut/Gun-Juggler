@@ -8,14 +8,22 @@ public class WeaponBase : MonoBehaviour
     [HideInInspector] public bool weaponEquipped;
     [HideInInspector] public float fireCooldown;
     [HideInInspector] protected float fireCooldownTimer;
+    [HideInInspector] public float _waitUntilThrowTime;
+
+
     [SerializeField] protected SpriteRenderer weaponSpriterenderer;
     [SerializeField] public Rigidbody2D rb2D;
     [SerializeField] public Collider2D weaponCollider;
     [SerializeField] protected SpriteRenderer heartSpriteRenderer;
     [SerializeField] WeaponJuggleMovement weaponJuggleMovement;
 
-    [HideInInspector] public bool isHeart;
 
+
+
+
+
+    [HideInInspector] public bool isHeart;
+ 
 
     [HideInInspector] public WeaponType weaponType;
 
@@ -35,7 +43,6 @@ public class WeaponBase : MonoBehaviour
     {
         canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
         player = Manager.Instance.player;
-
     }
 
 
@@ -91,8 +98,22 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
-        GetComponentInParent<PlayerJuggle>().ThrowUpWeaponInHand();
+        StartCoroutine(nameof(ThrowUpWeaponWhenWeaponHasBeenFullyUsed), this.GetComponent<WeaponBase>());
     }
+
+    IEnumerator ThrowUpWeaponWhenWeaponHasBeenFullyUsed(WeaponBase thisWeapon)
+    {
+        yield return new WaitForSeconds(_waitUntilThrowTime);
+
+        Debug.Log("Waited " + _waitUntilThrowTime + " seconds before threw");
+
+        if(player.GetComponent<PlayerJuggle>().weaponInHand = thisWeapon.weaponJuggleMovement)
+        {
+            GetComponentInParent<PlayerJuggle>().ThrowUpWeaponInHand();
+        }
+    }
+
+
 
     public virtual void AdjustAim()
     {
@@ -110,6 +131,14 @@ public class WeaponBase : MonoBehaviour
     public virtual void SetWeaponUpgradeData()
     {
         fireCooldown = currentWeaponBaseUpgradeData.weaponCooldown;
+        _waitUntilThrowTime = currentWeaponBaseUpgradeData.waitUntilThrowTime;
+
+        Debug.Log("This is: " + weaponType);
+
+        Debug.Log("The upgrade data waitthrow time wwas " + currentWeaponBaseUpgradeData.waitUntilThrowTime);
+
+        Debug.Log("Set waitTIme to " + _waitUntilThrowTime);
+
     }
 
 
@@ -144,4 +173,6 @@ public class WeaponBaseUpgradeData
 {
     [Header("Weapon General Data")]
     [SerializeField] public float weaponCooldown;
+    [SerializeField] public float waitUntilThrowTime;
+
 }
