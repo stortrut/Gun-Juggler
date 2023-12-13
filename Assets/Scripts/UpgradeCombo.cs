@@ -28,7 +28,6 @@ public class UpgradeCombo : MonoBehaviour
     }
     public static void OnBulletHit(bool didItHit)
     {
-        
         {
             if (didItHit)
             {

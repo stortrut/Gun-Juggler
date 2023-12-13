@@ -26,10 +26,6 @@ public class WeaponStunGun : WeaponBase
         base.UseWeapon();
         ReflectStun();
         Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsStunGun);
-        
-
-        
-        
     }
 
     private void ReflectStun()

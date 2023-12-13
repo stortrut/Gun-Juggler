@@ -25,13 +25,15 @@ public class WeaponJuggleMovement : MonoBehaviour
     public float curveSpeedModifier = 1f;
 
     private float endOfCurveYTimeValue;
-    private float endOfCurveXTimeValue;
+    [HideInInspector] public float endOfCurveXTimeValue;
 
     private WeaponJuggleMovement thisWeaponJuggleMovement;
     private PlayerJuggle playerJuggle;
 
     private void Start()
     {
+
+
         thisWeaponJuggleMovement = GetComponent<WeaponJuggleMovement>();
         playerJuggle = GetComponentInParent<PlayerJuggle>();
 
@@ -103,14 +105,13 @@ public class WeaponJuggleMovement : MonoBehaviour
             }
         }
 
-        if (curveDeltaTime >= endOfCurveYTimeValue - 0.1)
-        {
-            if (beingThrown)
-            {
-                ResetCurveSpeedModifier();
-            }
-
-        }
+        //if (curveDeltaTime >= endOfCurveYTimeValue - 0.1)
+        //{
+        //    if (beingThrown)
+        //    {
+        //        ResetCurveSpeedModifier();
+        //    }
+        //}
 
 
         //if (beingDropped)
@@ -127,6 +128,15 @@ public class WeaponJuggleMovement : MonoBehaviour
         //    // Update the current position of the sphere
         //    transform.localPosition = currentPosition;
         //}
+    }
+
+
+
+
+
+    public float GetTimeUntilWeaponIsInHand()
+    {
+        return (endOfCurveXTimeValue - curveDeltaTime * curveSpeedModifier) % endOfCurveXTimeValue;
     }
 
 

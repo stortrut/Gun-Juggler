@@ -11,7 +11,8 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public float bulletDamage;
 
     public Vector2 direction = Vector2.right;
-    [SerializeField] float bulletLifeTime = 5f;
+    private static int bulletNumber;
+    [SerializeField] float bulletLifeTime = 8f;
 
 
     private void Start()
