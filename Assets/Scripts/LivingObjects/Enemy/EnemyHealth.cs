@@ -17,6 +17,7 @@ public class EnemyHealth : Health
 
     private void Awake()
     {
+        maxHealth = health;
         enemyAnimator = GetComponent<EnemyAnimator>();
     }
     private void Start()
