@@ -21,7 +21,10 @@ public class UpgradeCombo : MonoBehaviour
     public Tween comboTween;
     public List<WeaponJuggleMovement> playerjuggle;
     [SerializeField] private TextMeshProUGUI comboText;
-    [SerializeField] private GameObject comboStuff;
+    [SerializeField] private SpriteRenderer comboImage;
+    [SerializeField] private GameObject comboEffect1;
+    [SerializeField] private GameObject comboEffect2;
+
 
     private void Start()
     {
@@ -30,7 +33,9 @@ public class UpgradeCombo : MonoBehaviour
         comboObject = gameObject;
         _bulletHit = 0;
         comboText = GetComponentInChildren<TextMeshProUGUI>();
-        comboStuff.SetActive(false);
+        comboEffect1.SetActive(false);
+        comboEffect2.SetActive(false);
+        comboImage.enabled = false;
     }
     public void OnBulletHit(bool didItHit)
     {
@@ -38,23 +43,30 @@ public class UpgradeCombo : MonoBehaviour
             if (didItHit)
             {
                 _bulletHit++;
+                comboText.enabled = true;
                 comboText.text =_bulletHit.ToString();
                 lastOneHit = true;
                 comboText.fontStyle = FontStyles.Normal;
                 Upgrade();
-                comboStuff.SetActive(true);
+                comboEffect1.SetActive(true);
+                comboEffect2.SetActive(true);
+                comboImage.enabled = true;
             }
             else if (lastOneHit)
             {
                 comboText.fontStyle = FontStyles.Italic;
                 lastOneHit = false;
-                comboStuff.SetActive(true);
+                comboEffect1.SetActive(true);
+                comboEffect2.SetActive(true);
+                comboImage.enabled = true;
             }
             else
             {
                 comboText.text = "";
                 _bulletHit = 0;
-                comboStuff.SetActive(false);
+                comboEffect1.SetActive(false);
+                comboEffect2.SetActive(false);
+                comboImage.enabled = false;
             }
         }
     }
@@ -64,7 +76,12 @@ public class UpgradeCombo : MonoBehaviour
         
         if( _bulletHit != 0 && _bulletHit % 10 == 0 ) 
         {
-            foreach( var weapon in playerjuggle)
+            comboEffect1.SetActive(false);
+            comboEffect2.SetActive(false);
+            comboEffect1.SetActive(true);
+            comboEffect2.SetActive(true);
+            comboImage.color = UnityEngine.Random.ColorHSV(); 
+            foreach ( var weapon in playerjuggle)
             {
                 weapon.weaponBase.UpgradeWeapon();
             }
