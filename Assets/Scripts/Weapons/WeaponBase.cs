@@ -105,8 +105,6 @@ public class WeaponBase : MonoBehaviour
     {
         yield return new WaitForSeconds(_waitUntilThrowTime);
 
-        Debug.Log("Waited " + _waitUntilThrowTime + " seconds before threw");
-
         if(player.GetComponent<PlayerJuggle>().weaponInHand = thisWeapon.weaponJuggleMovement)
         {
             GetComponentInParent<PlayerJuggle>().ThrowUpWeaponInHand();
@@ -133,11 +131,11 @@ public class WeaponBase : MonoBehaviour
         fireCooldown = currentWeaponBaseUpgradeData.weaponCooldown;
         _waitUntilThrowTime = currentWeaponBaseUpgradeData.waitUntilThrowTime;
 
-        Debug.Log("This is: " + weaponType);
+        //Debug.Log("This is: " + weaponType);
 
-        Debug.Log("The upgrade data waitthrow time wwas " + currentWeaponBaseUpgradeData.waitUntilThrowTime);
+        //Debug.Log("The upgrade data waitthrow time wwas " + currentWeaponBaseUpgradeData.waitUntilThrowTime);
 
-        Debug.Log("Set waitTIme to " + _waitUntilThrowTime);
+        //Debug.Log("Set waitTIme to " + _waitUntilThrowTime);
 
     }
 

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponEquipped: 0
   fireCooldown: 0
+  _waitUntilThrowTime: 0
   weaponSpriterenderer: {fileID: 1107907684811426958}
   rb2D: {fileID: 8929002792855396274}
   weaponCollider: {fileID: 8635591160967388790}
@@ -140,19 +141,23 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+    waitUntilThrowTime: 0
   canUseWeaponChecker: {fileID: 0}
   bulletSmall: {fileID: 8888622273928473693, guid: 9c2ae008b333af34da4b1df663e382a0, type: 3}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
+    waitUntilThrowTime: 0
     bulletDamage: 0
     bulletSpeed: 0
   shotGunLevelUpgradeData:
   - weaponCooldown: 1
+    waitUntilThrowTime: 1
     bulletDamage: 1
     bulletSpeed: 5
     bulletCount: 6
     spread: 90
   - weaponCooldown: 0.5
+    waitUntilThrowTime: 0
     bulletDamage: 1
     bulletSpeed: 10
     bulletCount: 12

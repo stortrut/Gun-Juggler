@@ -25,7 +25,6 @@ public class WeaponConfettiGun : Gun
 
     public override void UseWeapon()
     {
-        
         UpgradeCombo.hitSinceShot = false;
         UpgradeCombo.comboTween.Kill();
         StartCoroutine(UpgradeCombo.DestroyCombo(1.5f));
