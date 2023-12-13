@@ -14,23 +14,38 @@ public class CameraShake : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("Camera Shake");
-            StartCoroutine(ShakingRandomly(1f, .8f, .5f));
+            StartCoroutine(ShakingRandomly(1f, .8f, .5f, 3));
         }
     }
 
-    public IEnumerator ShakingRandomly(float duration, float magnitudeX, float magnitudeY)
+    public IEnumerator ShakingRandomly(float duration, float magnitudeX, float magnitudeY, int timesToShake)
     {
         Vector3 initialPosition = transform.localPosition;
         float elapsedTime = 0f;
+        bool didJustShake = false;
+        float shakeAtThisTime = duration / timesToShake;
+        int i = 0;
 
         while (elapsedTime < duration)
         {
-            float newX = initialPosition.x + Random.Range(-1f, 1f) * magnitudeX;
-            float newY = initialPosition.y + Random.Range(-1f, 1f) * magnitudeY;
+            if ((Time.time > shakeAtThisTime - Time.deltaTime || Time.time < shakeAtThisTime + Time.deltaTime) && didJustShake == false)
+            {
+                float newX = initialPosition.x + Random.Range(-1f, 1f) * magnitudeX;
+                float newY = initialPosition.y + Random.Range(-1f, 1f) * magnitudeY;
 
-            transform.localPosition = new Vector3(newX, newY, initialPosition.z);
+                transform.localPosition = new Vector3(newX, newY, initialPosition.z);
+                didJustShake = true;
+                i++;
+                Debug.Log("camerashake");
+            }
 
             elapsedTime += Time.deltaTime;
+
+            if (Time.time  > ((shakeAtThisTime *i)+ Time.deltaTime*3))
+            {
+                didJustShake = false;
+                Debug.Log("ska callas två ggr?");
+            }
             yield return null; 
         }
 

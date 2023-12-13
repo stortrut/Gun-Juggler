@@ -107,6 +107,7 @@ public class EnemyHealth : Health
         {
             enemyAnimator.Dying();
             EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
+            Destroy(gameObject);
         }
     }
 

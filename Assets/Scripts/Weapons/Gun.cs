@@ -53,7 +53,6 @@ public class Gun : WeaponBase
         weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed;
         //Destroy(weaponBullet, 1);
         return weaponBullet;
-        
     }
 
 
