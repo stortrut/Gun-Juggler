@@ -37,8 +37,8 @@ public class EnemyHealth : Health
     {   
         if (other.gameObject.CompareTag("Bullet"))
         {
-            UpgradeCombo.hitSinceShot = true;
-            UpgradeCombo.comboTween.Kill();
+            UpgradeCombo.Instance.hitSinceShot = true;
+            UpgradeCombo.Instance.comboTween.Kill();
             Destroy(other.gameObject);
             ColorChange(1);
             Invoke(nameof(ColorChange), 0.3f);

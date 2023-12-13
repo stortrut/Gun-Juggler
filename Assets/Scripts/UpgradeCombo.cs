@@ -4,52 +4,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-using static DG.Tweening.DOTweenCYInstruction;
+
 
 public class UpgradeCombo : MonoBehaviour
 {
-    
-    private static int _bulletHit;
+
+    public static UpgradeCombo Instance { get; private set; }
+
+    private int _bulletHit;
     private bool hit;
-    private static bool lastOneHit;
-    public static bool hitSinceShot;
-    public static bool onlyOneInWave;
+    private bool lastOneHit;
+    public bool hitSinceShot;
+    public bool onlyOneInWave;
     private float duration;
-    private static GameObject comboObject;
-    public static Tween comboTween;
-    public static List<WeaponJuggleMovement> playerjuggle;
-    [SerializeField] private static TextMeshProUGUI comboText;
+    private GameObject comboObject;
+    public Tween comboTween;
+    public List<WeaponJuggleMovement> playerjuggle;
+    [SerializeField] private TextMeshProUGUI comboText;
+    [SerializeField] private GameObject comboStuff;
 
     private void Start()
     {
+        if (Instance == null)
+            Instance = this;
         comboObject = gameObject;
         _bulletHit = 0;
-        comboText = GetComponent<TextMeshProUGUI>();
+        comboText = GetComponentInChildren<TextMeshProUGUI>();
+        comboStuff.SetActive(false);
     }
-    public static void OnBulletHit(bool didItHit)
+    public void OnBulletHit(bool didItHit)
     {
         {
             if (didItHit)
             {
                 _bulletHit++;
-                comboText.text = "Combo "+_bulletHit.ToString();
+                comboText.text =_bulletHit.ToString();
                 lastOneHit = true;
                 comboText.fontStyle = FontStyles.Normal;
                 Upgrade();
+                comboStuff.SetActive(true);
             }
             else if (lastOneHit)
             {
                 comboText.fontStyle = FontStyles.Italic;
                 lastOneHit = false;
+                comboStuff.SetActive(true);
             }
             else
             {
                 comboText.text = "";
                 _bulletHit = 0;
+                comboStuff.SetActive(false);
             }
         }
     }
-    private static void Upgrade() 
+    private  void Upgrade() 
     
     {
         
@@ -64,7 +73,7 @@ public class UpgradeCombo : MonoBehaviour
 
     }
 
-    public static IEnumerator DestroyCombo(float comboTime)
+    public IEnumerator DestroyCombo(float comboTime)
     {
         comboTween = comboObject.transform.DOMoveZ(0, comboTime);
         yield return comboTween.WaitForKill();

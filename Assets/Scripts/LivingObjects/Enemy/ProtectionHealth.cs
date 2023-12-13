@@ -12,8 +12,8 @@ public class ProtectionHealth : Health
     {
         if (other.CompareTag("Bullet"))
         {
-            UpgradeCombo.hitSinceShot = true;
-            UpgradeCombo.comboTween.Kill();
+            UpgradeCombo.Instance.hitSinceShot = true;
+            UpgradeCombo.Instance.comboTween.Kill();
             ApplyDamage(1);
             if (health == 0)
             {

@@ -24,9 +24,9 @@ public class WeaponConfettiGun : Gun
 
     public override void UseWeapon()
     {
-        UpgradeCombo.hitSinceShot = false;
-        UpgradeCombo.comboTween.Kill();
-        StartCoroutine(UpgradeCombo.DestroyCombo(1.5f));
+        UpgradeCombo.Instance.hitSinceShot = false;
+        UpgradeCombo.Instance.comboTween.Kill();
+        StartCoroutine(UpgradeCombo.Instance.DestroyCombo(1.5f));
         bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
         //CameraShake.instance.ShakingRandomly(.2f, .5f, .5f, 3);
