@@ -382,6 +382,7 @@ MonoBehaviour:
   gotCaught: 0
   curveDeltaTime: 0
   curveSpeedModifier: 1
+  endOfCurveXTimeValue: 0
 --- !u!114 &2173005482234326438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponEquipped: 0
   fireCooldown: 0
+  _waitUntilThrowTime: 0
   weaponSpriterenderer: {fileID: 2742380901884179489}
   rb2D: {fileID: 5946089023895152413}
   weaponCollider: {fileID: 6825548993933977305}
@@ -408,10 +410,12 @@ MonoBehaviour:
   currentWeaponLevel: 0
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
+    waitUntilThrowTime: 0
   canUseWeaponChecker: {fileID: 0}
   bulletSmall: {fileID: 0}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
+    waitUntilThrowTime: 0
     bulletDamage: 0
     bulletSpeed: 0
   smallGunLevelUpgradeData: []
@@ -574,11 +578,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7188072838981134636, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.37254903
       objectReference: {fileID: 0}
     - target: {fileID: 7188072838981134636, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
       propertyPath: m_Color.g
-      value: 0.056913942
+      value: 0.37254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188072838981134636, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
+      propertyPath: m_Color.r
+      value: 0.37254903
       objectReference: {fileID: 0}
     - target: {fileID: 7188072838981134636, guid: 4f8e311f2bde2da4b8a5fcd02ff56afa, type: 3}
       propertyPath: m_Enabled

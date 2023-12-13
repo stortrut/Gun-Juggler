@@ -146,6 +146,7 @@ public class WeaponBase : MonoBehaviour
         isHeart = true;
         weaponSpriterenderer.enabled = false;
         heartSpriteRenderer.enabled = true;
+        HealthBar.Instance.RemoveHeart(1);
     }
 
     public void ReplaceHeartWithWeapon()
@@ -154,6 +155,7 @@ public class WeaponBase : MonoBehaviour
         isHeart = false;
         weaponSpriterenderer.enabled = true;
         heartSpriteRenderer.enabled = false;
+        HealthBar.Instance.AddHeart(1);
     }
 
 
