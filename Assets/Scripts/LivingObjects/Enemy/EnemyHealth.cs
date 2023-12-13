@@ -43,8 +43,9 @@ public class EnemyHealth : Health
             ColorChange(1);
             Invoke(nameof(ColorChange), 0.3f);
             if (hasProtection == false)
-            { 
-                ApplyDamage(1);
+            {
+                var damage = other.gameObject.GetComponent<Bullet>().bulletDamage;
+                ApplyDamage(damage);
                 healthImage.UpdateHealth(health, maxHealth);
                 if (dummy)
                 {

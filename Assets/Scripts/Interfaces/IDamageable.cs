@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IDamageable 
 {
    bool hasProtection { get; set; }   
-    void ApplyDamage(int amount);
+    void ApplyDamage(float amount);
     
     
 }

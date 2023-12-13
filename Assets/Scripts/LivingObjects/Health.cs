@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [HideInInspector]public int maxHealth = 1000;
-    public int health;
+    [HideInInspector]public float maxHealth = 1000;
+    public float health;
 
     [HideInInspector] public bool isDead;
 
@@ -23,14 +23,14 @@ public class Health : MonoBehaviour, IDamageable
         protection = GetComponent<EnemyProtection>();
     }
 
-    public void ApplyDamage(int amount)
+    public void ApplyDamage(float amount)
     {
         if(oneShot == true)
         { 
             BoolChange();                   //so that multible bullets only make one damage (so that number of protection dont get less than the actual number of protaction)
             Invoke(nameof(BoolChange), .2f);
             health -= amount;
-            //health = Mathf.Clamp(health, -1, maxHealth);
+            health = Mathf.Clamp(health, 0, maxHealth);
 
             if (health <= 0)
             {
