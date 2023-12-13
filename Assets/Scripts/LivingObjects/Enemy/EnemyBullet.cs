@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour,IAim
 {
     [SerializeField] public Rigidbody2D rb2D;
-    [SerializeField] private CapsuleCollider2D collider;
+    [SerializeField] private CapsuleCollider2D capsuleCollider;
     [HideInInspector] public Vector3 aim;
     bool directionRight = true;
     public Vector2 direction = Vector2.right;
@@ -26,7 +26,7 @@ public class EnemyBullet : MonoBehaviour,IAim
     }
     public void Deflected()
     {
-        collider.size *= 1.5f;
+        capsuleCollider.size *= 1.5f;
         //transform.localScale *= 1.5f;
        // transform.position -= new Vector3(0,1,0);
         transform.rotation *= new Quaternion(0,0,-1,0);

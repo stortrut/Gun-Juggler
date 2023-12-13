@@ -10,7 +10,7 @@ public class WeaponConfettiGun : Gun
     private float currentSpread;
     public static List<GameObject> bulletWave = new();
     private Knockback knockback;
-    private GameObject bullet;
+    private GameObject spawnedBullet;
     private CameraShake cameraShake;
 
     private void Start()
@@ -40,8 +40,8 @@ public class WeaponConfettiGun : Gun
 
     public void ShootWideSpread(float bulletSpeed, float bulletDamageInput, int bulletCount)
     {
-        bullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
-        bulletWave.Add(bullet);
+        spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
+        bulletWave.Add(spawnedBullet);
         int halfAmountOfBulletCount = bulletCount / 2;
 
         inverseBullets(1, halfAmountOfBulletCount);
@@ -49,13 +49,13 @@ public class WeaponConfettiGun : Gun
 
         void inverseBullets(int inverseMultiplier, int halfAmountOfBulletCount)
         {
-            bullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
-            bulletWave.Add(bullet);
+            spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
+            bulletWave.Add(spawnedBullet);
             for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
             {
                 float rotationAngle = Random.Range(5, 35);
-                bullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
-                bulletWave.Add(bullet);
+                spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
+                bulletWave.Add(spawnedBullet);
             }
 
         }

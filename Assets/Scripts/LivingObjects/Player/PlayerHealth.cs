@@ -11,6 +11,8 @@ public class PlayerHealth : Health
     private bool died;
     private void Awake()
     {
+        maxHealth = health;
+        Debug.Log("health" + health);
         s_player = player;
 
         //Singleton.Instance = new Singleton(player);
@@ -26,7 +28,7 @@ public class PlayerHealth : Health
                 Destroy(other.gameObject);
 
                 player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
-
+                Debug.Log(health);
                 if(health <= 0)
                 {
                     if(!died)

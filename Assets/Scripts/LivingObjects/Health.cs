@@ -18,21 +18,22 @@ public class Health : MonoBehaviour, IDamageable
     private bool isProtected;
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
 
-    void Awake()
+    private void Awake()
     {
+        
         protection = GetComponent<EnemyProtection>();
     }
 
     public void ApplyDamage(float amount)
     {
         if(oneShot)
-        { 
+        {
+            
             //BoolChange();                   //so that multible bullets only make one damage (so that number of protection dont get less than the actual number of protaction)
             //Invoke(nameof(BoolChange), .2f);
             health -= amount;
             health = Mathf.Clamp(health, 0, maxHealth);
             isDead = health == 0;
-           
         }
     }
     private void BoolChange()

@@ -46,6 +46,7 @@ public class EnemyHealth : Health
             {
                 var damage = other.gameObject.GetComponent<Bullet>().bulletDamage;
                 ApplyDamage(damage);
+                if(healthImage != null)
                 healthImage.UpdateHealth(health, maxHealth);
                 if (dummy)
                 {
@@ -92,11 +93,18 @@ public class EnemyHealth : Health
     }
     void Death()
     {
-        if(enemyAnimator == null) { Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic"); }
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-        if (enemyAnimator.enemyType == EnemyType.Dummy)
+        if (enemyAnimator == null)
         {
-            Invoke(nameof(DummyDeath), 1f);
+        EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+        Destroy(gameObject);
+        { Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic"); }
+        }
+           
+       
+        else if (enemyAnimator.enemyType == EnemyType.Dummy)
+        {
+            Invoke(nameof(DummyDeath), 1f); 
             enemyAnimator.Dying();
         }
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)

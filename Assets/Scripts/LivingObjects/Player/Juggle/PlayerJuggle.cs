@@ -79,8 +79,8 @@ public class PlayerJuggle : MonoBehaviour
         //}
 
         if (!isJuggling) { return; }
-        nextWeapon = GetUpcomingWeapon().gameObject.name;
-        timeUntilNextWeapon = GetUpcomingWeapon().GetTimeUntilWeaponIsInHand();
+        //nextWeapon = GetUpcomingWeapon().gameObject.name;
+        //timeUntilNextWeapon = GetUpcomingWeapon().GetTimeUntilWeaponIsInHand();
         timeBetweenWeapons = CheckTimeBetweenTwoWeapons(0, 1);
 
         int lastWeaponId = weaponsCurrentlyInJuggleLoop.Count - 1;
