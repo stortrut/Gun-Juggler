@@ -11,7 +11,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     [SerializeField] protected GameObject enemyBullet;
     [SerializeField] protected Transform spawnBulletPos;
     protected GameObject player;
-    [HideInInspector] EnemyAnimator enemyAnimator;
+    //[HideInInspector] EnemyAnimator enemyAnimator;
 
     [HideInInspector] private Vector3 aim;
     [HideInInspector] public bool isStunned = false;
@@ -23,7 +23,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
     void Awake()
     {
-        enemyAnimator = GetComponent<EnemyAnimator>();
+        //enemyAnimator = GetComponent<EnemyAnimator>();
     }
     void Update()
     {
@@ -77,8 +77,8 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         //bulletRigidbody.velocity = bulletSpeed  * (-weaponBullet.transform.right) ;
         //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
         Destroy(weaponBullet, 10);
-        if (enemyAnimator == null) { return; }
-        enemyAnimator.Attacking();
+        //if (enemyAnimator == null) { return; }
+        GetComponent<EnemyAnimator>().Attacking();
     }
     private void AdjustAim()
     {

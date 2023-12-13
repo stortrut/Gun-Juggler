@@ -6,7 +6,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement playerToFollow;
+    [HideInInspector] private PlayerMovement playerToFollow;
     Vector3 offset = new Vector3(5, 2, -34);
     Vector3 targetPos = Vector3.zero;
     public bool yAxisLocked = false;
