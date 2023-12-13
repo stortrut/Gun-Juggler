@@ -34,7 +34,7 @@ public class EnemyHealth : Health
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
-    {
+    {   
         if (other.gameObject.CompareTag("Bullet"))
         {
             UpgradeCombo.hitSinceShot = true;
