@@ -63,6 +63,6 @@ public class WeaponSmallGun : Gun
 [System.Serializable]
 public class SmallGunUpgradeData : GunBaseUpgradeData
 {
-    [Header("Small Gun Specific")]
-    [SerializeField] public string funny;
+    //[Header("Small Gun Specific")]
+    //[SerializeField] public string funny;
 }
