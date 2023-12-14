@@ -93,6 +93,9 @@ public class WeaponConfettiGun : Gun
         SetWeaponUpgradeData();
     }
 
+
+  
+
     public override void SetWeaponUpgradeData()
     {
         //General
