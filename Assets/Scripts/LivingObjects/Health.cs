@@ -33,11 +33,19 @@ public class Health : MonoBehaviour, IDamageable
             //Invoke(nameof(BoolChange), .2f);
             health -= amount;
             health = Mathf.Clamp(health, 0, maxHealth);
-            isDead = health == 0;
+            if(isDead = health == 0)
+            {
+                Death();
+            }
+            
         }
     }
     private void BoolChange()
     {
         oneShot = !oneShot;
+    }
+    public virtual void Death()
+    {
+
     }
 }

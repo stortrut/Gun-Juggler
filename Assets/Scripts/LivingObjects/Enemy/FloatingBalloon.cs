@@ -10,7 +10,7 @@ public class FloatingBalloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var timeItTakes = Random.Range(2,10);
+        var timeItTakes = Random.Range(2,5);
          X = transform.DOLocalMoveX(transform.localPosition.x + 4, 1).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
          Y = transform.DOLocalMoveY(transform.localPosition.y + 6, timeItTakes).OnComplete(KillTweenX);
        

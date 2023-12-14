@@ -33,7 +33,7 @@ public class ProtectionHealth : Health
         }
     }
 
-    void Death()
+    public override void Death()
     {
         if (hasFunctionBeenCalled == false)
         {

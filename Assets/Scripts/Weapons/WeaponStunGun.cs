@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class WeaponStunGun : WeaponBase
@@ -51,14 +52,20 @@ public class WeaponStunGun : WeaponBase
             {
 
                 var stunnable = obj.GetComponents<IStunnable>();
+                var damageable = obj.GetComponent<Health>();
+               
                 hit = true;
                 if (stunnable == null) { return; }
                 Debug.Log(stunnable);
                 foreach(var stun in stunnable)
                 { 
                 stun.isStunnable = true;
-                StartCoroutine(UnFreeze(2, stun));
+                StartCoroutine(UnFreeze(2, stun,damageable));
+                
                 }
+
+                stunZone.objectsInField.RemoveAll(item => item == null);
+
             }
         }
         if(hit == true)
@@ -97,10 +104,12 @@ public class WeaponStunGun : WeaponBase
         base.SetWeaponUpgradeData();
     }
         
-    IEnumerator UnFreeze(float timeStunned, IStunnable stunnable)
+    IEnumerator UnFreeze(float timeStunned, IStunnable stunnable, IDamageable damageable)
     {
         yield return new WaitForSeconds(timeStunned);
         stunnable.isStunnable = false;
+        damageable.ApplyDamage(1);
+
     }
 }
 

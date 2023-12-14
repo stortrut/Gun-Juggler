@@ -60,7 +60,7 @@ public class EnemyHealth : Health
 
                     died = true;
 
-                    FindObjectOfType<PlayerHealth>().GivePlayerWeaponAndHealthBack();
+                    
                     Death();
                 }
             }
@@ -92,8 +92,9 @@ public class EnemyHealth : Health
         spriteRenderer.color = Color.white;
         colorischanged = false;
     }
-    void Death()
+    public override void Death()
     {
+        FindObjectOfType<PlayerHealth>().GivePlayerWeaponAndHealthBack();
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         if (enemyAnimator == null)
         {

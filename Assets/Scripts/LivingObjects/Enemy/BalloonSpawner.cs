@@ -9,6 +9,7 @@ public class BalloonSpawner : MonoBehaviour
     private float lastSpawn;
     private bool firstTime = true;
     public int maxNumberOfGiraffes;
+    private int numberOfGiraffes;
     void Start()
     {
         player = Manager.Instance.player;
@@ -21,14 +22,19 @@ public class BalloonSpawner : MonoBehaviour
         {
         }
         float currentTime = Time.time;
-        if (currentTime > lastSpawn &&  firstTime)
+        if (currentTime > lastSpawn)
         {
             firstTime = false;
-            lastSpawn = currentTime + Random.Range(2, 4);
-            for (float i = -((float)maxNumberOfGiraffes/2); i < maxNumberOfGiraffes; i += 2)
+            lastSpawn = currentTime + Random.Range(2, 3);
+           // for (float i = -((float)maxNumberOfGiraffes/2); i < maxNumberOfGiraffes; i += 2)
+          //  {
+          if(numberOfGiraffes < maxNumberOfGiraffes)
             {
-                Instantiate(balloonSpawn , transform.position + new Vector3(i,0,0), Quaternion.identity);
+                Instantiate(balloonSpawn, transform.position + new Vector3(numberOfGiraffes - 2, 0, 0), Quaternion.identity);
+                numberOfGiraffes++;
             }
+                
+            //}
             
         }
     }
