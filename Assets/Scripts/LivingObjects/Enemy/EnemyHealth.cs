@@ -46,6 +46,9 @@ public class EnemyHealth : Health
             if (hasProtection == false)
             {
                 var damage = other.gameObject.GetComponent<Bullet>().bulletDamage;
+
+                if(other.gameObject.GetComponent<Bullet>() == null) { damage = other.gameObject.GetComponentInChildren<Bullet>().bulletDamage; }
+
                 ApplyDamage(damage);
                 if(healthImage != null)
                 healthImage.UpdateHealth(health, maxHealth);

@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class EnemyShoot : MonoBehaviour, IStunnable
 {
-    [SerializeField] protected float bulletDamage, bulletSpeed;
     [SerializeField] protected GameObject enemyBullet;
     [SerializeField] protected Transform spawnBulletPos;
     protected GameObject player;
@@ -74,6 +73,16 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
         var bullet = weaponBullet.GetComponentInChildren<IAim>();
         bullet.AimInfo(aim);
+
+        //PIE
+        if(weaponBullet.GetComponent<Bullet>() != null)
+            weaponBullet.GetComponent<Bullet>().bulletDamage = 75f;
+        else
+        {
+            weaponBullet.GetComponentInChildren<Bullet>().bulletDamage = 75f;
+        }
+
+
         //bulletRigidbody.velocity = bulletSpeed  * (-weaponBullet.transform.right) ;
         //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
         Destroy(weaponBullet, 10);

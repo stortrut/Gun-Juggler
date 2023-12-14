@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class PlayerHealth : Health
     public GameObject player;
     public static GameObject s_player;
     private bool died;
+
+    [SerializeField] SpriteRenderer[] allPlayerSprites;
+
     private void Awake()
     {
         maxHealth = health;
@@ -23,11 +27,13 @@ public class PlayerHealth : Health
             if (hasProtection == false)
             {
                 ApplyDamage(1);
+                StartCoroutine(nameof(FlashRed));
+
                 //Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
                 Destroy(other.gameObject);
 
                 player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
-                Debug.Log(health);
+                //Debug.Log(health);
                 if(health <= 0)
                 {
                     if(!died)
@@ -58,6 +64,21 @@ public class PlayerHealth : Health
         }
     }
 
+
+    IEnumerator FlashRed()
+    {
+        for (int i = 0; i < allPlayerSprites.Length; i++)
+        {
+            allPlayerSprites[i].color = Color.red;
+        }
+
+        yield return new WaitForSeconds(0.23f);
+
+        for (int i = 0; i < allPlayerSprites.Length; i++)
+        {
+            allPlayerSprites[i].color = Color.white;
+        }
+    }
 
     IEnumerator PlayerDied()
     {

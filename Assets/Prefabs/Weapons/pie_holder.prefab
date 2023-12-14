@@ -187,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &832272810177133144
 Transform:
   m_ObjectHideFlags: 0
@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 4969519294027727997}
   - component: {fileID: 2923478834057369672}
   - component: {fileID: 43019682952448475}
+  - component: {fileID: 1043283479451288401}
   m_Layer: 12
   m_Name: pie_logic
   m_TagString: EnemyBullet
@@ -469,3 +470,21 @@ MonoBehaviour:
   isDead: 0
   spriteRenderer: {fileID: 7111510225492635035}
   healthImage: {fileID: 0}
+--- !u!114 &1043283479451288401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447225682501245073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f472156cb771aa4d9b7d402ac2dcb1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  rb2D: {fileID: 0}
+  bulletSpeed: 0
+  bulletDamage: 0
+  direction: {x: 1, y: 0}
+  bulletLifeTime: 0

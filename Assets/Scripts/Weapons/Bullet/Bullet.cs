@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        if (rb2D == null) { return; }
+
         rb2D.velocity = transform.right * bulletSpeed;
         Invoke(nameof(Death),bulletLifeTime);
     }
