@@ -10,6 +10,7 @@ public class PlayerHealth : Health
     public GameObject player;
     public static GameObject s_player;
     private bool died;
+    private CameraShake cameraShake;
 
     [SerializeField] SpriteRenderer[] allPlayerSprites;
 
@@ -17,6 +18,7 @@ public class PlayerHealth : Health
     {
         maxHealth = health;
         s_player = player;
+        cameraShake = FindObjectOfType<CameraShake>();
 
         //Singleton.Instance = new Singleton(player);
     }
@@ -28,6 +30,7 @@ public class PlayerHealth : Health
             {
                 ApplyDamage(1);
                 StartCoroutine(nameof(FlashRed));
+                StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
 
                 //Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
                 Destroy(other.gameObject);
