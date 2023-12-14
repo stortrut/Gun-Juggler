@@ -104,12 +104,15 @@ public class UpgradeCombo : MonoBehaviour
         comboText.enabled = true;
         comboText.text = "COMBO LOST";
         _bulletHit = 0;
+
+        foreach (var weapon in playerjuggle)
+        {
+            weapon.weaponBase.ResetWeaponUpgradeLevel();
+        }
     }
     private void DestroyCombo(float comboTime)
     {
          badCombo = comboObject.transform.DOMoveZ(0, comboTime).OnComplete(ResetCombo);
-            
-
     }
 
     public IEnumerator Combo(float comboTime)

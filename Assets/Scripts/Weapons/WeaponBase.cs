@@ -124,7 +124,12 @@ public class WeaponBase : MonoBehaviour
     {
         currentWeaponLevel++;
     }
+    public void ResetWeaponUpgradeLevel()
+    {
+        currentWeaponLevel = 0;
 
+        SetWeaponUpgradeData();
+    }
 
     public virtual void SetWeaponUpgradeData()
     {
