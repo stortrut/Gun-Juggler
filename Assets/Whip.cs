@@ -27,6 +27,7 @@ public class Whip : MonoBehaviour
             body.isKinematic = true;
             body.gravityScale = 0;
         }
+        gameObject.tag = "EnemyBullet";
         whip = transform.DORotate(transform.rotation.eulerAngles - new Vector3(0, 0, 360), 1, RotateMode.FastBeyond360).SetLoops(-1);
     }
     // Update is called once per frame

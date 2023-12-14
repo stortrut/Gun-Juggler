@@ -16,7 +16,8 @@ public class UpgradeCombo : MonoBehaviour
     private bool lastOneHit;
     public bool hitSinceShot;
     public bool onlyOneInWave;
-    private float duration;
+    public float comboTime;
+    public float inactiveTime;
     private GameObject comboObject;
     public Tween comboTween;
     private Tween badCombo;
@@ -52,7 +53,7 @@ public class UpgradeCombo : MonoBehaviour
                 comboEffect1.SetActive(true);
                 comboEffect2.SetActive(true);
                 comboImage.enabled = true;
-                transform.DOMoveZ(0, 0.7f).OnComplete(Flash);
+                transform.DOMoveZ(0, 1.2f).OnComplete(Flash);
                     
             }
             else if (lastOneHit)
@@ -110,12 +111,12 @@ public class UpgradeCombo : MonoBehaviour
             weapon.weaponBase.ResetWeaponUpgradeLevel();
         }
     }
-    private void DestroyCombo(float comboTime)
+    private void DestroyCombo()
     {
-         badCombo = comboObject.transform.DOMoveZ(0, comboTime).OnComplete(ResetCombo);
+         badCombo = comboObject.transform.DOMoveZ(0, inactiveTime).OnComplete(ResetCombo);
     }
 
-    public IEnumerator Combo(float comboTime)
+    public IEnumerator Combo()
     {
         comboTween = comboObject.transform.DOMoveZ(0, comboTime);
         yield return comboTween.WaitForKill();
@@ -129,7 +130,7 @@ public class UpgradeCombo : MonoBehaviour
         {
             OnBulletHit(true);
             badCombo.Kill();
-            DestroyCombo(2);
+            DestroyCombo();
             {
                 //Debug.Log("Combo number should appear");
             }
