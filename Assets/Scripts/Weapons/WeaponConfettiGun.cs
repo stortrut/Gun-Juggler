@@ -8,7 +8,7 @@ public class WeaponConfettiGun : Gun
     [SerializeField] ShotGunUpgradeData[] shotGunLevelUpgradeData;
     private int currentBulletCount;
     private float currentSpread;
-    public static List<GameObject> bulletWave = new();
+    //public static List<GameObject> bulletWave = new();
     private Knockback knockback;
     private GameObject spawnedBullet;
     private CameraShake cameraShake;
@@ -28,38 +28,55 @@ public class WeaponConfettiGun : Gun
         UpgradeCombo.Instance.comboTween.Kill();
         StartCoroutine(UpgradeCombo.Instance.Combo(1.5f));
 
-        bulletWave.Clear();
+        //bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
         //CameraShake.instance.ShakingRandomly(.2f, .5f, .5f, 3);
         StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
 
         if (knockback != null)
-            knockback.KnockBackMyself(3.5f, 5f, 0.2f, gunPoint.transform);
+            knockback.KnockBackMyself(3.2f, 4f, 0.2f, gunPoint.transform);
 
         base.UseWeapon();
     }
 
     public void ShootWideSpread(float bulletSpeed, float bulletDamageInput, int bulletCount)
     {
-        spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
-        bulletWave.Add(spawnedBullet);
-        int halfAmountOfBulletCount = bulletCount / 2;
+        //spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
+        //bulletWave.Add(spawnedBullet);
 
-        inverseBullets(1, halfAmountOfBulletCount);
-        inverseBullets(-1, halfAmountOfBulletCount);
+        float angleDistanceBetweenBullets = 180 / bulletCount;
+        float angelSum = -90;
 
-        void inverseBullets(int inverseMultiplier, int halfAmountOfBulletCount)
+        for (int i = 0; i < bulletCount; i++)
         {
-            spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
-            bulletWave.Add(spawnedBullet);
-            for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
-            {
-                float rotationAngle = Random.Range(5, 35);
-                spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
-                bulletWave.Add(spawnedBullet);
-            }
+            float bulletAngle = angleDistanceBetweenBullets;
+            if (i == 0)
+                bulletAngle = (angleDistanceBetweenBullets) / 2;
 
+            angelSum += bulletAngle;
+
+            spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0,  angelSum));
         }
+
+
+        //int halfAmountOfBulletCount = bulletCount / 2;
+
+        //inverseBullets(1, halfAmountOfBulletCount);
+        //inverseBullets(-1, halfAmountOfBulletCount);
+
+        //void inverseBullets(int inverseMultiplier, int halfAmountOfBulletCount)
+        //{
+        //    spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, currentSpread * inverseMultiplier));
+        //    //bulletWave.Add(spawnedBullet);
+
+        //    for (int i = 0; i < halfAmountOfBulletCount; i++)           //in between edges and middle
+        //    {
+        //        float rotationAngle = Random.Range(5, 35);
+        //        spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0, rotationAngle * inverseMultiplier));
+        //        //bulletWave.Add(spawnedBullet);
+        //    }
+        //}
+
         if (cameraShake == null)
         {
             cameraShake = FindObjectOfType<CameraShake>();
@@ -85,7 +102,7 @@ public class WeaponConfettiGun : Gun
 
         //Specifics
         currentBulletCount = currentShotGunUpgradeData.bulletCount;
-        currentSpread = currentShotGunUpgradeData.spread;
+        //currentSpread = currentShotGunUpgradeData.spread;
 
         //Base
         base.SetWeaponUpgradeData();
@@ -98,5 +115,5 @@ public class ShotGunUpgradeData : GunBaseUpgradeData
 {
     [Header("Confetti Gun Specific")]
     [SerializeField] public int bulletCount;
-    [SerializeField] public float spread;
+    //[SerializeField] public float spread;
 }

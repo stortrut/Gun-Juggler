@@ -159,8 +159,6 @@ public class WeaponJuggleMovement : MonoBehaviour
         curveDeltaTime = 0;
         beingThrown = true;
         weaponBase.UnEquipWeapon();
-
-        Debug.Log(this.gameObject.name + " FINAL THROWN UP WEAPON");
     }
 
     public void DropWeapon()

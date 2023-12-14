@@ -36,7 +36,7 @@ public class CameraShake : MonoBehaviour
                 transform.localPosition = new Vector3(newX, newY, initialPosition.z);
                 didJustShake = true;
                 i++;
-                Debug.Log("camerashake");
+                //Debug.Log("camerashake");
             }
 
             elapsedTime += Time.deltaTime;
@@ -44,7 +44,7 @@ public class CameraShake : MonoBehaviour
             if (Time.time  > ((shakeAtThisTime *i)+ Time.deltaTime*3))
             {
                 didJustShake = false;
-                Debug.Log("ska callas två ggr?");
+                //Debug.Log("ska callas två ggr?");
             }
             yield return null; 
         }
