@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class StunZone : MonoBehaviour
 {
+    [SerializeField] Animator soundWaveAnimator;
+
     [HideInInspector]public List<GameObject> objectsInField;
     public SpriteRenderer soundWave;
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         objectsInField.Add(other.gameObject);
@@ -17,13 +21,15 @@ public class StunZone : MonoBehaviour
     public void SoundWave()
     {       
         soundWave.enabled = true;
+        soundWaveAnimator.SetBool("Wave", true);
         StartCoroutine(nameof(Wait));
-        
     }
     private  IEnumerator Wait()
     {
-        yield return new WaitForSeconds(0.2f);
-        soundWave.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        soundWaveAnimator.SetBool("Wave", false);
 
+        yield return new WaitForSeconds(0.7f);
+        soundWave.enabled = false;
     }
 }
