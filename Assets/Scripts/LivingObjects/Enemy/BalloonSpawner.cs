@@ -30,7 +30,7 @@ public class BalloonSpawner : MonoBehaviour
           //  {
           if(numberOfGiraffes < maxNumberOfGiraffes)
             {
-                Instantiate(balloonSpawn, transform.position + new Vector3(numberOfGiraffes - 2, 0, 0), Quaternion.identity);
+                Instantiate(balloonSpawn, transform.position + new Vector3(numberOfGiraffes - 2, 0, 0), Quaternion.identity,transform);
                 numberOfGiraffes++;
             }
                 
