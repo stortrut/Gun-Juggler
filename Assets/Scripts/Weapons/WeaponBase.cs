@@ -17,11 +17,6 @@ public class WeaponBase : MonoBehaviour
     [SerializeField] protected SpriteRenderer heartSpriteRenderer;
     [SerializeField] WeaponJuggleMovement weaponJuggleMovement;
 
-
-
-
-
-
     [HideInInspector] public bool isHeart;
  
 
@@ -104,6 +99,11 @@ public class WeaponBase : MonoBehaviour
     IEnumerator ThrowUpWeaponWhenWeaponHasBeenFullyUsed(WeaponBase thisWeapon)
     {
         yield return new WaitForSeconds(_waitUntilThrowTime);
+
+        if (weaponJuggleMovement.beingThrown) 
+        { 
+            yield break; 
+        }
 
         if(player.GetComponent<PlayerJuggle>().weaponInHand = thisWeapon.weaponJuggleMovement)
         {

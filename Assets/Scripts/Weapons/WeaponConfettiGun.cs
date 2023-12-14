@@ -27,6 +27,7 @@ public class WeaponConfettiGun : Gun
         UpgradeCombo.Instance.hitSinceShot = false;
         UpgradeCombo.Instance.comboTween.Kill();
         StartCoroutine(UpgradeCombo.Instance.Combo(1.5f));
+
         bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
         //CameraShake.instance.ShakingRandomly(.2f, .5f, .5f, 3);
