@@ -24,14 +24,10 @@ public class PlayerJuggle : MonoBehaviour
 
         if (weaponPosition == (weaponsCurrentlyInJuggleLoop.Count - 1))
         {
-            Debug.Log("Bingo ");
-
             weaponPosition = 0;
         }
         else
         {
-            Debug.Log("Bongo ");
-
             weaponPosition++;
         }
 
@@ -66,9 +62,9 @@ public class PlayerJuggle : MonoBehaviour
 
 
     private bool spreadOutWeaponsInStart;
-    public float timeUntilNextWeapon;
-    public string nextWeapon;
-    public float timeBetweenWeapons;
+    [HideInInspector] public float timeUntilNextWeapon;
+    [HideInInspector] public string nextWeapon;
+    [HideInInspector] public float timeBetweenWeapons;
 
     private void Update()
     {
@@ -235,10 +231,11 @@ public class PlayerJuggle : MonoBehaviour
     {
         if(weaponInHand == null) { return; }
 
+
         //SpeedUpUpcomingWeapon();
         weaponInHand.ThrowUpWeapon();
-        weaponInHand.weaponBase.UnEquipWeapon();
         weaponInHand = null;
+
         if (weaponQueueElementsScript == null) { return; }
         weaponQueueElementsScript.ArrowPositioning();
     }

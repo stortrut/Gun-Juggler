@@ -128,7 +128,7 @@ public class UpgradeCombo : MonoBehaviour
             badCombo.Kill();
             DestroyCombo(2);
             {
-                Debug.Log("Combo number should appear");
+                //Debug.Log("Combo number should appear");
             }
 
 

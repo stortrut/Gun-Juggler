@@ -158,6 +158,7 @@ public class WeaponJuggleMovement : MonoBehaviour
 
         curveDeltaTime = 0;
         beingThrown = true;
+        weaponBase.UnEquipWeapon();
     }
 
     public void DropWeapon()

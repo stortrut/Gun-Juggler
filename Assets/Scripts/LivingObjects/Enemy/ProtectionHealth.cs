@@ -49,7 +49,10 @@ public class ProtectionHealth : Health
             Destroy(this.gameObject);
         }
         else
-            Debug.Log("");
+        {
+
+        }
+            //Debug.Log("");
     }
     public void HasParent()
     {

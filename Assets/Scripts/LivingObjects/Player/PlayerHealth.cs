@@ -12,7 +12,6 @@ public class PlayerHealth : Health
     private void Awake()
     {
         maxHealth = health;
-        Debug.Log("health" + health);
         s_player = player;
 
         //Singleton.Instance = new Singleton(player);

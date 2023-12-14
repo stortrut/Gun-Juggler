@@ -56,7 +56,7 @@ public class WeaponStunGun : WeaponBase
                
                 hit = true;
                 if (stunnable == null) { return; }
-                Debug.Log(stunnable);
+                //Debug.Log(stunnable);
                 foreach(var stun in stunnable)
                 { 
                 stun.isStunnable = true;
