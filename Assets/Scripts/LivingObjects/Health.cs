@@ -35,7 +35,6 @@ public class Health : MonoBehaviour, IDamageable
             health = Mathf.Clamp(health, 0, maxHealth);
             if(isDead = health == 0)
             {
-                Debug.Log(gameObject.name + " died");
                 Death();
             }
             
