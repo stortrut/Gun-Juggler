@@ -78,7 +78,7 @@ public class DotweenPlayer : MonoBehaviour
     }
     public void NoInput()
     {
-        noInput = transform.DOLocalMoveX(transform.localPosition.x,1).OnComplete(Idle);
+        noInput = transform.DORotate(startRotation,1).OnComplete(Idle);
         isRunning = true;
     }
     public void Input()
