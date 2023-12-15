@@ -94,18 +94,23 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private void Walk()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-
+        if(DotweenPlayer.Instance.isRunning == false)
+        {
+            DotweenPlayer.Instance.NoInput();
+        }
         if(horizontalInput > 0) 
         { 
             isFacingRight = true;
 
             legs.SetDirectionToForwards();
+            DotweenPlayer.Instance.SwerveRight();
         }
         if (horizontalInput < 0) 
         { 
             isFacingRight = false;
 
             legs.SetDirectionToBackwards();
+            DotweenPlayer.Instance.SwerveLeft();
         }
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
@@ -117,7 +122,6 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
 
             legs.PauseAnimation(true);
-
             //if (!bodyAnimator.GetBool("Dead"))
             //{
             //    bodyAnimator.speed = 0;
@@ -126,7 +130,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         else
         {
             legs.PauseAnimation(false);
-
+            DotweenPlayer.Instance.Input();
         }
         //else
         //{
