@@ -316,6 +316,7 @@ public class PlayerJuggle : MonoBehaviour
 
     public void AddWeaponToLoop(GameObject weaponPrefabToAdd)
     {
+        UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
         GameObject newGun = Instantiate(weaponPrefabToAdd, weaponHolderPoint.position, Quaternion.identity, weaponHolderPoint);
         weaponsCurrentlyInJuggleLoop.Add(newGun.GetComponentInChildren<WeaponJuggleMovement>());
 
