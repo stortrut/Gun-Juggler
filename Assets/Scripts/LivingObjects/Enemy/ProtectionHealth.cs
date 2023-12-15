@@ -62,6 +62,8 @@ public class ProtectionHealth : Health
             parent = GetComponentInParent<EnemyProtection>();
             //if (oneShot == false)
             //{
+
+            if(parent != null)
                 parent.RemoveProtection(1);
             //}
         }
