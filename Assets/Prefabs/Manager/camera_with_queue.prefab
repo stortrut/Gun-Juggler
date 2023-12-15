@@ -416,6 +416,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1856bc488bf238248b565e147ac0fa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSinceShot: 0
+  onlyOneInWave: 0
+  comboTime: 0
+  inactiveTime: 0
+  playerjuggle: []
+  comboText: {fileID: 0}
+  comboImage: {fileID: 0}
+  comboEffect1: {fileID: 0}
+  comboEffect2: {fileID: 0}
 --- !u!1 &4014247973367856688
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +661,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 4000
   field of view: 22
   orthographic: 0
   orthographic size: 5
@@ -727,6 +736,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5df9d8ca130014ba7541511faac2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerToFollow: {fileID: 0}
   yAxisLocked: 0
   smoothnessFactor: 4
