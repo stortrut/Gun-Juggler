@@ -12,7 +12,7 @@ public class DotweenPlayer : MonoBehaviour
     private float jumpHeight = -.2f;
     public Ease currentEase;
     Vector3 startPos;
-    private float idlingValue = 10;
+    private float idlingValue = 2;
     private Vector3 startRotation;
     public bool isRunning = false;
     public Tween noInput;
@@ -58,13 +58,13 @@ public class DotweenPlayer : MonoBehaviour
 
     public void SwerveLeft()
     {
-        transform.DORotate(startRotation + new Vector3(0, 0, 5), 0.5f).SetEase(Ease.OutQuad);
+        transform.DORotate(startRotation + new Vector3(0, 0, -2.5f), 0.5f).SetEase(Ease.OutQuad);
         //transform.DORotate(new Vector3(0, 0, 15), 0.5f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutQuad);
     }
 
     public void SwerveRight()
     {
-        transform.DORotate(startRotation + new Vector3(0, 0, -10), 0.5f).SetEase(Ease.OutQuad);
+        transform.DORotate(startRotation + new Vector3(0, 0, -5), 0.5f).SetEase(Ease.OutQuad);
         //transform.DORotate(new Vector3(0, 0, -15), 0.5f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutQuad);
     }
     public void Idle() 
