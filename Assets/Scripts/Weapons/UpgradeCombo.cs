@@ -85,7 +85,7 @@ public class UpgradeCombo : MonoBehaviour
     
     {
         
-        if( _bulletHit != 0 && _bulletHit % 10 == 0 ) 
+        if( _bulletHit != 0 && _bulletHit % 5 == 0 ) 
         {
             comboEffect1.SetActive(false);
             comboEffect2.SetActive(false);

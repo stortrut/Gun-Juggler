@@ -36,6 +36,7 @@ public class EnemyBullet : MonoBehaviour,IAim
         rb2D.velocity *= -Vector2.one;
        // canDamageEnemies = true;
         transform.gameObject.tag = "Bullet";
+        transform.gameObject.layer= 0;
     }
     public void AimInfo(Vector3 aimInfo)
     {

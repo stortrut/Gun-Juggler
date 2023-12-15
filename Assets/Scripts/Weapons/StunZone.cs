@@ -6,7 +6,8 @@ public class StunZone : MonoBehaviour
 {
     [SerializeField] Animator soundWaveAnimator;
 
-    [HideInInspector]public List<GameObject> objectsInField;
+   //    [HideInInspector]
+    public List<GameObject> objectsInField;
     public SpriteRenderer soundWave;
 
 
@@ -17,6 +18,8 @@ public class StunZone : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         objectsInField.Remove(other.gameObject);
+       // StartCoroutine(Delay(other));
+        
     }
     public void SoundWave()
     {       
@@ -31,5 +34,10 @@ public class StunZone : MonoBehaviour
 
         yield return new WaitForSeconds(0.7f);
         soundWave.enabled = false;
+    }
+    private IEnumerator Delay(Collider2D other)
+    {
+        yield return new WaitForSeconds(0.5f);
+        objectsInField.Remove(other.gameObject);
     }
 }

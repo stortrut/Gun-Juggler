@@ -64,7 +64,7 @@ public class WeaponStunGun : WeaponBase
                 
                 }
 
-                stunZone.objectsInField.RemoveAll(item => item == null);
+                //stunZone.objectsInField.RemoveAll(item => item == null);
 
             }
         }
