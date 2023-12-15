@@ -28,6 +28,7 @@ public class FloatingBalloon : MonoBehaviour
       whip.DoTheWhip();
       X.Kill();
       Xtrans.Kill();
+        body.freezeRotation = true;
       Y = transform.DOLocalMoveY(transform.localPosition.y -2, 2).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
     // Update is called once per frame
