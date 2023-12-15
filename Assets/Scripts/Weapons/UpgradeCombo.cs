@@ -21,6 +21,7 @@ public class UpgradeCombo : MonoBehaviour
     private GameObject comboObject;
     public Tween comboTween;
     private Tween badCombo;
+    private Tween flashCombo;
     public List<WeaponJuggleMovement> playerjuggle;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private SpriteRenderer comboImage;
@@ -44,6 +45,7 @@ public class UpgradeCombo : MonoBehaviour
         {
             if (didItHit)
             {
+                flashCombo.Kill();
                 _bulletHit++;
                 comboText.enabled = true;
                 comboText.text =_bulletHit.ToString();
@@ -53,7 +55,7 @@ public class UpgradeCombo : MonoBehaviour
                 comboEffect1.SetActive(true);
                 comboEffect2.SetActive(true);
                 comboImage.enabled = true;
-                transform.DOMoveZ(0, 1.2f).OnComplete(Flash);
+                flashCombo = transform.DOMoveZ(0, 1.2f).OnComplete(Flash);
                     
             }
             else if (lastOneHit)
@@ -102,8 +104,9 @@ public class UpgradeCombo : MonoBehaviour
     }
     private void ResetCombo()
     {
-        comboText.enabled = true;
+        
         comboText.text = "COMBO LOST";
+        comboText.enabled = true;
         _bulletHit = 0;
 
         foreach (var weapon in playerjuggle)
