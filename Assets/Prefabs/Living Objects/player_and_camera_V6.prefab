@@ -5204,7 +5204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6945782035393931824}
   m_Layer: 0
-  m_Name: Weapons
+  m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5219,7 +5219,7 @@ Transform:
   m_GameObject: {fileID: 4298967969077875261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.639, y: 0.919, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5753,6 +5753,7 @@ MonoBehaviour:
   timeUntilNextWeapon: 0
   nextWeapon: 
   timeBetweenWeapons: 0
+  weaponHolderPoint: {fileID: 6945782035393931824}
 --- !u!114 &7857743003627646701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5969,11 +5970,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2347129057286333577, guid: d239a5d5b2bf78c4baa89689d9932c47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.799
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2347129057286333577, guid: d239a5d5b2bf78c4baa89689d9932c47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.891
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2347129057286333577, guid: d239a5d5b2bf78c4baa89689d9932c47, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6011,6 +6012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: confettigun_holder Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3673464286948057777, guid: d239a5d5b2bf78c4baa89689d9932c47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6033,13 +6038,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: candygun_holder Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 316579486113032499, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.761
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1588889285336149771, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6093,11 +6102,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 504993534770942126, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88890076
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504993534770942126, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.89961624
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504993534770942126, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
       propertyPath: m_LocalPosition.z
