@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance { get; private set; }
 
-    [HideInInspector] public GameObject player;
+[HideInInspector] public GameObject player;
     public Camera mainCamera;
 
     public int nextScene = 0;
@@ -19,6 +19,7 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<PlayerJuggle>().gameObject;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         Instance = this;
 
