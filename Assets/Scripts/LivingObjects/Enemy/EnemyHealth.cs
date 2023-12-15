@@ -57,7 +57,7 @@ public class EnemyHealth : Health
                     enemyAnimator.TakingDamage();
                 }
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
-                if (health==0)
+                if (health<=0)
                 {
                     if(died == true) { return; }
 
@@ -101,9 +101,10 @@ public class EnemyHealth : Health
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         if (enemyAnimator == null)
         {
-        EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
-        Destroy(gameObject);
-        { Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic"); }
+            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            Destroy(gameObject);
+        {   
+                Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic"); }
         }
            
        
@@ -139,7 +140,7 @@ public class EnemyHealth : Health
     void ClownDeath()
     {
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-        EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+        EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         Destroy(gameObject);
     }
 }
