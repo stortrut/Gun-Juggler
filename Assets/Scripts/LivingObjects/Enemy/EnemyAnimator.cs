@@ -43,8 +43,13 @@ public class EnemyAnimator : MonoBehaviour
     public void Attacking()
     {
         enemyAnimator.SetBool(ATTACK1, true);
+        Invoke(nameof(TurnOffAttackBool), .1f);
     }
 
+    private void TurnOffAttackBool()
+    {
+        enemyAnimator.SetBool(ATTACK1, false);
+    }
 }
 
 public enum EnemyType

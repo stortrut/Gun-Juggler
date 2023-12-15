@@ -49,7 +49,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
                 nextShootTime = currentTime + Random.Range(0.6f, 2f);
 
                 // Perform the shooting and aim adjustment
-                Shoot();
+                StartCoroutine(nameof(Shoot));
                 AdjustAim();
             }
         }
@@ -66,8 +66,16 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
             //}
     
-    public void Shoot()
+    IEnumerator Shoot()
     {
+        GetComponent<EnemyAnimator>().Attacking();
+
+
+        if(GetComponent<EnemyAnimator>().enemyType == EnemyType.PieClown)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
         GameObject weaponBullet = Instantiate(enemyBullet, spawnBulletPos.position, spawnBulletPos.rotation);
         //Sound.Instance.EnemyNotTakingDamage();
         Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
@@ -87,7 +95,8 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
         Destroy(weaponBullet, 10);
         //if (enemyAnimator == null) { return; }
-        GetComponent<EnemyAnimator>().Attacking();
+
+        yield return new WaitForSeconds(0.1f);
     }
     private void AdjustAim()
     {
