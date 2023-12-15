@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class JuggleCatchCircle : MonoBehaviour
 {
+    [SerializeField] bool turnOffUpgradeFunction;
+
     [Header("Catch Values")]
     [SerializeField] float maxCatchAttemptCooldown = 0.4f;
     float currentCatchAttemptCooldownTimer;
@@ -38,6 +40,8 @@ public class JuggleCatchCircle : MonoBehaviour
 
     private void Update()
     {
+        if (turnOffUpgradeFunction) { return; }
+
         if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (canCatchWeapon && !caughtWeapon && !catchOnCoolDown/* !currentCatchableGun.beingDropped*/)

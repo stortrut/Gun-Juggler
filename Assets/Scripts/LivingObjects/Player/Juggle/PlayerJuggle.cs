@@ -310,4 +310,18 @@ public class PlayerJuggle : MonoBehaviour
             isAlive = false;
         }
     }
+
+
+    [SerializeField] Transform weaponHolderPoint;
+
+    public void AddWeaponToLoop(GameObject weaponPrefabToAdd)
+    {
+        GameObject newGun = Instantiate(weaponPrefabToAdd, weaponHolderPoint.position, Quaternion.identity, weaponHolderPoint);
+        weaponsCurrentlyInJuggleLoop.Add(newGun.GetComponentInChildren<WeaponJuggleMovement>());
+
+        ThrowUpWeaponInHand();
+        weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();
+        weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();
+
+    }
 }
