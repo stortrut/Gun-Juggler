@@ -25,9 +25,12 @@ public class WeaponStunGun : WeaponBase
 
     public override void UseWeapon()
     {
+        if(UpgradeCombo.Instance != null)
+        { 
         UpgradeCombo.Instance.hitSinceShot = false;
         UpgradeCombo.Instance.comboTween.Kill();
         StartCoroutine(UpgradeCombo.Instance.Combo());
+        }
         stunZone.SoundWave();
         base.UseWeapon();
         ReflectStun();

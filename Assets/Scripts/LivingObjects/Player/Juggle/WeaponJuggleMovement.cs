@@ -27,13 +27,12 @@ public class WeaponJuggleMovement : MonoBehaviour
     private float endOfCurveYTimeValue;
     [HideInInspector] public float endOfCurveXTimeValue;
 
-    private WeaponJuggleMovement thisWeaponJuggleMovement;
     private PlayerJuggle playerJuggle;
 
     private void Start()
     {
-        thisWeaponJuggleMovement = GetComponent<WeaponJuggleMovement>();
-        playerJuggle = GetComponentInParent<PlayerJuggle>();
+       
+        playerJuggle = FindObjectOfType<PlayerJuggle>();
 
         Keyframe[] allCurveYKeys = gunThrowAnimationCurveY.keys;
         Keyframe[] allCurveXKeys = gunThrowAnimationCurveX.keys;
@@ -53,12 +52,12 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void SetCurveSpeedModifier(float newCurveSpeedModifier)
     {
-        curveSpeedModifier = newCurveSpeedModifier;
+       // curveSpeedModifier = newCurveSpeedModifier;
     }
 
     private void ResetCurveSpeedModifier()
     {
-        curveSpeedModifier = 1f;
+       // curveSpeedModifier = 1f;
     }
 
 
@@ -72,7 +71,7 @@ public class WeaponJuggleMovement : MonoBehaviour
             // Get the current position of the weapon
             Vector3 currentPosition = transform.localPosition;
             
-            curveDeltaTime += Time.deltaTime * curveSpeedModifier;
+            curveDeltaTime += Time.deltaTime * curveSpeedModifier * 2;
                 
 
             currentPosition.y = gunThrowAnimationCurveY.Evaluate(curveDeltaTime);
@@ -100,7 +99,7 @@ public class WeaponJuggleMovement : MonoBehaviour
             {
                 ResetCurveSpeedModifier();
                 weaponBase.EquipWeapon();
-                playerJuggle.CatchWeapon(thisWeaponJuggleMovement);
+                playerJuggle.CatchWeapon(this);
             }
         }
         //Throw up old weapon
@@ -149,7 +148,7 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void ThrowUpWeapon()
     {
-        if (playerJuggle == null) { /*Debug.Log("ERROR..");*/ playerJuggle = GetComponentInParent<PlayerJuggle>(); }
+        if (playerJuggle == null) { /*Debug.Log("ERROR..");*/ playerJuggle = FindObjectOfType<PlayerJuggle>(); }
         if (playerJuggle == null) { Debug.Log("BIG ERROR!");}
 
         if (playerJuggle.armAnimationHandler == null) { Debug.Log("ARM ANIMATION ERROR"); }

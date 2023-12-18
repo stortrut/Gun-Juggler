@@ -56,6 +56,11 @@ public class DotweenPlayer : MonoBehaviour
         transform.DORotate( new Vector3(0, 200, 0), 2, RotateMode.Fast).SetLoops(-1).SetEase(Ease.OutBounce);
     }
 
+    public void RotateFromSpeed(float veloX)
+    {
+        transform.rotation = Quaternion.Euler(0,0,veloX);
+    }
+
     public void SwerveLeft()
     {
         transform.DORotate(startRotation + new Vector3(0, 0, -2.5f), 0.5f).SetEase(Ease.OutQuad);
@@ -64,7 +69,7 @@ public class DotweenPlayer : MonoBehaviour
 
     public void SwerveRight()
     {
-        transform.DORotate(startRotation + new Vector3(0, 0, -5), 0.5f).SetEase(Ease.OutQuad);
+      var thing =  transform.DORotate(startRotation + new Vector3(0, 0, -5 * 4), 0.5f).SetEase(Ease.OutQuad);
         //transform.DORotate(new Vector3(0, 0, -15), 0.5f).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutQuad);
     }
     public void Idle() 

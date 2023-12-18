@@ -107,7 +107,7 @@ public class WeaponBase : MonoBehaviour
 
         if(player.GetComponent<PlayerJuggle>().weaponInHand = thisWeapon.weaponJuggleMovement)
         {
-            GetComponentInParent<PlayerJuggle>().ThrowUpWeaponInHand();
+            FindObjectOfType<PlayerJuggle>().ThrowUpWeaponInHand();
         }
     }
 

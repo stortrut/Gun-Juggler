@@ -12,11 +12,15 @@ public class PlayerJuggle : MonoBehaviour
 
     private bool isJuggling;
    /* [HideInInspector] */public WeaponJuggleMovement weaponInHand;
+    private Transform originalParent;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;  
     
     WeaponQueueElements weaponQueueElementsScript;
 
     [HideInInspector] public bool isAlive;
+
+    public List<WeaponJuggleMovement> testWeapons;
+
 
     public void SpeedUpUpcomingWeapon()
     {
@@ -39,7 +43,7 @@ public class PlayerJuggle : MonoBehaviour
         isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
 
-        WeaponJuggleMovement[] weaponsOnPlayer = GetComponentsInChildren<WeaponJuggleMovement>();
+        WeaponJuggleMovement[] weaponsOnPlayer = testWeapons.ToArray();
         foreach (WeaponJuggleMovement weapon in weaponsOnPlayer)
         {
             weaponsCurrentlyInJuggleLoop.Add(weapon);
@@ -225,6 +229,10 @@ public class PlayerJuggle : MonoBehaviour
         newWeapon.weaponBase.EquipWeapon();
         
         weaponInHand = newWeapon;
+        originalParent = weaponInHand.transform.parent;
+        weaponInHand.gameObject.transform.SetParent(transform, false);
+        //ANTI CROTCH PISTOL
+        weaponInHand.gameObject.transform.localPosition = new Vector3(1, 1, 0);
     }
 
     public void ThrowUpWeaponInHand()
@@ -234,6 +242,7 @@ public class PlayerJuggle : MonoBehaviour
 
         //SpeedUpUpcomingWeapon();
         weaponInHand.ThrowUpWeapon();
+        weaponInHand.gameObject.transform.SetParent(originalParent, false);
         weaponInHand = null;
 
         if (weaponQueueElementsScript == null) { return; }
