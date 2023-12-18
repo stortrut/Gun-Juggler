@@ -20,7 +20,7 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width/2,cursorImage.height/2), CursorMode.Auto);
         player = FindObjectOfType<PlayerJuggle>().gameObject;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         Instance = this;
