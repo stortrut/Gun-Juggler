@@ -26,7 +26,6 @@ public class HealthBar : MonoBehaviour
     {
         health += amount;
         hearts.ElementAt(health).gameObject.SetActive(true);
-
     }
 
 

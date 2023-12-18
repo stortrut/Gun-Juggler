@@ -20,30 +20,29 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        
         protection = GetComponent<EnemyProtection>();
     }
 
     public void ApplyDamage(float amount)
     {
-        if(oneShot)
+        if (oneShot)
         {
-            
             //BoolChange();                   //so that multible bullets only make one damage (so that number of protection dont get less than the actual number of protaction)
             //Invoke(nameof(BoolChange), .2f);
             health -= amount;
             health = Mathf.Clamp(health, 0, maxHealth);
-            if(isDead = health == 0)
+            if (isDead = health == 0)
             {
                 Death();
             }
-            
         }
     }
+
     private void BoolChange()
     {
         oneShot = !oneShot;
     }
+
     public virtual void Death()
     {
 

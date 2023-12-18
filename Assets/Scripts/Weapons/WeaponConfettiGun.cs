@@ -95,9 +95,6 @@ public class WeaponConfettiGun : Gun
         SetWeaponUpgradeData();
     }
 
-
-  
-
     public override void SetWeaponUpgradeData()
     {
         //General
@@ -113,7 +110,6 @@ public class WeaponConfettiGun : Gun
         base.SetWeaponUpgradeData();
     }
 }
-
 
 [System.Serializable]
 public class ShotGunUpgradeData : GunBaseUpgradeData

@@ -29,7 +29,6 @@ public class WeaponBase : MonoBehaviour
 
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
 
-    private AutoAim autoAim;
     private Aim aim;
     private GameObject player;  
     public PlayerUseWeaponInputStopper canUseWeaponChecker;
@@ -46,7 +45,6 @@ public class WeaponBase : MonoBehaviour
         if (player == null)
         {
             player = Manager.Instance.player;
-            //autoAim = player.GetComponentInChildren<AutoAim>();
             aim = player.GetComponentInChildren<Aim>();
         }
         aim = player.GetComponentInChildren<Aim>();
@@ -82,7 +80,6 @@ public class WeaponBase : MonoBehaviour
         if (isHeart) { return; }
 
         //Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
-
         weaponEquipped = true;
     }
 
@@ -111,19 +108,16 @@ public class WeaponBase : MonoBehaviour
         }
     }
 
-
-
     public virtual void AdjustAim()
     {
         transform.rotation = aim.bulletRotation;
-        //transform.rotation = autoAim.bulletRotation;
-
     }
 
     public virtual void UpgradeWeapon()
     {
         currentWeaponLevel++;
     }
+
     public void ResetWeaponUpgradeLevel()
     {
         currentWeaponLevel = 0;
@@ -135,13 +129,9 @@ public class WeaponBase : MonoBehaviour
     {
         fireCooldown = currentWeaponBaseUpgradeData.weaponCooldown;
         _waitUntilThrowTime = currentWeaponBaseUpgradeData.waitUntilThrowTime;
-
         //Debug.Log("This is: " + weaponType);
-
         //Debug.Log("The upgrade data waitthrow time wwas " + currentWeaponBaseUpgradeData.waitUntilThrowTime);
-
         //Debug.Log("Set waitTIme to " + _waitUntilThrowTime);
-
     }
 
 
@@ -162,7 +152,6 @@ public class WeaponBase : MonoBehaviour
         heartSpriteRenderer.enabled = false;
         HealthBar.Instance.AddHeart(1);
     }
-
 
     public enum WeaponType
     {

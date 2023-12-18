@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8943103383526820422}
   - component: {fileID: 142018786235468963}
   - component: {fileID: 3929664219202476605}
+  - component: {fileID: 6174166287268276425}
   m_Layer: 7
   m_Name: dummy_logic
   m_TagString: Enemy
@@ -80,7 +81,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989953743101133587}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -122,7 +123,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989953743101133587}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -147,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0030231476, y: -0.07902837}
+  m_Offset: {x: -0.055065155, y: -0.2493062}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -158,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6091118, y: 2.9747944}
+  m_Size: {x: 2.5480347, y: 5.2734013}
   m_EdgeRadius: 0
 --- !u!114 &1856763542069463421
 MonoBehaviour:
@@ -177,6 +178,7 @@ MonoBehaviour:
   isDead: 0
   spriteRenderer: {fileID: 7948756031538113735}
   healthImage: {fileID: 6722963061640639848}
+  died: 0
 --- !u!114 &8943103383526820422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,9 +214,9 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989953743101133587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8fea298a93f714e4e8d8f37911afa231, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -255,6 +257,21 @@ PolygonCollider2D:
       - {x: 0.014100671, y: -1.3013933}
       - {x: 0.9377966, y: 0.010658205}
   m_UseDelaunayMesh: 0
+--- !u!114 &6174166287268276425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989953743101133587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec2ddf4102bcac4ba8f2768a32e689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackSpeedX: 0
+  knockbackSpeedY: 0
+  knockbackDuration: 0
 --- !u!1001 &2261205046269613778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -384,6 +401,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7842701091085522690}
     m_Modifications:
+    - target: {fileID: 2257064974086843443, guid: 5586e8b92249a0f469e34d80fa03baff, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7727592315050878318, guid: 5586e8b92249a0f469e34d80fa03baff, type: 3}
       propertyPath: m_Name
       value: dummy_art

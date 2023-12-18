@@ -13,7 +13,6 @@ public class BalloonSpawner : MonoBehaviour
     public int maxNumberOfGiraffes;
     private int numberOfGiraffes;
 
-
     [SerializeField] bool spawnAllAtOnce;
 
     void Start()
@@ -29,7 +28,6 @@ public class BalloonSpawner : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (spawnAllAtOnce) { return; }
@@ -44,7 +42,7 @@ public class BalloonSpawner : MonoBehaviour
             lastSpawn = currentTime + Random.Range(1.5f, 2.5f);
            // for (float i = -((float)maxNumberOfGiraffes/2); i < maxNumberOfGiraffes; i += 2)
           //  {
-          if(numberOfGiraffes < maxNumberOfGiraffes)
+            if(numberOfGiraffes < maxNumberOfGiraffes)
             {
                 Instantiate(balloonSpawn, transform.position + new Vector3(numberOfGiraffes - 2, 0, 0), Quaternion.identity,transform);
                 numberOfGiraffes++;

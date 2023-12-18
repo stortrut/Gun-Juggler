@@ -43,11 +43,21 @@ public class EnemyHealth : Health
             Destroy(other.gameObject);
             ColorChange(1);
             Invoke(nameof(ColorChange), 0.3f);
+
             if (hasProtection == false)
             {
                 var damage = other.gameObject.GetComponent<Bullet>().bulletDamage;
 
                 if(other.gameObject.GetComponent<Bullet>() == null) { damage = other.gameObject.GetComponentInChildren<Bullet>().bulletDamage; }
+                
+                if (TryGetComponent(out Knockback knockbackComponent))
+                {
+                    if (other.gameObject.TryGetComponent<Bullet>(out Bullet bulletScript))
+                    {
+                        float knockbackSpeed = bulletScript.bulletSpeed;
+                        knockbackComponent.KnockBackMyself(knockbackSpeed, knockbackSpeed/5, .2f, other.transform.position);
+                    }
+                }
 
                 ApplyDamage(damage);
                 if(healthImage != null)
@@ -56,25 +66,21 @@ public class EnemyHealth : Health
                 {
                     enemyAnimator.TakingDamage();
                 }
+
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
-                if (health<=0)
+
+                if (health <= 0)
                 {
-                    if(died == true) { return; }
+                    if (died == true) { return; }
 
                     died = true;
 
-                    
                     Death();
                 }
             }
             else if (hasProtection == true)
             {
                 Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
-            }
-
-            if (TryGetComponent(out Knockback knockbackComponent))
-            {
-                knockbackComponent.KnockBackMyself(15, 10, .4f, transform.position);
             }
         }
     }
@@ -101,13 +107,9 @@ public class EnemyHealth : Health
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         if (enemyAnimator == null)
         {
-            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
-            Destroy(gameObject);
-        {   
-                Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic"); }
+            Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic");
         }
-           
-       
+         
         else if (enemyAnimator.enemyType == EnemyType.Dummy)
         {
             Invoke(nameof(DummyDeath), 1f); 
@@ -116,6 +118,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)
         {
             EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            Sound.Instance.SoundSet(Sound.Instance.balloonPop, 0);
             Destroy(gameObject);
         }
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
@@ -125,15 +128,11 @@ public class EnemyHealth : Health
         }
     }
 
-    //IEnumerator WaitSeconds(float secondsToWait)
-    //{
-    //    yield return new WaitForSeconds(secondsToWait);
-    //}
-
     void DummyDeath()
     {
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
+        //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
         Destroy(gameObject);
     }
 
@@ -141,6 +140,7 @@ public class EnemyHealth : Health
     {
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
+        //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
         Destroy(gameObject);
     }
 }

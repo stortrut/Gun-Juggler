@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pie : EnemyBullet  
 {
-    
     [SerializeField] private float speed;
     [SerializeField] private float heightMultiplier=1;
     private readonly float height = 900;
@@ -15,7 +14,6 @@ public class Pie : EnemyBullet
     Vector2 startPosition;
     private bool once = false;
     
-
     void Start()
     {
         AimCorrection();
@@ -25,10 +23,8 @@ public class Pie : EnemyBullet
         rb2D.AddForce(Vector2.up * height*heightMultiplier);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
         //if((int)transform.position.x < (int)(startPosition.x - aim.x/2))
         //{
             // Calculate the interpolation factor based on the progress
@@ -59,27 +55,48 @@ public class Pie : EnemyBullet
             rb2D.velocity = direction * speed;
             rb2D.AddForce(Vector2.up * height);
         }
-
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            timeHit = Time.time;
+            //timeHit = Time.time;
             //Debug.Log(timeHit - timeThrow);
+            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
+            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            Sound.Instance.SoundSet(Sound.Instance.pieSplash, 0);
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
+            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            Sound.Instance.SoundSet(Sound.Instance.pieSplash, 0);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
+            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            //Sound.Instance.SoundSet(Sound.Instance.pieSplash, 0);
+            Destroy(gameObject);
         }
     }
     public void AimCorrection()
     {
         heightMultiplier = Mathf.Abs(aim.x) / 14;
-       //startRotation = new Quaternion(0,0,aim.z,0);
-       if(aim.x > 0)
+        //startRotation = new Quaternion(0,0,aim.z,0);
+        if (aim.x > 0)
         {
-            bulletDirectionRight = false;
+             bulletDirectionRight = false;
         }
-       else
-        {
-            bulletDirectionRight = true;
+        else
+        { 
+             bulletDirectionRight = true;
         }
     }
 }

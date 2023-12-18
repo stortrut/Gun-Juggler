@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerJuggle : MonoBehaviour
 {
-   // public static PlayerJuggle Instance;
+    public static PlayerJuggle Instance;
     [SerializeField] private float timeInBetweenEachThrowAtTheStart;
     [SerializeField] private Animator bodyAnimator;
 
@@ -43,7 +43,7 @@ public class PlayerJuggle : MonoBehaviour
 
     private void Start()
     {
-       // Instance = this;
+        Instance = this;
         isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
 

@@ -15,7 +15,7 @@ public class Knockback : MonoBehaviour
 
     private float knockbackStart;
     private bool knockback;
-    private Vector2 knockbackForce;
+    private Vector2 knockbackSpeed;
     private float knockbackDirection;
 
     private void Start()
@@ -24,10 +24,7 @@ public class Knockback : MonoBehaviour
         stunnable = GetComponent<IStunnable>();
     }
 
-    private void Update()
-    {
-        CheckKnockback();
-    }
+    //knockback to opposite direction from referenceposition
     public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
     {
         stunnable.isStunnable = true;
@@ -41,13 +38,14 @@ public class Knockback : MonoBehaviour
         else
         { knockbackDirection = 1f; }
 
-        knockbackForce.x = knockbackSpeedX * knockbackDirection;
-        knockbackForce.y = knockbackSpeedY;
-        rb2D.velocity = knockbackForce;
+        knockbackSpeed.x = knockbackSpeedX; // * knockbackDirection;
+        knockbackSpeed.y = knockbackSpeedY;
+        rb2D.velocity = knockbackSpeed;
 
-
+        StartCoroutine(CheckKnockback(knockbackDurationInput));
     }
-    public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Transform referenceTransform)  //referenceTransformPosition is the thing that not gets knocked back
+
+    public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Transform referenceTransform)  
     {
         stunnable.isStunnable = true;
         knockback = true;
@@ -58,53 +56,47 @@ public class Knockback : MonoBehaviour
 
         if (normalizedrotation > 180 && normalizedrotation < 360)
         {
-            knockbackForce = new Vector2(knockbackSpeedX, 0);
+            knockbackSpeed = new Vector2(knockbackSpeedX, 0);
         }
         else
         {
-            knockbackForce = new Vector2(-knockbackSpeedX, 0);
+            knockbackSpeed = new Vector2(-knockbackSpeedX, 0);
         }
         if (normalizedrotation > 90 && normalizedrotation < 270)
         {
-            knockbackForce += new Vector2(0, -knockbackSpeedY);
+            knockbackSpeed += new Vector2(0, -knockbackSpeedY);
         }
         else
         {
-            knockbackForce += new Vector2(0, knockbackSpeedY);
+            knockbackSpeed += new Vector2(0, knockbackSpeedY);
         }
         if (normalizedrotation > 315 || normalizedrotation < 45f)
         {
-            knockbackForce += new Vector2(0, 0.8f * knockbackSpeedY);
+            knockbackSpeed += new Vector2(0, 0.8f * knockbackSpeedY);
         }
 
         //Debug.Log(knockbackForce.x + ":X,y:" + knockbackForce.y);
-        rb2D.velocity = knockbackForce;
-
-
+        rb2D.velocity = knockbackSpeed;
     }
 
-    private void CheckKnockback()
+    private IEnumerator CheckKnockback(float duration)
     {
-        if (Time.time >= knockbackStart + knockbackDuration && knockback)
-        {
-            //rb2D.velocity = Vector2.zero;
-            //rb2D.AddForce(new Vector2(0, -50f));
-            //  Invoke(nameof(NoForce), .2f);
-            Invoke(nameof(AllowMovement), .2f);
-        }
+        while (Time.time <= knockbackStart + knockbackDuration && knockback)
+            yield return null;
+        Invoke(nameof(AllowMovement), duration/2);
+        Invoke(nameof(NoForce), duration/2);
+        //rb2D.velocity = Vector2.zero;
+        rb2D.AddForce(new Vector2(0, -1000f));
     }
+
     private void AllowMovement()
     {
-
         stunnable.isStunnable = false;
         knockback = false;
-
-
     }
 
     private void NoForce()
     {
         rb2D.AddForce(new Vector2(0, 0));
     }
-
 }

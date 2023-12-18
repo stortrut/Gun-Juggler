@@ -10,23 +10,30 @@ public class Sound : MonoBehaviour
 
     [SerializeField] private AudioSource backgroundSource;
     [SerializeField] private AudioSource source;
-    private float soundVolume;
     [SerializeField] private AudioClip[] backgroundMusic;
-    [SerializeField] public AudioClip[] shootingSoundsConfettiGun;
-    [SerializeField] public AudioClip[] shootingSoundsStunGun;
-    [SerializeField] public AudioClip[] shootingSounds;
+
+    [Header("Shooting weapontype enum order")]
+    [SerializeField] public AudioClip[] weaponShootingSoundsEnumOrder;
+    [SerializeField] public AudioClip[][] weaponShootingSoundsRandomInEnumOrder;
+
+    [Header("Damagetaking")]
     [SerializeField] public AudioClip[] enemyTakingDamageSounds;
     [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
-    [SerializeField] public AudioClip[] changingWeaponSounds;
-    [SerializeField] public AudioClip[] catchingWeaponSounds;
-    [SerializeField] public AudioClip[] notCatchingWeaponSounds;
-    [SerializeField] public AudioClip[] equipWeaponSounds;
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
+
+    [Header("pop")]
     [SerializeField] public AudioClip[] balloonPop;
-   
+    [SerializeField] public AudioClip[] pof;
 
+    [Header("Equip weapon weapontype enum order")]
+    [SerializeField] public AudioClip[] equipWeaponSounds;
 
-    [SerializeField] Slider volumeSlider;
+    [Header("Piesplash")]
+    [SerializeField] public AudioClip[] pieSplash;
+
+    [HideInInspector] public AudioClip[] notCatchingWeaponSounds;
+    [HideInInspector] Slider volumeSlider;
+    private float soundVolume;
 
 
     private void Awake()
@@ -61,6 +68,7 @@ public class Sound : MonoBehaviour
     {
         PlayerPrefs.SetFloat("musicvolume",volumeSlider.value);
     }
+
     public void SoundRandomized(AudioClip[] currentsound)
     {
         int i = Random.Range(0, currentsound.Length);
@@ -70,6 +78,7 @@ public class Sound : MonoBehaviour
             source.PlayOneShot(source.clip);
         }
     }
+
     public void SoundSet(AudioClip[] currentsound, int orderedNumber)
     {
         int i = orderedNumber;
@@ -79,18 +88,4 @@ public class Sound : MonoBehaviour
             source.PlayOneShot(source.clip);
         }
     }
-
-    //public void Kaboom()
-    //{
-    //    int i = Random.Range(0, kaboom.Length);
-    //    source.clip = kaboom[i];
-    //    source.PlayOneShot(source.clip);
-    //}
-
-    //public void Ultimate()
-    //{
-    //    source.clip = ultimateSound;
-    //    source.volume = source.volume * 5f;
-    //    source.PlayOneShot(source.clip);
-    //}
 }

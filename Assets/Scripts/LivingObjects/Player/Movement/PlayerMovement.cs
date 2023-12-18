@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] public float speed = 7f;
     [SerializeField] private float deacceleration = 3f;
 
-    private float horizontalInput;
+    public float horizontalInput;
     public float velocityToAddX;
 
     [HideInInspector] public bool isFacingRight;
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [HideInInspector] public bool isStunned = false;    
     [HideInInspector] public bool timeStop;
     [HideInInspector] public float timeStun;
-    [HideInInspector] private FollowPlayer followPlayer;
+    [HideInInspector] private DotweenPlayer dotweenPlayer;
 
     [Header("Jump")]
     [SerializeField] private float jumpHeight;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
   
     void Start()
     {
-        followPlayer = FindObjectOfType<FollowPlayer>();
+        dotweenPlayer = FindObjectOfType<DotweenPlayer>();
     }
 
     void Update()
@@ -102,7 +102,12 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
         var veloX = rigidBody.velocity.x;
         legs.SetSpeed(veloX);
-        DotweenPlayer.Instance.RotateFromSpeed(veloX * -3);
+        //if ((Mathf.Abs(horizontalInput) >= .1f) && !dotweenPlayer.hasStarted)
+        //{
+        //    // if saved data från dotweenscript har ändrats, dvs blivit negativ från pos eller tvärt om, sen senast den callades ska den andra tweenen som tweenar tillbaks till 0 köras istället
+        //    StartCoroutine(dotweenPlayer.SwerveEnumerator());
+        //}
+
         if (MathF.Abs(veloX) < 0.5f)
         {
             legs.PauseAnimation(true);
@@ -125,7 +130,6 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if (horizontalInput == 0 || (horizontalInput < 0 == velocityToAddX > 0))
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
-
 
             legs.PauseAnimation(true);
             //if (!bodyAnimator.GetBool("Dead"))

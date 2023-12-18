@@ -8,8 +8,8 @@ using DG.Tweening;
 
 public class UpgradeCombo : MonoBehaviour
 {
-
     public static UpgradeCombo Instance { get; private set; }
+
     public bool comboActive = true;
     private int _bulletHit;
     private bool hit;
@@ -29,6 +29,12 @@ public class UpgradeCombo : MonoBehaviour
     [SerializeField] private GameObject comboEffect1;
     [SerializeField] private GameObject comboEffect2;
 
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+
+    }
 
     private void Start()
     {
@@ -37,8 +43,7 @@ public class UpgradeCombo : MonoBehaviour
         //    combo.SetActive(false);
         //    enabled = false;
         //}
-        if (Instance == null)
-            Instance = this;
+        
         comboObject = gameObject;
         _bulletHit = 0;
         comboText = GetComponentInChildren<TextMeshProUGUI>();
@@ -92,7 +97,6 @@ public class UpgradeCombo : MonoBehaviour
     private  void Upgrade() 
     
     {
-        
         if( _bulletHit != 0 && _bulletHit % 5 == 0 ) 
         {
             comboEffect1.SetActive(false);
@@ -104,14 +108,10 @@ public class UpgradeCombo : MonoBehaviour
             {
                 weapon.weaponBase.UpgradeWeapon();
             }
-            
         }
-
     }
     private void ResetCombo()
-    {
-        
-        comboText.text = "COMBO LOST";
+    {        comboText.text = "COMBO LOST";
         comboText.enabled = true;
         Invoke(nameof(Flash), 0.5f);
         _bulletHit = 0;
@@ -121,6 +121,7 @@ public class UpgradeCombo : MonoBehaviour
             weapon.weaponBase.ResetWeaponUpgradeLevel();
         }
     }
+
     private void DestroyCombo()
     {
          badCombo = comboObject.transform.DOMoveZ(0, inactiveTime).OnComplete(ResetCombo);
@@ -138,7 +139,6 @@ public class UpgradeCombo : MonoBehaviour
         if (hitSinceShot == false)
         {
             OnBulletHit(false);
-
         }
         else
         {
@@ -148,8 +148,6 @@ public class UpgradeCombo : MonoBehaviour
             {
                 //Debug.Log("Combo number should appear");
             }
-
-
         }
     }
 }

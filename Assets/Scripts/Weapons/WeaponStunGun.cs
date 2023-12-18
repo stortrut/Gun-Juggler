@@ -34,7 +34,7 @@ public class WeaponStunGun : WeaponBase
         stunZone.SoundWave();
         base.UseWeapon();
         ReflectStun();
-        Sound.Instance.SoundRandomized(Sound.Instance.shootingSoundsStunGun);
+        //Sound.Instance.SoundRandomized(Sound.Instance.weaponShootingSoundsEnumOrder[2]);
     }
 
     private void ReflectStun()

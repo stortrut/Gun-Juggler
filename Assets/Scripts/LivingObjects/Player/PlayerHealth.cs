@@ -68,7 +68,6 @@ public class PlayerHealth : Health
         }
     }
 
-
     IEnumerator FlashRed()
     {
         for (int i = 0; i < allPlayerSprites.Length; i++)
@@ -89,15 +88,12 @@ public class PlayerHealth : Health
         player.GetComponentInChildren<PlayerJuggle>().DropAllWeaponsOnGround();
         player.GetComponentInChildren<DeathAnimationHandler>().TriggerDeathAnimation();
         Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
-
-        Debug.Log("Player Died");
+        //Debug.Log("Player Died");
         yield return new WaitForSeconds(2f);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //SceneManager.LoadScene(0);
     }
-
-
-
 
     public void GivePlayerWeaponAndHealthBack()
     {

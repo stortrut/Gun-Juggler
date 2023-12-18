@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     public Vector2 direction = Vector2.right;
     [SerializeField] float bulletLifeTime = 8f;
 
-
     private void Start()
     {
         if (rb2D == null) { return; }
@@ -22,14 +21,11 @@ public class Bullet : MonoBehaviour
         Invoke(nameof(Death),bulletLifeTime);
     }
 
-
     public bool bulletDirectionRight
     {
         get { return direction.x > 0; }
         set { direction = value ? Vector2.right : Vector2.left; }
     }
-
-
 
     public void SetBulletData(float inputSpeed, float inputDamage)
     {
@@ -44,13 +40,11 @@ public class Bullet : MonoBehaviour
 
     private void Death()
     {
-
         Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
- 
         if (other.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);

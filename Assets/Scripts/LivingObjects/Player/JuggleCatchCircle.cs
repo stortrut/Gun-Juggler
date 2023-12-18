@@ -47,7 +47,7 @@ public class JuggleCatchCircle : MonoBehaviour
             if (canCatchWeapon && !caughtWeapon && !catchOnCoolDown/* !currentCatchableGun.beingDropped*/)
             {
                 gunCaughtEffect.Play();
-                Sound.Instance.SoundRandomized(Sound.Instance.catchingWeaponSounds);
+                //Sound.Instance.SoundRandomized(Sound.Instance.catchingWeaponSounds);
                 spriteRenderer.color = caughtWeaponColor;
                 caughtWeapon = true;
             }
