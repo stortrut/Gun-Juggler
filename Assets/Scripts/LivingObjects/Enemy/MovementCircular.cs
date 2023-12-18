@@ -17,8 +17,6 @@ public class MovementCircular : MonoBehaviour,IStunnable
     [HideInInspector] public bool timeStop;
     [HideInInspector] public float timeStunned;
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
-    // public float timeStunned { get { return timeStun; } set { timeStun = value; } }
-    public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
     IEnumerator UnFreeze(float timeStunned)
     {
         yield return new WaitForSeconds(timeStunned);

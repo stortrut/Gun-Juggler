@@ -14,8 +14,6 @@ public class Menu : MonoBehaviour, IStunnable
     [SerializeField] IStunnable stunnable;
 
     public bool isStunnable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public float timeStunned { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public bool timeStopped { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     private void Awake()
     {

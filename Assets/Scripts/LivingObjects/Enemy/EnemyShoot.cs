@@ -10,19 +10,19 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     [SerializeField] protected GameObject enemyBullet;
     [SerializeField] protected Transform spawnBulletPos;
     protected GameObject player;
+    [HideInInspector] EnemyHealth enemyHealth;
     //[HideInInspector] EnemyAnimator enemyAnimator;
 
     [HideInInspector] private Vector3 aim;
     [HideInInspector] public bool isStunned = false;
-    [HideInInspector] public bool timeStop;
     private float nextShootTime = 0;
     private bool once;
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
-    public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
 
     void Awake()
     {
         //enemyAnimator = GetComponent<EnemyAnimator>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
     void Update()
     {
@@ -50,6 +50,8 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
                 // Perform the shooting and aim adjustment
                 StartCoroutine(nameof(Shoot));
+                if (enemyHealth.died)
+                { return; }
                 AdjustAim();
             }
         }
@@ -69,7 +71,6 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     IEnumerator Shoot()
     {
         GetComponent<EnemyAnimator>().Attacking();
-
 
         if(GetComponent<EnemyAnimator>().enemyType == EnemyType.PieClown)
         {
