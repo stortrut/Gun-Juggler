@@ -10,7 +10,7 @@ public class UpgradeCombo : MonoBehaviour
 {
 
     public static UpgradeCombo Instance { get; private set; }
-
+    public bool comboActive = true;
     private int _bulletHit;
     private bool hit;
     private bool lastOneHit;
@@ -24,6 +24,7 @@ public class UpgradeCombo : MonoBehaviour
     private Tween flashCombo;
     public List<WeaponJuggleMovement> playerjuggle;
     [SerializeField] private TextMeshProUGUI comboText;
+    [SerializeField] private GameObject combo;
     [SerializeField] private SpriteRenderer comboImage;
     [SerializeField] private GameObject comboEffect1;
     [SerializeField] private GameObject comboEffect2;
@@ -31,6 +32,10 @@ public class UpgradeCombo : MonoBehaviour
 
     private void Start()
     {
+        if (comboActive == false)
+        {
+            combo.SetActive(false);
+        }
         if (Instance == null)
             Instance = this;
         comboObject = gameObject;
@@ -55,7 +60,7 @@ public class UpgradeCombo : MonoBehaviour
                 comboEffect1.SetActive(true);
                 comboEffect2.SetActive(true);
                 comboImage.enabled = true;
-                flashCombo = transform.DOMoveZ(0, 1.2f).OnComplete(Flash);
+                flashCombo = transform.DOMoveZ(0, 1.5f).OnComplete(Flash);
                     
             }
             else if (lastOneHit)
