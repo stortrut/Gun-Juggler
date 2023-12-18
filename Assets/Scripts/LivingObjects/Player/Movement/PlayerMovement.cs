@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerMovement : MonoBehaviour, IStunnable
 {
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [Header("Walk")]
     [SerializeField] private float acceleration = 10f;
     [SerializeField] public float speed = 7f;
-    [SerializeField] private float deacceleration = 10f;
+    [SerializeField] private float deacceleration = 3f;
 
     private float horizontalInput;
     public float velocityToAddX;
@@ -98,24 +99,25 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private void Walk()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        //if(DotweenPlayer.Instance.isRunning == false)
-        //{
-        //    DotweenPlayer.Instance.NoInput();
-        //}
-        //if(horizontalInput > 0) 
-        //{ 
-        //    isFacingRight = true;
 
-        //    legs.SetDirectionToForwards();
-        //    DotweenPlayer.Instance.SwerveRight();
-        //}
-        //if (horizontalInput < 0) 
-        //{ 
-        //    isFacingRight = false;
-
-        //    legs.SetDirectionToBackwards();
-        //    DotweenPlayer.Instance.SwerveLeft();
-        //}
+        var veloX = rigidBody.velocity.x;
+        legs.SetSpeed(veloX);
+        DotweenPlayer.Instance.RotateFromSpeed(veloX * -3);
+        if (MathF.Abs(veloX) < 0.5f)
+        {
+            legs.PauseAnimation(true);
+        }
+        else
+        {
+            if (veloX > 0)
+            {
+                legs.SetDirectionToForwards();
+            }
+            else
+            {
+                legs.SetDirectionToBackwards();
+            }
+        }
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
         velocityToAddX = Mathf.Clamp(velocityToAddX, -speed, speed);
