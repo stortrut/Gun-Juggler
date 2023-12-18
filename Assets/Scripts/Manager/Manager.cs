@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,7 @@ public class Manager : MonoBehaviour
     public Camera mainCamera;
 
     public int nextScene = 0;
-
+    [SerializeField] private Texture2D cursorImage;
     private AsyncOperation asyncOperation;
     [SerializeField] GameObject fadeToBlack;
 
@@ -19,6 +20,7 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
         player = FindObjectOfType<PlayerJuggle>().gameObject;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         Instance = this;

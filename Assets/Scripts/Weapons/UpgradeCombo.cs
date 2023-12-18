@@ -35,6 +35,7 @@ public class UpgradeCombo : MonoBehaviour
         if (comboActive == false)
         {
             combo.SetActive(false);
+            enabled = false;
         }
         if (Instance == null)
             Instance = this;
