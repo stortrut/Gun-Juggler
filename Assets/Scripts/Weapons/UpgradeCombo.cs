@@ -32,11 +32,11 @@ public class UpgradeCombo : MonoBehaviour
 
     private void Start()
     {
-        if (comboActive == false)
-        {
-            combo.SetActive(false);
-            enabled = false;
-        }
+        //if (comboActive == false)
+        //{
+        //    combo.SetActive(false);
+        //    enabled = false;
+        //}
         if (Instance == null)
             Instance = this;
         comboObject = gameObject;
@@ -54,7 +54,7 @@ public class UpgradeCombo : MonoBehaviour
                 flashCombo.Kill();
                 _bulletHit++;
                 comboText.enabled = true;
-                comboText.text =_bulletHit.ToString();
+                comboText.text = _bulletHit.ToString();
                 lastOneHit = true;
                 comboText.fontStyle = FontStyles.Normal;
                 Upgrade();
@@ -113,6 +113,7 @@ public class UpgradeCombo : MonoBehaviour
         
         comboText.text = "COMBO LOST";
         comboText.enabled = true;
+        Invoke(nameof(Flash), 0.5f);
         _bulletHit = 0;
 
         foreach (var weapon in playerjuggle)
@@ -127,6 +128,10 @@ public class UpgradeCombo : MonoBehaviour
 
     public IEnumerator Combo()
     {
+        if(comboActive == false )
+        {
+            yield break;  
+        }
         comboTween = comboObject.transform.DOMoveZ(0, comboTime);
         yield return comboTween.WaitForKill();
 

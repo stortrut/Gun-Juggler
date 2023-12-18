@@ -2001,30 +2001,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1226714922263980698, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5915068848030693959, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
       propertyPath: m_Name
       value: manager_manager
       objectReference: {fileID: 0}
-    - target: {fileID: 6567094856568366655, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6727340733551961971, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
-      propertyPath: combo
-      value: 
-      objectReference: {fileID: 1773368030}
-    - target: {fileID: 6727340733551961971, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
-      propertyPath: comboActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9178452190874808244, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
-      propertyPath: cursorImage
-      value: 
-      objectReference: {fileID: 2800000, guid: b7eacc62ed92bfa4199492909e348424, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2970,17 +2950,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1083543772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &529870587 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4602021066115315725, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-  m_PrefabInstance: {fileID: 1310574649}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &576224743
 GameObject:
   m_ObjectHideFlags: 0
@@ -9542,17 +9511,6 @@ Transform:
   - {fileID: 1458460641}
   m_Father: {fileID: 1680524813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1654505710 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4602021066115315725, guid: a35783e14bb56fe48a879829bb38cc33, type: 3}
-  m_PrefabInstance: {fileID: 1589047854}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bf6d3e494d93243be2b5b475e8f812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1659410919
 GameObject:
   m_ObjectHideFlags: 0
@@ -9976,11 +9934,6 @@ Transform:
   - {fileID: 379387249}
   m_Father: {fileID: 1680524813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1773368030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1226714922263980698, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
-  m_PrefabInstance: {fileID: 326354804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776880336
 GameObject:
   m_ObjectHideFlags: 0
@@ -12201,10 +12154,7 @@ MonoBehaviour:
   weaponInHand: {fileID: 0}
   armAnimationHandler: {fileID: 0}
   isAlive: 0
-  testWeapons:
-  - {fileID: 232133260974006714}
-  - {fileID: 1654505710}
-  - {fileID: 529870587}
+  testWeapons: []
   timeUntilNextWeapon: 0
   nextWeapon: 
   timeBetweenWeapons: 0

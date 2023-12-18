@@ -5839,6 +5839,7 @@ MonoBehaviour:
   player: {fileID: 0}
   mainCamera: {fileID: 3945157028155549384}
   nextScene: 0
+  cursorImage: {fileID: 2800000, guid: b7eacc62ed92bfa4199492909e348424, type: 3}
   fadeToBlack: {fileID: 3037065113659917147}
 --- !u!114 &6711992728078676271
 MonoBehaviour:
@@ -5882,11 +5883,11 @@ PrefabInstance:
       objectReference: {fileID: 1756495564425690006, guid: 23c886f1494e0204eae34bdb63dd6fa7, type: 3}
     - target: {fileID: 2040707910612143192, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.8
+      value: 86.4
       objectReference: {fileID: 0}
     - target: {fileID: 2040707910612143192, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 86
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 3038122700354739405, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_Name
@@ -5907,6 +5908,14 @@ PrefabInstance:
     - target: {fileID: 5381583436706185833, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_RenderMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381583436706185833, guid: 721c729264570af4e83d534b36563db1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381583436706185833, guid: 721c729264570af4e83d534b36563db1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -541377669
       objectReference: {fileID: 0}
     - target: {fileID: 5571471950265569212, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5954,11 +5963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6921116997561061480, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_text
-      value: 0
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6921116997561061480, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6921116997561061480, guid: 721c729264570af4e83d534b36563db1, type: 3}
       propertyPath: m_fontAsset
@@ -6037,12 +6046,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1856bc488bf238248b565e147ac0fa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboActive: 0
   hitSinceShot: 0
   onlyOneInWave: 0
   comboTime: 3
   inactiveTime: 6
   playerjuggle: []
   comboText: {fileID: 6567094856568366655}
+  combo: {fileID: 1226714922263980698}
   comboImage: {fileID: 8050997533666134831}
   comboEffect1: {fileID: 6337427656467069406}
   comboEffect2: {fileID: 7710877622249088966}
@@ -6083,7 +6094,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4264837135066396247}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226714922263980698}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 

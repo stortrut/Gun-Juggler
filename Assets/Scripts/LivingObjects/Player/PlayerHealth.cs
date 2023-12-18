@@ -10,6 +10,7 @@ public class PlayerHealth : Health
     public GameObject player;
     public static GameObject s_player;
     private bool died;
+    private bool canTakeDamage = true;
     private CameraShake cameraShake;
 
     [SerializeField] SpriteRenderer[] allPlayerSprites;
@@ -26,7 +27,7 @@ public class PlayerHealth : Health
     {
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
-            if (hasProtection == false)
+            if (hasProtection == false && canTakeDamage)
             {
                 ApplyDamage(1);
                 StartCoroutine(nameof(FlashRed));
@@ -74,9 +75,9 @@ public class PlayerHealth : Health
         {
             allPlayerSprites[i].color = Color.red;
         }
-
+        canTakeDamage = false;
         yield return new WaitForSeconds(0.23f);
-
+        canTakeDamage = true;
         for (int i = 0; i < allPlayerSprites.Length; i++)
         {
             allPlayerSprites[i].color = Color.white;

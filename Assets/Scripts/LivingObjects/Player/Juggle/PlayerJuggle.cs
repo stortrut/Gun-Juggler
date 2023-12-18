@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerJuggle : MonoBehaviour
 {
+   // public static PlayerJuggle Instance;
     [SerializeField] private float timeInBetweenEachThrowAtTheStart;
     [SerializeField] private Animator bodyAnimator;
 
@@ -24,6 +25,8 @@ public class PlayerJuggle : MonoBehaviour
 
     public void SpeedUpUpcomingWeapon()
     {
+        
+        weaponsCurrentlyInJuggleLoop = testWeapons;
         int weaponPosition = weaponsCurrentlyInJuggleLoop.IndexOf(weaponInHand);
 
         if (weaponPosition == (weaponsCurrentlyInJuggleLoop.Count - 1))
@@ -40,6 +43,7 @@ public class PlayerJuggle : MonoBehaviour
 
     private void Start()
     {
+       // Instance = this;
         isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
 
