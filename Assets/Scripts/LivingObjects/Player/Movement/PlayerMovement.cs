@@ -14,24 +14,23 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     [Header("Walk")]
     [SerializeField] private float acceleration = 10f;
-    [SerializeField] private float speed = 7f;
+    [SerializeField] public float speed = 7f;
     [SerializeField] private float deacceleration = 10f;
 
     private float horizontalInput;
-    private float velocityToAddX;
+    public float velocityToAddX;
 
     [HideInInspector] public bool isFacingRight;
     
     [HideInInspector] public bool isStunned = false;    
     [HideInInspector] public bool timeStop;
     [HideInInspector] public float timeStun;
-
+    [HideInInspector] private FollowPlayer followPlayer;
 
     [Header("Jump")]
     [SerializeField] private float jumpHeight;
     [SerializeField] private float groundCheckDistanceFromCollider;
-
-    [SerializeField] private FollowPlayer followPlayer;
+    [SerializeField] private bool actuallyTouchingGround = true;
 
     private float calculatedGroundCheckLenght;
 
@@ -39,8 +38,6 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     public bool isJumping = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
-   // public float timeStunned { get { return timeStun; } set { timeStun = value; } }
-    public bool timeStopped { get { return timeStop; } set { timeStop = value; } }
   
     void Start()
     {
@@ -90,28 +87,35 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         return isTouchingGround;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (CompareTag("Ground"))
+        {
+            actuallyTouchingGround = true;
+        }
+    }
 
     private void Walk()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        if(DotweenPlayer.Instance.isRunning == false)
-        {
-            DotweenPlayer.Instance.NoInput();
-        }
-        if(horizontalInput > 0) 
-        { 
-            isFacingRight = true;
+        //if(DotweenPlayer.Instance.isRunning == false)
+        //{
+        //    DotweenPlayer.Instance.NoInput();
+        //}
+        //if(horizontalInput > 0) 
+        //{ 
+        //    isFacingRight = true;
 
-            legs.SetDirectionToForwards();
-            DotweenPlayer.Instance.SwerveRight();
-        }
-        if (horizontalInput < 0) 
-        { 
-            isFacingRight = false;
+        //    legs.SetDirectionToForwards();
+        //    DotweenPlayer.Instance.SwerveRight();
+        //}
+        //if (horizontalInput < 0) 
+        //{ 
+        //    isFacingRight = false;
 
-            legs.SetDirectionToBackwards();
-            DotweenPlayer.Instance.SwerveLeft();
-        }
+        //    legs.SetDirectionToBackwards();
+        //    DotweenPlayer.Instance.SwerveLeft();
+        //}
 
         velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
         velocityToAddX = Mathf.Clamp(velocityToAddX, -speed, speed);
@@ -130,7 +134,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         else
         {
             legs.PauseAnimation(false);
-            DotweenPlayer.Instance.Input();
+            //DotweenPlayer.Instance.Input();
         }
         //else
         //{

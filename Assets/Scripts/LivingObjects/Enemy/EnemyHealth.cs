@@ -13,7 +13,7 @@ public class EnemyHealth : Health
     [SerializeField] private HealthUI healthImage;
     private bool colorischanged;
     private bool dummy;
-    private bool died;
+    public bool died;
 
     private void Awake()
     {

@@ -56,9 +56,6 @@ public class Knockback : MonoBehaviour
         var normalizedrotation = (referenceTransform.rotation.eulerAngles.z + 90) % 360;
         //Debug.Log("Normalizedrotation;" + normalizedrotation);
 
-
-
-
         if (normalizedrotation > 180 && normalizedrotation < 360)
         {
             knockbackForce = new Vector2(knockbackSpeedX, 0);

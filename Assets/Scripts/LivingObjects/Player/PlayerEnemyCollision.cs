@@ -10,6 +10,7 @@ public class PlayerEnemyCollision : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
+            Vector2 hej = other.transform.position;
             knockBackScript.KnockBackMyself(-100, 3, 1, other.transform.position);
         }
     }
