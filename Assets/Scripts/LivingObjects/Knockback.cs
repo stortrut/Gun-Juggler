@@ -77,6 +77,7 @@ public class Knockback : MonoBehaviour
 
         //Debug.Log(knockbackForce.x + ":X,y:" + knockbackForce.y);
         rb2D.velocity = knockbackSpeed;
+        //StartCoroutine(CheckKnockback(knockbackDurationInput));
     }
 
     private IEnumerator CheckKnockback(float duration)
@@ -86,7 +87,7 @@ public class Knockback : MonoBehaviour
         Invoke(nameof(AllowMovement), duration/2);
         Invoke(nameof(NoForce), duration/2);
         //rb2D.velocity = Vector2.zero;
-        rb2D.AddForce(new Vector2(0, -1000f));
+        rb2D.AddForce(new Vector2(0, -500f));
     }
 
     private void AllowMovement()

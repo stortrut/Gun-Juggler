@@ -32,11 +32,11 @@ public class WeaponConfettiGun : Gun
         }
         //bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
-        //CameraShake.instance.ShakingRandomly(.2f, .5f, .5f, 3);
+        CameraShake.instance.ShakingRandomly(.2f, .5f, .5f, 3);
         StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
 
         if (knockback != null)
-            knockback.KnockBackMyself(3.2f, 4f, 0.2f, gunPoint.transform);
+            knockback.KnockBackMyself(3.2f, 4f, 0.5f, gunPoint.transform.position);
 
         base.UseWeapon();
     }
@@ -59,7 +59,6 @@ public class WeaponConfettiGun : Gun
 
             spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0,  angelSum));
         }
-
 
         //int halfAmountOfBulletCount = bulletCount / 2;
 

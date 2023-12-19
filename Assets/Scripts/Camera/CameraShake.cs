@@ -5,16 +5,19 @@ public class CameraShake : MonoBehaviour
 {
     public static CameraShake instance {  get; private set; }
 
+    private Camera cam;
     private void Awake()
     {
         instance = this; 
+        cam = GetComponent<Camera>();
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("Camera Shake");
-            StartCoroutine(ShakingRandomly(1f, .8f, .5f, 3));
+            ScreenShake();
+            //StartCoroutine(ShakingRandomly(1f, .8f, .5f, 3));
         }
     }
 
@@ -51,4 +54,10 @@ public class CameraShake : MonoBehaviour
 
         transform.localPosition = initialPosition;
     }
+    void ScreenShake()
+    {
+        float margin = Random.Range(0.0f, 0.3f);
+        cam.rect = new Rect(margin, 0.0f, 1.0f - margin * 2.0f, 1.0f);
+    }
+
 }

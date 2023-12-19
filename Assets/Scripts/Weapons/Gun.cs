@@ -40,8 +40,6 @@ public class Gun : WeaponBase
     //    Destroy(weaponBullet, 2f);
     //}
 
-
-
     //Used by guns
     public GameObject CreateNewBullet(float bulletSpeed, float bulletDamageInput, Color color, Quaternion rotation)
     {
@@ -54,8 +52,6 @@ public class Gun : WeaponBase
         //Destroy(weaponBullet, 1);
         return weaponBullet;
     }
-
-
 }
 
 
