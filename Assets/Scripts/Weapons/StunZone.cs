@@ -46,7 +46,7 @@ public class StunZone : MonoBehaviour
         }
         else if (obj.CompareTag("EnemyNonTargetable"))
         {
-            Stun(obj, 1);
+            Stun(obj, 2);
         }
 
         if (hit == true)
@@ -74,17 +74,18 @@ public class StunZone : MonoBehaviour
     }
     private void Stun(Collider2D obj, float time)
     {
-
+      
 
         var stunnable = obj.GetComponents<IStunnable>();
         var damageable = obj.GetComponent<Health>();
 
         hit = true;
-        if (stunnable == null) { return; }
+        if (stunnable == null) { Debug.Log("Object is hit but no stunnable on it"); return; }
         //Debug.Log(stunnable);
         foreach (var stun in stunnable)
         {
             stun.isStunnable = true;
+            Debug.Log(obj.gameObject.name);
             if (stunCoroutines.ContainsKey(stun))
             {
                 // Coroutine is already running, add time to it
