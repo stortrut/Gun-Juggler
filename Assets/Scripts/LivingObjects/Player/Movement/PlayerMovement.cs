@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [HideInInspector] public bool isStunned = false;    
     [HideInInspector] public bool timeStop;
     [HideInInspector] public float timeStun;
+    private float timeActive;
     [HideInInspector] private DotweenPlayer dotweenPlayer;
 
     [Header("Jump")]
@@ -101,7 +102,10 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         var veloX = rigidBody.velocity.x;
+        timeActive += Time.deltaTime*2;
+        timeActive = Mathf.Clamp(timeActive, 0, 4);
         legs.SetSpeed(veloX);
+        RotateFromSpeed(veloX);
         //if ((Mathf.Abs(horizontalInput) >= .1f) && !dotweenPlayer.hasStarted)
         //{
         //    // if saved data från dotweenscript har ändrats, dvs blivit negativ från pos eller tvärt om, sen senast den callades ska den andra tweenen som tweenar tillbaks till 0 köras istället
@@ -111,6 +115,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         if (MathF.Abs(veloX) < 0.5f)
         {
             legs.PauseAnimation(true);
+            timeActive = 0;
         }
         else
         {
@@ -159,7 +164,10 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         }
         rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -7, 7),rigidBody.velocity.y);
     }
-
+    public void RotateFromSpeed(float veloX)
+    {
+        transform.rotation = Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
+    }
     private void Jump()
     {
         if (onGround && Input.GetButtonDown("Jump"))

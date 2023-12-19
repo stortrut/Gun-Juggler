@@ -102,6 +102,7 @@ MonoBehaviour:
   soundWaveAnimator: {fileID: 0}
   objectsInField: []
   soundWave: {fileID: 5434739290615976950}
+  polygonCollider: {fileID: 0}
 --- !u!95 &2504944088692350973
 Animator:
   serializedVersion: 5
@@ -234,9 +235,9 @@ Transform:
   m_GameObject: {fileID: 1456577613044037321}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.02278242}
-  m_LocalScale: {x: 6.666666, y: 6.666666, z: 6.666666}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -5.2, y: 0, z: 0.02278242}
+  m_LocalScale: {x: 24.49, y: 10.277545, z: 25.164164}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6344482673874565564}
   m_Father: {fileID: 4947516750633868800}
@@ -248,7 +249,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456577613044037321}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -285,16 +286,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.028971463, y: -2.9462726}
-      - {x: 1.8351583, y: -2.9722266}
-      - {x: 4.950393, y: -2.9195497}
-      - {x: 5.304938, y: -2.4604242}
-      - {x: 6.1732354, y: -1.2421016}
-      - {x: 6.284587, y: 1.2247301}
-      - {x: 5.307602, y: 3.1620913}
-      - {x: 0.17475569, y: 2.831701}
-      - {x: -2.6271935, y: 2.515169}
-      - {x: -2.491405, y: -2.8134294}
+    - - {x: 0.46484646, y: -2.1433446}
+      - {x: 0.711059, y: -2.3069441}
+      - {x: 1.6928012, y: -2.254266}
+      - {x: 3.2632072, y: -2.2310164}
+      - {x: 6.45237, y: -2.319108}
+      - {x: 6.5441155, y: 1.5517626}
+      - {x: 5.2567706, y: 3.0603232}
+      - {x: 0.58769006, y: 2.4417074}
+      - {x: -0.31017327, y: 1.8040043}
+      - {x: -0.15144372, y: -1.6205081}
   m_UseDelaunayMesh: 0
 --- !u!114 &6524226119385354095
 MonoBehaviour:
@@ -311,6 +312,7 @@ MonoBehaviour:
   soundWaveAnimator: {fileID: 6370134935613192868}
   objectsInField: []
   soundWave: {fileID: 3713209465974794979}
+  polygonCollider: {fileID: 9137764993067626253}
 --- !u!1 &2177865513800323593
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 2177865513800323593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.36, y: 0.05, z: 0}
+  m_LocalPosition: {x: 2.36, y: -0.04, z: 0}
   m_LocalScale: {x: 0.49, y: 1.09, z: 0.49}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -604,6 +606,7 @@ MonoBehaviour:
   soundWaveAnimator: {fileID: 0}
   objectsInField: []
   soundWave: {fileID: 889496782367108035}
+  polygonCollider: {fileID: 0}
 --- !u!95 &8505268210071917403
 Animator:
   serializedVersion: 5
@@ -1022,6 +1025,7 @@ MonoBehaviour:
     weaponCooldown: 0
     waitUntilThrowTime: 0
   canUseWeaponChecker: {fileID: 0}
+  stunZoneObject: {fileID: 1456577613044037321}
   stunZone: {fileID: 6524226119385354095}
   animator: {fileID: 0}
   stunGunLevelUpgradeData:
@@ -1029,10 +1033,12 @@ MonoBehaviour:
     waitUntilThrowTime: 0.5
     soundWaveCount: 0
     spread: 0
+    scale: 1
   - weaponCooldown: 1
     waitUntilThrowTime: 0.5
     soundWaveCount: 0
     spread: 0
+    scale: 2
 --- !u!58 &5784730685233064529 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6825548993933977305, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}

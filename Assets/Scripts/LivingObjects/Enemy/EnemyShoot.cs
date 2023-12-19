@@ -12,11 +12,11 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     protected GameObject player;
     [HideInInspector] EnemyHealth enemyHealth;
     //[HideInInspector] EnemyAnimator enemyAnimator;
-
+    EnemyAnimator animator;
     [HideInInspector] private Vector3 aim;
     [HideInInspector] public bool isStunned = false;
     private float nextShootTime = 0;
-    private bool once;
+    private bool once = true;
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
 
     void Awake()
@@ -32,7 +32,23 @@ public class EnemyShoot : MonoBehaviour, IStunnable
             AdjustAim();
         }
 
-        if (isStunned == true) { return; }
+        if (isStunned == true) 
+        {
+            if(once == true)
+            {
+                 animator.Stunned(true);
+                once = false;
+            }
+                 return; 
+        }
+        else
+        {
+            if (once == false)
+            {
+                animator.Stunned(false);
+                once = true;    
+            } 
+        }
 
         if (spawnBulletPos.position.x - player.transform.position.x < 18)
         {
@@ -70,9 +86,9 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     
     IEnumerator Shoot()
     {
-        GetComponent<EnemyAnimator>().Attacking();
-
-        if(GetComponent<EnemyAnimator>().enemyType == EnemyType.PieClown)
+        animator = GetComponent<EnemyAnimator>();
+        animator.Attacking();
+        if (GetComponent<EnemyAnimator>().enemyType == EnemyType.PieClown)
         {
             yield return new WaitForSeconds(0.5f);
         }

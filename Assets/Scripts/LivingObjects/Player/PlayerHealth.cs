@@ -38,16 +38,7 @@ public class PlayerHealth : Health
 
                 player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
                 //Debug.Log(health);
-                if(health <= 0)
-                {
-                    if(!died)
-                    {
-                        StartCoroutine(nameof(PlayerDied));
-                        died = true;
-                    }
-                    
-
-                } 
+            
             }
             else if (hasProtection == true)
             {
@@ -57,7 +48,7 @@ public class PlayerHealth : Health
             //if (TryGetComponent(out Knockback knockbackComponent))
             //{
             //     Debug.Log("enemy knockback");
-              
+
             //     knockback = new Vector3(10, 5, 0.2f);  
             //   // if(other.transform.position.x > transform.position.x)
             //   // {
@@ -65,6 +56,23 @@ public class PlayerHealth : Health
             //   // }
             //     knockbackComponent.KnockBackMyself(knockback.x, knockback.y, knockback.z, transform.position);
             //}
+        }
+        else if (other.gameObject.CompareTag("Meelee"))
+        {
+            ApplyDamage(1);
+            StartCoroutine(nameof(FlashRed));
+            StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
+            player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
+        }
+        if (health <= 0)
+        {
+            if (!died)
+            {
+                StartCoroutine(nameof(PlayerDied));
+                died = true;
+            }
+
+
         }
     }
 
