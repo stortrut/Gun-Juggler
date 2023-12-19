@@ -11,11 +11,11 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public float bulletDamage;
 
     public Vector2 direction = Vector2.right;
-    [SerializeField] float bulletLifeTime = 8f;
+    [SerializeField] float bulletLifeTime = 15f;
 
     private void Start()
     {
-        if (rb2D == null) { return; }
+        if (rb2D == null) { return; } 
 
         rb2D.velocity = transform.right * bulletSpeed;
         Invoke(nameof(Death),bulletLifeTime);

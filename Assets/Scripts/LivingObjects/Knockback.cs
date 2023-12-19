@@ -38,8 +38,8 @@ public class Knockback : MonoBehaviour
         else
         { knockbackDirection = 1f; }
 
-        knockbackSpeed.x = knockbackSpeedX; // * knockbackDirection;
         knockbackSpeed.y = knockbackSpeedY;
+        knockbackSpeed.x = knockbackSpeedX; // * knockbackDirection;
         rb2D.velocity = knockbackSpeed;
 
         StartCoroutine(CheckKnockback(knockbackDurationInput));
@@ -78,6 +78,9 @@ public class Knockback : MonoBehaviour
         //Debug.Log(knockbackForce.x + ":X,y:" + knockbackForce.y);
         rb2D.velocity = knockbackSpeed;
         //StartCoroutine(CheckKnockback(knockbackDurationInput));
+        //StartCoroutine(CheckKnockback(knockbackDurationInput));
+        stunnable.isStunnable = false;
+        knockback = false;
     }
 
     private IEnumerator CheckKnockback(float duration)
@@ -87,7 +90,7 @@ public class Knockback : MonoBehaviour
         Invoke(nameof(AllowMovement), duration/2);
         Invoke(nameof(NoForce), duration/2);
         //rb2D.velocity = Vector2.zero;
-        rb2D.AddForce(new Vector2(0, -500f));
+        rb2D.AddForce(new Vector2(0, -300f));
     }
 
     private void AllowMovement()

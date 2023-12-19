@@ -36,7 +36,7 @@ public class WeaponConfettiGun : Gun
         StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
 
         if (knockback != null)
-            knockback.KnockBackMyself(3.2f, 4f, 0.5f, gunPoint.transform.position);
+            knockback.KnockBackMyself(3.2f, 4f, 0.5f, gunPoint.transform);
 
         base.UseWeapon();
     }
