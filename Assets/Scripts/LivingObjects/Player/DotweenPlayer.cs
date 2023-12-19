@@ -41,7 +41,7 @@ public class DotweenPlayer : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         //Assign();
         //SwerveBodyFirst();
-        TweenerController();
+        //TweenerController();
     }
 
     private void Update()
