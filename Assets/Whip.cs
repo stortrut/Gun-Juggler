@@ -32,7 +32,7 @@ public class Whip : MonoBehaviour, IStunnable
             body.isKinematic = true;
             body.gravityScale = 0;
         }
-        gameObject.tag = "EnemyBullet";
+        flagBarrier.gameObject.tag = "Meelee";
         Whipping();
     }
   private void Whipping()
