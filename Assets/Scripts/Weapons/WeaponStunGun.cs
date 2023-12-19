@@ -10,7 +10,7 @@ public class WeaponStunGun : WeaponBase
     [SerializeField] private StunZone stunZone;
     [SerializeField] private Animator animator;
 
-    private bool hit = false;
+
     [Header("Upgrades")]
     [SerializeField] StunGunUpgradeData[] stunGunLevelUpgradeData;
 
@@ -39,44 +39,40 @@ public class WeaponStunGun : WeaponBase
 
     private void ReflectStun()
     {
-        hit = false;
-        foreach (GameObject obj in stunZone.objectsInField)
-        {
-            if (obj == null) { return; }
+        //hit = false;
+        //foreach (GameObject obj in stunZone.objectsInField)
+        //{
+        //    if (obj == null) { return; }
 
-            if (obj.CompareTag("EnemyBullet"))
-            {
-                var enemyBullet = obj.GetComponent<IAim>();
-                enemyBullet.Deflected();
+        //    if (obj.CompareTag("EnemyBullet"))
+        //    {
+        //        var enemyBullet = obj.GetComponent<IAim>();
+        //        enemyBullet.Deflected();
 
-                //add bool so that enemy bullets now can damage enemies,
-            }
-            else if (obj.CompareTag("Enemy") || obj.CompareTag("EnemyNonTargetable"))
-            {
+        //        //add bool so that enemy bullets now can damage enemies,
+        //    }
+        //    else if (obj.CompareTag("Enemy") || obj.CompareTag("EnemyNonTargetable"))
+        //    {
 
-                var stunnable = obj.GetComponents<IStunnable>();
-                var damageable = obj.GetComponent<Health>();
+        //        var stunnable = obj.GetComponents<IStunnable>();
+        //        var damageable = obj.GetComponent<Health>();
                
-                hit = true;
-                if (stunnable == null) { return; }
-                //Debug.Log(stunnable);
-                foreach(var stun in stunnable)
-                { 
-                stun.isStunnable = true;
-                StartCoroutine(UnFreeze(2, stun,damageable));
+        //        hit = true;
+        //        if (stunnable == null) { return; }
+        //        //Debug.Log(stunnable);
+        //        foreach(var stun in stunnable)
+        //        { 
+        //        stun.isStunnable = true;
+        //        StartCoroutine(UnFreeze(2, stun,damageable));
                 
-                }
+        //        }
 
                 //stunZone.objectsInField.RemoveAll(item => item == null);
 
             }
-        }
-        if(hit == true)
-        {
-            UpgradeCombo.Instance.hitSinceShot = true;
-            UpgradeCombo.Instance.comboTween.Kill();
-        }
-    }
+        
+    
+    
 
 
 
@@ -107,13 +103,7 @@ public class WeaponStunGun : WeaponBase
         base.SetWeaponUpgradeData();
     }
         
-    IEnumerator UnFreeze(float timeStunned, IStunnable stunnable, IDamageable damageable)
-    {
-        yield return new WaitForSeconds(timeStunned);
-        stunnable.isStunnable = false;
-        damageable.ApplyDamage(1);
 
-    }
 }
 
 

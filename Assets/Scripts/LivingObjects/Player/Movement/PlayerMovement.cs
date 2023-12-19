@@ -102,6 +102,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
         var veloX = rigidBody.velocity.x;
         legs.SetSpeed(veloX);
+        RotateFromSpeed(veloX);
         //if ((Mathf.Abs(horizontalInput) >= .1f) && !dotweenPlayer.hasStarted)
         //{
         //    // if saved data från dotweenscript har ändrats, dvs blivit negativ från pos eller tvärt om, sen senast den callades ska den andra tweenen som tweenar tillbaks till 0 köras istället
@@ -159,7 +160,10 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         }
         rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -7, 7),rigidBody.velocity.y);
     }
-
+    public void RotateFromSpeed(float veloX)
+    {
+        transform.rotation = Quaternion.Euler(0, 0, -veloX);
+    }
     private void Jump()
     {
         if (onGround && Input.GetButtonDown("Jump"))
