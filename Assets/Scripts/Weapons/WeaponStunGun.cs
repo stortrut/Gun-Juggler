@@ -7,6 +7,7 @@ using UnityEngine;
 public class WeaponStunGun : WeaponBase
 {
     [Header("References")]
+    [SerializeField] private GameObject stunZoneObject;
     [SerializeField] private StunZone stunZone;
     [SerializeField] private Animator animator;
 
@@ -98,7 +99,7 @@ public class WeaponStunGun : WeaponBase
         currentWeaponBaseUpgradeData = stunGunLevelUpgradeData[currentWeaponLevel];
 
         //Specifics
-
+        stunZoneObject.transform.localScale *= currentStunGunUpgradeData.scale;
         //Base
         base.SetWeaponUpgradeData();
     }
@@ -114,5 +115,6 @@ public class StunGunUpgradeData : WeaponBaseUpgradeData
     [Header("Stun Gun Specific")]
     [SerializeField] public int soundWaveCount;
     [SerializeField] public float spread;
+    [SerializeField] public float scale;
 
 }

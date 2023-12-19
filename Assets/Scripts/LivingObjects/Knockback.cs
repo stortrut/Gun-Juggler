@@ -8,7 +8,7 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     Rigidbody2D rb2D;
-    IStunnable stunnable;
+    IStunnable[] stunnable;
 
     [Header("Test Values")]
     [SerializeField] float knockbackSpeedX, knockbackSpeedY, knockbackDuration;
@@ -21,13 +21,16 @@ public class Knockback : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        stunnable = GetComponent<IStunnable>();
+        stunnable = GetComponents<IStunnable>();
     }
 
     //knockback to opposite direction from referenceposition
     public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Vector2 referenceTransformPosition)  //referenceTransformPosition is the thing that not gets knocked back
     {
-        stunnable.isStunnable = true;
+        foreach (var stunnable in stunnable)
+        {
+         stunnable.isStunnable = true;
+        }
         knockback = true;
         knockbackStart = Time.time;
         knockbackDuration = knockbackDurationInput;
@@ -47,7 +50,10 @@ public class Knockback : MonoBehaviour
 
     public void KnockBackMyself(float knockbackSpeedX, float knockbackSpeedY, float knockbackDurationInput, Transform referenceTransform)  
     {
-        stunnable.isStunnable = true;
+        foreach (var stunnable in stunnable) 
+        {
+            stunnable.isStunnable = true;
+        }
         knockback = true;
         knockbackStart = Time.time;
         knockbackDuration = knockbackDurationInput;
@@ -92,7 +98,10 @@ public class Knockback : MonoBehaviour
 
     private void AllowMovement()
     {
-        stunnable.isStunnable = false;
+        foreach (var stunnable in stunnable)
+        {
+            stunnable.isStunnable = false;
+        }
         knockback = false;
     }
 
