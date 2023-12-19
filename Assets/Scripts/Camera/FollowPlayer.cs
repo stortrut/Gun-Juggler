@@ -7,6 +7,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class FollowPlayer : MonoBehaviour
 {
     [HideInInspector] private PlayerMovement playerToFollow;
+    private GameObject player;
     Vector3 offset = new Vector3(5, 2, -34);
     Vector3 targetPos = Vector3.zero;
     public bool yAxisLocked = false;
@@ -16,7 +17,12 @@ public class FollowPlayer : MonoBehaviour
 
     private void Awake()
     {
-        playerToFollow = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerMovement>()?.gameObject;
+        if(player != null )
+        {
+            playerToFollow = player.GetComponent<PlayerMovement>();
+
+        }
         smoothnessFactor = 9;
         //transform.parent = null;
     }
@@ -27,6 +33,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void Update()
     {
+        if(player == null) { return; }
         if (!playerToFollow.onGround)
         {
             if (axisShouldStayUnlockedTilItReachesTarget)
@@ -50,7 +57,7 @@ public class FollowPlayer : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
+        if (player == null) { return; }
         targetPos.x = playerToFollow.transform.position.x + offset.x;
         if (!yAxisLocked)
         {

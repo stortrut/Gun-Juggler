@@ -11,14 +11,17 @@ public class EnemyHealth : Health
     
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private HealthUI healthImage;
+    private Vector2 positionForEffectAnimationScript;
     private bool colorischanged;
     private bool dummy;
     public bool died;
+    private IStunnable[] stunnable;
 
     private void Awake()
     {
         maxHealth = health;
         enemyAnimator = GetComponent<EnemyAnimator>();
+        positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
     }
     private void Start()
     {
@@ -55,6 +58,10 @@ public class EnemyHealth : Health
                     if (other.gameObject.TryGetComponent<Bullet>(out Bullet bulletScript))
                     {
                         float knockbackSpeed = bulletScript.bulletSpeed;
+                        if(stunnable == null)
+                        {
+                            stunnable = GetComponents<IStunnable>();
+                        }
                         knockbackComponent.KnockBackMyself(knockbackSpeed, knockbackSpeed/5, .2f, other.transform.position);
                     }
                 }
@@ -75,7 +82,7 @@ public class EnemyHealth : Health
 
                     died = true;
 
-                    Death();
+                   // Death();
                 }
             }
             else if (hasProtection == true)
@@ -104,7 +111,6 @@ public class EnemyHealth : Health
     public override void Death()
     {
         FindObjectOfType<PlayerHealth>().GivePlayerWeaponAndHealthBack();
-        Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         if (enemyAnimator == null)
         {
             Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic");
