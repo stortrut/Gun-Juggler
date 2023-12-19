@@ -16,8 +16,6 @@ public class Manager : MonoBehaviour
     private AsyncOperation asyncOperation;
     [SerializeField] GameObject fadeToBlack;
 
-
-
     private void Awake()
     {
         Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width/2,cursorImage.height/2), CursorMode.Auto);
@@ -29,7 +27,6 @@ public class Manager : MonoBehaviour
         {
             LoadNextLevel();
             Invoke(nameof(ProceedToNextLevel), 10);
-
         }
     }
 
@@ -38,7 +35,6 @@ public class Manager : MonoBehaviour
     {
         player = FindObjectOfType<PlayerJuggle>().gameObject;
         if(player == null) { Debug.Log("Did not find a player ERROR"); }
-
     }
 
 
@@ -63,12 +59,10 @@ public class Manager : MonoBehaviour
         asyncOperation.allowSceneActivation = true; 
     }
 
-
     private void SetActiveFalse()
     {
         fadeToBlack.SetActive(false);
     }
-
 
     public IEnumerator LoadSceneAsyncProcess()
     {
@@ -76,7 +70,7 @@ public class Manager : MonoBehaviour
         asyncOperation = SceneManager.LoadSceneAsync(nextScene);
 
         // Don't let the Scene activate until you allow it to.
-       asyncOperation.allowSceneActivation = false;
+        asyncOperation.allowSceneActivation = false;
 
         while (asyncOperation.isDone)
         {
