@@ -15,6 +15,9 @@ public class Manager : MonoBehaviour
     [SerializeField] private Texture2D cursorImage;
     private AsyncOperation asyncOperation;
     [SerializeField] GameObject fadeToBlack;
+   
+
+
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class Manager : MonoBehaviour
         player = FindObjectOfType<PlayerJuggle>()?.gameObject;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         Instance = this;
+        
+
 
         if (SceneManager.GetActiveScene().name == "WinScene")
         {
