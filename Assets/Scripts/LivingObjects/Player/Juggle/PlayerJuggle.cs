@@ -16,7 +16,7 @@ public class PlayerJuggle : MonoBehaviour
     private Transform originalParent;
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;  
     
-    WeaponQueueElements weaponQueueElementsScript;
+    WeaponQueueUI weaponQueueUI;
 
     [HideInInspector] public bool isAlive;
 
@@ -63,9 +63,9 @@ public class PlayerJuggle : MonoBehaviour
 
         //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
 
-        weaponQueueElementsScript = FindObjectOfType<WeaponQueueElements>();
-        if(weaponQueueElementsScript == null) { return; }
-        weaponQueueElementsScript.InstantiateAppropriateQueueElements();
+        weaponQueueUI = FindObjectOfType<WeaponQueueUI>();
+        if(weaponQueueUI == null) { return; }
+        weaponQueueUI.InstantiateTheWeapons();
     }
 
 
@@ -249,8 +249,8 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.gameObject.transform.SetParent(originalParent, false);
         weaponInHand = null;
 
-        if (weaponQueueElementsScript == null) { return; }
-        weaponQueueElementsScript.ArrowPositioning();
+        if (weaponQueueUI == null) { return; }
+        weaponQueueUI.ArrowPositioning();
     }
 
 
@@ -296,7 +296,7 @@ public class PlayerJuggle : MonoBehaviour
             if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.isHeart)
             {
                 weaponsCurrentlyInJuggleLoop[i].weaponBase.ReplaceWeaponWithHeart();
-                weaponQueueElementsScript.ReplaceQueueElements(i);
+                weaponQueueUI.ReplaceQueueElements(i);
                 return;
             }
         }
@@ -309,7 +309,7 @@ public class PlayerJuggle : MonoBehaviour
             if (weaponsCurrentlyInJuggleLoop[i].weaponBase.isHeart)
             {
                 weaponsCurrentlyInJuggleLoop[i].weaponBase.ReplaceHeartWithWeapon();
-                weaponQueueElementsScript.ReplaceQueueElements(i);
+                weaponQueueUI.ReplaceQueueElements(i);
                 return;
             }
         }

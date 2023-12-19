@@ -16,15 +16,11 @@ public class WeaponQueueElements : MonoBehaviour
     float xOffset = -3.54f;
     float yOffset = 1f;       //1.3
 
-    protected int i = 0;
+    private int i = 0;
 
     void Awake()
     {
         playerJuggleScript = FindObjectOfType<PlayerJuggle>();
-    }
-    private void Update()
-    {
-        
     }
 
     public void InstantiateAppropriateQueueElements()
@@ -33,7 +29,7 @@ public class WeaponQueueElements : MonoBehaviour
         GameObject instantiatedBackground = Instantiate(queueBackground, pos, Quaternion.identity, transform);
         instantiatedBackground.transform.localPosition = pos;
         ArrowPositioning();
-        i--;
+        //i--;
         InstantiateTheWeapons();
     }
 
@@ -96,21 +92,23 @@ public class WeaponQueueElements : MonoBehaviour
         {
             playerJuggleScript = FindObjectOfType<PlayerJuggle>();
         }
+        if (playerJuggleScript.weaponsCurrentlyInJuggleLoop == null)
+        {
+           Debug.Log("the juggle loop list is not yet created");
+        }
         if (playerJuggleScript.weaponsCurrentlyInJuggleLoop != null)
         {
-            //Debug.Log("notnull");
+            if (i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
+            {
+                arrow.transform.localPosition = new Vector3(xOffset + firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y + yOffset, firstObjectInQueuePos.z);
+            }
+            else
+            {
+                arrow.transform.localPosition = new Vector3(xOffset + firstObjectInQueuePos.x, firstObjectInQueuePos.y + yOffset, firstObjectInQueuePos.z);
+                i = 0;
+            }
+            i++;
         }
-        
-        if (i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
-        {
-            arrow.transform.localPosition = new Vector3(xOffset + firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y + yOffset, firstObjectInQueuePos.z);
-        }
-        else
-        {
-            arrow.transform.localPosition = new Vector3(xOffset + firstObjectInQueuePos.x, firstObjectInQueuePos.y + yOffset, firstObjectInQueuePos.z);
-            i = 0;
-        }
-        i++;
     }
 
 
