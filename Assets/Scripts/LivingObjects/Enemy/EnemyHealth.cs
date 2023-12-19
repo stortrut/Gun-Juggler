@@ -30,11 +30,11 @@ public class EnemyHealth : Health
         
         if (enemyAnimator != null )
         {
-            dummy = true;   
+           //var enemyType = enemyAnimator.enemyType;   
         }
         else if (enemyAnimator == null)
         {
-            dummy = false;
+            //dummy = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -69,7 +69,7 @@ public class EnemyHealth : Health
                 ApplyDamage(damage);
                 if(healthImage != null)
                 healthImage.UpdateHealth(health, maxHealth);
-                if (dummy)
+                if (enemyAnimator.enemyType == EnemyType.Dummy)
                 {
                     enemyAnimator.TakingDamage();
                 }
@@ -113,7 +113,7 @@ public class EnemyHealth : Health
         FindObjectOfType<PlayerHealth>().GivePlayerWeaponAndHealthBack();
         if (enemyAnimator == null)
         {
-            Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic");
+            Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic");   
         }
          
         else if (enemyAnimator.enemyType == EnemyType.Dummy)

@@ -100,6 +100,7 @@ public class WeaponStunGun : WeaponBase
 
         //Specifics
         stunZoneObject.transform.localScale *= currentStunGunUpgradeData.scale;
+
         //Base
         base.SetWeaponUpgradeData();
     }

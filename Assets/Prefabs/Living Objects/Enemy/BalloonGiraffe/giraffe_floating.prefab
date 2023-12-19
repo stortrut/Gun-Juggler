@@ -129,9 +129,11 @@ GameObject:
   - component: {fileID: 8410231801761155121}
   - component: {fileID: 6336087836660482291}
   - component: {fileID: 729144533679894475}
+  - component: {fileID: 7868312138832062971}
+  - component: {fileID: 4939762895635590752}
   m_Layer: 0
   m_Name: giraffe_floating_logic
-  m_TagString: Enemy
+  m_TagString: EnemyNonTargetable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,6 +277,56 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3341343228575498218}
   healthImage: {fileID: 0}
   died: 0
+--- !u!114 &7868312138832062971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6823868731699600134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4e782720fee154aad078bcb78220aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 0}
+  stunAnimator: {fileID: 0}
+  dummySpriterenderer: {fileID: 0}
+  enemyType: 1
+--- !u!114 &4939762895635590752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6823868731699600134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196170711de79f9459fb4dee4ab3e78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body:
+  - {fileID: 5642614401448853877}
+  - {fileID: 8054071454224377742}
+  - {fileID: 1664145334391345217}
+  - {fileID: 7941712741954490184}
+  - {fileID: 236090133844128643}
+  - {fileID: 3756831429521302233}
+  - {fileID: 6325479475473797486}
+  - {fileID: 4658253735632358167}
+  - {fileID: 7168253917980532967}
+  - {fileID: 4619508040663653193}
+  hingeJoints:
+  - {fileID: 5302664047054286631}
+  - {fileID: 4204976533118979444}
+  - {fileID: 8837256139583199255}
+  - {fileID: 3490738136034238127}
+  - {fileID: 1026239367397248741}
+  - {fileID: 1511759607144561314}
+  - {fileID: 2892340947640966903}
+  - {fileID: 2299492418968460119}
+  - {fileID: 4129074780203009263}
+  flagBarrier: {fileID: 4566217640619939502}
 --- !u!1001 &5484520627823006977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -741,7 +793,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3150206786473676792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196170711de79f9459fb4dee4ab3e78f, type: 3}
   m_Name: 
@@ -767,6 +819,7 @@ MonoBehaviour:
   - {fileID: 2892340947640966903}
   - {fileID: 2299492418968460119}
   - {fileID: 4129074780203009263}
+  flagBarrier: {fileID: 4566217640619939502}
 --- !u!70 &6676677276696184433
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -831,6 +884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: []
   hingeJoints: []
+  flagBarrier: {fileID: 0}
 --- !u!233 &4129074780203009263 stripped
 HingeJoint2D:
   m_CorrespondingSourceObject: {fileID: 8453685109012763118, guid: 9029a232b947fd5408555aed3aef257c, type: 3}

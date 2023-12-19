@@ -36,7 +36,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             if(once == true)
             {
-                animator.Stunned(true);
+                 animator.Stunned(true);
                 once = false;
             }
                  return; 
