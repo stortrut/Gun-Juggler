@@ -6,6 +6,7 @@ using static WeaponBase;
 public class EnemyAnimator : MonoBehaviour
 {
     [SerializeField] Animator enemyAnimator;
+    [SerializeField] Animator stunAnimator;
     [SerializeField] SpriteRenderer dummySpriterenderer;
 
     [SerializeField] public EnemyType enemyType;
@@ -13,7 +14,8 @@ public class EnemyAnimator : MonoBehaviour
     const string IDLE = "idle";
     const string TAKING_DAMAGE = "taking_damage";
     const string DYING = "dying";
-    const string ATTACK1 = "attack1"; 
+    const string ATTACK1 = "attack1";
+    const string STUNNED = "stunned";
 
     private void Update()
     {
@@ -49,6 +51,10 @@ public class EnemyAnimator : MonoBehaviour
     private void TurnOffAttackBool()
     {
         enemyAnimator.SetBool(ATTACK1, false);
+    }
+    public void Stunned(bool stun)
+    {
+        stunAnimator.SetBool(STUNNED,stun);
     }
 }
 

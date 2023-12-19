@@ -162,7 +162,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     }
     public void RotateFromSpeed(float veloX)
     {
-        transform.rotation = Quaternion.Euler(0, 0, -veloX);
+        transform.rotation = Quaternion.Euler(0, 0, -veloX * 5);
     }
     private void Jump()
     {
