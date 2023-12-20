@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class DevButtons : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class DevButtons : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        //Reset checkpoint for Level
+        if (Input.GetKeyUp(KeyCode.Numlock))
+        {
+            PlayerPrefs.SetInt("checkPointNumber" + CheckpointPartial.level, 0);
         }
 
         // Next Level

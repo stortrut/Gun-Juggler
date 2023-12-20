@@ -11,7 +11,7 @@ public class PlayerJuggle : MonoBehaviour
 
     [Header("Juggle Loop - Read Only")]
     [ReadOnly] public List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop;
-    [ReadOnly] public List<WeaponJuggleMovement> testWeapons;
+    //[ReadOnly] public List<WeaponJuggleMovement> testWeapons;
     [ReadOnly] public WeaponJuggleMovement weaponInHand;
     
     private WeaponQueueUI weaponQueueUI;
@@ -24,7 +24,7 @@ public class PlayerJuggle : MonoBehaviour
     public void SpeedUpUpcomingWeapon()
     {
 
-        weaponsCurrentlyInJuggleLoop = testWeapons;
+        //weaponsCurrentlyInJuggleLoop = testWeapons;
         int weaponPosition = weaponsCurrentlyInJuggleLoop.IndexOf(weaponInHand);
 
         if (weaponPosition == (weaponsCurrentlyInJuggleLoop.Count - 1))
@@ -44,11 +44,13 @@ public class PlayerJuggle : MonoBehaviour
         Instance = this;
         isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
-        WeaponJuggleMovement[] weaponsOnPlayer = testWeapons.ToArray();
-        foreach (WeaponJuggleMovement weapon in weaponsOnPlayer)
-        {
-            weaponsCurrentlyInJuggleLoop.Add(weapon);
-        }
+        //WeaponJuggleMovement[] weaponsOnPlayer = testWeapons.ToArray();
+        //var i = 0;
+        //foreach (WeaponJuggleMovement weapon in weaponsOnPlayer)
+        //{
+        //    i++;
+        //    weaponsCurrentlyInJuggleLoop.Add(weapon);
+        //}
         int lastWeaponID = weaponsCurrentlyInJuggleLoop.Count - 1;
         //weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
         StartJuggling();
@@ -66,7 +68,7 @@ public class PlayerJuggle : MonoBehaviour
         if (!isJuggling) { return; }
         //nextWeapon = GetUpcomingWeapon().gameObject.name;
         //timeUntilNextWeapon = GetUpcomingWeapon().GetTimeUntilWeaponIsInHand();
-        timeBetweenWeapons = CheckTimeBetweenTwoWeapons(0, 1);
+        timeBetweenWeapons = CheckTimeBetweenTwoWeapons(0, 1,"first");
 
         int lastWeaponId = weaponsCurrentlyInJuggleLoop.Count - 1;
         int weaponBeforeLastId = lastWeaponId - 1;
@@ -86,7 +88,7 @@ public class PlayerJuggle : MonoBehaviour
                     idOfWeaponBeforeThisWeapon = i - 1;
                 }
 
-                if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon) < 2)
+                if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon,"second") < 2)
                 {
                     weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier -= 0.3f * Time.deltaTime;
                 }
@@ -143,6 +145,7 @@ public class PlayerJuggle : MonoBehaviour
 
     private float CheckDistanceBetweenTwoWeapons(int firstWeaponListId, int secondWeaponListId)
     {
+      
         float firstWeaponPos = weaponsCurrentlyInJuggleLoop[firstWeaponListId].curveDeltaTime;
         float secondWeaponPos = weaponsCurrentlyInJuggleLoop[secondWeaponListId].curveDeltaTime;
 
@@ -150,8 +153,9 @@ public class PlayerJuggle : MonoBehaviour
 
         return distance;
     }
-    private float CheckTimeBetweenTwoWeapons(int firstWeaponListId, int secondWeaponListId)
-    {
+    private float CheckTimeBetweenTwoWeapons(int firstWeaponListId, int secondWeaponListId,string whichOne)
+
+    { 
         float firstWeaponTime = weaponsCurrentlyInJuggleLoop[firstWeaponListId].GetTimeUntilWeaponIsInHand();
         float secondWeaponTime = weaponsCurrentlyInJuggleLoop[secondWeaponListId].GetTimeUntilWeaponIsInHand();
 
