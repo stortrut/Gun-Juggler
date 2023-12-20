@@ -6,19 +6,22 @@ using UnityEngine;
 public class CheckpointPartial : MonoBehaviour
 {
     [Header("Write the level and checkpoint number")]
-    public int level;
+    public static int level;
     public int checkPointNumber;
 
     private void Start()
     {
+        // This activates on the checkpoint which has the corresponding value that is saved in playerprefs
         if (checkPointNumber == PlayerPrefs.GetInt("checkPointNumber" + level))
         {
             Debug.Log("checkpoint");
             Debug.Log(checkPointNumber);
             GameObject.FindGameObjectWithTag("Player").transform.position = transform.position;
-
+            
         }
     }
+
+    // Checks when the collider triggers the checkpoint and saves it in playerprefs data
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

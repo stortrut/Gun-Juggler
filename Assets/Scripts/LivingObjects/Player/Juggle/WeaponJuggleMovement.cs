@@ -33,7 +33,7 @@ public class WeaponJuggleMovement : MonoBehaviour
     {
        
         playerJuggle = FindObjectOfType<PlayerJuggle>();
-        playerJuggle.testWeapons.Add(this);
+        playerJuggle.weaponsCurrentlyInJuggleLoop.Add(this);
         Keyframe[] allCurveYKeys = gunThrowAnimationCurveY.keys;
         Keyframe[] allCurveXKeys = gunThrowAnimationCurveX.keys;
 
