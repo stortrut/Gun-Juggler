@@ -85,7 +85,11 @@ public class Knockback : MonoBehaviour
         rb2D.velocity = knockbackSpeed;
         //StartCoroutine(CheckKnockback(knockbackDurationInput));
         //StartCoroutine(CheckKnockback(knockbackDurationInput));
-        stunnable.isStunnable = false;
+        foreach (var stunnable in stunnable)
+        {
+            stunnable.isStunnable = false;
+        }
+        
         knockback = false;
     }
 
