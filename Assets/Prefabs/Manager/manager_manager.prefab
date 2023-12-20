@@ -6202,6 +6202,7 @@ GameObject:
   - component: {fileID: 8538375191009901035}
   - component: {fileID: 3945157028155549384}
   - component: {fileID: 7647714850576962817}
+  - component: {fileID: 7915309750348624379}
   m_Layer: 0
   m_Name: camera_with_queue
   m_TagString: MainCamera
@@ -6321,6 +6322,25 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &7915309750348624379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367433419666758746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77d30bb1c255654e885806b9d9eb486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trauma: 0
+  powerOf: 2
+  scale: 64
+  rotation: 10
+  translation: 2
+  debug: 0
+  camera: {fileID: 3945157028155549384}
 --- !u!1 &8367710420602199913
 GameObject:
   m_ObjectHideFlags: 0
