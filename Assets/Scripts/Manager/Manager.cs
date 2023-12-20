@@ -64,6 +64,7 @@ public class Manager : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         fadeToBlack.SetActive(true);
         Invoke(nameof(SetActiveFalse), 7);
+        PlayerPrefs.DeleteAll();
     }
     public void ProceedToNextLevel()
     {
