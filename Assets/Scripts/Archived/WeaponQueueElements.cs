@@ -38,7 +38,7 @@
 //        for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
 //        {
 //            WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
-//            WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
+//            WeaponBase.WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
 //            int enumIndex = (int)weaponEnum;
 
 //            GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], Vector3.zero, Quaternion.identity, transform);  
@@ -62,7 +62,7 @@
 //        }
 
 //        WeaponJuggleMovement replacingThisItem = playerJuggleScript.weaponsCurrentlyInJuggleLoop[heartIndex];       
-//        WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
+//        WeaponBase.WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
 //        int enumIndex = (int)weaponEnum;
 
 //        if (replacingThisItem.weaponBase.isHeart)

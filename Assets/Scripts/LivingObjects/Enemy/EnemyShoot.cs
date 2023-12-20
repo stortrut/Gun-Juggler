@@ -36,7 +36,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             if(once == true)
             {
-                 animator.Stunned(true);
+                //animator.Stunned(true);
                 once = false;
             }
                  return; 
@@ -45,7 +45,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             if (once == false)
             {
-                animator.Stunned(false);
+                //animator.Stunned(false);
                 once = true;    
             } 
         }

@@ -54,7 +54,7 @@ public class EnemyAnimator : MonoBehaviour
     }
     public void Stunned(bool stun)
     {
-        stunAnimator.SetBool(STUNNED,stun);
+        //stunAnimator.SetBool(STUNNED,stun);
     }
 }
 
