@@ -101,7 +101,6 @@ public class UpgradeCombo : MonoBehaviour
         if (hudPopcornFill != null)
         {
             hudPopcornFill.PopcornAmountUpgrade();
-            Debug.Log("called popcornamountupgr");
         }
         if( _bulletHit != 0 && _bulletHit % 5 == 0 ) 
         {
