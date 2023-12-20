@@ -11,6 +11,8 @@ public class WeaponStunGun : WeaponBase
     [SerializeField] private StunZone stunZone;
     [SerializeField] private Animator animator;
 
+    [Header("Stun values for different Objects")]
+
 
     [Header("Upgrades")]
     [SerializeField] StunGunUpgradeData[] stunGunLevelUpgradeData;
