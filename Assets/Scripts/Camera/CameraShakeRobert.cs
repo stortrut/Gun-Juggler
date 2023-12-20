@@ -28,6 +28,10 @@ public class CameraShakeRobert : MonoBehaviour
 
     [SerializeField] Camera camera;
 
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         //If we don't have a parent, we create one.

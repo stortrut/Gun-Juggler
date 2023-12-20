@@ -119,14 +119,14 @@ public class EnemyHealth : Health
 
         else if (enemyAnimator.enemyType == EnemyType.Dummy)
         {
-            Invoke(nameof(DummyDeath), 1f); 
-            StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .5f, .1f, 1));
+            Invoke(nameof(DummyDeath), 1f);
+            CameraShakeRobert.instance.AddTrauma(0.5f);
             enemyAnimator.Dying();
         }
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)
         {
             Destroy(gameObject);
-            StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .3f, .2f, 1));
+            CameraShakeRobert.instance.AddTrauma(0.5f);
             EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
             Sound.Instance.SoundSet(Sound.Instance.balloonPop, 0);
 
@@ -134,14 +134,14 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
             Invoke(nameof(ClownDeath), 1.5f);
-            StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));
+            CameraShakeRobert.instance.AddTrauma(0.5f);
             enemyAnimator.Dying();
         }
     }
 
     void DummyDeath()
     {
-        StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .3f, .2f, 1));
+        CameraShakeRobert.instance.AddTrauma(0.5f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
@@ -150,7 +150,7 @@ public class EnemyHealth : Health
 
     void ClownDeath()
     {
-        StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));
+        CameraShakeRobert.instance.AddTrauma(0.5f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
