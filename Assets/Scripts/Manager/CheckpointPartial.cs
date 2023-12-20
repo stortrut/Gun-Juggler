@@ -6,7 +6,7 @@ using UnityEngine;
 public class CheckpointPartial : MonoBehaviour
 {
     [Header("Write the level and checkpoint number")]
-    public static int level;
+    public int level;
     public int checkPointNumber;
 
     private void Start()
