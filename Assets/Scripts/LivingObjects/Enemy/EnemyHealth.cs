@@ -58,7 +58,7 @@ public class EnemyHealth : Health
                     if (other.gameObject.TryGetComponent<Bullet>(out Bullet bulletScript))
                     {
                         float knockbackSpeed = bulletScript.bulletSpeed;
-                        if(stunnable == null)
+                        if (stunnable == null)
                         {
                             stunnable = GetComponents<IStunnable>();
                         }
@@ -113,29 +113,35 @@ public class EnemyHealth : Health
         FindObjectOfType<PlayerHealth>().GivePlayerWeaponAndHealthBack();
         if (enemyAnimator == null)
         {
-            Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic");   
+            Debug.Log("ERROR did not find the enemyAnimator, every enemy has to have a enemyanimator in the art object and a enemyanimator script in logic");
+            return;
         }
-         
+
         else if (enemyAnimator.enemyType == EnemyType.Dummy)
         {
             Invoke(nameof(DummyDeath), 1f); 
+            StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .5f, .1f, 1));
             enemyAnimator.Dying();
         }
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)
         {
+            Destroy(gameObject);
+            StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .3f, .2f, 1));
             EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
             Sound.Instance.SoundSet(Sound.Instance.balloonPop, 0);
-            Destroy(gameObject);
+
         }
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
             Invoke(nameof(ClownDeath), 1.5f);
+            StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));
             enemyAnimator.Dying();
         }
     }
 
     void DummyDeath()
     {
+        StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .3f, .2f, 1));
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
@@ -144,6 +150,7 @@ public class EnemyHealth : Health
 
     void ClownDeath()
     {
+        StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);

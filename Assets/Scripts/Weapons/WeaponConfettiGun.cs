@@ -11,13 +11,11 @@ public class WeaponConfettiGun : Gun
     //public static List<GameObject> bulletWave = new();
     private Knockback knockback;
     private GameObject spawnedBullet;
-    private CameraShake cameraShake;
 
     private void Start()
     {
         weaponType = WeaponType.ShotGun;
         knockback = GetComponentInParent<Knockback>();
-        cameraShake = FindObjectOfType<CameraShake>();
 
         SetWeaponUpgradeData();
     }
@@ -32,11 +30,11 @@ public class WeaponConfettiGun : Gun
         }
         //bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
-        CameraShake.instance.ShakingRandomly(.2f, .5f, .5f, 3);
-        StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
+        //StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));
+        //CameraShakeRobert.instance.AddTrauma(1f);
 
         if (knockback != null)
-            knockback.KnockBackMyself(3.2f, 4f, 0.5f, gunPoint.transform);
+            knockback.KnockBackMyself(3f, 4f, 0.4f, gunPoint.transform);
 
         base.UseWeapon();
     }
@@ -77,12 +75,6 @@ public class WeaponConfettiGun : Gun
         //        //bulletWave.Add(spawnedBullet);
         //    }
         //}
-
-        if (cameraShake == null)
-        {
-            cameraShake = FindObjectOfType<CameraShake>();
-            Debug.Log("null?", cameraShake);
-        }
     }
 
     public override void UpgradeWeapon()

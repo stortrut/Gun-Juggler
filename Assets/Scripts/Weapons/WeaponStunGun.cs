@@ -15,6 +15,8 @@ public class WeaponStunGun : WeaponBase
     [Header("Upgrades")]
     [SerializeField] StunGunUpgradeData[] stunGunLevelUpgradeData;
 
+    private Knockback knockback;
+
 
     private void Start()
     {
@@ -33,9 +35,14 @@ public class WeaponStunGun : WeaponBase
         StartCoroutine(UpgradeCombo.Instance.Combo());
         }
         stunZone.SoundWave();
+        if (knockback != null)
+        {
+            knockback.KnockBackMyself(3.2f, 4f, 0.5f, gunPoint.transform);
+        }
+        
         base.UseWeapon();
         ReflectStun();
-        //Sound.Instance.SoundRandomized(Sound.Instance.weaponShootingSoundsEnumOrder[2]);
+        //Sound.Instance.SoundRandomized(Sound.Instance.weaponShootingSoundsEnumOrder[]);
     }
 
     private void ReflectStun()

@@ -29,11 +29,12 @@ public class UpgradeCombo : MonoBehaviour
     [SerializeField] private GameObject comboEffect1;
     [SerializeField] private GameObject comboEffect2;
 
+    private HudPopcornFill hudPopcornFill;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
-
     }
 
     private void Start()
@@ -43,7 +44,8 @@ public class UpgradeCombo : MonoBehaviour
         //    combo.SetActive(false);
         //    enabled = false;
         //}
-        
+
+        hudPopcornFill = FindObjectOfType<HudPopcornFill>();
         comboObject = gameObject;
         _bulletHit = 0;
         comboText = GetComponentInChildren<TextMeshProUGUI>();
@@ -95,8 +97,12 @@ public class UpgradeCombo : MonoBehaviour
         comboImage.enabled = false;
     }
     private  void Upgrade() 
-    
     {
+        if (hudPopcornFill != null)
+        {
+            hudPopcornFill.PopcornAmountUpgrade();
+            Debug.Log("called popcornamountupgr");
+        }
         if( _bulletHit != 0 && _bulletHit % 5 == 0 ) 
         {
             comboEffect1.SetActive(false);
@@ -110,8 +116,14 @@ public class UpgradeCombo : MonoBehaviour
             }
         }
     }
+
     private void ResetCombo()
-    {        comboText.text = "COMBO LOST";
+    {
+        if (hudPopcornFill != null)
+        {
+            hudPopcornFill.ReducePopcornAmount();
+        }
+        comboText.text = "COMBO LOST";
         comboText.enabled = true;
         Invoke(nameof(Flash), 0.5f);
         _bulletHit = 0;

@@ -71,7 +71,7 @@ public class StunZone : MonoBehaviour
         foreach (var stun in stunnable)
         {
             stun.isStunnable = true;
-            Debug.Log(obj.gameObject.name);
+            //Debug.Log(obj.gameObject.name);
             if (stunCoroutines.ContainsKey(stun))
             {
                 // Coroutine is already running, add time to it

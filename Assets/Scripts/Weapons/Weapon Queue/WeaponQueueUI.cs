@@ -30,7 +30,7 @@ public class WeaponQueueUI : MonoBehaviour
     {
 
         //var rect = anchor.transform as RectTransform;
-        Debug.Log("anchor"+arrow.rectTransform.anchoredPosition); 
+        //Debug.Log("anchor"+arrow.rectTransform.anchoredPosition); 
         //arrowStartPos = arrow.transform.position;
         if (playerJuggleScript.weaponsCurrentlyInJuggleLoop == null)
         {
@@ -47,9 +47,6 @@ public class WeaponQueueUI : MonoBehaviour
             int enumIndex = (int)weaponEnum;
 
             GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], Vector3.zero, Quaternion.identity);
-            Debug.Log(enumIndex);
-            Debug.Log("imagen: " + weaponsInQueueEnumsOrder[enumIndex]);
-            Debug.Log("instantiated prefab transform: " + instantiatedPrefab.transform);
             instantiatedPrefab.transform.SetParent(transform, true);
             weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);
         }

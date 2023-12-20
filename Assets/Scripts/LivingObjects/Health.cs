@@ -14,7 +14,8 @@ public class Health : MonoBehaviour, IDamageable
 
     private EnemyProtection protection;
    
-    private bool oneShot = true;
+    protected bool oneShot = false;
+    protected int isDying = -1;
     private bool isProtected;
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
 
@@ -38,10 +39,11 @@ public class Health : MonoBehaviour, IDamageable
         }
     }
 
-    private void BoolChange()
+    protected void BoolChange()
     {
-        oneShot = !oneShot;
+        isDying *= -isDying;
     }
+
 
     public virtual void Death()
     {
