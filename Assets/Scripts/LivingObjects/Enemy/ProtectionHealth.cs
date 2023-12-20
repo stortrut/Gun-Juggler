@@ -20,16 +20,6 @@ public class ProtectionHealth : Health
                 Death();
             }
             Destroy(other.gameObject);
-
-            //if (hasProtection == false)       Protection protection
-            //{
-            //    ApplyDamage(1);
-                
-            //}
-            //else if (hasProtection == true)
-            //{
-            //    
-            //}
         }
     }
 
@@ -37,32 +27,21 @@ public class ProtectionHealth : Health
     {
         if (hasFunctionBeenCalled == false)
         {
-
-
             hasFunctionBeenCalled = true;
             //Sound.Instance.SoundRandomized(Sound.Instance.balloonPop);
             EffectAnimations.Instance.BalloonPop(this.gameObject.transform.position);
-            //Debug.Log(this.gameObject.transform.position);
-
             HasParent();
-
             Destroy(this.gameObject);
         }
         else
         {
-
         }
-            //Debug.Log("");
     }
     public void HasParent()
     {
         if (gameObject.transform.parent != null)
         {
-            //keep in  mind the enemy has to be the ROOT parent for this to actually work
             parent = GetComponentInParent<EnemyProtection>();
-            //if (oneShot == false)
-            //{
-
             if(parent != null)
                 parent.RemoveProtection(1);
             //}

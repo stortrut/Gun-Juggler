@@ -31,7 +31,7 @@ public class MovementCircular : MonoBehaviour,IStunnable
     }
     
 
-    void Update()
+    void FixedUpdate()
     {
         if (isStunned == true)
         {
