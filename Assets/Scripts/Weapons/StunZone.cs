@@ -10,6 +10,10 @@ public class StunZone : MonoBehaviour
     public SpriteRenderer soundWave;
     [SerializeField] Animator soundWaveAnimator;
 
+    [Header("Stun values for different Objects")]
+    [SerializeField] private float stunnedBalloon;
+    [SerializeField] private float stunnedEnemy;
+
     private PolygonCollider2D polygonCollider;
     private Dictionary<IStunnable, Coroutine> stunCoroutines = new Dictionary<IStunnable, Coroutine>();
     private bool hit = false;
@@ -30,11 +34,11 @@ public class StunZone : MonoBehaviour
         }
         else if (obj.CompareTag("Enemy"))
         {
-            Stun(obj, 4);
+            Stun(obj, stunnedEnemy);
         }
         else if (obj.CompareTag("EnemyNonTargetable"))
         {
-            Stun(obj, 2);
+            Stun(obj, stunnedBalloon);
         }
         if (hit == true)
         {
