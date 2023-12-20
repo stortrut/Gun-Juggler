@@ -4797,7 +4797,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -11476009
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4903,8 +4903,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1378336003
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 1996554083, guid: 2977776812959934e8943d23e58f85af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5159,8 +5159,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1378336003
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -960829129, guid: 9073506e93f4d42418ad211bcf535589, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5299,8 +5299,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1378336003
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: -610466131, guid: 2ece12244cdac124b8622f7fabdcc7db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5441,7 +5441,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -11476009
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.040236473, g: 1, b: 0, a: 0.050980393}
@@ -5708,13 +5708,15 @@ MonoBehaviour:
   acceleration: 10
   speed: 7
   deacceleration: 10
+  horizontalInput: 0
+  velocityToAddX: 0
   isFacingRight: 0
   isStunned: 0
   timeStop: 0
   timeStun: 0
   jumpHeight: 2.35
   groundCheckDistanceFromCollider: 0.4
-  followPlayer: {fileID: 0}
+  actuallyTouchingGround: 1
   onGround: 0
   isJumping: 0
 --- !u!114 &3819328366535194506
@@ -5750,6 +5752,7 @@ MonoBehaviour:
   weaponInHand: {fileID: 0}
   armAnimationHandler: {fileID: 0}
   isAlive: 0
+  testWeapons: []
   timeUntilNextWeapon: 0
   nextWeapon: 
   timeBetweenWeapons: 0
@@ -5802,7 +5805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEase: 0
-  isRunning: 0
+  hasStarted: 0
 --- !u!1 &8681542829341111651
 GameObject:
   m_ObjectHideFlags: 0
@@ -5874,8 +5877,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1378336003
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -771571192, guid: 6dbc96e04d766e3418fb06eda5a05975, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
