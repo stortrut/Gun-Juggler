@@ -22,6 +22,7 @@ public class HudPopcornFill : MonoBehaviour
         popcornFillTopPos.y = -12f;
         popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;
         popcornFillImage.rectTransform.anchoredPosition = popcornFillImagePos;
+        popcornFillImage.fillAmount = 0;
     }
 
     void FixedUpdate()
@@ -46,10 +47,13 @@ public class HudPopcornFill : MonoBehaviour
     public void PopcornAmountUpgrade()
     {
         popcornFillTopPos.y += 2;
+
+        popcornFillImage.fillAmount += .1f;
     }
 
     public void ReducePopcornAmount()
     {
         popcornFillTopPos.y = -12;
+        popcornFillImage.fillAmount = 0;
     }
 }
