@@ -18,7 +18,7 @@ public class PlayerHealth : Health
     private void Awake()
     {
         maxHealth = health;
-        s_player = player;
+        s_player = gameObject;
         cameraShake = FindObjectOfType<CameraShake>();
 
         //Singleton.Instance = new Singleton(player);
@@ -36,7 +36,7 @@ public class PlayerHealth : Health
                 //Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
                 Destroy(other.gameObject);
 
-                player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
+               gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
                 //Debug.Log(health);
             
             }
@@ -62,7 +62,7 @@ public class PlayerHealth : Health
             ApplyDamage(1);
             StartCoroutine(nameof(FlashRed));
             StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
-            player.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
+            gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
         }
         if (health <= 0)
         {

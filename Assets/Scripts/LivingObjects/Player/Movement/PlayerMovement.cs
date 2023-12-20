@@ -18,10 +18,10 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] public float speed = 7f;
     [SerializeField] private float deacceleration = 3f;
 
-    public float horizontalInput;
-    public float velocityToAddX;
+    [ReadOnly] public float horizontalInput;
+    [HideInInspector] public float velocityToAddX;
 
-    [HideInInspector] public bool isFacingRight;
+    [ReadOnly] public bool isFacingRight;
     
     [HideInInspector] public bool isStunned = false;    
     [HideInInspector] public bool timeStop;
@@ -32,12 +32,13 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [Header("Jump")]
     [SerializeField] private float jumpHeight;
     [SerializeField] private float groundCheckDistanceFromCollider;
-    [SerializeField] private bool actuallyTouchingGround = true;
+    [ReadOnly][SerializeField] private bool actuallyTouchingGround = true;
+    [ReadOnly] public bool isJumping = false;
 
     private float calculatedGroundCheckLenght;
 
     [HideInInspector] public bool onGround = false;
-    public bool isJumping = false;
+   
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
   

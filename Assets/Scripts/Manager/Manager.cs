@@ -15,18 +15,25 @@ public class Manager : MonoBehaviour
     [SerializeField] private Texture2D cursorImage;
     private AsyncOperation asyncOperation;
     [SerializeField] GameObject fadeToBlack;
-   
+
 
 
 
     private void Awake()
     {
-        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width/2,cursorImage.height/2), CursorMode.Auto);
-        player = FindObjectOfType<PlayerJuggle>()?.gameObject;
+       
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
+        player = FindObjectOfType<PlayerJuggle>()?.gameObject; 
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        Instance = this;
-        
-
 
         if (SceneManager.GetActiveScene().name == "WinScene")
         {
@@ -38,8 +45,8 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-      //  player = FindObjectOfType<PlayerJuggle>()?.gameObject;
-        if(player == null) { Debug.Log("Did not find a player ERROR"); }
+        //  player = FindObjectOfType<PlayerJuggle>()?.gameObject;
+        if (player == null) { Debug.Log("Did not find a player ERROR"); }
     }
 
 
@@ -61,7 +68,7 @@ public class Manager : MonoBehaviour
     public void ProceedToNextLevel()
     {
         //Debug.Log("Allowed Scene Activation");
-        asyncOperation.allowSceneActivation = true; 
+        asyncOperation.allowSceneActivation = true;
     }
 
     private void SetActiveFalse()

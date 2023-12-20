@@ -12364,10 +12364,10 @@ MonoBehaviour:
   timeInBetweenEachThrowAtTheStart: 4.5
   bodyAnimator: {fileID: 8717750237843877721}
   weaponsCurrentlyInJuggleLoop: []
+  testWeapons: []
   weaponInHand: {fileID: 0}
   armAnimationHandler: {fileID: 0}
   isAlive: 0
-  testWeapons: []
   timeUntilNextWeapon: 0
   nextWeapon: 
   timeBetweenWeapons: 0
@@ -12452,6 +12452,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893899406687154439, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
+      propertyPath: weaponsCurrentlyInJuggleLoop.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4689456970640790642, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
@@ -17696,8 +17700,8 @@ MonoBehaviour:
   jumpHeight: 2.35
   groundCheckDistanceFromCollider: 0.4
   actuallyTouchingGround: 1
-  onGround: 0
   isJumping: 0
+  onGround: 0
 --- !u!4 &5535496883839894703
 Transform:
   m_ObjectHideFlags: 0

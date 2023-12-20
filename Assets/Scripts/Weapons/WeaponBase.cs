@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum WeaponType
+{
+    SmallGun,
+    ShotGun,
+    StunGun,
+    Heart
+}
 public class WeaponBase : MonoBehaviour
 {
     [Header("References")]
@@ -32,7 +40,8 @@ public class WeaponBase : MonoBehaviour
     private Aim aim;
     private GameObject player;  
     public PlayerUseWeaponInputStopper canUseWeaponChecker;
-    
+  
+
     private void Start()
     {
         canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
@@ -153,13 +162,7 @@ public class WeaponBase : MonoBehaviour
         HealthBar.Instance.AddHeart(1);
     }
 
-    public enum WeaponType
-    {
-        SmallGun,
-        ShotGun,
-        StunGun,
-        Heart
-    }
+
 }
 
 [System.Serializable]

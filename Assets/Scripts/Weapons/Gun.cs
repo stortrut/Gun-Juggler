@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Gun : WeaponBase
 {
-    [Header("Gun Specifics")]
+    [Header("Gun Specifics - Drag in")]
     [SerializeField] protected GameObject bulletSmall;
 
     [HideInInspector] protected float currentBulletDamage, currentBulletSpeed;

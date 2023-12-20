@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Bullet")]
     [SerializeField] public SpriteRenderer spriteRenderer;
     [SerializeField] public Rigidbody2D rb2D;
 

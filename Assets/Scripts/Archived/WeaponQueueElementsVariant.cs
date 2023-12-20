@@ -29,7 +29,7 @@ public class WeaponQueueElementsVariant : MonoBehaviour
         for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
-            WeaponBase.WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
+            WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
             int enumIndex = (int)weaponEnum;
 
             Vector3 queueObjectSpawnPos = new Vector3(firstObjectInQueuePos.x + posGapBetweenQueueObjects * i, firstObjectInQueuePos.y);

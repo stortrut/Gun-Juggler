@@ -43,7 +43,7 @@ public class WeaponQueueUI : MonoBehaviour
         for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
-            WeaponBase.WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
+            WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
             int enumIndex = (int)weaponEnum;
 
             GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], Vector3.zero, Quaternion.identity);
@@ -63,7 +63,7 @@ public class WeaponQueueUI : MonoBehaviour
         }
 
         WeaponJuggleMovement replacingThisItem = playerJuggleScript.weaponsCurrentlyInJuggleLoop[heartIndex];
-        WeaponBase.WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
+        WeaponType weaponEnum = replacingThisItem.weaponBase.weaponType;
         int enumIndex = (int)weaponEnum;
 
         if (replacingThisItem.weaponBase.isHeart)

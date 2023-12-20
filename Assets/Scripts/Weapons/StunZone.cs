@@ -6,56 +6,42 @@ using UnityEngine;
 
 public class StunZone : MonoBehaviour
 {
+    [Header("SoundWave - Drag in")]
+    public SpriteRenderer soundWave;
     [SerializeField] Animator soundWaveAnimator;
 
-    //    [HideInInspector]
-    public List<GameObject> objectsInField;
-    public SpriteRenderer soundWave;
-    private bool hit = false;
-    [SerializeField] private PolygonCollider2D polygonCollider;
+    private PolygonCollider2D polygonCollider;
     private Dictionary<IStunnable, Coroutine> stunCoroutines = new Dictionary<IStunnable, Coroutine>();
+    private bool hit = false;
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    objectsInField.Add(other.gameObject);
-    //}
-    //private void OnTriggerExit2D(Collider2D other)
-    //{
-    //    objectsInField.Remove(other.gameObject);
-    //   // StartCoroutine(Delay(other));
-    //}
+    private void Start()
+    {
+        polygonCollider = GetComponent<PolygonCollider2D>();
+    }
     private void OnTriggerEnter2D(Collider2D obj)
     {
-
         hit = false;
-
-
         if (obj == null) { return; }
 
         if (obj.CompareTag("EnemyBullet"))
         {
             var enemyBullet = obj.GetComponent<IAim>();
             enemyBullet.Deflected();
-
-            //add bool so that enemy bullets now can damage enemies,
         }
         else if (obj.CompareTag("Enemy"))
         {
             Stun(obj, 4);
-
         }
         else if (obj.CompareTag("EnemyNonTargetable"))
         {
             Stun(obj, 2);
         }
-
         if (hit == true)
         {
             UpgradeCombo.Instance.hitSinceShot = true;
             UpgradeCombo.Instance.comboTween.Kill();
         }
     }
-
     public void SoundWave()
     {
         polygonCollider.enabled = true;
@@ -91,11 +77,7 @@ public class StunZone : MonoBehaviour
                 // Coroutine is already running, add time to it
                 StopCoroutine(stunCoroutines[stun]);
             }
-
             stunCoroutines[stun] = StartCoroutine(UnFreeze(time, stun, damageable));
-           
-
-
         }
         IEnumerator UnFreeze(float timeStunned, IStunnable stunnable, IDamageable damageable)
         {
@@ -105,10 +87,5 @@ public class StunZone : MonoBehaviour
             damageable.ApplyDamage(1);
 
         }
-        //private IEnumerator Delay(Collider2D other)
-        //{
-        //    yield return new WaitForSeconds(0.5f);
-        //    objectsInField.Remove(other.gameObject);
-        //}
     }
 }
