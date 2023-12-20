@@ -126,7 +126,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)
         {
             Destroy(gameObject);
-            CameraShakeRobert.instance.AddTrauma(0.5f);
+            CameraShakeRobert.instance.AddTrauma(0.2f);
             EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
             Sound.Instance.SoundSet(Sound.Instance.balloonPop, 0);
 
@@ -141,7 +141,7 @@ public class EnemyHealth : Health
 
     void DummyDeath()
     {
-        CameraShakeRobert.instance.AddTrauma(0.5f);
+        CameraShakeRobert.instance.AddTrauma(0.2f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
@@ -150,7 +150,7 @@ public class EnemyHealth : Health
 
     void ClownDeath()
     {
-        CameraShakeRobert.instance.AddTrauma(0.5f);
+        CameraShakeRobert.instance.AddTrauma(0.2f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
