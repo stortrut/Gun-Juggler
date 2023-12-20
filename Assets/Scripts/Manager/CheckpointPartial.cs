@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointPartial : MonoBehaviour
 {
     [Header("Write the level and checkpoint number")]
     public int level;
     public int checkPointNumber;
+
+
+   
 
     private void Start()
     {
@@ -17,7 +22,7 @@ public class CheckpointPartial : MonoBehaviour
             Debug.Log("checkpoint");
             Debug.Log(checkPointNumber);
             GameObject.FindGameObjectWithTag("Player").transform.position = transform.position;
-            
+           
         }
     }
 
@@ -56,6 +61,6 @@ public class CheckpointPartial : MonoBehaviour
             }
         }
 
-
+       
     }
 }
