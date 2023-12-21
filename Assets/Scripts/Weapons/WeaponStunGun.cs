@@ -11,9 +11,6 @@ public class WeaponStunGun : WeaponBase
     [SerializeField] private StunZone stunZone;
     [SerializeField] private Animator animator;
 
-  
-
-
     [Header("Upgrades")]
     [SerializeField] StunGunUpgradeData[] stunGunLevelUpgradeData;
 
@@ -32,9 +29,9 @@ public class WeaponStunGun : WeaponBase
     {
         if(UpgradeCombo.Instance != null)
         { 
-        UpgradeCombo.Instance.hitSinceShot = false;
-        UpgradeCombo.Instance.comboTween.Kill();
-        StartCoroutine(UpgradeCombo.Instance.Combo());
+            UpgradeCombo.Instance.hitSinceShot = false;
+            UpgradeCombo.Instance.comboTween.Kill();
+            StartCoroutine(UpgradeCombo.Instance.Combo());
         }
         stunZone.SoundWave();
         if (knockback != null)
