@@ -21,6 +21,11 @@ public class PlayerJuggle : MonoBehaviour
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
     [HideInInspector] public bool isAlive;
    
+    void Awake()
+    {
+        Instance = this;
+    }
+
     public void SpeedUpUpcomingWeapon()
     {
 
@@ -41,7 +46,6 @@ public class PlayerJuggle : MonoBehaviour
 
     private void Start()
     {
-        Instance = this;
         isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
         //WeaponJuggleMovement[] weaponsOnPlayer = testWeapons.ToArray();
@@ -59,10 +63,12 @@ public class PlayerJuggle : MonoBehaviour
         if (weaponQueueUI == null) { return; }
         weaponQueueUI.InstantiateTheWeapons();
     }
+
     private bool spreadOutWeaponsInStart;
     [HideInInspector] public float timeUntilNextWeapon;
     [HideInInspector] public string nextWeapon;
     [HideInInspector] public float timeBetweenWeapons;
+
     private void Update()
     {
         if (!isJuggling) { return; }
