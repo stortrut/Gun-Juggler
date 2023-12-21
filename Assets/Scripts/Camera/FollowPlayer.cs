@@ -8,7 +8,7 @@ public class FollowPlayer : MonoBehaviour
 {
     [HideInInspector] private PlayerMovement playerToFollow;
     private GameObject player;
-    Vector3 offset = new Vector3(5, 2, -34);
+    [SerializeField] Vector3 offset = new Vector3(5, 2, -100);
     Vector3 targetPos = Vector3.zero;
     public bool yAxisLocked = false;
     float followPosSave;
@@ -72,7 +72,7 @@ public class FollowPlayer : MonoBehaviour
         targetPos.z = offset.z;
         Vector3 posY = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
         Vector3 posX = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
-        transform.position = new Vector3(posX.x, posY.y, -34);
+        transform.position = new Vector3(posX.x, posY.y, offset.z);
         //transform.position = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
         //transform.position = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
     }
