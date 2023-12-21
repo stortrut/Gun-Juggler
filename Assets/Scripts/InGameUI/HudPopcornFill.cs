@@ -13,6 +13,8 @@ public class HudPopcornFill : MonoBehaviour
     private Vector2 popcornFillTopPos = new Vector2(0, 0);
     private Vector2 popcornFillImagePos = new Vector2(0, 0);
 
+    [SerializeField] private float popcornFillAmountPerUpgrade = 2;
+
     void Start()
     {
         comboScript = FindObjectOfType<UpgradeCombo>();
@@ -46,9 +48,9 @@ public class HudPopcornFill : MonoBehaviour
 
     public void PopcornAmountUpgrade()
     {
-        popcornFillTopPos.y += 2;
+        popcornFillTopPos.y += popcornFillAmountPerUpgrade;       // value = 2, fillamount = 1/ 24/value
 
-        popcornFillImage.fillAmount += .1f;
+        popcornFillImage.fillAmount += 1 / (24 / popcornFillAmountPerUpgrade);
     }
 
     public void ReducePopcornAmount()
