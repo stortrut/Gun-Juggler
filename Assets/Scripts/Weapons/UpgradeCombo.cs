@@ -108,7 +108,7 @@ public class UpgradeCombo : MonoBehaviour
             comboEffect2.SetActive(false);
             comboEffect1.SetActive(true);
             comboEffect2.SetActive(true);
-            comboImage.color = UnityEngine.Random.ColorHSV(); 
+            
             foreach ( var weapon in playerjuggle)
             {
                 weapon.weaponBase.UpgradeWeapon();
