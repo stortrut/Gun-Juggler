@@ -9,15 +9,11 @@ public class Manager : MonoBehaviour
     public static Manager Instance { get; private set; }
 
     [HideInInspector] public GameObject player;
-    public Camera mainCamera;
 
     public int nextScene = 0;
     [SerializeField] private Texture2D cursorImage;
     private AsyncOperation asyncOperation;
     [SerializeField] GameObject fadeToBlack;
-
-
-
 
     private void Awake()
     {

@@ -16,9 +16,9 @@ public class Aim : MonoBehaviour
 
     private void Start()
     {
-        manager = Manager.Instance;
-        mainCamera = manager.mainCamera;
-
+        //manager = Manager.Instance;
+        //mainCamera = manager.mainCamera;
+        mainCamera = FindObjectOfType<Camera>();
         //playerJuggle = FindObjectOfType<PlayerJuggle>();
         //Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.ForceSoftware);
     }

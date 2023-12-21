@@ -49,6 +49,11 @@ public class PlayerJuggle : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            Debug.Log(weaponsCurrentlyInJuggleLoop[i]);
+        }
+
         isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
         //WeaponJuggleMovement[] weaponsOnPlayer = testWeapons.ToArray();
@@ -120,6 +125,7 @@ public class PlayerJuggle : MonoBehaviour
     {
         isJuggling = true;
         UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
+        Debug.Log("upgrade combo instance player juggle = weaponsinjuggleloop : "+UpgradeCombo.Instance.playerjuggle);
         //StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
 
         ThrowUpAllWeapons();
@@ -128,6 +134,7 @@ public class PlayerJuggle : MonoBehaviour
     {
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
+            Debug.Log("throw up this weapon in list: " + weaponsCurrentlyInJuggleLoop[i]);
             weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
             weaponsCurrentlyInJuggleLoop[i].curveDeltaTime = (weaponsCurrentlyInJuggleLoop.Count - (i * 0.1f)) * 0.1f;
             //StartCoroutine(nameof(DistributeWeaponsInAir));

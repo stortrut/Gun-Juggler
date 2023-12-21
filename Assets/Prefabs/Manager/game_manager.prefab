@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6694140526643090168}
   - component: {fileID: 2819154627421589452}
+  - component: {fileID: 2543982799061780268}
+  - component: {fileID: 7432625017360144661}
   m_Layer: 0
   m_Name: game_manager
   m_TagString: Untagged
@@ -44,3 +46,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26996dbeb11bf634cbad2d0d10c0b3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2543982799061780268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378201824122728290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b575ced59c95214da1429e39d3172f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  mainCamera: {fileID: 0}
+  nextScene: 0
+  cursorImage: {fileID: 2800000, guid: b7eacc62ed92bfa4199492909e348424, type: 3}
+  fadeToBlack: {fileID: 0}
+--- !u!114 &7432625017360144661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378201824122728290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e944f351ac123d4e967d8ff3a9a0b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balloonPop: {fileID: 8794686629430714354, guid: 2b5bfa2800755da4cab6007fead350c3, type: 3}
+  enemyPoof: {fileID: 1709992704090807972, guid: 09254a5e152bcd24db2f1f4467ee5d67, type: 3}
+  confettiExplosion: {fileID: 6221015571472543931, guid: f0ee7b3287cb2984f9e0134fe6df7fdb, type: 3}
