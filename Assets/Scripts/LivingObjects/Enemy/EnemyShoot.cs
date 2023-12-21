@@ -30,6 +30,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             player = Manager.Instance.player.gameObject;
             AdjustAim();
+         
         }
 
         if (isStunned == true) 
@@ -49,7 +50,10 @@ public class EnemyShoot : MonoBehaviour, IStunnable
                 once = true;    
             } 
         }
+        if ( player != null )
+        {
 
+       
         if (spawnBulletPos.position.x - player.transform.position.x < 18)
         {
             if(once == false)
@@ -72,18 +76,19 @@ public class EnemyShoot : MonoBehaviour, IStunnable
             }
         }
     }
-            //    float currentTime = Time.time;
-            //int currentSecond = (int)currentTime;
+    }
+    //    float currentTime = Time.time;
+    //int currentSecond = (int)currentTime;
 
-            //if (currentSecond > lastSecond)
-            //{
-            //    lastSecond = currentSecond;
-            //    Shoot();
-            //    AdjustAim();
+    //if (currentSecond > lastSecond)
+    //{
+    //    lastSecond = currentSecond;
+    //    Shoot();
+    //    AdjustAim();
 
 
-            //}
-    
+    //}
+
     IEnumerator Shoot()
     {
         animator = GetComponent<EnemyAnimator>();
