@@ -17,7 +17,7 @@ public class BalloonSpawner : MonoBehaviour
 
     void Start()
     {
-        player = Manager.Instance.player;
+        player = FindObjectOfType<PlayerJuggle>()?.gameObject;
 
         if (spawnAllAtOnce)
         {

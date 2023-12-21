@@ -289,7 +289,7 @@ public class PlayerJuggle : MonoBehaviour
 
         ThrowUpWeaponInHand();
         weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();
-        weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();
-
+        weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
+        weaponQueueUI.InstantiateTheWeapons();
     }
 }

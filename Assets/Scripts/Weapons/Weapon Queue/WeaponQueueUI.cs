@@ -14,7 +14,7 @@ public class WeaponQueueUI : MonoBehaviour
     float xOffset = 58f;
     Vector3 arrowStartPos;
 
-    private int i = 0;
+    public int i = 0;
 
     void Awake()
     {
@@ -40,6 +40,11 @@ public class WeaponQueueUI : MonoBehaviour
 
     public void InstantiateTheWeapons()
     {
+        foreach (Transform child in gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
