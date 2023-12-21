@@ -1,30 +1,33 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class ReadOnlyAttribute : PropertyAttribute
 {
-
 }
 
-[CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
-public class ReadOnlyDrawer : PropertyDrawer
-{
-    
-    public override void OnGUI(Rect position,
-                               SerializedProperty property,
-                               GUIContent label)
-    {
-        GUI.enabled = false;
-        EditorGUI.PropertyField(position, property, label, true);
-        GUI.enabled = true;
-    }
-}
+    /// <summary>
+    /// Display a field as read-only in the inspector.
+    /// CustomPropertyDrawers will not work when this attribute is used.
+    /// </summary>
+    /// <seealso cref="BeginReadOnlyGroupAttribute"/>
+    /// <seealso cref="EndReadOnlyGroupAttribute"/>
+   
 
-public class Test
-{
-    [ReadOnly] public string a;
-    [ReadOnly] public int b;
-    [ReadOnly] public Material c;
-    [ReadOnly] public List<int> d = new List<int>();
-}
+    /// <summary>
+    /// Display one or more fields as read-only in the inspector.
+    /// Use <see cref="EndReadOnlyGroupAttribute"/> to close the group.
+    /// Works with CustomPropertyDrawers.
+    /// </summary>
+    /// <seealso cref="EndReadOnlyGroupAttribute"/>
+    /// <seealso cref="ReadOnlyAttribute"/>
+    public class BeginReadOnlyGroupAttribute : PropertyAttribute { }
+
+    /// <summary>
+    /// Use with <see cref="BeginReadOnlyGroupAttribute"/>.
+    /// Close the read-only group and resume editable fields.
+    /// </summary>
+    /// <seealso cref="BeginReadOnlyGroupAttribute"/>
+    /// <seealso cref="ReadOnlyAttribute"/>
+    public class EndReadOnlyGroupAttribute : PropertyAttribute { }
+
+

@@ -1,9 +1,6 @@
 using DG.Tweening;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+using System.Collections;   
 using UnityEngine;
 
 public class DotweenPlayer : MonoBehaviour
