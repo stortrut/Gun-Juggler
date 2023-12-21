@@ -21,18 +21,17 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-       
         if (Instance == null)
         {
             Instance = this;
         }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+    }
+
+    private void Start()
+    {
+        //  player = FindObjectOfType<PlayerJuggle>()?.gameObject;
         Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
-        player = FindObjectOfType<PlayerJuggle>()?.gameObject; 
+        player = FindObjectOfType<PlayerJuggle>()?.gameObject;
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
 
         if (SceneManager.GetActiveScene().name == "WinScene")
@@ -40,12 +39,7 @@ public class Manager : MonoBehaviour
             LoadNextLevel();
             Invoke(nameof(ProceedToNextLevel), 10);
         }
-    }
 
-
-    private void Start()
-    {
-        //  player = FindObjectOfType<PlayerJuggle>()?.gameObject;
         if (player == null) { Debug.Log("Did not find a player ERROR"); }
     }
 

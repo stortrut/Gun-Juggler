@@ -120,7 +120,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.Dummy)
         {
             Invoke(nameof(DummyDeath), 1f);
-            CameraShakeRobert.instance.AddTrauma(0.5f);
+            CameraShakeRobert.instance.AddTrauma(0.2f);
             enemyAnimator.Dying();
         }
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)
@@ -134,14 +134,14 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
             Invoke(nameof(ClownDeath), 1.5f);
-            CameraShakeRobert.instance.AddTrauma(0.5f);
+            CameraShakeRobert.instance.AddTrauma(0.3f);
             enemyAnimator.Dying();
         }
     }
 
     void DummyDeath()
     {
-        CameraShakeRobert.instance.AddTrauma(0.2f);
+        CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
@@ -150,7 +150,7 @@ public class EnemyHealth : Health
 
     void ClownDeath()
     {
-        CameraShakeRobert.instance.AddTrauma(0.2f);
+        CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);

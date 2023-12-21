@@ -23,7 +23,10 @@ public class PlayerJuggle : MonoBehaviour
    
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 
     public void SpeedUpUpcomingWeapon()
