@@ -28,7 +28,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     {
         if (player == null)
         {
-            player = Manager.Instance.player;
+            player = Manager.Instance.player.gameObject;
             AdjustAim();
         }
 

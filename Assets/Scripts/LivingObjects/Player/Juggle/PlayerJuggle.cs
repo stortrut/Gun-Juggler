@@ -65,7 +65,7 @@ public class PlayerJuggle : MonoBehaviour
         //}
         int lastWeaponID = weaponsCurrentlyInJuggleLoop.Count - 1;
         //weaponInHand = weaponsCurrentlyInJuggleLoop[lastWeaponID];
-        StartJuggling();
+       
         //weaponsCurrentlyInJuggleLoop[lastWeaponID].weaponBase.EquipWeapon();
         weaponQueueUI = FindObjectOfType<WeaponQueueUI>();
         if (weaponQueueUI == null) { return; }
@@ -78,7 +78,13 @@ public class PlayerJuggle : MonoBehaviour
     [HideInInspector] public float timeBetweenWeapons;
 
     private void Update()
+
     {
+        if (Manager.Instance.player != null && isJuggling == false)
+        {
+            StartJuggling();
+        }
+
         if (!isJuggling) { return; }
         //nextWeapon = GetUpcomingWeapon().gameObject.name;
         //timeUntilNextWeapon = GetUpcomingWeapon().GetTimeUntilWeaponIsInHand();

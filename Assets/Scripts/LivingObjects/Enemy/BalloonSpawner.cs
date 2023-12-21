@@ -18,6 +18,7 @@ public class BalloonSpawner : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerJuggle>()?.gameObject;
+        
 
         if (spawnAllAtOnce)
         {
@@ -30,6 +31,10 @@ public class BalloonSpawner : MonoBehaviour
 
     void Update()
     {
+        if( player == null &&  Manager.Instance.player.gameObject != null)
+        {
+            player = Manager.Instance.player.gameObject;
+        }
         if (spawnAllAtOnce) { return; }
 
         if (transform.position.x - player.transform.position.x < 25)

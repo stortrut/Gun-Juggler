@@ -44,41 +44,44 @@ public class WeaponBase : MonoBehaviour
     private void Start()
     {
         canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
-        player = Manager.Instance.player;
+        player = Manager.Instance.player.gameObject;
     }
 
 
     private void Update()
     {
-        if (player == null)
+        if (player == null && Manager.Instance.player.gameObject != null)
         {
-            player = Manager.Instance.player;
+            player = Manager.Instance.player.gameObject;
             aim = player.GetComponentInChildren<Aim>();
         }
-        aim = player.GetComponentInChildren<Aim>();
+        if (player != null)
+        {
+            aim = player.GetComponentInChildren<Aim>();
 
-        if (canUseWeaponChecker == null)
-        {
-            canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
-        }
-        if (canUseWeaponChecker == null)
-        {
-            canUseWeaponChecker = player.GetComponentInChildren<PlayerUseWeaponInputStopper>();
-        }
-
-        if (!weaponJuggleMovement.beingThrown)
-        {
-            AdjustAim();
-        }
-
-        fireCooldownTimer += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Mouse0) && fireCooldownTimer > fireCooldown && canUseWeaponChecker.isAbleToUseWeapon)
-        {
-            if (weaponEquipped)
+            if (canUseWeaponChecker == null)
             {
-                UseWeapon();
+                canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
+            }
+            if (canUseWeaponChecker == null)
+            {
+                canUseWeaponChecker = player.GetComponentInChildren<PlayerUseWeaponInputStopper>();
+            }
 
-                fireCooldownTimer = 0;
+            if (!weaponJuggleMovement.beingThrown)
+            {
+                AdjustAim();
+            }
+
+            fireCooldownTimer += Time.deltaTime;
+            if (Input.GetKeyDown(KeyCode.Mouse0) && fireCooldownTimer > fireCooldown && canUseWeaponChecker.isAbleToUseWeapon)
+            {
+                if (weaponEquipped)
+                {
+                    UseWeapon();
+
+                    fireCooldownTimer = 0;
+                }
             }
         }
     }
