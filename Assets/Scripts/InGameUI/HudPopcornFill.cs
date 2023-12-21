@@ -51,6 +51,12 @@ public class HudPopcornFill : MonoBehaviour
         popcornFillTopPos.y += popcornFillAmountPerUpgrade;       // value = 2, fillamount = 1/ 24/value
 
         popcornFillImage.fillAmount += 1 / (24 / popcornFillAmountPerUpgrade);
+
+        if (popcornFillTopPos.y > 12)
+        {
+            popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
+            popcornFillImage.fillAmount -= 1 / (24 / popcornFillAmountPerUpgrade);
+        }
     }
 
     public void ReducePopcornAmount()

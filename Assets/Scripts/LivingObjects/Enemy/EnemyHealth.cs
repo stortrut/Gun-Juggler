@@ -126,7 +126,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)
         {
             Destroy(gameObject);
-            CameraShakeRobert.instance.AddTrauma(0.2f);
+            //CameraShakeRobert.instance.AddTrauma(0.2f);
             EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
             Sound.Instance.SoundSet(Sound.Instance.balloonPop, 0);
 
