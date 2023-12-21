@@ -88,6 +88,7 @@ public class WeaponQueueUI : MonoBehaviour
     {
         if (playerJuggleScript.weaponsCurrentlyInJuggleLoop != null)
         {
+            i++;
             if (i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count)
             {
                 arrow.rectTransform.anchoredPosition = new Vector3(startPosArrow.x + i * xOffset, startPosArrow.y);
@@ -98,7 +99,6 @@ public class WeaponQueueUI : MonoBehaviour
                 arrow.rectTransform.anchoredPosition = startPosArrow;
                 i = 0;
             }
-            i++;
         }
     }
 }
