@@ -17,17 +17,16 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
+      
             Instance = this;
-        }
+
     }
 
     private void Start()
     {
         //  player = FindObjectOfType<PlayerJuggle>()?.gameObject;
         Cursor.SetCursor(cursorImage, new Vector2(cursorImage.width / 2, cursorImage.height / 2), CursorMode.Auto);
-        player = FindObjectOfType<PlayerJuggle>()?.gameObject;
+       
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
 
         if (SceneManager.GetActiveScene().name == "WinScene")
@@ -42,6 +41,9 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
+        if (player == null)
+            player = FindObjectOfType<PlayerJuggle>()?.gameObject;
+
         if (Input.GetKeyDown(KeyCode.N))
         {
             LoadNextLevel();
