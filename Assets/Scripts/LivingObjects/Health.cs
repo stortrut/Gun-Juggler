@@ -24,7 +24,7 @@ public class Health : MonoBehaviour, IDamageable
         protection = GetComponent<EnemyProtection>();
     }
 
-    public void ApplyDamage(float amount)
+    public virtual void ApplyDamage(float amount)
     {
         if (oneShot)
         {

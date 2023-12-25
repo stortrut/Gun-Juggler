@@ -135,7 +135,7 @@ public class UpgradeCombo : MonoBehaviour
 
     private void DestroyCombo()
     {
-         badCombo = comboObject.transform.DOMoveZ(0, inactiveTime).OnComplete(ResetCombo);
+         badCombo = comboObject.transform.DOMoveZ(transform.position.z, inactiveTime).OnComplete(ResetCombo);
     }
 
     public IEnumerator Combo()
@@ -144,7 +144,7 @@ public class UpgradeCombo : MonoBehaviour
         {
             yield break;  
         }
-        comboTween = comboObject.transform.DOMoveZ(0, comboTime);
+        comboTween = comboObject.transform.DOMoveZ(transform.position.z, comboTime);
         yield return comboTween.WaitForKill();
 
         if (hitSinceShot == false)
