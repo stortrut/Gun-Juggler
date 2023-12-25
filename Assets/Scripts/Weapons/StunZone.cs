@@ -74,6 +74,7 @@ public class StunZone : MonoBehaviour
         //Debug.Log(stunnable);
         foreach (var stun in stunnable)
         {
+            damageable.ApplyDamage(1);
             stun.isStunnable = true;
             //Debug.Log(obj.gameObject.name);
             if (stunCoroutines.ContainsKey(stun))
@@ -87,7 +88,7 @@ public class StunZone : MonoBehaviour
         {
             yield return new WaitForSeconds(timeStunned);
             stunnable.isStunnable = false;
-            damageable.ApplyDamage(1);
+            
 
         }
     }

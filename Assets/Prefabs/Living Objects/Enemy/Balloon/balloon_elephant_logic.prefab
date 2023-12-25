@@ -44,7 +44,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629410853745879959}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   speed: 1
   tweenHeight: 4
   tweenLoopDuration: 5
+  isStunned: 0
 --- !u!60 &3173680844348572804
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -149,7 +150,6 @@ MonoBehaviour:
   maxHealth: 1000
   health: 4
   isDead: 0
-  isStunned: 0
   spriteRenderer: {fileID: 294266316747413928}
 --- !u!1001 &3584241635150827506
 PrefabInstance:
