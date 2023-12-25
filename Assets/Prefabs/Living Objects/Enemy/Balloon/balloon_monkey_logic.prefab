@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1856257724614381712}
   - component: {fileID: 351259549014668213}
   - component: {fileID: 8074503198181322790}
+  - component: {fileID: 5274010982386831181}
   m_Layer: 0
   m_Name: balloon_monkey_logic
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1587413989768671432}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7, y: -21.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -75,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1856257724614381712}
-  speed: 12
+  speed: 1
   tweenHeight: 4
   tweenLoopDuration: 1
 --- !u!60 &8074503198181322790
@@ -123,10 +124,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.65206575, y: 2.16074}
-      - {x: -0.7574563, y: 2.1513333}
-      - {x: -1.9206, y: 2.15721}
-      - {x: -1.8774049, y: 1.5284734}
-      - {x: -1.3777125, y: 1.1397295}
+      - {x: -0.6660228, y: 2.3456292}
+      - {x: -1.8748833, y: 2.3972223}
+      - {x: -2.1631346, y: 1.6770525}
+      - {x: -1.7663045, y: 1.2083044}
       - {x: -2.0045464, y: -0.13390923}
       - {x: -0.6180844, y: -2.1118417}
       - {x: 1.3149439, y: -2.2936308}
@@ -134,6 +135,23 @@ PolygonCollider2D:
       - {x: 1.894414, y: 0.28896427}
       - {x: 0.8298645, y: 0.6119999}
   m_UseDelaunayMesh: 0
+--- !u!114 &5274010982386831181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587413989768671432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df38a4754647c6f4dbbedc0745ff1861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  health: 3
+  isDead: 0
+  isStunned: 0
+  spriteRenderer: {fileID: 6845735761896759181}
 --- !u!1001 &6336994601880583290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,11 +174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3798647101676975213, guid: 23fee1011a924aa418853b54112472d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3798647101676975213, guid: 23fee1011a924aa418853b54112472d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 42.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3798647101676975213, guid: 23fee1011a924aa418853b54112472d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -199,6 +217,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23fee1011a924aa418853b54112472d9, type: 3}
+--- !u!212 &6845735761896759181 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 644427494256255991, guid: 23fee1011a924aa418853b54112472d9, type: 3}
+  m_PrefabInstance: {fileID: 6336994601880583290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7153412111772485655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3798647101676975213, guid: 23fee1011a924aa418853b54112472d9, type: 3}

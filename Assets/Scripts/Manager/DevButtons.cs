@@ -17,7 +17,7 @@ public class DevButtons : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         //Reset checkpoint for Level
-        if (Input.GetKeyUp(KeyCode.Numlock))
+        if (Input.GetKeyUp(KeyCode.CapsLock))
         {
             PlayerPrefs.SetInt("checkPointNumber" + SceneManager.GetActiveScene().buildIndex, 0);
         }
