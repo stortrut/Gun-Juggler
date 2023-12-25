@@ -5,12 +5,10 @@ using System.Transactions;
 using UnityEngine;
 
 
-public class BalloonHealth : Health, IStunnable
+public class BalloonHealth : Health
 {
 
-    [HideInInspector] public bool isStunned = false;
-    public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
-
+  
     [Header("Drag in")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
