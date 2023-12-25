@@ -62,5 +62,8 @@ public enum EnemyType
 {
     Dummy,
     Giraffe,
+    Monkey,
+    Elephant,
     PieClown,
+    CannonClown,
 }
