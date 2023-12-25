@@ -52,7 +52,7 @@ public class BalloonHealth : Health, IStunnable
             currentColor = green;
         }
         EffectAnimations.Instance.BalloonPop(transform.position);
-        transform.localScale *= 0.8f;
+        transform.localScale *= 0.9f;
         spriteRenderer.color = currentColor;
     }
     public override void Death()
