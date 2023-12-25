@@ -37,7 +37,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             if(once == true)
             {
-                //animator.Stunned(true);
+                animator.Stunned(true);
                 once = false;
             }
                  return; 
@@ -46,7 +46,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             if (once == false)
             {
-                //animator.Stunned(false);
+                animator.Stunned(false);
                 once = true;    
             } 
         }
@@ -54,7 +54,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
 
        
-        if (spawnBulletPos.position.x - player.transform.position.x < 18)
+        if ( spawnBulletPos.position.x - player.transform.position.x < 18 && spawnBulletPos.position.x - player.transform.position.x > 0)
         {
             if(once == false)
             {
@@ -77,17 +77,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         }
     }
     }
-    //    float currentTime = Time.time;
-    //int currentSecond = (int)currentTime;
 
-    //if (currentSecond > lastSecond)
-    //{
-    //    lastSecond = currentSecond;
-    //    Shoot();
-    //    AdjustAim();
-
-
-    //}
 
     IEnumerator Shoot()
     {
@@ -98,7 +88,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
             yield return new WaitForSeconds(0.5f);
         }
 
-        GameObject weaponBullet = Instantiate(enemyBullet, spawnBulletPos.position, spawnBulletPos.rotation);
+        GameObject weaponBullet = Instantiate(enemyBullet, new Vector3(spawnBulletPos.position.x, spawnBulletPos.position.y, 1), spawnBulletPos.rotation);
         //Sound.Instance.EnemyNotTakingDamage();
         Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
         var bullet = weaponBullet.GetComponentInChildren<IAim>();
@@ -111,7 +101,6 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             weaponBullet.GetComponentInChildren<Bullet>().bulletDamage = 75f;
         }
-
 
         //bulletRigidbody.velocity = bulletSpeed  * (-weaponBullet.transform.right) ;
         //weaponBullet.GetComponent<Rigidbody2D>().velocity = weaponBullet.transform.right * bulletSpeed *Time.deltaTi;
