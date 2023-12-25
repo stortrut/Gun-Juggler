@@ -18,6 +18,13 @@ public class BalloonHealth : Health, IStunnable
         if (other.gameObject.CompareTag("Bullet"))
         {
             ApplyDamage(1);
+            AudienceSatisfaction.Instance.AudienceHappiness(1);
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.CompareTag("HoolaHoop"))
+        {
+            AudienceSatisfaction.Instance.AudienceHappiness(-health);
+            // CUSTOM FAIL DEATH;
         }
     }
     public override void ApplyDamage(float damage)
