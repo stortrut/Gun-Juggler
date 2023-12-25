@@ -85,7 +85,6 @@ public class StunZone : MonoBehaviour
         }
         IEnumerator UnFreeze(float timeStunned, IStunnable stunnable, IDamageable damageable)
         {
-           
             yield return new WaitForSeconds(timeStunned);
             stunnable.isStunnable = false;
             damageable.ApplyDamage(1);
