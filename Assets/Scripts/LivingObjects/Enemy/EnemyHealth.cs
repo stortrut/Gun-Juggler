@@ -74,7 +74,7 @@ public class EnemyHealth : Health
                     enemyAnimator.TakingDamage();
                 }
 
-                Sound.Instance.SoundRandomized(Sound.Instance.enemyTakingDamageSounds);
+                Sound.instance.SoundRandomized(Sound.instance.enemyTakingDamageSounds);
 
                 if (health <= 0)
                 {
@@ -87,7 +87,7 @@ public class EnemyHealth : Health
             }
             else if (hasProtection == true)
             {
-                Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
+                Sound.instance.SoundRandomized(Sound.instance.enemyNotTakingDamageSounds);
             }
         }
     }
@@ -128,7 +128,7 @@ public class EnemyHealth : Health
             Destroy(gameObject);
             //CameraShakeRobert.instance.AddTrauma(0.2f);
             EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
-            Sound.Instance.SoundSet(Sound.Instance.balloonPop, 0);
+            Sound.instance.SoundSet(Sound.instance.balloonPop, 0);
 
         }
         else if (enemyAnimator.enemyType == EnemyType.PieClown)

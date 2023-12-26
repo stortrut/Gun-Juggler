@@ -9,7 +9,7 @@ public class ClickableWeapon : MonoBehaviour , IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("YOU CLICKED");
-        PlayerJuggle.Instance.StopJuggling();
+        //PlayerJuggle.Instance.StopJuggling();
         PlayerJuggle.Instance.AddWeaponToLoop(weapon);
     }
         

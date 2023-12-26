@@ -6,60 +6,72 @@ using UnityEngine.UI;
 
 public class Sound : MonoBehaviour
 {
-    public static Sound Instance { get; private set; }
+    public static Sound instance { get; private set; }
 
-    [SerializeField] private AudioSource backgroundSource;
-    [SerializeField] private AudioSource source;
-    [SerializeField] private AudioClip[] backgroundMusic;
+    public AudioSource backgroundSource;
+    public AudioSource soundeffectSource;
 
-    [Header("Shooting weapontype enum order")]
+    [Header("BackgroundMusic")]
+    [SerializeField] private AudioClip[] backgroundMusicSetStartEndEtc;
+    [SerializeField] private AudioClip[] backgroundMusicLevelsRandom;
+
+    [Header("Audience")]
+    [SerializeField] public AudioClip[] audience;
+
+    [Header("Weapon")]
+    [SerializeField] public AudioClip[] equipWeaponSoundsWeapontypeEnumOrder;
     [SerializeField] public AudioClip[] weaponShootingSoundsEnumOrder;
     [SerializeField] public AudioClip[][] weaponShootingSoundsRandomInEnumOrder;
+    [HideInInspector] public AudioClip[] notCatchingWeaponSounds;
 
-    [Header("Damagetaking")]
+    [Header("Enemy")]
     [SerializeField] public AudioClip[] enemyTakingDamageSounds;
     [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
+
+    [Header("Player")]
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
 
-    [Header("pop")]
+    [Header("Effectsounds (pop, pof, splash etc)")]
     [SerializeField] public AudioClip[] balloonPop;
     [SerializeField] public AudioClip[] pof;
-
-    [Header("Equip weapon weapontype enum order")]
-    [SerializeField] public AudioClip[] equipWeaponSounds;
-
-    [Header("Piesplash")]
+    [SerializeField] public AudioClip[] clownySounds;
     [SerializeField] public AudioClip[] pieSplash;
+    [SerializeField] public AudioClip[] buttonClick;
+    [SerializeField] public AudioClip[] spotLightOn;
 
-    [HideInInspector] public AudioClip[] notCatchingWeaponSounds;
+    //Volume
     [HideInInspector] Slider volumeSlider;
     private float soundVolume;
 
 
     private void Awake()
     {
-        Instance = this;
-        //backgroundSource = GetComponent<AudioSource>();
-        //backgroundMusic = GetComponent<AudioClip[]>();
-        //kaboom = GetComponent<AudioClip[]>();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex < backgroundMusic.Length)
+        if(SceneManager.GetActiveScene().buildIndex < backgroundMusicSetStartEndEtc.Length)
         {
-            backgroundSource.clip = backgroundMusic[SceneManager.GetActiveScene().buildIndex];
+            backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
         }
 
-        //source.volume = source.volume * 0.1f;
         if (backgroundSource.clip == null)
-        { backgroundSource.clip = backgroundMusic[0]; }      //default music
-        backgroundSource.PlayOneShot(source.clip);    
+        { backgroundSource.clip = backgroundMusicSetStartEndEtc[0]; }      //default music
+        backgroundSource.PlayOneShot(soundeffectSource.clip);    
     }
 
     public void ChangeVolume()
     {
-        source.volume = volumeSlider.value;
+        soundeffectSource.volume = volumeSlider.value;
         Debug.Log(volumeSlider.value);
         Save(); 
     }
@@ -72,20 +84,20 @@ public class Sound : MonoBehaviour
     public void SoundRandomized(AudioClip[] currentsound)
     {
         int i = Random.Range(0, currentsound.Length);
-        source.clip = currentsound[i];
-        if (source.clip != null)
+        soundeffectSource.clip = currentsound[i];
+        if (soundeffectSource.clip != null)
         {
-            source.PlayOneShot(source.clip);
+            soundeffectSource.PlayOneShot(soundeffectSource.clip);
         }
     }
 
     public void SoundSet(AudioClip[] currentsound, int orderedNumber)
     {
         int i = orderedNumber;
-        source.clip = currentsound[i];
-        if (source.clip != null)
+        soundeffectSource.clip = currentsound[i];
+        if (soundeffectSource.clip != null)
         {
-            source.PlayOneShot(source.clip);
+            soundeffectSource.PlayOneShot(soundeffectSource.clip);
         }
     }
 }

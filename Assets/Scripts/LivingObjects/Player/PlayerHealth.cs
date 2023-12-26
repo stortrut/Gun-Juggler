@@ -42,7 +42,7 @@ public class PlayerHealth : Health
             }
             else if (hasProtection == true)
             {
-                Sound.Instance.SoundRandomized(Sound.Instance.enemyNotTakingDamageSounds);
+                Sound.instance.SoundRandomized(Sound.instance.enemyNotTakingDamageSounds);
             }
 
             //if (TryGetComponent(out Knockback knockbackComponent))
@@ -95,7 +95,7 @@ public class PlayerHealth : Health
     {
         player.GetComponentInChildren<PlayerJuggle>().DropAllWeaponsOnGround();
         player.GetComponentInChildren<DeathAnimationHandler>().TriggerDeathAnimation();
-        Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
+        Sound.instance.SoundRandomized(Sound.instance.notCatchingWeaponSounds);
         //Debug.Log("Player Died");
         yield return new WaitForSeconds(2f);
 
