@@ -74,7 +74,7 @@ public class EnemyHealth : Health
                     enemyAnimator.TakingDamage();
                 }
 
-                Sound.instance.SoundRandomized(Sound.instance.enemyTakingDamageSounds);
+                Sound.instance.SoundRandomized(Sound.instance.enemyTakingDamage);
 
                 if (health <= 0)
                 {
@@ -87,7 +87,7 @@ public class EnemyHealth : Health
             }
             else if (hasProtection == true)
             {
-                Sound.instance.SoundRandomized(Sound.instance.enemyNotTakingDamageSounds);
+                Sound.instance.SoundRandomized(Sound.instance.enemyNotTakingDamage);
             }
         }
     }

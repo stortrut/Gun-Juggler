@@ -9,24 +9,27 @@ public class Sound : MonoBehaviour
     public static Sound instance { get; private set; }
 
     public AudioSource backgroundSource;
-    public AudioSource soundeffectSource;
+    [SerializeField] private AudioSource instantiatedEffectAudioSourceGameObject;
 
     [Header("BackgroundMusic")]
     [SerializeField] private AudioClip[] backgroundMusicSetStartEndEtc;
     [SerializeField] private AudioClip[] backgroundMusicLevelsRandom;
 
     [Header("Audience")]
-    [SerializeField] public AudioClip[] audience;
+    [SerializeField] public AudioClip[] audienceApplaud;
+    [SerializeField] public AudioClip[] audienceBoo;
 
     [Header("Weapon")]
-    [SerializeField] public AudioClip[] equipWeaponSoundsWeapontypeEnumOrder;
-    [SerializeField] public AudioClip[] weaponShootingSoundsEnumOrder;
-    [SerializeField] public AudioClip[][] weaponShootingSoundsRandomInEnumOrder;
-    [HideInInspector] public AudioClip[] notCatchingWeaponSounds;
+    [SerializeField] public AudioClip[] equipWeaponWeapontypeEnumOrder;
+    [SerializeField] public AudioClip[] weaponShootingEnumOrder;
+    [SerializeField] public AudioClip[][] weaponShootingRandomInEnumOrder;
+    [SerializeField] public AudioClip[] notCatchingWeapon;
+    [SerializeField] public AudioClip[] equipNewWeapon;
+
 
     [Header("Enemy")]
-    [SerializeField] public AudioClip[] enemyTakingDamageSounds;
-    [SerializeField] public AudioClip[] enemyNotTakingDamageSounds;
+    [SerializeField] public AudioClip[] enemyTakingDamage;
+    [SerializeField] public AudioClip[] enemyNotTakingDamage;
 
     [Header("Player")]
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
@@ -34,7 +37,7 @@ public class Sound : MonoBehaviour
     [Header("Effectsounds (pop, pof, splash etc)")]
     [SerializeField] public AudioClip[] balloonPop;
     [SerializeField] public AudioClip[] pof;
-    [SerializeField] public AudioClip[] clownySounds;
+    [SerializeField] public AudioClip[] clowny;
     [SerializeField] public AudioClip[] pieSplash;
     [SerializeField] public AudioClip[] buttonClick;
     [SerializeField] public AudioClip[] spotLightOn;
@@ -42,6 +45,10 @@ public class Sound : MonoBehaviour
     //Volume
     [HideInInspector] Slider volumeSlider;
     private float soundVolume;
+
+
+    //audiosource.time = sätt variabel till tiden i slutet av poster scenen och börja därifrån nästa gång
+    //crossfade, sänk volymen på bakgrundsmusiken i slutet och övergå i nästa, ny musik vid näata wave eller level eller varje gång låten tar slut?
 
 
     private void Awake()
@@ -59,45 +66,94 @@ public class Sound : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex < backgroundMusicSetStartEndEtc.Length)
+        Debug.Log("buildindex"+SceneManager.GetActiveScene().buildIndex);
+        if ((SceneManager.GetActiveScene().buildIndex == 0) || (SceneManager.GetActiveScene().buildIndex == 1))
         {
             backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
+            Debug.Log(backgroundSource.clip);
         }
 
-        if (backgroundSource.clip == null)
-        { backgroundSource.clip = backgroundMusicSetStartEndEtc[0]; }      //default music
-        backgroundSource.PlayOneShot(soundeffectSource.clip);    
+        else if (SceneManager.GetActiveScene().name == "WinScene")
+            backgroundSource.clip = backgroundMusicSetStartEndEtc[backgroundMusicSetStartEndEtc.Length - 1];
+
+        else if (SceneManager.GetActiveScene().name == "End")
+            backgroundSource.clip = backgroundMusicSetStartEndEtc[backgroundMusicSetStartEndEtc.Length];
+
+        else if (backgroundSource.clip == null)
+            backgroundSource.clip = backgroundMusicSetStartEndEtc[0];               //default music     
     }
 
-    public void ChangeVolume()
-    {
-        soundeffectSource.volume = volumeSlider.value;
-        Debug.Log(volumeSlider.value);
-        Save(); 
-    }
 
-    void Save()
+    public void SoundRandomized(AudioClip[] currentsound)  //float volume)
     {
-        PlayerPrefs.SetFloat("musicvolume",volumeSlider.value);
-    }
+        AudioSource audioSource = Instantiate(instantiatedEffectAudioSourceGameObject, transform.position, Quaternion.identity);
 
-    public void SoundRandomized(AudioClip[] currentsound)
-    {
         int i = Random.Range(0, currentsound.Length);
-        soundeffectSource.clip = currentsound[i];
-        if (soundeffectSource.clip != null)
+        audioSource.clip = currentsound[i];
+        //input volume * set effect volume value from slider
+        instantiatedEffectAudioSourceGameObject.clip = currentsound[i];
+        GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
+
+        //foreach (GameObject obj in soundEffectInstantiatedObjects)
+        //{
+        //    if (obj.GetComponent<AudioSource>().GetComponent<AudioClip[]>() == currentsound)
+        //    {
+        //        Destroy(audioSource.gameObject); break;
+        //    }
+        //}
+
+        if (instantiatedEffectAudioSourceGameObject.clip != null)
         {
-            soundeffectSource.PlayOneShot(soundeffectSource.clip);
+            instantiatedEffectAudioSourceGameObject.PlayOneShot(instantiatedEffectAudioSourceGameObject.clip);
+
+            float clipLength = instantiatedEffectAudioSourceGameObject.clip.length;
+
+            Destroy(audioSource.gameObject, clipLength);
         }
     }
 
     public void SoundSet(AudioClip[] currentsound, int orderedNumber)
     {
+        AudioSource audioSource = Instantiate(instantiatedEffectAudioSourceGameObject, transform.position, Quaternion.identity);
+
         int i = orderedNumber;
-        soundeffectSource.clip = currentsound[i];
-        if (soundeffectSource.clip != null)
+        audioSource.clip = currentsound[i];
+        //input volume * set effect volume value from slider
+        instantiatedEffectAudioSourceGameObject.clip = currentsound[i];
+        GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
+
+        //foreach (GameObject obj in soundEffectInstantiatedObjects)
+        //{
+        //    if (obj.GetComponent<AudioSource>().GetComponent<AudioClip[]>() == currentsound)
+        //    {
+        //        Destroy(audioSource.gameObject); break;
+        //    }
+        //}
+
+        if (instantiatedEffectAudioSourceGameObject.clip != null)
         {
-            soundeffectSource.PlayOneShot(soundeffectSource.clip);
+            instantiatedEffectAudioSourceGameObject.PlayOneShot(instantiatedEffectAudioSourceGameObject.clip);
+
+            float clipLength = instantiatedEffectAudioSourceGameObject.clip.length;
+
+            Destroy(audioSource.gameObject, clipLength);
+        }
+        else
+        {
+            Destroy(audioSource.gameObject);
         }
     }
+
+    
+    //public void ChangeVolume()
+    //{
+    //    soundeffectSourcePrefab.volume = volumeSlider.value;
+    //    Debug.Log(volumeSlider.value);
+    //    Save(); 
+    //}
+
+    //void Save()
+    //{
+    //    PlayerPrefs.SetFloat("musicvolume",volumeSlider.value);
+    //}
 }
