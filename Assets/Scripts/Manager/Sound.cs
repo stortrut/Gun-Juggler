@@ -70,7 +70,6 @@ public class Sound : MonoBehaviour
         if ((SceneManager.GetActiveScene().buildIndex == 0) || (SceneManager.GetActiveScene().buildIndex == 1))
         {
             backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
-            Debug.Log(backgroundSource.clip);
         }
 
         else if (SceneManager.GetActiveScene().name == "WinScene")
@@ -80,7 +79,15 @@ public class Sound : MonoBehaviour
             backgroundSource.clip = backgroundMusicSetStartEndEtc[backgroundMusicSetStartEndEtc.Length];
 
         else if (backgroundSource.clip == null)
-            backgroundSource.clip = backgroundMusicSetStartEndEtc[0];               //default music     
+        {
+            int randomNum = Random.Range(0, backgroundMusicLevelsRandom.Length);
+            backgroundSource.clip = backgroundMusicLevelsRandom[randomNum];     //level random music
+        }
+        
+        if (backgroundSource.clip != null)
+        {
+            backgroundSource.Play();
+        }
     }
 
 
