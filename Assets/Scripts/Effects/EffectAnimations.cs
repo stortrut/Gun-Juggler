@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EffectAnimations : MonoBehaviour
 {
-    public static EffectAnimations Instance { get; private set; }
+    public static EffectAnimations instance { get; private set; }
     [SerializeField] GameObject balloonPop;
     [SerializeField] GameObject enemyPoof;
     [SerializeField] GameObject confettiExplosion;
     private void Awake()
     {
-        Instance = this; 
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     private void Update()
@@ -24,6 +27,7 @@ public class EffectAnimations : MonoBehaviour
     public void BalloonPop(Vector2 pos)
     {
         Instantiate(balloonPop, pos, Quaternion.identity);
+        Destroy(balloonPop, 1);
     }
 
     public void EnemyPoof(Vector2 pos)
@@ -35,5 +39,6 @@ public class EffectAnimations : MonoBehaviour
     public void ConfettiExplosion(Vector2 pos)
     {
         Instantiate(confettiExplosion, pos, Quaternion.identity);
+        Destroy(confettiExplosion,1);
     }
 }

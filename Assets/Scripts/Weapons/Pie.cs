@@ -72,14 +72,14 @@ public class Pie : EnemyBullet
             //timeHit = Time.time;
             //Debug.Log(timeHit - timeThrow);
             Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
             Sound.instance.SoundSet(Sound.instance.pieSplash, 0);
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Player"))
         {
             Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
             Sound.instance.SoundSet(Sound.instance.pieSplash, 0);
             Destroy(gameObject);
         }
@@ -90,7 +90,7 @@ public class Pie : EnemyBullet
         if (other.gameObject.CompareTag("Bullet"))
         {
             Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
             //Sound.Instance.SoundSet(Sound.Instance.pieSplash, 0);
             Destroy(gameObject);
         }

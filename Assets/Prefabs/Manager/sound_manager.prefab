@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundSource: {fileID: 5132587168450816695}
-  instantiatedEffectAudioSourceGameObject: {fileID: 7812484083673116914, guid: 0d0aabb3c9ccc554d8c2df51aae9a69a, type: 3}
+  effectAudioSourceGameObject: {fileID: 3474822481601537008, guid: 0d0aabb3c9ccc554d8c2df51aae9a69a, type: 3}
   backgroundMusicSetStartEndEtc:
   - {fileID: 8300000, guid: 2af0c2d31c657cd4a9c11fea78d7b99a, type: 3}
   - {fileID: 8300000, guid: bb753050c107ecc47a2d06d1adf68aa2, type: 3}
@@ -183,14 +183,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2af0c2d31c657cd4a9c11fea78d7b99a, type: 3}
   backgroundMusicLevelsRandom:
   - {fileID: 8300000, guid: 2a69ffbb22bdc744c8163cdcd18812e9, type: 3}
-  audienceApplaud: []
+  audienceApplaud:
+  - {fileID: 8300000, guid: fcab633f297fe274baa9c3741c6f7711, type: 3}
+  - {fileID: 8300000, guid: dd400ae11be4f504dad72adb8ac28043, type: 3}
+  - {fileID: 8300000, guid: 22fafc962d7405a46a02caff08c28298, type: 3}
   audienceBoo: []
-  equipWeaponWeapontypeEnumOrder: []
-  weaponShootingEnumOrder: []
+  equipWeaponWeapontypeEnumOrder:
+  - {fileID: 8300000, guid: e8ee8d75aab24d947b54c3d362563b25, type: 3}
+  - {fileID: 8300000, guid: d22a211ecf023a948bdeb7f84b30b6c7, type: 3}
+  - {fileID: 8300000, guid: e1daa7f780331b44897b1934730949d0, type: 3}
+  - {fileID: 8300000, guid: e1daa7f780331b44897b1934730949d0, type: 3}
+  weaponShootingEnumOrder:
+  - {fileID: 8300000, guid: 645130e4cf5e19a47aa5a5eed6237b32, type: 3}
+  - {fileID: 8300000, guid: 601e37cd0afe4da4baf48970c299bae1, type: 3}
+  - {fileID: 8300000, guid: 541a26d74c15fab4b8d456b4a6d7cb7f, type: 3}
   notCatchingWeapon: []
   equipNewWeapon: []
-  enemyTakingDamage: []
-  enemyNotTakingDamage: []
+  enemyTakingDamage:
+  - {fileID: 8300000, guid: f68322e5a2b111b46a8f7de204185d4f, type: 3}
+  enemyNotTakingDamage:
+  - {fileID: 8300000, guid: fc6c12d77bcdafb48b772da065619808, type: 3}
   playerTakingDamageSounds:
   - {fileID: 8300000, guid: a17271ef4368b654da5789750f83314c, type: 3}
   balloonPop:
@@ -198,7 +210,8 @@ MonoBehaviour:
   pof: []
   clowny: []
   pieSplash: []
-  buttonClick: []
+  buttonClick:
+  - {fileID: 8300000, guid: 2080971e0d4b18f4eaaf1cc60f134005, type: 3}
   spotLightOn: []
 --- !u!81 &5329618115246817492
 AudioListener:

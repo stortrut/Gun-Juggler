@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class Sound : MonoBehaviour
     public static Sound instance { get; private set; }
 
     public AudioSource backgroundSource;
-    [SerializeField] private AudioSource instantiatedEffectAudioSourceGameObject;
+    [SerializeField] private GameObject effectAudioSourceGameObject;
 
     [Header("BackgroundMusic")]
     [SerializeField] private AudioClip[] backgroundMusicSetStartEndEtc;
@@ -93,40 +94,52 @@ public class Sound : MonoBehaviour
 
     public void SoundRandomized(AudioClip[] currentsound)  //float volume)
     {
-        AudioSource audioSource = Instantiate(instantiatedEffectAudioSourceGameObject, transform.position, Quaternion.identity);
+        GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
+        AudioSource audioSource = effectAudioSourceGameObject.GetComponent<AudioSource>();
 
         int i = Random.Range(0, currentsound.Length);
         audioSource.clip = currentsound[i];
         //input volume * set effect volume value from slider
-        instantiatedEffectAudioSourceGameObject.clip = currentsound[i];
+        audioSource.clip = currentsound[i];
+
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
 
-        //foreach (GameObject obj in soundEffectInstantiatedObjects)
-        //{
-        //    if (obj.GetComponent<AudioSource>().GetComponent<AudioClip[]>() == currentsound)
-        //    {
-        //        Destroy(audioSource.gameObject); break;
-        //    }
-        //}
-
-        if (instantiatedEffectAudioSourceGameObject.clip != null)
+        foreach (GameObject obj in soundEffectInstantiatedObjects)
         {
-            instantiatedEffectAudioSourceGameObject.PlayOneShot(instantiatedEffectAudioSourceGameObject.clip);
+            //Debug.Log("jämför med det andra "+obj.GetComponent<AudioClip>());
+            //Debug.Log("detta audioclip "+ audioSource.clip);
 
-            float clipLength = instantiatedEffectAudioSourceGameObject.clip.length;
+            if (obj.GetComponent<AudioSource>().GetComponent<AudioClip>() == audioSource.clip)
+            {
+                //Debug.Log("destroy it");
+                Destroy(audioSource.gameObject); break;
+            }
+        }
+
+        if (audioSource.clip != null)
+        {
+            //Debug.Log(effectAudioSourceGameObject);
+
+            float clipLength = audioSource.clip.length;
 
             Destroy(audioSource.gameObject, clipLength);
+            audioSource.Play();
+        }
+        else
+        {
+            Destroy(audioSource.gameObject);
         }
     }
 
     public void SoundSet(AudioClip[] currentsound, int orderedNumber)
     {
-        AudioSource audioSource = Instantiate(instantiatedEffectAudioSourceGameObject, transform.position, Quaternion.identity);
+        GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
+        AudioSource audioSource = effectAudioSourceGameObject.GetComponent<AudioSource>();
 
         int i = orderedNumber;
         audioSource.clip = currentsound[i];
         //input volume * set effect volume value from slider
-        instantiatedEffectAudioSourceGameObject.clip = currentsound[i];
+        audioSource.clip = currentsound[i];
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
 
         //foreach (GameObject obj in soundEffectInstantiatedObjects)
@@ -137,11 +150,11 @@ public class Sound : MonoBehaviour
         //    }
         //}
 
-        if (instantiatedEffectAudioSourceGameObject.clip != null)
+        if (audioSource.clip != null)
         {
-            instantiatedEffectAudioSourceGameObject.PlayOneShot(instantiatedEffectAudioSourceGameObject.clip);
+            audioSource.Play();
 
-            float clipLength = instantiatedEffectAudioSourceGameObject.clip.length;
+            float clipLength = audioSource.clip.length;
 
             Destroy(audioSource.gameObject, clipLength);
         }
@@ -151,7 +164,7 @@ public class Sound : MonoBehaviour
         }
     }
 
-    
+
     //public void ChangeVolume()
     //{
     //    soundeffectSourcePrefab.volume = volumeSlider.value;

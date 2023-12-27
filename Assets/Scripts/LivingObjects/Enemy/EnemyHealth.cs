@@ -127,7 +127,7 @@ public class EnemyHealth : Health
         {
             Destroy(gameObject);
             //CameraShakeRobert.instance.AddTrauma(0.2f);
-            EffectAnimations.Instance.BalloonPop(positionForEffectAnimationScript);
+            EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
             Sound.instance.SoundSet(Sound.instance.balloonPop, 0);
 
         }
@@ -143,7 +143,7 @@ public class EnemyHealth : Health
     {
         CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-        EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
+        EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
         Destroy(gameObject);
     }
@@ -152,7 +152,7 @@ public class EnemyHealth : Health
     {
         CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-        EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
+        EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
         //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
         Destroy(gameObject);
     }

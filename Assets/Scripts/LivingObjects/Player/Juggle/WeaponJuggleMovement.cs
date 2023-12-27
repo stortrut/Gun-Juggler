@@ -151,9 +151,7 @@ public class WeaponJuggleMovement : MonoBehaviour
         if (playerJuggle == null) { /*Debug.Log("ERROR..");*/ playerJuggle = FindObjectOfType<PlayerJuggle>(); }
         if (playerJuggle == null) { Debug.Log("BIG ERROR!");}
 
-        Debug.Log("called throwupweapon method in weapon juggle movement, playerjuggle script: " + playerJuggle);
         if (playerJuggle.armAnimationHandler == null) { Debug.Log("ARM ANIMATION ERROR"); }
-        Debug.Log("has armanimation handler? animation handler: " + playerJuggle.armAnimationHandler);
         playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayThrowUpWeaponAnimation));
 
         curveDeltaTime = 0;
