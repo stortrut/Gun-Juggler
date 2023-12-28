@@ -151,7 +151,6 @@ public class Sound : MonoBehaviour
             if (obj.GetComponent<AudioSource>().clip.name == audioSource.clip.name)
             {
                 o++;
-                Debug.Log(o);
             }
             if (o >= maxAmountOfSoundsPlayingAtSameTime)
             {
