@@ -24,9 +24,7 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] equipWeaponWeapontypeEnumOrder;
     [SerializeField] public AudioClip[] weaponShootingEnumOrder;
     [SerializeField] public AudioClip[][] weaponShootingRandomInEnumOrder;
-    [SerializeField] public AudioClip[] notCatchingWeapon;
     [SerializeField] public AudioClip[] equipNewWeapon;
-
 
     [Header("Enemy")]
     [SerializeField] public AudioClip[] enemyTakingDamage;
@@ -34,6 +32,7 @@ public class Sound : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
+    [SerializeField] public AudioClip[] ohNo;
 
     [Header("Effectsounds (pop, pof, splash etc)")]
     [SerializeField] public AudioClip[] balloonPop;
@@ -46,6 +45,7 @@ public class Sound : MonoBehaviour
     //Volume
     [HideInInspector] Slider volumeSlider;
     private float soundVolume;
+    [SerializeField] int maxAmountOfSoundsPlayingAtSameTime = 3;
 
 
     //audiosource.time = sätt variabel till tiden i slutet av poster scenen och börja därifrån nästa gång
@@ -95,7 +95,7 @@ public class Sound : MonoBehaviour
     public void SoundRandomized(AudioClip[] currentsound)  //float volume)
     {
         GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
-        AudioSource audioSource = effectAudioSourceGameObject.GetComponent<AudioSource>();
+        AudioSource audioSource = instantiatedEffectAudioSourceGameObject.GetComponent<AudioSource>();
 
         int i = Random.Range(0, currentsound.Length);
         audioSource.clip = currentsound[i];
@@ -103,23 +103,23 @@ public class Sound : MonoBehaviour
         audioSource.clip = currentsound[i];
 
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
+        int o = 0;
 
         foreach (GameObject obj in soundEffectInstantiatedObjects)
         {
-            //Debug.Log("jämför med det andra "+obj.GetComponent<AudioClip>());
-            //Debug.Log("detta audioclip "+ audioSource.clip);
-
-            if (obj.GetComponent<AudioSource>().GetComponent<AudioClip>() == audioSource.clip)
+            if (obj.GetComponent<AudioSource>().clip.name == audioSource.clip.name)
             {
-                //Debug.Log("destroy it");
-                Destroy(audioSource.gameObject); break;
+                o++;
+                Debug.Log(o);
+            }
+            if (o >= maxAmountOfSoundsPlayingAtSameTime)
+            {
+                Destroy(audioSource.gameObject); return;
             }
         }
 
         if (audioSource.clip != null)
         {
-            //Debug.Log(effectAudioSourceGameObject);
-
             float clipLength = audioSource.clip.length;
 
             Destroy(audioSource.gameObject, clipLength);
@@ -134,7 +134,7 @@ public class Sound : MonoBehaviour
     public void SoundSet(AudioClip[] currentsound, int orderedNumber)
     {
         GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
-        AudioSource audioSource = effectAudioSourceGameObject.GetComponent<AudioSource>();
+        AudioSource audioSource = instantiatedEffectAudioSourceGameObject.GetComponent<AudioSource>();
 
         int i = orderedNumber;
         audioSource.clip = currentsound[i];
@@ -142,13 +142,20 @@ public class Sound : MonoBehaviour
         audioSource.clip = currentsound[i];
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
 
-        //foreach (GameObject obj in soundEffectInstantiatedObjects)
-        //{
-        //    if (obj.GetComponent<AudioSource>().GetComponent<AudioClip[]>() == currentsound)
-        //    {
-        //        Destroy(audioSource.gameObject); break;
-        //    }
-        //}
+        int o = 0;
+
+        foreach (GameObject obj in soundEffectInstantiatedObjects)
+        {
+            if (obj.GetComponent<AudioSource>().clip.name == audioSource.clip.name)
+            {
+                o++;
+                Debug.Log(o);
+            }
+            if (o >= maxAmountOfSoundsPlayingAtSameTime)
+            {
+                Destroy(audioSource.gameObject); return;
+            }
+        }
 
         if (audioSource.clip != null)
         {

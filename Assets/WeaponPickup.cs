@@ -12,6 +12,8 @@ public class WeaponPickup : MonoBehaviour
         {
             collision.GetComponent<PlayerJuggle>().AddWeaponToLoop(weaponPrefabToPickup);
 
+            Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon);
+
             Destroy(gameObject);
         }
     }

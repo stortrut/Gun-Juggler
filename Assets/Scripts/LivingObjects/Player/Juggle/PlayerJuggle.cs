@@ -203,6 +203,11 @@ public class PlayerJuggle : MonoBehaviour
         weaponInHand.gameObject.transform.SetParent(transform, false);
         //ANTI CROTCH PISTOL
         weaponInHand.gameObject.transform.localPosition = new Vector3(1, 1, 0);
+
+        //soundeffect:
+        WeaponType weaponEnum = newWeapon.weaponBase.weaponType;
+        int enumIndex = (int)weaponEnum;
+        Sound.instance.SoundSet(Sound.instance.equipWeaponWeapontypeEnumOrder, enumIndex);
     }
 
     public void ThrowUpWeaponInHand()
