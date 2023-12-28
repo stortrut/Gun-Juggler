@@ -101,6 +101,8 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
+        int enumIndex = (int)weaponType;
+        Sound.instance.SoundSet(Sound.instance.weaponShootingEnumOrder, enumIndex);
         StartCoroutine(nameof(ThrowUpWeaponWhenWeaponHasBeenFullyUsed), this.GetComponent<WeaponBase>());
     }
 
