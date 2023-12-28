@@ -88,7 +88,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
             yield return new WaitForSeconds(0.5f);
         }
 
-        GameObject weaponBullet = Instantiate(enemyBullet, new Vector3(spawnBulletPos.position.x, spawnBulletPos.position.y, 1), spawnBulletPos.rotation);
+        GameObject weaponBullet = Instantiate(enemyBullet, new Vector3(spawnBulletPos.position.x -1, spawnBulletPos.position.y, 1), spawnBulletPos.rotation);
         //Sound.Instance.EnemyNotTakingDamage();
         Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
         var bullet = weaponBullet.GetComponentInChildren<IAim>();

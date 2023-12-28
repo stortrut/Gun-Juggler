@@ -74,7 +74,8 @@ public class EnemyHealth : Health
                     enemyAnimator.TakingDamage();
                 }
 
-                Sound.instance.SoundRandomized(Sound.instance.enemyTakingDamage);
+                int enumIndex = (int)enemyAnimator.enemyType;
+                Sound.instance.SoundSet(Sound.instance.enemyTakingDamageEnumOrder, enumIndex);
 
                 if (health <= 0)
                 {
@@ -87,7 +88,8 @@ public class EnemyHealth : Health
             }
             else if (hasProtection == true)
             {
-                Sound.instance.SoundRandomized(Sound.instance.enemyNotTakingDamage);
+                int enumIndex = (int)enemyAnimator.enemyType;
+                Sound.instance.SoundSet(Sound.instance.enemyNotTakingDamageEnumOrder, enumIndex);
             }
         }
     }
@@ -144,7 +146,7 @@ public class EnemyHealth : Health
         CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
-        //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
+        Sound.instance.SoundSet(Sound.instance.poof, 0);
         Destroy(gameObject);
     }
 
@@ -153,7 +155,7 @@ public class EnemyHealth : Health
         CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
-        //Sound.Instance.SoundSet(Sound.Instance.pof, 0);
+        Sound.instance.SoundSet(Sound.instance.poof, 0);
         Destroy(gameObject);
     }
 }

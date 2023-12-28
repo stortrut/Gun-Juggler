@@ -27,8 +27,8 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] equipNewWeapon;
 
     [Header("Enemy")]
-    [SerializeField] public AudioClip[] enemyTakingDamage;
-    [SerializeField] public AudioClip[] enemyNotTakingDamage;
+    [SerializeField] public AudioClip[] enemyTakingDamageEnumOrder;
+    [SerializeField] public AudioClip[] enemyNotTakingDamageEnumOrder;
 
     [Header("Player")]
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
@@ -36,7 +36,7 @@ public class Sound : MonoBehaviour
 
     [Header("Effectsounds (pop, pof, splash etc)")]
     [SerializeField] public AudioClip[] balloonPop;
-    [SerializeField] public AudioClip[] pof;
+    [SerializeField] public AudioClip[] poof;
     [SerializeField] public AudioClip[] clowny;
     [SerializeField] public AudioClip[] pieSplash;
     [SerializeField] public AudioClip[] buttonClick;

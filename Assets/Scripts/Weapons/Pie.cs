@@ -65,35 +65,43 @@ public class Pie : EnemyBullet
             }
         }
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
             //timeHit = Time.time;
             //Debug.Log(timeHit - timeThrow);
-            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-            EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
+            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .3f);
+            EffectAnimations.instance.PieExplosionGround(positionForEffectAnimationScript);
             Sound.instance.SoundSet(Sound.instance.pieSplash, 0);
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Player"))
         {
+            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+            EffectAnimations.instance.PieExplosion(positionForEffectAnimationScript);
+            Sound.instance.SoundSet(Sound.instance.pieSplash, 0);
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Bullet"))
+        {
             Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-            EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
+            EffectAnimations.instance.PieExplosion(positionForEffectAnimationScript);
+            //Sound.Instance.SoundSet(Sound.Instance.pieSplash, 0);
+            Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+            EffectAnimations.instance.PieExplosion(positionForEffectAnimationScript);
             Sound.instance.SoundSet(Sound.instance.pieSplash, 0);
             Destroy(gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
-            EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
-            //Sound.Instance.SoundSet(Sound.Instance.pieSplash, 0);
-            Destroy(gameObject);
-        }
+        
     }
     public void AimCorrection()
     {
