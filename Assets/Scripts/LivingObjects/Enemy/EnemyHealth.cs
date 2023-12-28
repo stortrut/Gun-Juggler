@@ -75,7 +75,7 @@ public class EnemyHealth : Health
                 }
 
                 int enumIndex = (int)enemyAnimator.enemyType;
-                Sound.instance.SoundSet(Sound.instance.enemyTakingDamageEnumOrder, enumIndex);
+                Sound.instance.SoundSet(Sound.instance.enemyTakingDamageEnumOrder, enumIndex, .6f);
 
                 if (health <= 0)
                 {

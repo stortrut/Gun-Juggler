@@ -42,7 +42,7 @@ public class JuggleCatchCircle : MonoBehaviour
     {
         if (turnOffUpgradeFunction) { return; }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Mouse2)) //|| Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift)
         {
             if (canCatchWeapon && !caughtWeapon && !catchOnCoolDown/* !currentCatchableGun.beingDropped*/)
             {
@@ -50,6 +50,8 @@ public class JuggleCatchCircle : MonoBehaviour
                 //Sound.Instance.SoundRandomized(Sound.Instance.catchingWeaponSounds);
                 spriteRenderer.color = caughtWeaponColor;
                 caughtWeapon = true;
+
+                FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
             }
 
             catchOnCoolDown = true;
@@ -68,9 +70,6 @@ public class JuggleCatchCircle : MonoBehaviour
                 currentCatchAttemptCooldownTimer = 0;
             }
         }
-
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

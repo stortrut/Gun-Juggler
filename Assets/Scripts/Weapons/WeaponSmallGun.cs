@@ -8,7 +8,7 @@ public class WeaponSmallGun : Gun
 
     private void Start()
     {
-        weaponType = WeaponType.SmallGun;
+        weaponType = WeaponType.WaterPistol;
         fireCooldownTimer = fireCooldown;
 
         SetWeaponUpgradeData();

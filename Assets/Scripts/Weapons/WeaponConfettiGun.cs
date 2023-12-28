@@ -14,7 +14,7 @@ public class WeaponConfettiGun : Gun
 
     private void Start()
     {
-        weaponType = WeaponType.ShotGun;
+        weaponType = WeaponType.ConfettiGun;
         knockback = GetComponentInParent<Knockback>();
 
         SetWeaponUpgradeData();

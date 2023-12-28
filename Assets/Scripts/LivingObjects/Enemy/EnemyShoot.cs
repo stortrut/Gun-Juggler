@@ -23,6 +23,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     {
         //enemyAnimator = GetComponent<EnemyAnimator>();
         enemyHealth = GetComponent<EnemyHealth>();
+        animator = GetComponent<EnemyAnimator>();
     }
     void Update()
     {

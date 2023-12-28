@@ -12,8 +12,6 @@ public class ClickableWeapon : MonoBehaviour , IPointerDownHandler
         //PlayerJuggle.Instance.StopJuggling();
         PlayerJuggle.Instance.AddWeaponToLoop(weapon);
     }
-        
-
 
     // Update is called once per frame
     void Update()

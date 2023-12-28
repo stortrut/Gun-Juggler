@@ -8,6 +8,7 @@ public class PlayerJuggle : MonoBehaviour
     public static PlayerJuggle Instance;
     [SerializeField] private float timeInBetweenEachThrowAtTheStart;
     [SerializeField] private Animator bodyAnimator;
+    [SerializeField] private GameObject popcornGun;
 
     [Header("Juggle Loop - Read Only")]
     [ReadOnly] public List<WeaponJuggleMovement> weaponsCurrentlyInJuggleLoop;
@@ -20,6 +21,8 @@ public class PlayerJuggle : MonoBehaviour
 
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
     [HideInInspector] public bool isAlive;
+
+    [SerializeField] bool startJuggling = true;
    
     void Awake()
     {
@@ -50,9 +53,7 @@ public class PlayerJuggle : MonoBehaviour
     private void Start()
     {
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
-        {
-            //Debug.Log(weaponsCurrentlyInJuggleLoop[i]);
-        }
+            Debug.Log(weaponsCurrentlyInJuggleLoop[i]); 
 
         isAlive = true;
         armAnimationHandler = GetComponentInChildren<ArmAnimationHandler>();
@@ -80,7 +81,7 @@ public class PlayerJuggle : MonoBehaviour
     private void Update()
 
     {
-        if (Manager.Instance.player != null && isJuggling == false)
+        if (Manager.Instance.player != null && startJuggling == true)
         {
             StartJuggling();
         }
@@ -124,11 +125,13 @@ public class PlayerJuggle : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            Sound.instance.SoundRandomized(Sound.instance.throwUpWeapon, .6f);
             ThrowUpWeaponInHand();
         }
     }
     private void StartJuggling()
     {
+        startJuggling = false;
         isJuggling = true;
         UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
         //StartCoroutine(nameof(ThrowUpAllWeaponsWithSameInterval), (timeInBetweenEachThrowAtTheStart) / (weaponsCurrentlyInJuggleLoop.Count - 1));
@@ -139,6 +142,7 @@ public class PlayerJuggle : MonoBehaviour
     {
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
+            Sound.instance.SoundRandomized(Sound.instance.throwUpWeapon, .6f);
             weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
             weaponsCurrentlyInJuggleLoop[i].curveDeltaTime = (weaponsCurrentlyInJuggleLoop.Count - (i * 0.1f)) * 0.1f;
             //StartCoroutine(nameof(DistributeWeaponsInAir));
@@ -183,6 +187,7 @@ public class PlayerJuggle : MonoBehaviour
 
         return timeBetweenWeapons;
     }
+
     //Throws up all weapons except the last one
     IEnumerator ThrowUpAllWeaponsWithSameInterval(float waitTimeBetweenEachThrow)
     {
@@ -207,13 +212,12 @@ public class PlayerJuggle : MonoBehaviour
         //soundeffect:
         WeaponType weaponEnum = newWeapon.weaponBase.weaponType;
         int enumIndex = (int)weaponEnum;
-        Sound.instance.SoundSet(Sound.instance.equipWeaponWeapontypeEnumOrder, enumIndex);
+        Sound.instance.SoundSet(Sound.instance.catchWeaponWeapontypeEnumOrder, enumIndex, 0.6f);
     }
 
     public void ThrowUpWeaponInHand()
     {
         if (weaponInHand == null) { return; }
-
 
         //SpeedUpUpcomingWeapon();
         weaponInHand.ThrowUpWeapon();
@@ -296,9 +300,21 @@ public class PlayerJuggle : MonoBehaviour
         GameObject newGun = Instantiate(weaponPrefabToAdd, weaponHolderPoint.position, Quaternion.identity, weaponHolderPoint);
         weaponsCurrentlyInJuggleLoop.Add(newGun.GetComponentInChildren<WeaponJuggleMovement>());
 
-        ThrowUpWeaponInHand();
+        if (isJuggling)
+        {
+            ThrowUpWeaponInHand();
+        }
+        
         weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();
         weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
         //weaponQueueUI.InstantiateTheWeapons();
+    }
+
+    public void Ultimate()
+    {
+        //throw up all weapons in new curve
+        weaponsCurrentlyInJuggleLoop.Clear();
+        AddWeaponToLoop(popcornGun);
+        isJuggling = false;
     }
 }

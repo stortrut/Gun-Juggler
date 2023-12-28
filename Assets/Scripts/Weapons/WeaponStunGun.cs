@@ -19,7 +19,7 @@ public class WeaponStunGun : WeaponBase
 
     private void Start()
     {
-        weaponType = WeaponType.StunGun;
+        weaponType = WeaponType.TrumpetGun;
 
         SetWeaponUpgradeData();
     }

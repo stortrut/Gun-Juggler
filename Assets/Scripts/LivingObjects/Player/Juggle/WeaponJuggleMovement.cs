@@ -49,7 +49,6 @@ public class WeaponJuggleMovement : MonoBehaviour
         //gunThrowAnimationCurveY.keys = keys1; // This is copying the keys back into the AnimationCurve's array.
     }
 
-
     public void SetCurveSpeedModifier(float newCurveSpeedModifier)
     {
        // curveSpeedModifier = newCurveSpeedModifier;
@@ -59,10 +58,6 @@ public class WeaponJuggleMovement : MonoBehaviour
     {
        // curveSpeedModifier = 1f;
     }
-
-
-
-
 
     void Update()
     {
@@ -136,15 +131,10 @@ public class WeaponJuggleMovement : MonoBehaviour
         //}
     }
 
-
-
-
-
     public float GetTimeUntilWeaponIsInHand()
     {
         return (endOfCurveXTimeValue - curveDeltaTime * curveSpeedModifier) % endOfCurveXTimeValue;
     }
-
 
     public void ThrowUpWeapon()
     {
@@ -157,6 +147,7 @@ public class WeaponJuggleMovement : MonoBehaviour
         curveDeltaTime = 0;
         beingThrown = true;
         weaponBase.UnEquipWeapon();
+        Sound.instance.SoundRandomized(Sound.instance.throwUpWeapon,.1f);
     }
 
     public void DropWeapon()

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum WeaponType
 {
-    SmallGun,
-    ShotGun,
-    StunGun,
-    Heart
+    WaterPistol,
+    ConfettiGun,
+    TrumpetGun,
+    Heart,
+    PopcornGun
 }
 public class WeaponBase : MonoBehaviour
 {
@@ -39,14 +40,12 @@ public class WeaponBase : MonoBehaviour
     private Aim aim;
     private GameObject player;  
     public PlayerUseWeaponInputStopper canUseWeaponChecker;
-  
 
     private void Start()
     {
         canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
         player = Manager.Instance.player.gameObject;
     }
-
 
     private void Update()
     {
@@ -143,9 +142,6 @@ public class WeaponBase : MonoBehaviour
     {
         fireCooldown = currentWeaponBaseUpgradeData.weaponCooldown;
         _waitUntilThrowTime = currentWeaponBaseUpgradeData.waitUntilThrowTime;
-        //Debug.Log("This is: " + weaponType);
-        //Debug.Log("The upgrade data waitthrow time wwas " + currentWeaponBaseUpgradeData.waitUntilThrowTime);
-        //Debug.Log("Set waitTIme to " + _waitUntilThrowTime);
     }
 
 

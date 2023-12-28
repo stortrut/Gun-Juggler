@@ -43,7 +43,7 @@ public class CheckpointPartial : MonoBehaviour
             switch (test[i])
             {
                 case 'C':
-                   var weaponToAdd = WeaponType.SmallGun;
+                   var weaponToAdd = WeaponType.WaterPistol;
                     //Do stuff
                     break;
                 case 'S':

@@ -100,7 +100,7 @@ public class UpgradeCombo : MonoBehaviour
     {
         if (hudPopcornFill != null)
         {
-            hudPopcornFill.PopcornAmountUpgrade();
+            //hudPopcornFill.PopcornAmountUpgrade();
         }
         if( _bulletHit != 0 && _bulletHit % 5 == 0 ) 
         {
@@ -120,7 +120,7 @@ public class UpgradeCombo : MonoBehaviour
     {
         if (hudPopcornFill != null)
         {
-            hudPopcornFill.ReducePopcornAmount();
+            //hudPopcornFill.ReducePopcornAmount();
         }
         comboText.text = "COMBO LOST";
         comboText.enabled = true;

@@ -21,10 +21,11 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] audienceBoo;
 
     [Header("Weapon")]
-    [SerializeField] public AudioClip[] equipWeaponWeapontypeEnumOrder;
+    [SerializeField] public AudioClip[] catchWeaponWeapontypeEnumOrder;
     [SerializeField] public AudioClip[] weaponShootingEnumOrder;
     [SerializeField] public AudioClip[][] weaponShootingRandomInEnumOrder;
     [SerializeField] public AudioClip[] equipNewWeapon;
+    [SerializeField] public AudioClip[] throwUpWeapon;
 
     [Header("Enemy")]
     [SerializeField] public AudioClip[] enemyTakingDamageEnumOrder;
@@ -92,15 +93,15 @@ public class Sound : MonoBehaviour
     }
 
 
-    public void SoundRandomized(AudioClip[] currentsound)  //float volume)
+    public void SoundRandomized(AudioClip[] currentsound, float volume = 1)  //float volume)
     {
         GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         AudioSource audioSource = instantiatedEffectAudioSourceGameObject.GetComponent<AudioSource>();
 
         int i = Random.Range(0, currentsound.Length);
         audioSource.clip = currentsound[i];
+        audioSource.volume = volume;
         //input volume * set effect volume value from slider
-        audioSource.clip = currentsound[i];
 
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
         int o = 0;
@@ -131,7 +132,7 @@ public class Sound : MonoBehaviour
         }
     }
 
-    public void SoundSet(AudioClip[] currentsound, int orderedNumber)
+    public void SoundSet(AudioClip[] currentsound, int orderedNumber, float volume = 1)
     {
         GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         AudioSource audioSource = instantiatedEffectAudioSourceGameObject.GetComponent<AudioSource>();
@@ -139,7 +140,8 @@ public class Sound : MonoBehaviour
         int i = orderedNumber;
         audioSource.clip = currentsound[i];
         //input volume * set effect volume value from slider
-        audioSource.clip = currentsound[i];
+        audioSource.volume = volume;
+
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
 
         int o = 0;
