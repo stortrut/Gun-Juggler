@@ -1,14 +1,15 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class StunZone : MonoBehaviour
 {
     [Header("SoundWave - Drag in")]
-    public SpriteRenderer soundWave;
-    [SerializeField] Animator soundWaveAnimator;
+    public List<SpriteRenderer> soundWave;
+    [SerializeField] List<Animator> soundWaveAnimator;
 
     [Header("Stun values for different Objects")]
     [SerializeField] private float stunnedBalloon;
@@ -48,23 +49,28 @@ public class StunZone : MonoBehaviour
     }
     public void SoundWave()
     {
-        polygonCollider.enabled = true;
-        soundWave.enabled = true;
-        soundWaveAnimator.SetBool("Wave", true);
-        StartCoroutine(nameof(Wait));
+        foreach (var wave in soundWave)
+        {
+            polygonCollider.enabled = true;
+            wave.enabled = true;
+            var anim = soundWaveAnimator.ElementAt(soundWave.IndexOf(wave));
+            anim.SetBool("Wave", true);
+            StartCoroutine(Wait(wave, anim));
+           
+        }
     }
-    private IEnumerator Wait()
+    private IEnumerator Wait(SpriteRenderer sprite , Animator anim)
     {
         yield return new WaitForSeconds(0.1f);
-        soundWaveAnimator.SetBool("Wave", false);
+        anim.SetBool("Wave", false);
 
         yield return new WaitForSeconds(0.7f);
-        soundWave.enabled = false;
+        sprite.enabled = false;
         polygonCollider.enabled = false;
     }
     private void Stun(Collider2D obj, float time)
     {
-      
+
 
         var stunnable = obj.GetComponents<IStunnable>();
         var damageable = obj.GetComponent<Health>();
@@ -88,10 +94,10 @@ public class StunZone : MonoBehaviour
         {
             yield return new WaitForSeconds(timeStunned);
             stunnable.isStunnable = false;
-            
+
 
         }
-        IEnumerator  DelayPop()
+        IEnumerator DelayPop()
         {
             yield return new WaitForSeconds(0);
             damageable.ApplyDamage(1);

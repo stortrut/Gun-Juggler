@@ -38,6 +38,7 @@ public class WeaponBase : MonoBehaviour
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
 
     private Aim aim;
+    private bool aimAgain;
     private GameObject player;  
     public PlayerUseWeaponInputStopper canUseWeaponChecker;
 
@@ -67,7 +68,7 @@ public class WeaponBase : MonoBehaviour
                 canUseWeaponChecker = player.GetComponentInChildren<PlayerUseWeaponInputStopper>();
             }
 
-            if (!weaponJuggleMovement.beingThrown)
+            if (!weaponJuggleMovement.beingThrown && aimAgain == true)
             {
                 AdjustAim();
             }
@@ -91,6 +92,7 @@ public class WeaponBase : MonoBehaviour
 
         //Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
         weaponEquipped = true;
+        aimAgain = true;
     }
 
     public void UnEquipWeapon()
@@ -100,6 +102,7 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
+        aimAgain = false;
         int enumIndex = (int)weaponType;
         Sound.instance.SoundSet(Sound.instance.weaponShootingEnumOrder, enumIndex);
 
