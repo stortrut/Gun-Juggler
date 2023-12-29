@@ -43,7 +43,6 @@ public class Whip : MonoBehaviour, IStunnable
         }
         else
         {
-            Debug.Log("stop whippng");
             whip.Kill();
         }
 

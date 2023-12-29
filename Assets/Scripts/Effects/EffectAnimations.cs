@@ -30,8 +30,8 @@ public class EffectAnimations : MonoBehaviour
 
     public void BalloonPop(Vector2 pos)
     {
-        Instantiate(balloonPop, pos, Quaternion.identity);
-        Destroy(balloonPop, 1);
+        var pop = Instantiate(balloonPop, pos, Quaternion.identity);
+        Destroy(pop, 1);
     }
 
     public void EnemyPoof(Vector2 pos)
@@ -42,18 +42,18 @@ public class EffectAnimations : MonoBehaviour
 
     public void ConfettiExplosion(Vector2 pos)
     {
-        Instantiate(confettiExplosion, pos, Quaternion.identity);
-        Destroy(confettiExplosion,1);
+       var explosion = Instantiate(confettiExplosion, pos, Quaternion.identity);
+        Destroy(explosion,1);
     }
 
     public void PieExplosionGround(Vector2 pos)
     {
-        Instantiate(pieExplosionGround, pos, Quaternion.identity);
-        Destroy(pieExplosionGround, 1);
+       var pieExplode = Instantiate(pieExplosionGround, pos, Quaternion.identity);
+        Destroy(pieExplode, 1);
     }
     public void PieExplosion(Vector2 pos)
     {
-        Instantiate(pieExplosion, pos, Quaternion.identity);
-        Destroy(pieExplosion, 1);
+        var pieExplode = Instantiate(pieExplosion, pos, Quaternion.identity);
+        Destroy(pieExplode, 1);
     }
 }
