@@ -11,7 +11,7 @@ public class GlueToTarget : MonoBehaviour
     void Update()
     {
         //
-        this.transform.position = new Vector3(target.position.x + offset.x, valueY + offset.y, target.position.z + offset.x);
+        transform.position = new Vector3(target.position.x + offset.x, target.position.y + offset.y, target.position.z + offset.x);
         
     }
 }

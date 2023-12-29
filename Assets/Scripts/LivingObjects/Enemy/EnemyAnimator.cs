@@ -47,6 +47,11 @@ public class EnemyAnimator : MonoBehaviour
         enemyAnimator.SetBool(ATTACK1, true);
         Invoke(nameof(TurnOffAttackBool), .1f);
     }
+    public void CannonAttack()  
+    {
+        enemyAnimator.SetBool(ATTACK1, true);
+        Invoke(nameof(TurnOffAttackBool), 0.5f);
+    }
 
     private void TurnOffAttackBool()
     {

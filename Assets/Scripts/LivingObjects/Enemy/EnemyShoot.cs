@@ -12,7 +12,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     protected GameObject player;
     [HideInInspector] EnemyHealth enemyHealth;
     //[HideInInspector] EnemyAnimator enemyAnimator;
-    EnemyAnimator animator;
+   EnemyAnimator animator;
     [HideInInspector] private Vector3 aim;
     [HideInInspector] public bool isStunned = false;
     private float nextShootTime = 0;

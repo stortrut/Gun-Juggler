@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WaveManager: MonoBehaviour
+public class WaveManager : MonoBehaviour
 {
 
 
@@ -34,6 +35,8 @@ public class WaveManager: MonoBehaviour
     private GameObject PieClown;
     private GameObject CannonClown;
 
+    [SerializeField] private EnemyAnimator clownAnimator;
+    [SerializeField] private EnemyAnimator cannonAnimator;
     // List containing all the enemies for the current wave
     [SerializeField] private List<EnemyType> presetAirWave;
     [SerializeField] private List<EnemyType> presetGroundWave;
@@ -44,19 +47,39 @@ public class WaveManager: MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             Spawn();
+            StartCoroutine(PoofAir());
         }
     }
-    private void MoveSpawnPoints()
+    public IEnumerator PoofAir()
     {
-       
+        yield return new WaitForSeconds(1);
+        cannonAnimator.CannonAttack();
+        yield return new WaitForSeconds(0.5f);
+        var i = 0;
+        foreach (var enemy in airSpawnSpots)
+        {
+            var a = airSpawnSpots.ElementAt(i);
+            var pos = new Vector2(a.position.x, a.position.y);
+            EffectAnimations.instance.EnemyPoof(pos);
+            i++;
+        }
+    }
+    public IEnumerator DelayedSpawn()
+    {
+        
+        clownAnimator.CannonAttack();
+        yield return new WaitForSeconds(2);
+        
+        SpawnEnemies(presetAirWave, airSpawnSpots);
+        SpawnEnemies(presetGroundWave, groundSpawnSpots);
     }
     private void Spawn()
     {
-        SpawnEnemies(presetAirWave, airSpawnSpots);
-        SpawnEnemies(presetGroundWave, groundSpawnSpots);   
+        StartCoroutine(DelayedSpawn());
+
     }
 
 
@@ -64,13 +87,13 @@ public class WaveManager: MonoBehaviour
     {
         var i = 0;
         foreach (var enemy in enemies)
-        { 
-          currentEnemy = enemy;
-        var index = (int)currentEnemy;
+        {
+            currentEnemy = enemy;
+            var index = (int)currentEnemy;
 
 
-        var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index),spawn.ElementAt(i));
-        i++;
+            var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
+            i++;
         }
     }
 

@@ -78,14 +78,20 @@ public class BalloonHealth : Health
         {   
             currentColor = green;
         }
+        if(this != null)
+        { 
         EffectAnimations.instance.BalloonPop(transform.position);
         transform.localScale *= 0.9f;
         spriteRenderer.color = currentColor;
+        }
     }
     public override void Death()
     {
+        if(this != null)
+        { 
         EffectAnimations.instance.BalloonPop(transform.position);
         Destroy(gameObject);
+        }
     }
   
   
