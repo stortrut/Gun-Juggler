@@ -20,23 +20,23 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //theText.color = new Color(144/255f, 27/255f, 32/255f);  //Or however you do your color
+        theText.color = new Color(144/255f, 27/255f, 32/255f);  //Or however you do your color
 
         float scale = startScale + scaleAmount;
-        transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
+        //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
         selectionSpotlight.SetActive(true);
         Sound.instance.SoundSet(Sound.instance.spotLightOn, 0, .9f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //theText.color = new Color(0.168f, 0.098f, 0.070f); //Or however you do your color
+        theText.color = new Color(0.168f, 0.098f, 0.070f); //Or however you do your color
 
         selectionSpotlight.SetActive(false);
         Sound.instance.SoundSet(Sound.instance.spotLightOn, 1, .4f);
 
         float scale = startScale;
-        transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
+        //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
     }
 }
     
