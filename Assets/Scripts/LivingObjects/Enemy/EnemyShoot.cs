@@ -17,6 +17,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
     [HideInInspector] public bool isStunned = false;
     private float nextShootTime = 0;
     private bool once = true;
+    private int fast = 0;
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
 
     void Awake()
@@ -88,8 +89,9 @@ public class EnemyShoot : MonoBehaviour, IStunnable
         {
             yield return new WaitForSeconds(0.5f);
         }
-
-        GameObject weaponBullet = Instantiate(enemyBullet, new Vector3(spawnBulletPos.position.x -1, spawnBulletPos.position.y, 1), spawnBulletPos.rotation);
+        
+        GameObject weaponBullet = Instantiate(enemyBullet, new Vector3(spawnBulletPos.position.x -1, spawnBulletPos.position.y, fast%2), spawnBulletPos.rotation);
+        fast++;
         //Sound.Instance.EnemyNotTakingDamage();
         Rigidbody2D bulletRigidbody = weaponBullet.GetComponent<Rigidbody2D>();
         var bullet = weaponBullet.GetComponentInChildren<IAim>();

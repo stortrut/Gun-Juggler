@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 142018786235468963}
   - component: {fileID: 3929664219202476605}
   - component: {fileID: 6174166287268276425}
+  - component: {fileID: 6112245436304482450}
   m_Layer: 7
   m_Name: dummy_logic
   m_TagString: Enemy
@@ -81,7 +82,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989953743101133587}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -192,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 5041925452692554111}
+  stunAnimator: {fileID: 0}
   dummySpriterenderer: {fileID: 7948756031538113735}
   enemyType: 0
 --- !u!114 &142018786235468963
@@ -272,6 +274,19 @@ MonoBehaviour:
   knockbackSpeedX: 0
   knockbackSpeedY: 0
   knockbackDuration: 0
+--- !u!114 &6112245436304482450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989953743101133587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6c801a7bf43ad47a12134ace0d8fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  air: 0
 --- !u!1001 &2261205046269613778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,7 +418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2257064974086843443, guid: 5586e8b92249a0f469e34d80fa03baff, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7727592315050878318, guid: 5586e8b92249a0f469e34d80fa03baff, type: 3}
       propertyPath: m_Name

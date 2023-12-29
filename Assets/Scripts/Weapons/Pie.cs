@@ -5,8 +5,12 @@ using UnityEngine.Jobs;
 
 public class Pie : EnemyBullet
 {
+    [Header("slow pie")]
     [SerializeField] private float speed;
     [SerializeField] private float heightMultiplier = 1;
+    [Header("fast pie")]
+    [SerializeField] private float fastSpeed;
+    [SerializeField] private float fastHeightMultiplier = 1;
     private readonly float height = 900;
     private float timeThrow;
     private float timeHit;
@@ -18,19 +22,32 @@ public class Pie : EnemyBullet
     void Start()
     {
         AimCorrection();
-        if (transform.position.z == 1) { }
+
 
         startRotation = transform.rotation;
         startPosition = transform.position;
-        transform.position = new Vector3 (startPosition.x, startPosition.y, 0);
-        rb2D.velocity = direction * speed;
-        rb2D.AddForce(Vector2.up * height * heightMultiplier);
+      
+        //fast pie
+        if (transform.position.z == 1)
+        {
+            transform.position = new Vector3(startPosition.x, startPosition.y, 0);
+            rb2D.velocity = direction * fastSpeed;
+            rb2D.AddForce(Vector2.up * height * fastHeightMultiplier);
+        }
+        else
+        {
+            rb2D.velocity = direction * speed;
+            rb2D.AddForce(Vector2.up * height * heightMultiplier);
+        }
+
+       
+
     }
 
     void Update()
     {
-        if (startPosition.z == 1)
-        {
+        //if (startPosition.z == 1)
+        //{
 
 
             //if((int)transform.position.x < (int)(startPosition.x - aim.x/2))
@@ -64,7 +81,7 @@ public class Pie : EnemyBullet
                 rb2D.AddForce(Vector2.up * height);
             }
         }
-    }
+   // }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -90,18 +107,18 @@ public class Pie : EnemyBullet
             //Sound.Instance.SoundSet(Sound.Instance.pieSplash, 0);
             Destroy(gameObject);
         }
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-            EffectAnimations.instance.PieExplosion(positionForEffectAnimationScript);
-            Sound.instance.SoundSet(Sound.instance.pieSplash, 0);
-            Destroy(gameObject);
-        }
+        //if (other.gameObject.CompareTag("Enemy"))
+        //{
+        //    Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        //    EffectAnimations.instance.PieExplosion(positionForEffectAnimationScript);
+        //    Sound.instance.SoundSet(Sound.instance.pieSplash, 0);
+        //    Destroy(gameObject);
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
     }
     public void AimCorrection()
     {

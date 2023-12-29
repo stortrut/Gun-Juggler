@@ -57,3 +57,4 @@ public class EffectAnimations : MonoBehaviour
         Destroy(pieExplode, 1);
     }
 }
+    
