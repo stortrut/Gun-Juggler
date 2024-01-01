@@ -8,11 +8,9 @@ using DG.Tweening;
 public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] GameObject selectionSpotlight;
-
     public TextMeshProUGUI theText;
     float startScale;
     [SerializeField] float scaleAmount = .2f;
-
     private void Start()
     {
         startScale = transform.localScale.x;
@@ -26,6 +24,7 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
         selectionSpotlight.SetActive(true);
         Sound.instance.SoundSet(Sound.instance.spotLightOn, 0, .9f);
+        transform.DOScale(1.4f, 0.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -34,10 +33,11 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         selectionSpotlight.SetActive(false);
         Sound.instance.SoundSet(Sound.instance.spotLightOn, 1, .4f);
-
+        transform.DOScale(startScale, 0.5f);
         float scale = startScale;
         //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
     }
+   
 }
     
 
