@@ -2,38 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+using DG.Tweening;
+using System.Linq;
 
 public class FollowPlayer : MonoBehaviour
 {
     [HideInInspector] private PlayerMovement playerToFollow;
     private GameObject player;
     [SerializeField] Vector3 offset = new Vector3(5, 2, -100);
+    [SerializeField] private Vector3[] path;
     Vector3 targetPos = Vector3.zero;
     public bool yAxisLocked = false;
     float followPosSave;
     bool axisShouldStayUnlockedTilItReachesTarget = false;
     [SerializeField] private float smoothnessFactor = 3;
+    bool lockOn;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerMovement>()?.gameObject;
-        if(player != null )
-        {
-            playerToFollow = player.GetComponent<PlayerMovement>();
-
-        }
         smoothnessFactor = 9;
         //transform.parent = null;
     }
 
     private void Start()
     {
+        transform.DOPath(path, 10, PathType.Linear,PathMode.Sidescroller2D).OnComplete(PathBack);
+    }
+    private void PathBack()
+    {
+        Vector3[] pathBack = path.Reverse().ToArray();
+        transform.DOPath(pathBack, 3, PathType.Linear, PathMode.Sidescroller2D).OnComplete(FindPlayer);
+    }
+    private void FindPlayer()
+    {
+        playerToFollow = player.GetComponent<PlayerMovement>();
+        lockOn = true;
     }
 
     private void Update()
     {
-        if(player == null) { return; }
+        if(lockOn == false || player == null) { return; }
         if (!playerToFollow.onGround)
         {
             if (axisShouldStayUnlockedTilItReachesTarget)
@@ -57,7 +66,7 @@ public class FollowPlayer : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (player == null) { return; }
+        if (lockOn == false || player == null) { return; }
         targetPos.x = playerToFollow.transform.position.x + offset.x;
         if (!yAxisLocked)
         {
