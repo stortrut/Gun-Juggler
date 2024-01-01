@@ -37,6 +37,7 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] private EnemyAnimator clownAnimator;
     [SerializeField] private EnemyAnimator cannonAnimator;
+    [SerializeField] private HoolaHoop hoolaHoop;  
     // List containing all the enemies for the current wave
     [SerializeField] private List<EnemyType> presetAirWave;
     [SerializeField] private List<EnemyType> presetGroundWave;
@@ -78,6 +79,7 @@ public class WaveManager : MonoBehaviour
     }
     private void Spawn()
     {
+        hoolaHoop.StartWave();
         StartCoroutine(DelayedSpawn());
 
     }
