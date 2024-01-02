@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private float savedVelocityForBounce;
     private bool shouldAddBounceForce = false;
 
+    [SerializeField] GameObject artHolder;
+
     [HideInInspector] public bool onGround = false;
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
@@ -129,7 +131,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        var veloX = rigidBody.velocity.x;
+        var veloX = horizontalInput;
         timeActive += Time.deltaTime*2;
         timeActive = Mathf.Clamp(timeActive, 0, 4);
         legs.SetSpeed(veloX);
@@ -199,18 +201,12 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     public void RotateFromSpeed(float veloX)
     {
-        if (isJumping)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, .3f);
-        }
-        else
-        {
-
-            transform.rotation = Quaternion.Lerp(transform.rotation, (Quaternion.Euler(0, 0, -veloX * (5 - timeActive))), .2f); //(Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
-        }
+        //Quaternion currentRotation = new Quaternion(0, 0, 0, 0);
+        //Vector3 eulerAngles = new Vector3(0,0,artHolder.transform.rotation.z);
+        //currentRotation.eulerAngles = eulerAngles;
+        //artHolder.transform.rotation = Quaternion.Lerp(currentRotation, (Quaternion.Euler(0, 0, -veloX * 30*(5 - timeActive))), .5f); //(Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
     }
-
-
+    
     private void Jump()
     {
         if (onGround && Input.GetButtonDown("Jump"))
