@@ -28,7 +28,8 @@ public class WeaponConfettiGun : Gun
             UpgradeCombo.Instance.comboTween.Kill();
             StartCoroutine(UpgradeCombo.Instance.Combo());
         }
-        AudienceSatisfaction.Instance.AudienceHappiness(5);
+        if(AudienceSatisfaction.Instance != null)
+            AudienceSatisfaction.Instance.AudienceHappiness(5);
         //bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
         //StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));

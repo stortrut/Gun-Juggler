@@ -49,6 +49,8 @@ public class StunZone : MonoBehaviour
     }
     public void SoundWave()
     {
+        if(soundWave.Count() == 0) { return; }
+
         foreach (var wave in soundWave)
         {
             polygonCollider.enabled = true;

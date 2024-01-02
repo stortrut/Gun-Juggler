@@ -102,10 +102,13 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
-        Score.Instance.bulletsShot++;
+        if(Score.Instance != null)
+            Score.Instance.bulletsShot++;
         aimAgain = false;
         int enumIndex = (int)weaponType;
-        Sound.instance.SoundSet(Sound.instance.weaponShootingEnumOrder, enumIndex);
+
+        if (Score.Instance != null)
+            Sound.instance.SoundSet(Sound.instance.weaponShootingEnumOrder, enumIndex);
 
         StartCoroutine(nameof(ThrowUpWeaponWhenWeaponHasBeenFullyUsed), this.GetComponent<WeaponBase>());
     }

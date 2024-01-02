@@ -31,9 +31,9 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     private void Start()
     {
-       
         playerJuggle = FindObjectOfType<PlayerJuggle>();
-        playerJuggle.weaponsCurrentlyInJuggleLoop.Add(this);
+        playerJuggle.AddExistingWeaponToLoop(this.transform.parent.gameObject);
+
         Keyframe[] allCurveYKeys = gunThrowAnimationCurveY.keys;
         Keyframe[] allCurveXKeys = gunThrowAnimationCurveX.keys;
 
@@ -138,6 +138,7 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void ThrowUpWeapon()
     {
+        if (beingDropped) { return; }
         if (playerJuggle == null) { /*Debug.Log("ERROR..");*/ playerJuggle = FindObjectOfType<PlayerJuggle>(); }
         if (playerJuggle == null) { Debug.Log("BIG ERROR!");}
 
@@ -152,7 +153,7 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     public void DropWeapon()
     {
-        //playerJuggle.RemoveWeaponFromLoop()
+        playerJuggle.RemoveWeaponFromLoop(gameObject.GetComponent<WeaponJuggleMovement>());
 
         beingDropped = true;
         beingThrown = false;
@@ -161,5 +162,10 @@ public class WeaponJuggleMovement : MonoBehaviour
         weaponBase.rb2D.bodyType = RigidbodyType2D.Dynamic;
         weaponBase.rb2D.AddForce(new Vector2(-10, 10));
         weaponBase.weaponCollider.isTrigger = false;
+
+        weaponBase.UnEquipWeapon();
+
+        transform.parent.SetParent(playerJuggle.transform.parent.parent);
+        Destroy(transform.parent.gameObject, 5f);
     }
 }

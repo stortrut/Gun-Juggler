@@ -17,9 +17,7 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-      
             Instance = this;
-
     }
 
     private void Start()
@@ -43,6 +41,9 @@ public class Manager : MonoBehaviour
     {
         if (player == null)
             player = FindObjectOfType<PlayerJuggle>()?.gameObject;
+
+        if(player == null) { Debug.Log("DOES STILL NOT FIND PLAYER ERROR!"); }
+
 
         if (Input.GetKeyDown(KeyCode.N))
         {

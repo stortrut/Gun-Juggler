@@ -10,7 +10,7 @@ public class ClickableWeapon : MonoBehaviour , IPointerDownHandler
     {
         Debug.Log("YOU CLICKED");
         //PlayerJuggle.Instance.StopJuggling();
-        PlayerJuggle.Instance.AddWeaponToLoop(weapon);
+        PlayerJuggle.Instance.CreateAndAddWeaponToLoop(weapon);
     }
 
     // Update is called once per frame
