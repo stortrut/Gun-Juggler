@@ -10,7 +10,7 @@ public class HudPopcornFill : MonoBehaviour
     private Image popcornFillTop;
     private UpgradeCombo comboScript;
 
-    private Vector2 popcornFillTopPos = new Vector2(0, 0);
+    public Vector2 popcornFillTopPos = new Vector2(0, 0);
     private Vector2 popcornFillImagePos = new Vector2(0, 0);
 
     [SerializeField] private float popcornFillAmountPerUpgrade = 2;
@@ -26,7 +26,7 @@ public class HudPopcornFill : MonoBehaviour
         popcornFillImage = transform.GetChild(0).GetComponent<Image>();
         popcornFillTop = transform.GetChild(1).GetComponent<Image>();
 
-        popcornFillTopPos.y = -9f;
+        popcornFillTopPos.y = 0f;
         popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;
         popcornFillImage.rectTransform.anchoredPosition = popcornFillImagePos;
         popcornFillImage.fillAmount = 0;
@@ -34,14 +34,17 @@ public class HudPopcornFill : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetMouseButtonDown(2))
+        {
+            PopcornAmountUpgrade();
+        }
     }
 
     void FixedUpdate()
     {
-        float clampedYValue = Mathf.Clamp(0, -9, 9);
-        Vector2 popcornFillTopPos = new Vector2(0, clampedYValue);
-        popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;
+        float clampedYValue = Mathf.Clamp(popcornFillTopPos.y, 0, 19);          
+        popcornFillTopPos = new Vector2(0, clampedYValue);
+        popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;          //set filltop to filltopPos
 
         if (comboScript != null)
         {
@@ -55,27 +58,30 @@ public class HudPopcornFill : MonoBehaviour
 
     public void PopcornAmountUpgrade()
     {
-        popcornFillTopPos.y += popcornFillAmountPerUpgrade;       // value = 2, fillamount = 1/ 24/value
+        popcornFillTopPos.y += popcornFillAmountPerUpgrade;      
 
-        popcornFillImage.fillAmount += 1 / (24 / popcornFillAmountPerUpgrade);
+        popcornFillImage.fillAmount += 1 / (19 / popcornFillAmountPerUpgrade);
 
-        if (popcornFillTopPos.y > 9)
+        EffectAnimations.instance.PopcornPopping(popcornFillTopPos);
+
+        if (popcornFillTopPos.y > 19)
         {
+            EffectAnimations.instance.PopcornPoppingUltReady(popcornFillTopPos);
             StartCoroutine(nameof(StartUlt));
             popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
-            popcornFillImage.fillAmount -= 1 / (18 / popcornFillAmountPerUpgrade);
+            popcornFillImage.fillAmount -= 1 / (19 / popcornFillAmountPerUpgrade);
         }
     }
 
     public void ReducePopcornAmount()
     {
-        popcornFillTopPos.y = -9;
+        popcornFillTopPos.y = 0;
         popcornFillImage.fillAmount = 0;
     }
 
-
     public IEnumerator StartUlt()
     {
+        yield break;
         if (ultActive)
             yield break;
 
@@ -94,9 +100,6 @@ public class HudPopcornFill : MonoBehaviour
         if (Time.time >= ultDuration)
             ReducePopcornAmount();
     }
-
-
-
 
 
     // popcorn fillage is based on combo/streak
