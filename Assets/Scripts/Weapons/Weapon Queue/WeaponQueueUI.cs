@@ -10,11 +10,10 @@ public class WeaponQueueUI : MonoBehaviour
     List<GameObject> weaponsInQueueDisplayedOrder = new List<GameObject>();
 
     PlayerJuggle playerJuggleScript;
-    Vector3 startPosArrow = new Vector3(70, 36);
-    float xOffset = 58f;
-    Vector3 arrowStartPos;
+    Vector3 startPosArrow = new Vector3(60, 31);
+    float xOffset = 50f;
 
-    public int i = 0;
+    private int i = 0;
 
     void Awake()
     {
