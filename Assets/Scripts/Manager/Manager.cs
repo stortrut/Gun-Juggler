@@ -61,7 +61,7 @@ public class Manager : MonoBehaviour
     public void ProceedToNextLevel()
     {
         //Debug.Log("Allowed Scene Activation");
-        asyncOperation.allowSceneActivation = true;
+        asyncOperation.allowSceneActivation = true; 
     }
 
     private void SetActiveFalse()
