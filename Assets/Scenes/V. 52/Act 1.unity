@@ -11406,11 +11406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8594925039132907906, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.59
+      value: -30.15
       objectReference: {fileID: 0}
     - target: {fileID: 8594925039132907906, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.69
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: 8646668587023263274, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_Name
@@ -19294,11 +19294,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8594925039132907906, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.47
+      value: -27.89
       objectReference: {fileID: 0}
     - target: {fileID: 8594925039132907906, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34
+      value: 8.13
       objectReference: {fileID: 0}
     - target: {fileID: 8646668587023263274, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_Name
@@ -35925,14 +35925,6 @@ PrefabInstance:
       value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
-      propertyPath: airSpawnSpots.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
-      propertyPath: presetAirWave.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: airSpawnSpots.Array.data[4]
       value: 
       objectReference: {fileID: 1939939141}
@@ -35948,22 +35940,6 @@ PrefabInstance:
       propertyPath: airSpawnSpots.Array.data[7]
       value: 
       objectReference: {fileID: 1939939141}
-    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
-      propertyPath: presetAirWave.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
-      propertyPath: presetAirWave.Array.data[4]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
-      propertyPath: presetAirWave.Array.data[5]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
-      propertyPath: presetAirWave.Array.data[6]
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: presetAirWave.Array.data[7]
       value: 3
@@ -36000,10 +35976,6 @@ PrefabInstance:
       propertyPath: presetAirWave.Array.data[15]
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
-      propertyPath: availableEnemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 5816890073420984019, guid: 35f28fd8a42f28841ae4fe4b8d9f626c, type: 3}
     - target: {fileID: 6017029737940049529, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -36054,11 +36026,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8594925039132907906, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.59
+      value: -28.48
       objectReference: {fileID: 0}
     - target: {fileID: 8594925039132907906, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.69
+      value: 2.49
       objectReference: {fileID: 0}
     - target: {fileID: 8646668587023263274, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_Name
@@ -38855,6 +38827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118708250}
   - component: {fileID: 2118708251}
+  - component: {fileID: 2118708252}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -38896,6 +38869,19 @@ MonoBehaviour:
   pieClownHit: 0
   bulletsShot: 0
   bulletsHit: 0
+--- !u!114 &2118708252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118708249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a222646d08458499d374a12cb034e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audienceSlider: {fileID: 0}
 --- !u!1001 &2127241101
 PrefabInstance:
   m_ObjectHideFlags: 0

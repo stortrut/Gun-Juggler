@@ -39,7 +39,7 @@ public class BalloonHealth : Health
         {
             ApplyDamage(1);
             Score.Instance.bulletsHit++;
-            //AudienceSatisfaction.Instance.AudienceHappiness(1);
+            AudienceSatisfaction.Instance.AudienceHappiness(1);
             Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("HoolaHoop"))

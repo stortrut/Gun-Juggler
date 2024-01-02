@@ -14,8 +14,8 @@ public class BalloonMovement : MonoBehaviour, IStunnable
     [SerializeField] private float tweenLoopDuration;
 
     [HideInInspector] public bool isStunned = false;
-    bool dummy;
-    float startSpeed;
+    public bool dummy;
+    Vector3 startPos;
     public bool isStunnable { get { return isStunned; }
         set 
         {
@@ -31,8 +31,9 @@ public class BalloonMovement : MonoBehaviour, IStunnable
     private Tween movementY;
     void Start()
     {
+        startPos = transform.position;
         movementY = transform.DOMoveY((transform.position.y + tweenHeight), tweenLoopDuration).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.InOutSine);
-        startSpeed = speed;
+        
         rb.velocity = Vector2.left * speed;
     }
     private void Knockback()
@@ -44,10 +45,11 @@ public class BalloonMovement : MonoBehaviour, IStunnable
     {
         if (dummy == true)
         {
-            speed = 20; 
+            transform.DOMove(startPos, 1);
+            
+
         }
-            rb.velocity = Vector2.left*(speed + 1);
-        speed = startSpeed;
+            rb.velocity = Vector2.left * (speed + 1);
     }
     private void OnDestroy()
     {

@@ -75,8 +75,7 @@ public class StunZone : MonoBehaviour
     }
     private void Stun(Collider2D obj, float time)
     {
-
-       
+           
         var stunnable = obj.GetComponents<IStunnable>();
         var damageable = obj.GetComponent<Health>();
 

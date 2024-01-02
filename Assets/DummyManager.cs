@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,7 @@ public class DummyManager : MonoBehaviour
 
 
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
+            spawnedEnemy.GetComponent<DummyObjects>().spot = i;
             i++;
         }
     }
@@ -53,7 +55,18 @@ public class DummyManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         SpawnEnemies(enemies, spawn);
     }
-
+    public void SpawnSpecificAir()
+    {
+        StartCoroutine(DelayedSpawn(presetAirWave, airSpawnSpots));
+    }
+    public void SpawnSpecificGround(EnemyType enemy)
+    {
+        StartCoroutine(DelayedSpecific(enemy));
+    }
+    private IEnumerator DelayedSpecific()
+    {
+        yield return new WaitForSeconds(0.5f);
+    }
 }
 
 

@@ -46,6 +46,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private List<GameObject> availableEnemies;
     private EnemyType currentEnemy;
     [ReadOnly][SerializeField] private List<Vector3> setShape;
+    [SerializeField] private List<GameObject> curtain;
     [SerializeField] private int shapeSize;
 
     private void Update()
@@ -92,6 +93,10 @@ public class WaveManager : MonoBehaviour
     {
         hoolaHoop.StartWave();
         StartCoroutine(DelayedSpawn());
+        foreach (var bla in curtain)
+        {
+            bla.SetActive(true);
+        }
 
     }
 

@@ -9,6 +9,8 @@ public class Respawn : MonoBehaviour
     public UnityEvent respawnAir;
     public UnityEvent respawnGround;
     public UnityEvent waveStart;
+    public UnityEvent <EnemyType> boo;
+    [ReadOnly] public int spotNumber;
 
     private void Start ()
     {
