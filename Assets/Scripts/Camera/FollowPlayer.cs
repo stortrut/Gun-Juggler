@@ -42,6 +42,11 @@ public class FollowPlayer : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            transform.DOKill();
+            FindPlayer();
+        }
         if(lockOn == false || player == null) { return; }
         if (!playerToFollow.onGround)
         {

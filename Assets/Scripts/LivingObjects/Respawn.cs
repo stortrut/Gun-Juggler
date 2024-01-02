@@ -8,7 +8,7 @@ public class Respawn : MonoBehaviour
     public static Respawn Instance;
     public UnityEvent respawnAir;
     public UnityEvent respawnGround;
-
+    public UnityEvent waveStart;
 
     private void Start ()
     {

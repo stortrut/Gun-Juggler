@@ -18,4 +18,11 @@ public class HoolaHoop : MonoBehaviour
     {
         enemyAnimator.SetBool(WAVE, false);
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            Respawn.Instance.waveStart.Invoke();
+        }
+    }
 }

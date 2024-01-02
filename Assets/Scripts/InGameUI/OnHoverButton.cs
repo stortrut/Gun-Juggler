@@ -10,7 +10,7 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] GameObject selectionSpotlight;
     public TextMeshProUGUI theText;
     float startScale;
-    [SerializeField] float scaleAmount = .2f;
+    [SerializeField] float scaleAmount = 1.2f;
     private void Start()
     {
         startScale = transform.localScale.x;
@@ -20,11 +20,11 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         theText.color = new Color(144/255f, 27/255f, 32/255f);  //Or however you do your color
 
-        float scale = startScale + scaleAmount;
+       
         //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
         selectionSpotlight.SetActive(true);
         Sound.instance.SoundSet(Sound.instance.spotLightOn, 0, .9f);
-        transform.DOScale(1.4f, 0.5f);
+        transform.DOScale(scaleAmount, 0.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
