@@ -1425,10 +1425,10 @@ RectTransform:
   - {fileID: 3325926135548812318}
   m_Father: {fileID: 2754085821721279470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -106.666664}
-  m_SizeDelta: {x: 300, y: 26.666666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &20984274198662332
 CanvasRenderer:
@@ -1883,10 +1883,10 @@ RectTransform:
   - {fileID: 2151687191799471119}
   m_Father: {fileID: 2754085821721279470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -59.999996}
-  m_SizeDelta: {x: 300, y: 26.666666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5318048425465349692
 CanvasRenderer:
@@ -3380,10 +3380,10 @@ RectTransform:
   - {fileID: 7446745083826370672}
   m_Father: {fileID: 2754085821721279470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -13.333332}
-  m_SizeDelta: {x: 300, y: 26.666666}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2935038633765885102
 CanvasRenderer:
@@ -4603,7 +4603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 57.899994, y: 9.7211}
+  m_AnchoredPosition: {x: 58.299988, y: 14.700012}
   m_SizeDelta: {x: 32.9399, y: 21.6789}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &7203919249783787624
@@ -4624,7 +4624,6 @@ MonoBehaviour:
   - {fileID: 2155658520115584194, guid: 05c3af2631055874c81e733ddafa6955, type: 3}
   - {fileID: 4136725640296180558, guid: 4e17b2afd3f56c149928d56dd87d9a9a, type: 3}
   arrow: {fileID: 433717334348366399}
-  i: 0
 --- !u!114 &6864141314770670842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17713,10 +17712,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2765088281790121091}
     m_Modifications:
-    - target: {fileID: 136547995425157484, guid: 6e802d376a7b0fc4eb3b9aa6b17d73e8, type: 3}
-      propertyPath: m_RaycastPadding.w
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5655025701890532836, guid: 6e802d376a7b0fc4eb3b9aa6b17d73e8, type: 3}
       propertyPath: m_Name
       value: arrow image
@@ -17752,18 +17747,6 @@ PrefabInstance:
     - target: {fileID: 6193400416036575492, guid: 6e802d376a7b0fc4eb3b9aa6b17d73e8, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6193400416036575492, guid: 6e802d376a7b0fc4eb3b9aa6b17d73e8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6193400416036575492, guid: 6e802d376a7b0fc4eb3b9aa6b17d73e8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6193400416036575492, guid: 6e802d376a7b0fc4eb3b9aa6b17d73e8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6193400416036575492, guid: 6e802d376a7b0fc4eb3b9aa6b17d73e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17842,14 +17825,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 187433491710434421}
     m_Modifications:
-    - target: {fileID: 2543982799061780268, guid: 3fc213e387e86bf4892ce2ea94e52a64, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 3945157028155549384}
-    - target: {fileID: 2543982799061780268, guid: 3fc213e387e86bf4892ce2ea94e52a64, type: 3}
-      propertyPath: fadeToBlack
-      value: 
-      objectReference: {fileID: 3037065113659917147}
     - target: {fileID: 3378201824122728290, guid: 3fc213e387e86bf4892ce2ea94e52a64, type: 3}
       propertyPath: m_Name
       value: game_manager
@@ -17894,14 +17869,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7432625017360144661, guid: 3fc213e387e86bf4892ce2ea94e52a64, type: 3}
-      propertyPath: popcornPopping
-      value: 
-      objectReference: {fileID: 7489949661883025469, guid: 827d2f365486535479da71eec292ac5c, type: 3}
-    - target: {fileID: 7432625017360144661, guid: 3fc213e387e86bf4892ce2ea94e52a64, type: 3}
-      propertyPath: ultReadyPopcornPopcorn
-      value: 
-      objectReference: {fileID: 8408666542537107563, guid: 38242035d4f7d034e978ddd945db3f63, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18091,11 +18058,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7333899329830292027, guid: 6eb16e625c84e8847918fec3560dacff, type: 3}
   m_PrefabInstance: {fileID: 8131445966367202916}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3037065113659917147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6556504002760531263, guid: 6eb16e625c84e8847918fec3560dacff, type: 3}
-  m_PrefabInstance: {fileID: 8131445966367202916}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8510580284328973430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18108,58 +18070,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: sound_manager
       objectReference: {fileID: 0}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: shootingSounds.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: equipWeaponSounds.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: shootingSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: cd7cd765d37072042a2b88075ce6ef7c, type: 3}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: shootingSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 88f1a9be77dfb324aa4b862517ce9854, type: 3}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: catchingWeaponSounds.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: equipWeaponSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: a4c9f51442f4c17409f96ad081ab26d5, type: 3}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: shootingSoundsStunGun.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: catchingWeaponSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 22fafc962d7405a46a02caff08c28298, type: 3}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: catchingWeaponSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: dd400ae11be4f504dad72adb8ac28043, type: 3}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: catchingWeaponSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: dd400ae11be4f504dad72adb8ac28043, type: 3}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: notCatchingWeaponSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: shootingSoundsStunGun.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4e36ee774474e2b469bc948155d3bdd5, type: 3}
-    - target: {fileID: 7675071201918211907, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
-      propertyPath: notCatchingWeaponSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0fd6886b6b3195144a2f49a5ee29d3e1, type: 3}
     - target: {fileID: 9062798862245151969, guid: 45238742fa0aa2a4db1f07843f222f53, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

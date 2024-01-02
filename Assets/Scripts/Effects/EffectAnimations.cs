@@ -39,6 +39,13 @@ public class EffectAnimations : MonoBehaviour
         Destroy(pop, 1);
     }
 
+    public void BalloonPop(Vector2 pos, Vector3 scale)
+    {
+        var pop = Instantiate(balloonPop, pos, Quaternion.identity);
+        pop.transform.localScale = scale;
+        Destroy(pop, 1);
+    }
+
     public void EnemyPoof(Vector2 pos)
     {
         GameObject pof = Instantiate(enemyPoof, pos, Quaternion.identity);
