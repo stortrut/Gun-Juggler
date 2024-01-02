@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.Splines.SplineInstantiate;
 
 public class DummyManager : MonoBehaviour
 {
@@ -57,15 +58,23 @@ public class DummyManager : MonoBehaviour
     }
     public void SpawnSpecificAir()
     {
-        StartCoroutine(DelayedSpawn(presetAirWave, airSpawnSpots));
+        
     }
     public void SpawnSpecificGround(EnemyType enemy)
     {
         StartCoroutine(DelayedSpecific(enemy));
     }
-    private IEnumerator DelayedSpecific()
+    private IEnumerator DelayedSpecific(EnemyType enemy)
     {
+        
         yield return new WaitForSeconds(0.5f);
+        //if(air == true)
+        {
+            var index = (int)enemy;
+            var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), airSpawnSpots.ElementAt(Respawn.Instance.spotNumber));
+        }
+            
+
     }
 }
 

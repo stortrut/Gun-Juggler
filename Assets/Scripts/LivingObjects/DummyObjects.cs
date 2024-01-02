@@ -16,7 +16,11 @@ public class DummyObjects : MonoBehaviour
                 Respawn.Instance.respawnAir.Invoke();
             }
             else
+            {
                 Respawn.Instance.respawnGround.Invoke();
+
+            }
+              
             StartCoroutine(SpotNumber());
             Respawn.Instance.boo.Invoke(enemyType); 
         }
