@@ -60,7 +60,7 @@ public class DummyManager : MonoBehaviour
     {
         
     }
-    public void SpawnSpecificGround(EnemyType enemy)
+    public void SpawnSpecific(EnemyType enemy)
     {
         StartCoroutine(DelayedSpecific(enemy));
     }
@@ -68,10 +68,18 @@ public class DummyManager : MonoBehaviour
     {
         
         yield return new WaitForSeconds(0.5f);
-        //if(air == true)
+        if(Respawn.Instance.air == true)
         {
             var index = (int)enemy;
+            Debug.Log("index" + index);
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), airSpawnSpots.ElementAt(Respawn.Instance.spotNumber));
+            spawnedEnemy.GetComponent<DummyObjects>().spot = Respawn.Instance.spotNumber; 
+        }
+        else
+        {
+            var index = (int)enemy;
+            var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), groundSpawnSpots.ElementAt(Respawn.Instance.spotNumber));
+            spawnedEnemy.GetComponent<DummyObjects>().spot = Respawn.Instance.spotNumber;
         }
             
 

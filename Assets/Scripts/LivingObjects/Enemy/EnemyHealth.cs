@@ -148,6 +148,7 @@ public class EnemyHealth : Health
         EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
         Sound.instance.SoundSet(Sound.instance.poof, 0);
         Destroy(gameObject);
+        
     }
 
     void ClownDeath()
@@ -157,6 +158,7 @@ public class EnemyHealth : Health
         EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
         Sound.instance.SoundSet(Sound.instance.poof, 0);
         Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
     

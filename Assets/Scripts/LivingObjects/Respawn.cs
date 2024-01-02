@@ -11,10 +11,20 @@ public class Respawn : MonoBehaviour
     public UnityEvent waveStart;
     public UnityEvent <EnemyType> boo;
     [ReadOnly] public int spotNumber;
+    [ReadOnly] public bool air;
 
     private void Start ()
     {
         Instance = this;
+    }
+    public void Spot(int spot)
+    {
+        StartCoroutine(SpotNumber(spot));
+    }
+    public IEnumerator SpotNumber(int spot)
+    {
+        yield return new WaitForSeconds(0.4f);
+        Respawn.Instance.spotNumber = spot;
     }
 }
 

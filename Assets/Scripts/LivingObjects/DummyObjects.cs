@@ -13,21 +13,17 @@ public class DummyObjects : MonoBehaviour
         {
             if (air)
             {
-                Respawn.Instance.respawnAir.Invoke();
+                //Respawn.Instance.respawnAir.Invoke();
+                Respawn.Instance.air = true;
             }
             else
             {
-                Respawn.Instance.respawnGround.Invoke();
-
+                //Respawn.Instance.respawnGround.Invoke();
+                Respawn.Instance.air = false;
             }
-              
-            StartCoroutine(SpotNumber());
+            Respawn.Instance.Spot(spot);
             Respawn.Instance.boo.Invoke(enemyType); 
         }
     }
-    private IEnumerator SpotNumber()
-    {
-        yield return new WaitForSeconds(0.4f);
-        Respawn.Instance.spotNumber = spot;
-    }
+ 
 }

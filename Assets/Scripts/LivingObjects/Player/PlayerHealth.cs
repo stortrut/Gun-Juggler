@@ -35,8 +35,8 @@ public class PlayerHealth : Health
 
                 //Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
                 Destroy(other.gameObject);
-
-                gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
+                AudienceSatisfaction.Instance.AudienceHappiness(-10);
+                //gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
                 //Debug.Log(health);
             
             }
@@ -62,7 +62,7 @@ public class PlayerHealth : Health
             ApplyDamage(1);
             StartCoroutine(nameof(FlashRed));
             StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
-            gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
+           // gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
         }
         if (health <= 0)
         {
