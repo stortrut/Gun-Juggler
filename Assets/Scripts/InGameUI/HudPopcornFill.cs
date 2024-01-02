@@ -26,28 +26,30 @@ public class HudPopcornFill : MonoBehaviour
         popcornFillImage = transform.GetChild(0).GetComponent<Image>();
         popcornFillTop = transform.GetChild(1).GetComponent<Image>();
 
-        popcornFillTopPos.y = -12f;
+        popcornFillTopPos.y = -9f;
         popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;
         popcornFillImage.rectTransform.anchoredPosition = popcornFillImagePos;
         popcornFillImage.fillAmount = 0;
     }
 
+    private void Update()
+    {
+        
+    }
+
     void FixedUpdate()
     {
+        float clampedYValue = Mathf.Clamp(0, -9, 9);
+        Vector2 popcornFillTopPos = new Vector2(0, clampedYValue);
+        popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;
+
         if (comboScript != null)
         {
-            float clampedYValue = Mathf.Clamp(popcornFillImagePos.y, -12, 12);
-            Vector2 popcornTopPos = new Vector2(clampedYValue, 0);
-            popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;
-
-
             //if ((popcornFillTopPos.y >= 12) || (popcornFillTopPos.y <= -12))
             //{
             //    return;
             //}
             //popcornFillTop.rectTransform.anchoredPosition = popcornTopPos;
-
-
         }
     }
 
@@ -57,17 +59,17 @@ public class HudPopcornFill : MonoBehaviour
 
         popcornFillImage.fillAmount += 1 / (24 / popcornFillAmountPerUpgrade);
 
-        if (popcornFillTopPos.y > 12)
+        if (popcornFillTopPos.y > 9)
         {
             StartCoroutine(nameof(StartUlt));
             popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
-            popcornFillImage.fillAmount -= 1 / (24 / popcornFillAmountPerUpgrade);
+            popcornFillImage.fillAmount -= 1 / (18 / popcornFillAmountPerUpgrade);
         }
     }
 
     public void ReducePopcornAmount()
     {
-        popcornFillTopPos.y = -12;
+        popcornFillTopPos.y = -9;
         popcornFillImage.fillAmount = 0;
     }
 
