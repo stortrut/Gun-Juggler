@@ -13,11 +13,11 @@ public class AudienceSatisfaction : MonoBehaviour
     void Start()
     {
         Instance = this;
-        audienceSlider.value = 20;  
+       // audienceSlider.value = 20;  
     }
     public void AudienceHappiness(float happiness)
     {
-        audienceSlider.value += happiness;
+        //audienceSlider.value += happiness;
     }
  
 }

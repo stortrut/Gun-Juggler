@@ -6,11 +6,32 @@ public class WeaponPickup : MonoBehaviour
 {
     [SerializeField] GameObject weaponPrefabToPickup;
 
+    [SerializeField] bool replaceAllPlayerWeaponsWithThisWeapon;
+    [SerializeField] bool andAlsoAddAWeaponIfPlayerHasNone;
+
+
+    [System.Obsolete]
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerJuggle>().AddWeaponToLoop(weaponPrefabToPickup);
+            if (replaceAllPlayerWeaponsWithThisWeapon)
+            {
+                if (andAlsoAddAWeaponIfPlayerHasNone && collision.GetComponent<PlayerJuggle>().weaponsCurrentlyInJuggleLoop.Count < 1)
+                {
+                    collision.GetComponent<PlayerJuggle>().CreateAndAddWeaponToLoop(weaponPrefabToPickup);
+                }
+                else
+                {
+                    collision.GetComponent<PlayerJuggle>().ReplaceAllWeaponsWithAnotherWeapon(weaponPrefabToPickup);
+                }
+            }
+            else
+            {
+                //Debug.Log("Picked Up Weapon");
+                collision.GetComponent<PlayerJuggle>().CreateAndAddWeaponToLoop(weaponPrefabToPickup);
+            }
+
 
             Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon);
 

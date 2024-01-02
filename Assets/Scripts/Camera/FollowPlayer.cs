@@ -7,9 +7,10 @@ using System.Linq;
 
 public class FollowPlayer : MonoBehaviour
 {
+    public static FollowPlayer Instance;
     [HideInInspector] private PlayerMovement playerToFollow;
     private GameObject player;
-    [SerializeField] Vector3 offset = new Vector3(5, 2, -100);
+    [SerializeField] public Vector3 offset = new Vector3(5, 2, -100);
     [SerializeField] private Vector3[] path;
     Vector3 targetPos = Vector3.zero;
     public bool yAxisLocked = false;
@@ -20,6 +21,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         player = FindObjectOfType<PlayerMovement>()?.gameObject;
         smoothnessFactor = 9;
         //transform.parent = null;
