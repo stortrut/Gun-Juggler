@@ -6,7 +6,8 @@ using UnityEngine;
 public class HoolaHoop : MonoBehaviour
 {
     [SerializeField] Animator enemyAnimator;
-
+    [SerializeField] WaveManager waveManager;
+    bool on = false;
     const string WAVE = "wave";
 
 
@@ -20,9 +21,13 @@ public class HoolaHoop : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        
+        if(other.gameObject.CompareTag("Player") && on == false)
         {
-            Respawn.Instance.waveStart.Invoke();
+            waveManager.StartWave();
+            FollowPlayer.Instance.offset.z = -75;
+            on = true;
+           // Respawn.Instance.waveStart.Invoke();
         }
     }
 }
