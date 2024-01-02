@@ -19,7 +19,6 @@ public class WeaponPickup : MonoBehaviour
             {
                 if (andAlsoAddAWeaponIfPlayerHasNone && collision.GetComponent<PlayerJuggle>().weaponsCurrentlyInJuggleLoop.Count < 1)
                 {
-                    Debug.Log("Player Had No Weapons So we added one because the option was chosen");
                     collision.GetComponent<PlayerJuggle>().CreateAndAddWeaponToLoop(weaponPrefabToPickup);
                 }
                 else

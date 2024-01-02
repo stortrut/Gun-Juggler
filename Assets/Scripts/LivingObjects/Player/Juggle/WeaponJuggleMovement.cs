@@ -159,13 +159,13 @@ public class WeaponJuggleMovement : MonoBehaviour
         beingThrown = false;
         curveDeltaTime = 0;
 
+        transform.parent.SetParent(playerJuggle.transform.parent.parent);
         weaponBase.rb2D.bodyType = RigidbodyType2D.Dynamic;
-        weaponBase.rb2D.AddForce(new Vector2(-10, 10));
+        weaponBase.rb2D.AddForce(new Vector2(-200, 200));
         weaponBase.weaponCollider.isTrigger = false;
 
         weaponBase.UnEquipWeapon();
 
-        transform.parent.SetParent(playerJuggle.transform.parent.parent);
         Destroy(transform.parent.gameObject, 5f);
     }
 }
