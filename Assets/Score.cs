@@ -21,9 +21,7 @@ public class Score : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
-
         else
             Destroy(gameObject);
     }
@@ -45,5 +43,10 @@ public class Score : MonoBehaviour
         {
             pieClownHit++;
         }
+    }
+    public void DisplayScore()
+    {
+        scoreText.text = "blablabla";
+
     }
 }
