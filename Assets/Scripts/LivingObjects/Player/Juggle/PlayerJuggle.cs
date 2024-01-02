@@ -30,6 +30,8 @@ public class PlayerJuggle : MonoBehaviour
         {
             Instance = this;
         }
+        else
+            Destroy(gameObject);
     }
 
     public void SpeedUpUpcomingWeapon()
