@@ -27,12 +27,12 @@ public class FollowPlayer : MonoBehaviour
 
     private void Start()
     {
-        transform.DOPath(path, 10, PathType.Linear,PathMode.Sidescroller2D).OnComplete(PathBack);
+        transform.DOPath(path, 10, PathType.CatmullRom,PathMode.Sidescroller2D).OnComplete(PathBack);
     }
     private void PathBack()
     {
         Vector3[] pathBack = path.Reverse().ToArray();
-        transform.DOPath(pathBack, 3, PathType.Linear, PathMode.Sidescroller2D).OnComplete(FindPlayer);
+        transform.DOPath(pathBack, 1, PathType.CatmullRom, PathMode.Sidescroller2D).OnComplete(FindPlayer);
     }
     private void FindPlayer()
     {
