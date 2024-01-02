@@ -7,7 +7,6 @@ public enum WeaponType
     WaterPistol,
     ConfettiGun,
     TrumpetGun,
-    Heart,
     PopcornGun
 }
 public class WeaponBase : MonoBehaviour

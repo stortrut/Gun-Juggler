@@ -44,6 +44,8 @@ public class WeaponQueueUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        weaponsInQueueDisplayedOrder.Clear();
+
         for (int i = 0; i < playerJuggleScript.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.weaponsCurrentlyInJuggleLoop[i];
@@ -51,10 +53,21 @@ public class WeaponQueueUI : MonoBehaviour
             int enumIndex = (int)weaponEnum;
 
             GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], Vector3.zero, Quaternion.identity);
+            //SetAndStretchToParentSize(instantiatedPrefab.GetComponent<RectTransform>(), gameObject.GetComponent<RectTransform>());
             instantiatedPrefab.transform.SetParent(transform, true);
             weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);
         }
     }
+
+    //public void SetAndStretchToParentSize(RectTransform rectTransform, RectTransform parentRectTransform)
+    //{
+    //    rectTransform.anchoredPosition = parentRectTransform.position;
+    //    rectTransform.anchorMin = new Vector2(1, 0);
+    //    rectTransform.anchorMax = new Vector2(0, 1);
+    //    rectTransform.pivot = new Vector2(0.5f, 0.5f);
+    //    rectTransform.sizeDelta = parentRectTransform.rect.size;
+    //    rectTransform.transform.SetParent(parentRectTransform);
+    //}
 
     public void ReplaceQueueElements(int heartIndex)
     {
