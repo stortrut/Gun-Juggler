@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -12,7 +13,6 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] private LegAnimationHandler legs;
     [SerializeField] private Health playerHealth;
 
-
     [Header("Walk")]
     [SerializeField] private float acceleration = 10f;
     [SerializeField] public float speed = 7f;
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     [ReadOnly] public float horizontalInput;
     [HideInInspector] public float velocityToAddX;
+    [HideInInspector] private Vector3 velocityToAdd;
 
     [ReadOnly] public bool isFacingRight;
     
@@ -36,9 +37,11 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [ReadOnly] public bool isJumping = false;
 
     private float calculatedGroundCheckLenght;
+    private float landingBounceAmount;
+    private float savedVelocityForBounce;
+    private bool shouldAddBounceForce = false;
 
     [HideInInspector] public bool onGround = false;
-   
     
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
   
@@ -62,12 +65,17 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         Walk();
         Jump();
 
-        if (onGround)
+        //if (onGround)
+        //{
+        //    //followPlayer.AllowCameraFollowInYAxis();
+        //    isJumping = false;
+        //}
+        if (actuallyTouchingGround)
         {
-            //followPlayer.AllowCameraFollowInYAxis();
             isJumping = false;
         }
     }
+
     private void FixedUpdate()
     {
         onGround = CheckIfTouchingGround();
@@ -92,10 +100,29 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             actuallyTouchingGround = true;
+            if (shouldAddBounceForce)
+            {
+                Debug.Log("savedvelocity: " + savedVelocityForBounce);
+                AddBounceForce();
+            }
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            actuallyTouchingGround = false;
+        }
+    }
+
+    private void AddBounceForce()
+    {
+        rigidBody.AddForce(new Vector2(0, 15 * savedVelocityForBounce));
+        shouldAddBounceForce = false;
     }
 
     private void Walk()
@@ -118,6 +145,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
             legs.PauseAnimation(true);
             timeActive = 0;
         }
+
         else
         {
             if (veloX > 0)
@@ -155,20 +183,34 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         //        bodyAnimator.speed = 1;
         //    }
         //}
-        if(onGround)
+
+        if (onGround)
         {
-        rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);
+            rigidBody.velocity = new Vector2(velocityToAddX, rigidBody.velocity.y);
+        }
+
+        else
+        {
+            rigidBody.velocity = new Vector2(velocityToAddX*.8f, rigidBody.velocity.y);
+        }
+
+        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -7, 7), rigidBody.velocity.y);
+    }
+
+    public void RotateFromSpeed(float veloX)
+    {
+        if (isJumping)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, .3f);
         }
         else
         {
-            rigidBody.velocity += new Vector2(velocityToAddX * Time.deltaTime * 4, 0);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, (Quaternion.Euler(0, 0, -veloX * (5 - timeActive))), .2f); //(Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
         }
-        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -7, 7),rigidBody.velocity.y);
     }
-    public void RotateFromSpeed(float veloX)
-    {
-        transform.rotation = Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
-    }
+
+
     private void Jump()
     {
         if (onGround && Input.GetButtonDown("Jump"))
@@ -176,6 +218,14 @@ public class PlayerMovement : MonoBehaviour, IStunnable
             float jumpVelocity = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
             isJumping = true;
+
+            Invoke(nameof(ShouldAddBounceForceTrue), .2f);
+            savedVelocityForBounce = rigidBody.velocity.y;
         }
+    }
+
+    void ShouldAddBounceForceTrue()
+    {
+        shouldAddBounceForce = true;
     }
 }
