@@ -28,12 +28,12 @@ public class DummyManager : MonoBehaviour
     }
     public void SpawnAir()
     {
-        SpawnEnemies(presetAirWave, airSpawnSpots);
-        
+        StartCoroutine(DelayedSpawn(presetAirWave, airSpawnSpots));
     }
     public void SpawnGround()
     {
-        SpawnEnemies(presetGroundWave, groundSpawnSpots);
+        
+        StartCoroutine(DelayedSpawn(presetGroundWave, groundSpawnSpots));
     }
         private void SpawnEnemies(List<EnemyType> enemies, List<Transform> spawn)
     {
@@ -47,6 +47,11 @@ public class DummyManager : MonoBehaviour
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
             i++;
         }
+    }
+    private IEnumerator DelayedSpawn(List<EnemyType> enemies, List<Transform> spawn)
+    {
+        yield return new WaitForSeconds(0.5f);
+        SpawnEnemies(enemies, spawn);
     }
 
 }

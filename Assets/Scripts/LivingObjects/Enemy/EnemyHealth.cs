@@ -45,7 +45,7 @@ public class EnemyHealth : Health
             UpgradeCombo.Instance.comboTween.Kill();
             Destroy(other.gameObject);
             ColorChange(1);
-            Invoke(nameof(ColorChange), 0.3f);
+           // Invoke(nameof(ColorChange), 0.3f);
 
             if (hasProtection == false)
             {
@@ -97,13 +97,13 @@ public class EnemyHealth : Health
     {
         if (colorischanged == false)
         {
-            spriteRenderer.color = Color.red;
+            spriteRenderer.color = new Color (1,1,1, (health/maxHealth) * (health / maxHealth));
         }
         if (hasProtection == true)
         {
-            spriteRenderer.color = Color.blue;
+            spriteRenderer.color = Color.blue;  
         }
-        colorischanged = true;
+        //colorischanged = true;
     }
     private void ColorChange()
     {
