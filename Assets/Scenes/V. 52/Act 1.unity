@@ -32638,6 +32638,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5825308708960234033, guid: feb0fd72207f9534485d7bee0aeb9f96, type: 3}
   m_PrefabInstance: {fileID: 17670796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2118708249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118708250}
+  - component: {fileID: 2118708251}
+  m_Layer: 0
+  m_Name: Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118708250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118708249}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -165.3163, y: 31.640318, z: 0.01899004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118708251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118708249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa62fbe729713c4ba4662ae834e5d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  elephantHit: 0
+  giraffeHit: 0
+  monkeyHit: 0
+  pieClownHit: 0
+  bulletsShot: 0
+  bulletsHit: 0
 --- !u!1001 &2127241101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36729,9 +36780,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundWave:
-  - {fileID: 0}
+  - {fileID: 6647554139193102018}
   soundWaveAnimator:
-  - {fileID: 0}
+  - {fileID: 4008310218835648133}
   stunnedBalloon: 1
   stunnedEnemy: 3
 --- !u!212 &3993330869543952574
@@ -44654,3 +44705,4 @@ SceneRoots:
   - {fileID: 1695524473}
   - {fileID: 558484807}
   - {fileID: 1920716161}
+  - {fileID: 2118708250}

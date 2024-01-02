@@ -38,9 +38,8 @@ public class BalloonHealth : Health
         if (other.gameObject.CompareTag("Bullet"))
         {
             ApplyDamage(1);
-            AudienceSatisfaction.Instance.AudienceHappiness(1);
             Score.Instance.bulletsHit++;
-            Score.Instance.WhatEnemyHit(enemyType);
+            //AudienceSatisfaction.Instance.AudienceHappiness(1);
             Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("HoolaHoop"))
@@ -52,6 +51,7 @@ public class BalloonHealth : Health
     }
     public override void ApplyDamage(float damage)
     {
+        Score.Instance.WhatEnemyHit(enemyType);
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
         PopLayer();

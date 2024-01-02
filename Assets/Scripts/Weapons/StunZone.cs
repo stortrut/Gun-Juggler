@@ -63,15 +63,17 @@ public class StunZone : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         anim.SetBool("Wave", false);
+        SoundWaveOff();
 
         yield return new WaitForSeconds(0.7f);
         sprite.enabled = false;
         polygonCollider.enabled = false;
+        
     }
     private void Stun(Collider2D obj, float time)
     {
 
-
+       
         var stunnable = obj.GetComponents<IStunnable>();
         var damageable = obj.GetComponent<Health>();
 
@@ -101,6 +103,13 @@ public class StunZone : MonoBehaviour
         {
             yield return new WaitForSeconds(0);
             damageable.ApplyDamage(1);
+        }
+    }
+    private void SoundWaveOff()
+    {
+        if(hit == true)
+        {
+            Score.Instance.bulletsHit++;
         }
     }
 }
