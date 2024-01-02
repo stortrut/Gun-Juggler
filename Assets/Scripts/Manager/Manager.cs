@@ -52,7 +52,7 @@ public class Manager : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadSceneAsyncProcess());
+        StartCoroutine(LoadSceneAsyncProcess());            
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         fadeToBlack.SetActive(true);
         Invoke(nameof(SetActiveFalse), 7);

@@ -11,6 +11,7 @@ public class BalloonHealth : Health
   
     [Header("Drag in")]
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private EnemyType enemyType;
 
     private void Start()
     {
@@ -38,6 +39,8 @@ public class BalloonHealth : Health
         {
             ApplyDamage(1);
             AudienceSatisfaction.Instance.AudienceHappiness(1);
+            Score.Instance.bulletsHit++;
+            Score.Instance.WhatEnemyHit(enemyType);
             Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("HoolaHoop"))

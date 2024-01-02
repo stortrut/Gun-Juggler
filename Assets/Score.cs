@@ -7,12 +7,12 @@ public class Score : MonoBehaviour
 {
     public static Score Instance { get; private set; }
     public TextMeshProUGUI scoreText;
-    private int elephantHit;
-    private int giraffeHit;
-    private int monkeyHit;
-    private int pieClownHit;
-    private int bulletsShot;
-    private int bulletsHit; 
+    [ReadOnly] public int elephantHit;
+    [ReadOnly] public int giraffeHit;
+    [ReadOnly] public int monkeyHit;
+    [ReadOnly] public int pieClownHit;
+    [ReadOnly] public int bulletsShot;
+    [ReadOnly] public int bulletsHit; 
     
     
 
@@ -27,5 +27,23 @@ public class Score : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
+    public void WhatEnemyHit(EnemyType enemy)
+    {
+        if(enemy == EnemyType.Elephant)
+        {
+            elephantHit++;
+        }
+        if (enemy == EnemyType.Giraffe)
+        {
+            giraffeHit++;
+        }
+        if (enemy == EnemyType.Monkey)
+        {
+            monkeyHit++;
+        }
+        if (enemy == EnemyType.PieClown)
+        {
+            pieClownHit++;
+        }
+    }
 }
