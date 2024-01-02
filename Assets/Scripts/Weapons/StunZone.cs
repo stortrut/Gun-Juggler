@@ -66,10 +66,11 @@ public class StunZone : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         anim.SetBool("Wave", false);
         SoundWaveOff();
-
-        yield return new WaitForSeconds(0.7f);
-        sprite.enabled = false;
+        yield return new WaitForSeconds(0.4f);
         polygonCollider.enabled = false;
+        yield return new WaitForSeconds(0.3f);
+        sprite.enabled = false;
+        
         
     }
     private void Stun(Collider2D obj, float time)
