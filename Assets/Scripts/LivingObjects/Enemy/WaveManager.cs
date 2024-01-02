@@ -157,7 +157,7 @@ public class WaveManager : MonoBehaviour
                         Debug.Log(f + "after X value");
                     }
                     else if(even == false) 
-                    {
+                    { 
                         yValue += numberOnLine;
                     }
                     even ^= true;
