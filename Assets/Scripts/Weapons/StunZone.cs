@@ -43,8 +43,8 @@ public class StunZone : MonoBehaviour
         }
         if (hit == true)
         {
-            UpgradeCombo.Instance.hitSinceShot = true;
-            UpgradeCombo.Instance.comboTween.Kill();
+            //UpgradeCombo.Instance.hitSinceShot = true;
+            //UpgradeCombo.Instance.comboTween.Kill();
         }
     }
     public void SoundWave()

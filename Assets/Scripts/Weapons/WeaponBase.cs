@@ -102,6 +102,7 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
+        Score.Instance.bulletsShot++;
         aimAgain = false;
         int enumIndex = (int)weaponType;
         Sound.instance.SoundSet(Sound.instance.weaponShootingEnumOrder, enumIndex);
