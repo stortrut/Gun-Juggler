@@ -132,7 +132,6 @@ public class WaveManager : MonoBehaviour
     }
     private void Spawn()
     {
-        hoolaHoop.StartWave();
         StartCoroutine(DelayedSpawn());
         foreach (var bla in curtain)
         {

@@ -52,7 +52,9 @@ public class FollowPlayer : MonoBehaviour
     private void FindPlayer()
     {
         playerToFollow = player.GetComponent<PlayerMovement>();
-        lockOn = true;
+        var vector = playerToFollow.transform.position + offset;
+        StartCoroutine(SmoothCamera(200, vector));  
+        //lockOn = true;
 
         if (!useOffsetUnderneathThis) ;
             //offset = new Vector3(5, 5.75f, 31.7999992f);
@@ -109,4 +111,20 @@ public class FollowPlayer : MonoBehaviour
         //transform.position = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
         //transform.position = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
     }
+    public IEnumerator SmoothCamera(float p, Vector3 vector)
+    {
+        var startpos = transform.position;
+        for (float i = 0; i < p; i++) 
+        {
+            yield return new WaitForSeconds(p/20000);
+            transform.position = Vector3.Lerp(startpos, vector, (i+1)/p);
+            Debug.Log("cameraPos " + transform.position);
+            Debug.Log("SLOWLYCAMERA "+ i);
+        }
+        lockOn = true;
+
+       
+        
+    }
+
 }
