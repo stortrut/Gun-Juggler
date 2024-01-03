@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3711507111127822552}
   - component: {fileID: 2939687135213298414}
   - component: {fileID: -6055048033844398865}
-  - component: {fileID: 8439358771223675345}
   - component: {fileID: 6844402742414502077}
+  - component: {fileID: 5170025716601963353}
+  - component: {fileID: 7040259109628066055}
   m_Layer: 7
   m_Name: balloon_logic
   m_TagString: EnemyNonTargetable
@@ -89,21 +90,6 @@ CircleCollider2D:
   m_Offset: {x: -0.5123713, y: 0.015510559}
   serializedVersion: 2
   m_Radius: 0.49172235
---- !u!114 &8439358771223675345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8031808563312221336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87ae851dbffd5bd48987c20857970c9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 1
-  protection: {fileID: 0}
 --- !u!50 &6844402742414502077
 Rigidbody2D:
   serializedVersion: 4
@@ -131,6 +117,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5170025716601963353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031808563312221336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df38a4754647c6f4dbbedc0745ff1861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  health: 4
+  isDead: 0
+  spriteRenderer: {fileID: 339481949180048853}
+  enemyType: 5
+--- !u!114 &7040259109628066055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031808563312221336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ae851dbffd5bd48987c20857970c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6519009867326716586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,6 +154,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3711507111127822552}
     m_Modifications:
+    - target: {fileID: 4511848090760535096, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511848090760535096, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511848090760535096, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4511848090760535096, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.52202535
@@ -179,27 +206,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4511848090760535096, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6652098840026591915, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
       propertyPath: m_Name
       value: balloon_art
       objectReference: {fileID: 0}
     - target: {fileID: 6831461352722059135, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6831461352722059135, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
       propertyPath: m_SortingOrder
-      value: 43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6831461352722059135, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
       propertyPath: m_SortingLayerID
       value: 1869175581
       objectReference: {fileID: 0}
+    - target: {fileID: 6831461352722059135, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+--- !u!212 &339481949180048853 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6831461352722059135, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}
+  m_PrefabInstance: {fileID: 6519009867326716586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7270323827950233234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4511848090760535096, guid: 2093191a0f8d63240a06cb8d84e1315c, type: 3}

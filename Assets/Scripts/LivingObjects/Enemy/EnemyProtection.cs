@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProtection : MonoBehaviour
+public class EnemyProtection : Health
 {
     [SerializeField] private GameObject Protection;
     public int numberOfProtection = 1;
@@ -11,10 +11,11 @@ public class EnemyProtection : MonoBehaviour
     public HealthUI healthImage;
     public List<GameObject> protectingItems;
     private GameObject currentProtection;
+    [ReadOnly] public int totalProtection;
     
     public void Start()
     {
-        
+        totalProtection = numberOfProtection + numberOfProtection2;
            
             
         for (int i = 100; i < 100 + numberOfProtection; i++) 
@@ -31,27 +32,29 @@ public class EnemyProtection : MonoBehaviour
         { 
             // health = GetComponent<Health>();
              //healthImage.ColorChange(Color.blue);    
-             //health.hasProtection = true;
+             base.hasProtection = true;
 
         }
         else
         {
             if(health != null)
             { 
-            health.hasProtection = false;
+                
             }
         }
     }
     public void RemoveProtection(int amount)
     {
-        numberOfProtection -= amount;
+        totalProtection -= amount;
         //int randomIndex = Random.Range(0, protectingItems.Count);
         //protectingItems.RemoveAt(randomIndex);
-        if (numberOfProtection==0)//protectingItems.Count==0)
+        if (totalProtection == 0)//protectingItems.Count==0)
         {
+            base.Death();
+            Destroy(gameObject);
             //health.oneShot = true;
-                //health.hasProtection = false;
-                //healthImage.ColorChange(Color.yellow);
+            //health.hasProtection = false;
+            //healthImage.ColorChange(Color.yellow);
         }
     }
 }
