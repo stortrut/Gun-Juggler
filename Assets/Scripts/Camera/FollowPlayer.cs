@@ -49,6 +49,7 @@ public class FollowPlayer : MonoBehaviour
     {
         playerToFollow = player.GetComponent<PlayerMovement>();
         lockOn = true;
+        offset = new Vector3(5, 5.75f, 31.7999992f);
     }
 
     private void Update()
