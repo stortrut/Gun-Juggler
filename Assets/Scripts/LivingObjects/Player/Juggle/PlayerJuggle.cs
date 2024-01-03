@@ -130,11 +130,9 @@ public class PlayerJuggle : MonoBehaviour
 
                     if (idOfWeaponBeforeThisWeapon != -1)
                     {
-                        Debug.Log("This weapon element id is: " + i + ". And the one in front has the element id of " + idOfWeaponBeforeThisWeapon);
 
                         if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon) < 2)
                         {
-                            Debug.Log("SLOWING DOWN WEAPON");
 
                             if(weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier > 0)
                                 weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier -= 1.2f * Time.deltaTime;
@@ -291,7 +289,6 @@ public class PlayerJuggle : MonoBehaviour
                         {
                             if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped)
                             {
-                                Debug.Log("ALL THE WAY");
 
                                 leastFarLoopTime = weaponsCurrentlyInJuggleLoop[i].curveDeltaTime;
                                 weaponIdToReturn = i;
