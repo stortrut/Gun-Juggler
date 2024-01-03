@@ -457,9 +457,9 @@ public class PlayerJuggle : MonoBehaviour
 
         //weaponsCurrentlyInJuggleLoop.Add(newGun.GetComponentInChildren<WeaponJuggleMovement>());
 
-        if (UpgradeCombo.Instance != null)
-            UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
-        else { Debug.Log("ERROR: Did not find the UpgradeCombo Instance"); }
+        //if (UpgradeCombo.Instance != null)
+            //UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
+        //else { Debug.Log("ERROR: Did not find the UpgradeCombo Instance"); }
 
       
         //weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();

@@ -58,6 +58,6 @@ public class TrailCollisions : MonoBehaviour
 
     void OnDestroy()
     {
-        Destroy(myCollider.gameObject);
+       // Destroy();
     }
 }

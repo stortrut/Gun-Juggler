@@ -31,7 +31,7 @@ public class PlayerHealth : Health
             {
                 ApplyDamage(1);
                 StartCoroutine(nameof(FlashRed));
-                CameraShakeRobert.instance.AddTrauma(0.1f);
+                //CameraShakeRobert.instance.AddTrauma(0.1f);
 
                 //Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
                 Destroy(other.gameObject);
