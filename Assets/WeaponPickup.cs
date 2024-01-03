@@ -6,6 +6,9 @@ public class WeaponPickup : MonoBehaviour
 {
     [SerializeField] GameObject weaponPrefabToPickup;
 
+    [SerializeField] bool justDropAllWeapons;
+
+
     [SerializeField] bool replaceAllPlayerWeaponsWithThisWeapon;
     [SerializeField] bool andAlsoAddAWeaponIfPlayerHasNone;
 
@@ -19,6 +22,21 @@ public class WeaponPickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (justDropAllWeapons)
+            {
+                List<WeaponJuggleMovement> oldWeapons = new();
+                for (int i = 0; i < collision.GetComponent<PlayerJuggle>().weaponsCurrentlyInJuggleLoop.Count; i++)
+                {
+                    WeaponJuggleMovement oldWeaponData = collision.GetComponent<PlayerJuggle>().weaponsCurrentlyInJuggleLoop[i];
+                    oldWeapons.Add(oldWeaponData);
+                }
+
+                for (int i = 0; i < oldWeapons.Count - 1; i++)
+                {
+                    oldWeapons[i].DropWeapon();
+                }
+            }
+
             if (replaceAllPlayerWeaponsWithThisWeapon)
             {
                 if (andAlsoAddAWeaponIfPlayerHasNone && collision.GetComponent<PlayerJuggle>().weaponsCurrentlyInJuggleLoop.Count < 1)
