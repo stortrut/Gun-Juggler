@@ -14,6 +14,7 @@ public class EffectAnimations : MonoBehaviour
     [SerializeField] GameObject pieExplosionGround;
     [SerializeField] GameObject pieExplosion;
 
+    [SerializeField] Transform popPosition;
     [SerializeField] Image popcornPopping;
     [SerializeField] Image ultReadyPopcornPopcorn;
 
@@ -83,11 +84,12 @@ public class EffectAnimations : MonoBehaviour
 
     public void PopcornPopping(Vector2 pos)
     {
-        var popping = Instantiate(popcornPopping, pos, Quaternion.identity, popcornHudObject.transform);    //, FindObjectOfType<HudPopcornFill>().transform
+        var popping = Instantiate(popcornPopping, pos, Quaternion.identity);    //, FindObjectOfType<HudPopcornFill>().transform
         //popping.AddComponent(typeof(RectTransform));
-        popping.rectTransform.localScale += new Vector3(100,100);
+        //popping.rectTransform.localScale += new Vector3(100,100);
         //popping.transform.position = new Vector3(20, FindObjectOfType<HudPopcornFill>().popcornFillTopPos.y);
         popping.rectTransform.anchoredPosition = popcornHudObject.popcornFillTopPos;
+        popping.transform.position = popPosition.position;
         Destroy(popping, 1);
     }
 
