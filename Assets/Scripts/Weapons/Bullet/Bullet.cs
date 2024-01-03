@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
 
     public Vector2 direction = Vector2.right;
     [SerializeField] float bulletLifeTime = 15f;
+    public bool piercing;
+    private int pierceTarget = 3;
 
     private void Start()
     {
@@ -52,7 +54,23 @@ public class Bullet : MonoBehaviour
         }
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
-            Destroy(gameObject);
+            Pierce();
+        }
+        else if(other.gameObject.CompareTag("EnemyNonTargetable"))
+        {
+            Debug.Log("Pierce");
+            Pierce();
         }
     }
+        private void Pierce()
+        {
+            pierceTarget--;
+            if (pierceTarget == 0)
+            {
+                Debug.Log("destroyed ur sht");
+                Destroy(gameObject);
+            }
+                
+        }
+    
 }
