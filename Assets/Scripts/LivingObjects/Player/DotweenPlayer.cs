@@ -102,9 +102,9 @@ public class DotweenPlayer : MonoBehaviour
     public IEnumerator SwerveEnumerator()
     {
         hasStarted = true;
-        while (playerMovement.horizontalInput > .2f)
+        while (playerMovement.horizontalInputRaw > .2f)
         transform.DORotate(new Vector3(0, 0, -horizontalInput *3), 0.3f).SetEase(Ease.Linear).OnComplete(() => {   //SetEase(Ease.OutBack)
-            savedInputData = playerMovement.horizontalInput;
+            savedInputData = playerMovement.horizontalInputRaw;
         });
         yield return null;
         hasStarted = false;

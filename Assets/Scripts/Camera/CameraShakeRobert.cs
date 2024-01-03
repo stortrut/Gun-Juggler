@@ -9,7 +9,7 @@ public class CameraShakeRobert : MonoBehaviour
 
     // Based on this video: https://www.youtube.com/watch?v=tu-Qe66AvtY
 
-    [Range(0f, 1f)]
+    [Range(0f, .8f)]
     public float trauma;
 
     [Range(2, 3)]
@@ -105,7 +105,7 @@ public class CameraShakeRobert : MonoBehaviour
         while (trauma > 0)
         {
             Shake();
-            trauma -= Time.deltaTime;
+            trauma -= Time.deltaTime*2;
             yield return null;
         }
 
