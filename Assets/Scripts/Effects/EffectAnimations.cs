@@ -14,11 +14,13 @@ public class EffectAnimations : MonoBehaviour
     [SerializeField] GameObject pieExplosionGround;
     [SerializeField] GameObject pieExplosion;
 
+    [SerializeField] GameObject waterSplash;
+    [SerializeField] GameObject confettiBurst;
+    [SerializeField] GameObject balloonFireExplosion;
+
     [SerializeField] Transform popPosition;
     [SerializeField] Image popcornPopping;
     [SerializeField] Image ultReadyPopcornPopcorn;
-
-    [SerializeField] GameObject soundWave;
 
     private Image particleHolder;
     private HudPopcornFill popcornHudObject;
@@ -107,13 +109,34 @@ public class EffectAnimations : MonoBehaviour
 
     public void StunWave(Vector2 pos, Quaternion rot)
     {
-        var soundWaveObj = Instantiate(soundWave, FindObjectOfType<WeaponStunGun>().transform.position, rot);
+        //var soundWaveObj = Instantiate(soundWave, FindObjectOfType<WeaponStunGun>().transform.position, rot);
         //soundWaveObj.transform.localScale = new Vector3(0.2f, 0.2f);
     }
 
     public void StunWaveUpgraded(Vector2 pos)
     {
         //var soundWaveObj = Instantiate(soundWaveUpgraded, pos, Quaternion.identity);
+    }
+
+    public void WaterSplash(Vector2 pos, Vector3 scale)
+    {
+        var obj = Instantiate(waterSplash, pos, Quaternion.identity);
+        obj.transform.localScale = scale;
+        Destroy(obj, 1);
+    }
+
+    public void ConfettiBurst(Vector2 pos, Vector3 scale)
+    {
+        var obj = Instantiate(confettiBurst, pos, Quaternion.identity);
+        obj.transform.localScale = scale;
+        Destroy(obj, 1);
+    }
+
+    public void BalloonFireExplosion(Vector2 pos, Vector3 scale)
+    {
+        var obj = Instantiate(balloonFireExplosion, pos, Quaternion.identity);
+        obj.transform.localScale = scale;
+        Destroy(obj, 1);
     }
 }
     

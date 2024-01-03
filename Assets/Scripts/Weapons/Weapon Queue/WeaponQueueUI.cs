@@ -52,10 +52,11 @@ public class WeaponQueueUI : MonoBehaviour
             WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
             int enumIndex = (int)weaponEnum;
 
-            GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], Vector3.zero, Quaternion.identity);
+            GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], Vector3.zero, Quaternion.identity, transform);
             //SetAndStretchToParentSize(instantiatedPrefab.GetComponent<RectTransform>(), gameObject.GetComponent<RectTransform>());
-            instantiatedPrefab.transform.SetParent(transform, true);
+            //instantiatedPrefab.transform.SetParent(transform, true);
             weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);
+            //instantiatedPrefab.GetComponent<Image>().rectTransform.localScale = new Vector3(.2f,.2f);
         }
     }
 
