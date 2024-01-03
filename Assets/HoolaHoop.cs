@@ -14,13 +14,13 @@ public class HoolaHoop : MonoBehaviour
     public void StartWave()
     {
         enemyAnimator.SetBool(WAVE, true);
-        FollowPlayer.Instance.offset = new Vector3(5, 5.75f, 31.7999992f);
+        FollowPlayer.Instance.offset = new Vector3(9.27000046f, 7.05999994f, 16.2999992f);
         on = true;
     }
     public void EndWave()
     {
         enemyAnimator.SetBool(WAVE, false);
-        FollowPlayer.Instance.offset = new Vector3(9.27000046f, 7.05999994f, 16.2999992f);
+        FollowPlayer.Instance.offset = new Vector3(5, 5.75f, 31.7999992f);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
