@@ -28,6 +28,10 @@ public class AudienceSatisfaction : MonoBehaviour
             Sound.instance.SoundRandomized(Sound.instance.audienceBoo);
             oldTime = timer;
         }
+        if(audienceSatisfaction.fillAmount == 1)
+        {
+           // Sound.instance.SoundRandomized(Sound.instance.)
+        }
     }
  
 }

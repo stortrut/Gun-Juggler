@@ -3366,6 +3366,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &46241556 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8956083207625498462, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 1934387640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &81524773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1238774202817820766, guid: 42bbf8242643d0647a902b60e1f0dff0, type: 3}
@@ -10248,6 +10253,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb0fd72207f9534485d7bee0aeb9f96, type: 3}
+--- !u!212 &331926182 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8956083207625498462, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 734551466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &331942779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15291,6 +15301,10 @@ PrefabInstance:
       value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 331926182}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: mixedWave
       value: 1
       objectReference: {fileID: 0}
@@ -15298,6 +15312,22 @@ PrefabInstance:
       propertyPath: numberOfWaves
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 253cf98ee3e187f448424fefb63309cd, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 625b280cf14b31845929e002b8e2c76f, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e618e90ab0121f429fe167f6d51e859, type: 3}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: airSpawnSpots.Array.size
       value: 9
@@ -30015,6 +30045,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 945363320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1713914975 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8956083207625498462, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 1939939139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722927432
 GameObject:
   m_ObjectHideFlags: 0
@@ -33349,6 +33384,10 @@ PrefabInstance:
       value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 46241556}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: mixedWave
       value: 0
       objectReference: {fileID: 0}
@@ -33361,6 +33400,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: curtain.Array.data[2]
       value: 
       objectReference: {fileID: 1411066177}
@@ -33368,6 +33411,18 @@ PrefabInstance:
       propertyPath: curtain.Array.data[3]
       value: 
       objectReference: {fileID: 1411066177}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 253cf98ee3e187f448424fefb63309cd, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 625b280cf14b31845929e002b8e2c76f, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e618e90ab0121f429fe167f6d51e859, type: 3}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: airSpawnSpots.Array.size
       value: 6
@@ -33600,6 +33655,10 @@ PrefabInstance:
       value: -7.08
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 1713914975}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: mixedWave
       value: 0
       objectReference: {fileID: 0}
@@ -33607,6 +33666,22 @@ PrefabInstance:
       propertyPath: numberOfWaves
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 253cf98ee3e187f448424fefb63309cd, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 625b280cf14b31845929e002b8e2c76f, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e618e90ab0121f429fe167f6d51e859, type: 3}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: airSpawnSpots.Array.size
       value: 4
