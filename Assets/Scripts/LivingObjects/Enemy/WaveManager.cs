@@ -44,7 +44,10 @@ public class WaveManager : MonoBehaviour
             else
             {
                 hoolaHoop.EndWave();
-                clownAnimator.Dying();
+                clownAnimator.Attacking();
+                EffectAnimations.instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one * 3);
+                
+                Destroy(clownAnimator.gameObject);
                 foreach (var bla in curtain)
                 {
                     bla.SetActive(false);
@@ -153,7 +156,10 @@ public class WaveManager : MonoBehaviour
             
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
             spawnedEnemies++;
-            spawnedEnemy.GetComponent<Health>().died+=EnemyDied;
+            if (spawnedEnemy.TryGetComponent<Health>(out Health health))
+                health.died += EnemyDied;
+            else
+                spawnedEnemy.GetComponentInChildren<Health>().died += EnemyDied;
             i++;
         }
     }
