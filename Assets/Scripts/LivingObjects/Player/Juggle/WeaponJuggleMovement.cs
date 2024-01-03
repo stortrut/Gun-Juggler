@@ -62,7 +62,7 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     void Update()
     {
-
+        if(curveDeltaTime <= 0) { curveDeltaTime = 0.05f; }
 
         for (int i = 0; i < playerJuggle.weaponsCurrentlyInJuggleLoop.Count; i++)
         {
@@ -136,7 +136,7 @@ public class WeaponJuggleMovement : MonoBehaviour
                 }
             }
         }
-        if (curveDeltaTime == 0)
+        if (curveDeltaTime <= 0.5)
         {
             if (playerJuggle.isJuggling)
             {
@@ -158,6 +158,8 @@ public class WeaponJuggleMovement : MonoBehaviour
         if (beingDropped) { return; }
         if (playerJuggle == null) { /*Debug.Log("ERROR..");*/ playerJuggle = FindObjectOfType<PlayerJuggle>(); }
         if (playerJuggle == null) { Debug.Log("BIG ERROR!");}
+        if (beingThrown) { return; }
+
 
         if (playerJuggle.armAnimationHandler == null) { Debug.Log("ARM ANIMATION ERROR"); }
         playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayThrowUpWeaponAnimation));
@@ -182,6 +184,8 @@ public class WeaponJuggleMovement : MonoBehaviour
         weaponBase.weaponCollider.isTrigger = false;
 
         weaponBase.UnEquipWeapon();
+
+        Destroy(weaponBase);
 
         Destroy(transform.parent.gameObject, 5f);
     }

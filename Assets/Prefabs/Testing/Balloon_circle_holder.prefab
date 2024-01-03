@@ -93,11 +93,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c1af2ef32ec1d49b605e9583aa44ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Protection: {fileID: 360322530606673070, guid: 1df9e3abf80fd704a99be2153682081b, type: 3}
+  maxHealth: 1000
+  health: 0
+  isDead: 0
+  Protection: {fileID: 8031808563312221336, guid: 182d0a96ee5f579419f58f7d14184412, type: 3}
   numberOfProtection: 12
   numberOfProtection2: 12
   healthImage: {fileID: 0}
   protectingItems: []
+  totalProtection: 0
 --- !u!212 &3071109019698026299
 SpriteRenderer:
   m_ObjectHideFlags: 0
