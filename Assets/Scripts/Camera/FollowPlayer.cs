@@ -7,6 +7,8 @@ using System.Linq;
 
 public class FollowPlayer : MonoBehaviour
 {
+    [SerializeField] bool doNotDoPathAtStart;
+
     public static FollowPlayer Instance;
     [HideInInspector] private PlayerMovement playerToFollow;
     private GameObject player;
@@ -29,7 +31,14 @@ public class FollowPlayer : MonoBehaviour
 
     private void Start()
     {
-        transform.DOPath(path, 10, PathType.CatmullRom,PathMode.Sidescroller2D).OnComplete(PathBack);
+
+        if(!doNotDoPathAtStart)
+            transform.DOPath(path, 10, PathType.CatmullRom,PathMode.Sidescroller2D).OnComplete(PathBack);
+        else
+        {
+            transform.DOKill();
+            FindPlayer();
+        }
     }
     private void PathBack()
     {
@@ -71,6 +80,7 @@ public class FollowPlayer : MonoBehaviour
             axisShouldStayUnlockedTilItReachesTarget = false;
         }
     }
+
     private void FixedUpdate()
     {
         if (lockOn == false || player == null) { return; }
