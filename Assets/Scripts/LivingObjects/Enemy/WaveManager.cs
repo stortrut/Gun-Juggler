@@ -1,31 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
 
-
-    //[Header("Airborne Enemies (Type)")]
-    //[SerializeField] EnemyType enemyAir1;
-    //[SerializeField] EnemyType enemyAir2;
-    //[SerializeField] EnemyType enemyAir3;
-
-    //[Header("Grounded Enemies (Type)")]
-    //[SerializeField] EnemyType enemyGround1;
-    //[SerializeField] EnemyType enemyGround2;
-    //[SerializeField] EnemyType enemyGround3;
-
-    //[Header("Airborne Enemy Spawnpoints")]
-    //[SerializeField] Transform spawnSpotAir1;
-    //[SerializeField] Transform spawnSpotAir2;
-    //[SerializeField] Transform spawnSpotAir3;
-
-    //[Header("Grounded Enemy Spawnpoints")]
-    //[SerializeField] Transform spawnSpotGround1;
-    //[SerializeField] Transform spawnSpotGround2;
-    //[SerializeField] Transform spawnSpotGround3;
 
     // Different Prefabs
     private GameObject Dummy;
@@ -47,10 +28,29 @@ public class WaveManager : MonoBehaviour
     private EnemyType currentEnemy;
     [ReadOnly][SerializeField] private List<Vector3> setShape;
     [SerializeField] private List<GameObject> curtain;
-    [SerializeField] private int shapeSize;
+    [SerializeField] private int numberOfWaves;
     [SerializeField] private bool mixedWave;
     private bool even;
+    private int spawnedEnemies;
+    private int waveNumber;
+    private void EnemyDied()
+    {
+        spawnedEnemies--;
+        if(spawnedEnemies <= 0)
+        {
+            spawnedEnemies = 0;
+            if(waveNumber < numberOfWaves)
+                StartWave();
+            else
+            {
+                foreach (var bla in curtain)
+                {
+                    bla.SetActive(false);
+                }
+            }
 
+        }
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -64,6 +64,7 @@ public class WaveManager : MonoBehaviour
     }
     public void StartWave()
     {
+        waveNumber++;
         Spawn();
         if (mixedWave == false)
         {
@@ -149,13 +150,15 @@ public class WaveManager : MonoBehaviour
             }
             
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
+            spawnedEnemies++;
+            spawnedEnemy.GetComponent<Health>().died+=EnemyDied;
             i++;
         }
     }
 
     private void Cube()
     {
-
+        var shapeSize = 0;
 
         var basePos = airSpawnSpots[0].position;
         setShape.Clear();

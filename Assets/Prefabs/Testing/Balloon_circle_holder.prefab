@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8576157397103051118}
   - component: {fileID: 3071109019698026299}
   - component: {fileID: 1964227699655279960}
+  - component: {fileID: 1826383858613132099}
   m_Layer: 0
   m_Name: Balloon_circle_holder
   m_TagString: EnemyNonTargetable
@@ -185,3 +186,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 7.46
+--- !u!114 &1826383858613132099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108094669618674625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085f3906c01fc0f4e86e53daa7160c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  health: 1
+  isDead: 0

@@ -29,7 +29,7 @@ public class EnemyProtection : MonoBehaviour
         }
         if (numberOfProtection > 0) 
         { 
-             //health = GetComponent<Health>();
+            // health = GetComponent<Health>();
              //healthImage.ColorChange(Color.blue);    
              //health.hasProtection = true;
 

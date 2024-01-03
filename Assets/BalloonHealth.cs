@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
 using UnityEngine;
+using static BalloonHealth;
 
 
 public class BalloonHealth : Health
@@ -90,11 +91,11 @@ public class BalloonHealth : Health
     }
     public override void Death()
     {
+        base.Death();
         if(this != null)
         { 
-        EffectAnimations.instance.BalloonPop(transform.position);
-        Destroy(gameObject);
-        
+            EffectAnimations.instance.BalloonPop(transform.position);
+            Destroy(gameObject);
         }
     }
   

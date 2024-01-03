@@ -19,6 +19,11 @@ public class Health : MonoBehaviour, IDamageable
     private bool isProtected;
     public bool hasProtection { get {return isProtected; } set { isProtected = value; } }
 
+
+    public delegate void Died();
+    public Died died;
+
+
     private void Awake()
     {
         protection = GetComponent<EnemyProtection>();
@@ -39,6 +44,6 @@ public class Health : MonoBehaviour, IDamageable
 
     public virtual void Death()
     {
-
+        died?.Invoke();
     }
 }
