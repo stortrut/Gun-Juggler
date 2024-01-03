@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
+using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour, IStunnable
 {
@@ -18,9 +19,14 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] public float speed = 7f;
     [SerializeField] private float deacceleration = 3f;
 
+    [ReadOnly] public float horizontalInputRaw;
     [ReadOnly] public float horizontalInput;
+
     [HideInInspector] public float velocityToAddX;
     [HideInInspector] private Vector3 velocityToAdd;
+    Quaternion currentRotation = new Quaternion(0, 0, 0, 0);
+    private float rotationSpeed = .2f;
+    private float rotationAmount = 10;
 
     [ReadOnly] public bool isFacingRight;
     
@@ -41,7 +47,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private float savedVelocityForBounce;
     private bool shouldAddBounceForce = false;
 
-    [SerializeField] GameObject artHolder;
+    [SerializeField] GameObject wheelArtHolder;
 
     [HideInInspector] public bool onGround = false;
     
@@ -129,13 +135,13 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     private void Walk()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        var veloX = horizontalInput;
-        timeActive += Time.deltaTime*2;
+        horizontalInputRaw = Input.GetAxisRaw("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
+        var veloX = rigidBody.velocity.x;
+        timeActive += Time.deltaTime * 2;
         timeActive = Mathf.Clamp(timeActive, 0, 4);
         legs.SetSpeed(veloX);
-        RotateFromSpeed(veloX);
+        RotateBasedOnHorizontalInput(horizontalInput);
         //if ((Mathf.Abs(horizontalInput) >= .1f) && !dotweenPlayer.hasStarted)
         //{
         //    // if saved data från dotweenscript har ändrats, dvs blivit negativ från pos eller tvärt om, sen senast den callades ska den andra tweenen som tweenar tillbaks till 0 köras istället
@@ -160,10 +166,10 @@ public class PlayerMovement : MonoBehaviour, IStunnable
             }
         }
 
-        velocityToAddX += horizontalInput * acceleration * Time.deltaTime;
+        velocityToAddX += horizontalInputRaw * acceleration * Time.deltaTime;
         velocityToAddX = Mathf.Clamp(velocityToAddX, -speed, speed);
 
-        if (horizontalInput == 0 || (horizontalInput < 0 == velocityToAddX > 0))
+        if (horizontalInputRaw == 0 || (horizontalInputRaw < 0 == velocityToAddX > 0))
         {
             velocityToAddX *= 1 - deacceleration * Time.deltaTime;
 
@@ -199,12 +205,18 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -7, 7), rigidBody.velocity.y);
     }
 
-    public void RotateFromSpeed(float veloX)
+    public void RotateBasedOnHorizontalInput(float veloX)
     {
-        //Quaternion currentRotation = new Quaternion(0, 0, 0, 0);
-        //Vector3 eulerAngles = new Vector3(0,0,artHolder.transform.rotation.z);
+        wheelArtHolder.transform.rotation = Quaternion.Lerp(wheelArtHolder.transform.rotation, Quaternion.Euler(0, 0, -veloX*rotationAmount), rotationSpeed); //(Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
+        //Vector3 eulerAngles = new Vector3(0, 0, -veloX * 30 * (5 - timeActive));
+        //Vector3 eulerAngles = new Vector3(0, 0, artHolder.transform.rotation.z);
         //currentRotation.eulerAngles = eulerAngles;
-        //artHolder.transform.rotation = Quaternion.Lerp(currentRotation, (Quaternion.Euler(0, 0, -veloX * 30*(5 - timeActive))), .5f); //(Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
+
+        //wheelArtHolder.transform.rotation = Quaternion.Lerp(currentRotation, (Quaternion.Euler(0, 0, -veloX * 30*(5 - timeActive))), .5f); //(Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
+
+        //artHolder.transform.rotation = Quaternion.Lerp(currentRotation, (Quaternion.Euler(0, 0, -veloX * 30 * (5 - timeActive))), .5f); //(Quaternion.Euler(0, 0, -veloX * (5 - timeActive));
+        //artHolder.transform.DORotate(new Vector3(0, 0, -veloX * 30 * (5 - timeActive)), 0.2f);//.SetEase();
+        //wheelArtHolder.transform.rotation = currentRotation;
     }
     
     private void Jump()

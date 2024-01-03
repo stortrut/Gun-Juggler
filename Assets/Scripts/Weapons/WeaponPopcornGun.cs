@@ -11,6 +11,7 @@ public class WeaponPopcornGun : Gun
     void Start()
     {
         weaponType = WeaponType.PopcornGun;
+        fireCooldown = 0.1f;
     }
 
     void Update()
