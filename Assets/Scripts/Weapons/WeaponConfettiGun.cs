@@ -22,12 +22,12 @@ public class WeaponConfettiGun : Gun
 
     public override void UseWeapon()
     {
-        if (UpgradeCombo.Instance != null)
-        {
-            UpgradeCombo.Instance.hitSinceShot = false;
-            UpgradeCombo.Instance.comboTween.Kill();
-            StartCoroutine(UpgradeCombo.Instance.Combo());
-        }
+        //if (UpgradeCombo.Instance != null)
+        //{
+        //    UpgradeCombo.Instance.hitSinceShot = false;
+        //    UpgradeCombo.Instance.comboTween.Kill();
+        //    StartCoroutine(UpgradeCombo.Instance.Combo());
+        //}
         if(AudienceSatisfaction.Instance != null)
             AudienceSatisfaction.Instance.AudienceHappiness(5);
         //bulletWave.Clear();
