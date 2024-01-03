@@ -17,6 +17,7 @@ public class EffectAnimations : MonoBehaviour
     [SerializeField] GameObject waterSplash;
     [SerializeField] GameObject confettiBurst;
     [SerializeField] GameObject balloonFireExplosion;
+    [SerializeField] GameObject bigExplosion;
 
     [SerializeField] Transform popPosition;
     [SerializeField] Image popcornPopping;
@@ -135,6 +136,13 @@ public class EffectAnimations : MonoBehaviour
     public void BalloonFireExplosion(Vector2 pos, Vector3 scale)
     {
         var obj = Instantiate(balloonFireExplosion, pos, Quaternion.identity);
+        obj.transform.localScale = scale;
+        Destroy(obj, 1);
+    }
+
+    public void BigExplosion(Vector2 pos, Vector3 scale)
+    {
+        var obj = Instantiate(bigExplosion, pos, Quaternion.identity);
         obj.transform.localScale = scale;
         Destroy(obj, 1);
     }
