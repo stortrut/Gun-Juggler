@@ -43,7 +43,7 @@ public class EnemyHealth : Health
         {
             UpgradeCombo.Instance.hitSinceShot = true;
             UpgradeCombo.Instance.comboTween.Kill();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
             ColorChange(1);
            // Invoke(nameof(ColorChange), 0.3f);
 

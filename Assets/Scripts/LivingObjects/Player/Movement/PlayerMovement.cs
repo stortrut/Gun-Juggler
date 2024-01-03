@@ -156,7 +156,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
         else
         {
-            if (veloX > 0)
+            if (horizontalInputRaw > 0)
             {
                 legs.SetDirectionToForwards();
             }

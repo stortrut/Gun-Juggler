@@ -89,8 +89,11 @@ public class JuggleCatchCircle : MonoBehaviour
         spriteRenderer.color = canCatchWeaponColor;
 
 
-        yield return new WaitForSeconds(catchTimeWindow);
+        yield return new WaitForSeconds(0.1f);
+        playerJuggle.ThrowUpWeaponInHand();
         playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayCatchWeaponAnimation));
+        yield return new WaitForSeconds(catchTimeWindow - 0.1f);
+
 
         if (caughtWeapon)
         {
@@ -104,7 +107,6 @@ public class JuggleCatchCircle : MonoBehaviour
             //Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
             //currentCatchableGun.DropWeapon();
         }
-
 
         spriteRenderer.color = waitForWeaponColor;
         caughtWeapon = false;
