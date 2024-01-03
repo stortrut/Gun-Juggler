@@ -41,13 +41,11 @@ public class LegAnimationHandler : MonoBehaviour
         if (isPlayingForwardAnimation) { return; }
         isPlayingForwardAnimation = true;
 
-        animationFrame = (legs.GetCurrentAnimatorStateInfo(0).normalizedTime % 8);
-        length = legs.GetCurrentAnimatorStateInfo(0).length;
-        animationFrame = legs.GetCurrentAnimatorClipInfo(0)[0].clip.length * (legs.GetCurrentAnimatorStateInfo(0).normalizedTime % 1) * legs.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate;
+        //animationFrame = (legs.GetCurrentAnimatorStateInfo(0).normalizedTime % 8);
+        //length = legs.GetCurrentAnimatorStateInfo(0).length;
+        //animationFrame = legs.GetCurrentAnimatorClipInfo(0)[0].clip.length * (legs.GetCurrentAnimatorStateInfo(0).normalizedTime % 1) * legs.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate;
       
-        //legs.SetBool("Reverse", false);
-
-
+        legs.SetBool("Reverse", false);
         //AnimatorClipInfo[] animationClip = legs.GetCurrentAnimatorClipInfo(0);
         //legs.Play("legs", 0,0);
     }
@@ -57,14 +55,14 @@ public class LegAnimationHandler : MonoBehaviour
         if (!isPlayingForwardAnimation) { return; }
         isPlayingForwardAnimation = false;
 
-        animationFrame = legs.GetCurrentAnimatorStateInfo(0).normalizedTime % /*legs.GetCurrentAnimatorStateInfo(0).length*/8;
+        //animationFrame = legs.GetCurrentAnimatorStateInfo(0).normalizedTime % /*legs.GetCurrentAnimatorStateInfo(0).length*/8;
 
-        length = legs.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate;
+        //length = legs.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate;
 
-        animationFrame = legs.GetCurrentAnimatorClipInfo(0)[0].clip.length * (legs.GetCurrentAnimatorStateInfo(0).normalizedTime % 1) * legs.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate;
+        //animationFrame = legs.GetCurrentAnimatorClipInfo(0)[0].clip.length * (legs.GetCurrentAnimatorStateInfo(0).normalizedTime % 1) * legs.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate;
 
 
-        //legs.SetBool("Reverse", true);
+        legs.SetBool("Reverse", true);
 
         //legs.Play("legs_reverse", 0, animationFrame);
     }

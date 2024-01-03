@@ -5535,7 +5535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnOffUpgradeFunction: 0
   maxCatchAttemptCooldown: 0.4
-  catchTimeWindow: 0.3
+  catchTimeWindow: 0.2
   canCatchWeaponColor: {r: 0.14495587, g: 1, b: 0, a: 0.43137255}
   waitForWeaponColor: {r: 1, g: 0, b: 0, a: 0.48235294}
   caughtWeaponColor: {r: 0.97735846, g: 0.8531631, b: 0, a: 0.54509807}
@@ -5668,6 +5668,7 @@ GameObject:
   - component: {fileID: 7857743003627646701}
   - component: {fileID: 7693072124767124736}
   - component: {fileID: 8343486072357708530}
+  - component: {fileID: 5984520498985556330}
   m_Layer: 6
   m_Name: player_logic
   m_TagString: Player
@@ -5876,6 +5877,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEase: 0
   hasStarted: 0
+--- !u!114 &5984520498985556330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855032161651712136}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eca03226ccc9941a6f263f7ba92c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 5370237497039711626}
+  weaponHolder: {fileID: 6945782035393931824}
+  wheelArtHolderThatHoldsWeaponHolder: {fileID: 3556998365232621826}
+  notMovingWeaponHolder: {fileID: 1140258072159811197}
 --- !u!1 &8681542829341111651
 GameObject:
   m_ObjectHideFlags: 0
