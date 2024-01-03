@@ -2792,6 +2792,83 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1843547377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &106400426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 326750008076233599, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: weaponPrefabToPickup
+      value: 
+      objectReference: {fileID: 641946131693433632, guid: 4a96ce53161e026429c5cfbd8f2d7933, type: 3}
+    - target: {fileID: 326750008076233599, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: dropAllWeaponsAndThenPickUpOne
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 201.55026
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.352747
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874801801678317938, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_Name
+      value: pickup_candygun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836282291265597994, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef18e2a29544faa46a01f28dbaa03063, type: 3}
+    - target: {fileID: 7836282291265597994, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836282291265597994, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 220209013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90629121f0be604458edaf28f85d350e, type: 3}
 --- !u!1 &115051020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,6 +3206,71 @@ SpriteShapeRenderer:
     m_Center: {x: 8.984781, y: 0.29469764, z: 0}
     m_Extent: {x: 19.394066, y: 1.7710562, z: 0}
   m_SpriteSortPoint: 0
+--- !u!1001 &154748679
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 326750008076233599, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: andAlsoAddAWeaponIfPlayerHasNone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 231.5974
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.007391
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30.228836
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874801801678317938, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_Name
+      value: pickup_trumpet (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836282291265597994, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5946cb7d0cc9209428710c19be3e90e4, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 645dd102c83240c4990c88736a93a802, type: 3}
 --- !u!1 &161303590
 GameObject:
   m_ObjectHideFlags: 0
@@ -7549,7 +7691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238774202817820766, guid: 42bbf8242643d0647a902b60e1f0dff0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.89
+      value: 25.9
       objectReference: {fileID: 0}
     - target: {fileID: 1238774202817820766, guid: 42bbf8242643d0647a902b60e1f0dff0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10528,12 +10670,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 641946131693433632, guid: 4a96ce53161e026429c5cfbd8f2d7933, type: 3}
     - target: {fileID: 326750008076233599, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: dropAllWeaponsAndThenPickUpOne
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 326750008076233599, guid: 90629121f0be604458edaf28f85d350e, type: 3}
       propertyPath: andAlsoAddAWeaponIfPlayerHasNone
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 326750008076233599, guid: 90629121f0be604458edaf28f85d350e, type: 3}
       propertyPath: replaceAllPlayerWeaponsWithThisWeapon
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
       propertyPath: m_LocalScale.x
@@ -13149,6 +13295,10 @@ PrefabInstance:
       propertyPath: weaponPrefabToPickup
       value: 
       objectReference: {fileID: 641946131693433632, guid: 4a96ce53161e026429c5cfbd8f2d7933, type: 3}
+    - target: {fileID: 326750008076233599, guid: 90629121f0be604458edaf28f85d350e, type: 3}
+      propertyPath: dropAllWeaponsAndThenPickUpOne
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1480398150847553480, guid: 90629121f0be604458edaf28f85d350e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -15943,6 +16093,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 326750008076233599, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: dropAllWeaponsAndThenPickUpOne
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326750008076233599, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
       propertyPath: andAlsoAddAWeaponIfPlayerHasNone
       value: 1
       objectReference: {fileID: 0}
@@ -16970,11 +17124,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 283.8
+      value: -37.4
       objectReference: {fileID: 0}
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.1
+      value: -20.8
       objectReference: {fileID: 0}
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19710,6 +19864,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1843547377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1142274327
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 326750008076233599, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: andAlsoAddAWeaponIfPlayerHasNone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 215.66397
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.992137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874801801678317938, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_Name
+      value: pickup_confettigun (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836282291265597994, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d20517abf3cc9448bcf644a5408fd22, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
 --- !u!1001 &1142952772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20765,6 +20984,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 326750008076233599, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: andAlsoAddAWeaponIfPlayerHasNone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
       propertyPath: m_LocalPosition.x
       value: 105.61
@@ -29181,6 +29404,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 326750008076233599, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: andAlsoAddAWeaponIfPlayerHasNone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1480398150847553480, guid: 645dd102c83240c4990c88736a93a802, type: 3}
       propertyPath: m_LocalPosition.x
       value: 109.55
@@ -29239,7 +29466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8477817805380338819, guid: 645dd102c83240c4990c88736a93a802, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29914,7 +30141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: mixedWave
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: numberOfWaves
@@ -30010,7 +30237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7710634730422022707, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.944443
+      value: 34.18
       objectReference: {fileID: 0}
     - target: {fileID: 7710634730422022707, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31448,6 +31675,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb0fd72207f9534485d7bee0aeb9f96, type: 3}
+--- !u!1001 &1966462534
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 326750008076233599, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: andAlsoAddAWeaponIfPlayerHasNone
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 244.2021
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.815985
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30.228836
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480398150847553480, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874801801678317938, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_Name
+      value: pickup_confettigun (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836282291265597994, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d20517abf3cc9448bcf644a5408fd22, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0e8c2abba2860540b93bad376cc390c, type: 3}
 --- !u!1 &1970295840
 GameObject:
   m_ObjectHideFlags: 0
@@ -36813,3 +37105,7 @@ SceneRoots:
   - {fileID: 938265555}
   - {fileID: 1252997628}
   - {fileID: 1849256137}
+  - {fileID: 1142274327}
+  - {fileID: 154748679}
+  - {fileID: 1966462534}
+  - {fileID: 106400426}
