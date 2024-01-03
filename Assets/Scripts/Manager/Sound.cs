@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 
 public class Sound : MonoBehaviour
 {
@@ -14,10 +17,11 @@ public class Sound : MonoBehaviour
 
     [Header("BackgroundMusic")]
     [SerializeField] private AudioClip[] backgroundMusicSetStartEndEtc;
-    [SerializeField] private AudioClip[] backgroundMusicLevelsRandom;
+    [SerializeField] private AudioClip[] backgroundMusicLevelsInBetween;
+    [SerializeField] private AudioClip[] fightBackgroundMusicLevels;
 
     [Header("Audience")]
-    [SerializeField] public AudioClip[] audienceApplaud;
+    [SerializeField] public AudioClip[] audienceApplauding;
     [SerializeField] public AudioClip[] audienceBoo;
     [SerializeField] public AudioClip[] onePersonDissapointed;
 
@@ -44,10 +48,8 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] buttonClick;
     [SerializeField] public AudioClip[] spotLightOn;
 
-    [SerializeField] private GameObject fight_music_on;
-    [SerializeField] private GameObject fight_music_off;
-
-    Collider2D onMusicCollider;
+    [SerializeField] private float backgroundMusicFadeOutOrInTime;
+    [HideInInspector] float backgroundMusicTimeStamp = 0f;
 
     //Volume
     [HideInInspector] Slider volumeSlider;
@@ -88,22 +90,72 @@ public class Sound : MonoBehaviour
 
         else if (backgroundSource.clip == null)
         {
-            int randomNum = Random.Range(0, backgroundMusicLevelsRandom.Length);
-            backgroundSource.clip = backgroundMusicLevelsRandom[randomNum];     //level random music
+            int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
+            backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];     //level random music
         }
         
         if (backgroundSource.clip != null)
         {
             backgroundSource.Play();
         }
-
-        onMusicCollider = fight_music_on.GetComponent<Collider2D>();
     }
 
-    //private void OnTriggerEnter2D(onMusicCollider)
-    //{
-        
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            ChangeBackgroundMusic(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            ChangeBackgroundMusic(false);
+        }
+    }
+
+    public void ChangeBackgroundMusic(bool playFightMusic) 
+    {
+        StartCoroutine(PlayFightMusic(playFightMusic));
+    }
+
+    private IEnumerator PlayFightMusic(bool playFightMusic)
+    {
+        if (playFightMusic)
+        {
+            DOTweenVolumeFade(0f, backgroundMusicFadeOutOrInTime);
+            yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime);
+
+            backgroundMusicTimeStamp = backgroundSource.time;
+            backgroundSource.time = 0;
+            int randomNum = Random.Range(0, fightBackgroundMusicLevels.Length);
+            backgroundSource.clip = fightBackgroundMusicLevels[randomNum];
+            backgroundSource.Play();
+
+            DOTweenVolumeFade(1f, backgroundMusicFadeOutOrInTime/4);
+            yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime/4);
+            yield return null;
+        }
+
+        else if (!playFightMusic)
+        {
+            DOTweenVolumeFade(0f, backgroundMusicFadeOutOrInTime);
+            yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime);
+
+            int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
+            backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];
+            backgroundSource.time = backgroundMusicTimeStamp;
+            backgroundSource.Play();
+
+            DOTweenVolumeFade(1f, backgroundMusicFadeOutOrInTime);
+            yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime);
+            yield return null;
+        }
+    }
+
+    private void DOTweenVolumeFade(float targetVolume, float fadeDuration)
+    {
+        backgroundSource.DOFade(targetVolume, fadeDuration);
+    }
 
     public void SoundRandomized(AudioClip[] currentsound, float volume = 1)  //float volume)
     {

@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -181,13 +181,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bb753050c107ecc47a2d06d1adf68aa2, type: 3}
   - {fileID: 8300000, guid: fcab633f297fe274baa9c3741c6f7711, type: 3}
   - {fileID: 8300000, guid: 2af0c2d31c657cd4a9c11fea78d7b99a, type: 3}
-  backgroundMusicLevelsRandom:
-  - {fileID: 8300000, guid: 7091230995968d446aaafad987821099, type: 3}
+  backgroundMusicLevelsInBetween:
   - {fileID: 8300000, guid: ce7c6ef6cb07eef4db4a598a504d014f, type: 3}
-  audienceApplaud:
-  - {fileID: 8300000, guid: fcab633f297fe274baa9c3741c6f7711, type: 3}
-  - {fileID: 8300000, guid: dd400ae11be4f504dad72adb8ac28043, type: 3}
-  - {fileID: 8300000, guid: 22fafc962d7405a46a02caff08c28298, type: 3}
+  - {fileID: 8300000, guid: 7091230995968d446aaafad987821099, type: 3}
+  fightBackgroundMusicLevels:
+  - {fileID: 8300000, guid: 2a69ffbb22bdc744c8163cdcd18812e9, type: 3}
+  audienceApplauding: []
   audienceBoo:
   - {fileID: 8300000, guid: c4d0cfdf813942f40a2f90f4f8b65372, type: 3}
   - {fileID: 8300000, guid: 49535b1f0be34a2478119244055a0748, type: 3}
@@ -207,7 +206,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 541a26d74c15fab4b8d456b4a6d7cb7f, type: 3}
   equipNewWeapon:
   - {fileID: 8300000, guid: f8b5756311c73654a8af8e4b64cb2ee9, type: 3}
-  - {fileID: 8300000, guid: 1f2daa4de9adaca468c39c1d41f20ab5, type: 3}
   throwUpWeapon:
   - {fileID: 8300000, guid: b15077e4042de8040b06693748e20e3e, type: 3}
   - {fileID: 8300000, guid: 9ad94d8e26e6ca340a7806b4c1aab075, type: 3}
@@ -239,8 +237,7 @@ MonoBehaviour:
   spotLightOn:
   - {fileID: 8300000, guid: 98b6344542ce0f34ca6cb67e470b2d08, type: 3}
   - {fileID: 8300000, guid: 2ec6eece348a5674bb0e79f651bd47a3, type: 3}
-  fight_music_on: {fileID: 1472570403043470760, guid: 5a00069d8b50223419416239ad6ce580, type: 3}
-  fight_music_off: {fileID: 8104204365021236109, guid: c7f575122c8890a408abab485efec57e, type: 3}
+  backgroundMusicFadeOutOrInTime: 0.4
   maxAmountOfSoundsPlayingAtSameTime: 4
 --- !u!81 &5329618115246817492
 AudioListener:
