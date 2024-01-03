@@ -38,6 +38,7 @@ public class BalloonMovement : MonoBehaviour, IStunnable
     }
     private void Knockback()
     {
+        Debug.Log("knockit");
         rb.AddForce(Vector2.right * 7, ForceMode2D.Impulse);
         Invoke(nameof(ResetSpeed),1);
     }

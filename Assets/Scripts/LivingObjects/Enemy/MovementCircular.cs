@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class MovementCircular : MonoBehaviour,IStunnable
-{   
+public class MovementCircular : MonoBehaviour, IStunnable
+{
     [SerializeField] private float frequency;
     [SerializeField] private float amplitude;
     [SerializeField] private GameObject AttachedEnemy;
@@ -12,6 +12,7 @@ public class MovementCircular : MonoBehaviour,IStunnable
     private float y;
     private float z;
     private float offSet;
+    private bool inner = false;
 
     [HideInInspector] public bool isStunned = false;
     [HideInInspector] public bool timeStop;
@@ -28,20 +29,31 @@ public class MovementCircular : MonoBehaviour,IStunnable
     void Start()
     {
         offSet = transform.position.z;
+        if (offSet > 99)
+        {
+            inner = false;
+            offSet -= 100;
+        }
+        else
+            inner = true;
     }
-    
+
 
     void FixedUpdate()
     {
-        if (isStunned == true)
+        if (inner == false)
         {
-            timeStunned += Time.deltaTime;
-            return;
-        }
-        x = Mathf.Cos((Time.time + offSet-timeStunned) * frequency) * amplitude;
-        y = Mathf.Sin((Time.time + offSet-timeStunned) * frequency) * amplitude;
+            x = Mathf.Cos((Time.time + offSet - timeStunned) * frequency) * amplitude * 2;
+            y = Mathf.Sin((Time.time + offSet - timeStunned) * frequency) * amplitude * 2;
 
-        transform.position = new Vector3 (transform.parent.position.x + x , transform.parent.position.y + y,0);
-    }   
-}   
-    
+            transform.position = new Vector3(transform.parent.position.x + x, transform.parent.position.y + y, 0);
+        }
+        else if (inner == true)
+        {
+            x = Mathf.Cos((Time.time + offSet - timeStunned) * frequency) * amplitude;
+            y = Mathf.Sin((Time.time + offSet - timeStunned) * frequency) * amplitude;
+
+            transform.position = new Vector3(transform.parent.position.x + x, transform.parent.position.y + y, 0);
+        }
+    }
+}

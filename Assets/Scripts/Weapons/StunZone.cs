@@ -104,7 +104,11 @@ public class StunZone : MonoBehaviour
         IEnumerator DelayPop()
         {
             yield return new WaitForSeconds(0);
-            damageable.ApplyDamage(1);
+            if(damageable != null)
+            {
+                damageable.ApplyDamage(1);
+            }
+   
         }
     }
     private void SoundWaveOff()

@@ -121,7 +121,7 @@ public class WaveManager : MonoBehaviour
             SpawnEnemies(presetGroundWave, groundSpawnSpots);
         }
         yield return new WaitForSeconds(15);
-        Spawn();
+        //Spawn();
 
     }
     private void Spawn()
@@ -145,7 +145,7 @@ public class WaveManager : MonoBehaviour
             var index = (int)currentEnemy;
             if (i >= spawn.Count)
             {
-                i = 0;
+                i = 0; break;
             }
             
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
