@@ -8,10 +8,14 @@ using System.Linq;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] bool doNotDoPathAtStart;
+    Vector3 basicOffset = new Vector3(5, 5.75f, 31.7999992f);
+
 
     public static FollowPlayer Instance;
     [HideInInspector] private PlayerMovement playerToFollow;
     private GameObject player;
+
+    [SerializeField] bool useOffsetUnderneathThis;
     [SerializeField] public Vector3 offset = new Vector3(5, 2, -100);
     [SerializeField] private Vector3[] path;
     Vector3 targetPos = Vector3.zero;
@@ -49,7 +53,9 @@ public class FollowPlayer : MonoBehaviour
     {
         playerToFollow = player.GetComponent<PlayerMovement>();
         lockOn = true;
-        offset = new Vector3(5, 5.75f, 31.7999992f);
+
+        if(!useOffsetUnderneathThis)
+            offset = new Vector3(5, 5.75f, 31.7999992f);
     }
 
     private void Update()
