@@ -52,7 +52,7 @@ public class FollowPlayer : MonoBehaviour
     private void FindPlayer()
     {
         playerToFollow = player.GetComponent<PlayerMovement>();
-        var vector = playerToFollow.transform.position + offset;
+        var vector = offset;
         StartCoroutine(SmoothCamera(200, vector));  
         //lockOn = true;
 
@@ -113,13 +113,13 @@ public class FollowPlayer : MonoBehaviour
     }
     public IEnumerator SmoothCamera(float p, Vector3 vector)
     {
+        lockOn = false;
         var startpos = transform.position;
         for (float i = 0; i < p; i++) 
         {
-            yield return new WaitForSeconds(p/20000);
-            transform.position = Vector3.Lerp(startpos, vector, (i+1)/p);
-            Debug.Log("cameraPos " + transform.position);
-            Debug.Log("SLOWLYCAMERA "+ i);
+            yield return new WaitForSeconds(200/20000);
+            transform.position = Vector3.Lerp(startpos, playerToFollow.transform.position+vector, (i+1)/p);
+            FollowPlayer.Instance.offset = vector;
         }
         lockOn = true;
 

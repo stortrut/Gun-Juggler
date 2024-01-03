@@ -14,9 +14,6 @@ public class HoolaHoop : MonoBehaviour
     public void StartWave()
     {
         enemyAnimator.SetBool(WAVE, true);
-        Debug.Log("STARTWAVE");
-        StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(9.27000046f, 7.05999994f, 16.2999992f)));
-        on = true;
     }
     public void EndWave()
     {
@@ -29,9 +26,16 @@ public class HoolaHoop : MonoBehaviour
         
         if(other.gameObject.CompareTag("Player") && on == false)
         {
-            waveManager.StartWave();
-            StartWave();
+            StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(9.27000046f, 7.05999994f, 16.2999992f)));
+            on = true;
+            Invoke(nameof(StartWave), 2);
+            StartCoroutine(DelayStart());
            // Respawn.Instance.waveStart.Invoke();
         }
+    }
+    private IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(2);
+        waveManager.StartWave();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private List<GameObject> curtain;
     [SerializeField] private int numberOfWaves;
     [SerializeField] private bool mixedWave;
+    [SerializeField] private List<Sprite> waveImage;
+    [SerializeField] private SpriteRenderer image;
     private bool even;
     private int spawnedEnemies;
     private int waveNumber;
@@ -69,6 +72,8 @@ public class WaveManager : MonoBehaviour
     }
     public void StartWave()
     {
+        image.sprite = waveImage[waveNumber];
+        image.enabled = true;
         waveNumber++;
         Spawn();
         if (mixedWave == false)
@@ -160,6 +165,7 @@ public class WaveManager : MonoBehaviour
             else
                 spawnedEnemy.GetComponentInChildren<Health>().died += EnemyDied;
             i++;
+            image.enabled = false;
         }
     }
 

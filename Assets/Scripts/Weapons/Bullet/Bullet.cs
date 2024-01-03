@@ -58,7 +58,6 @@ public class Bullet : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("EnemyNonTargetable"))
         {
-            Debug.Log("Pierce");
             Pierce();
         }
     }
@@ -67,7 +66,6 @@ public class Bullet : MonoBehaviour
             pierceTarget--;
             if (pierceTarget == 0)
             {
-                Debug.Log("destroyed ur sht");
                 Destroy(gameObject);
             }
                 

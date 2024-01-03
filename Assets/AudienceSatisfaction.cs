@@ -8,7 +8,7 @@ public class AudienceSatisfaction : MonoBehaviour
 {
     public static AudienceSatisfaction Instance;
     public Image audienceSatisfaction;
-    float timer = 1;
+    float timer = 4;
     float oldTime = 0;
     
     
@@ -23,10 +23,10 @@ public class AudienceSatisfaction : MonoBehaviour
     {
         timer = Time.time;
         audienceSatisfaction.fillAmount += happiness/100;
-        if(happiness < 0 && timer > oldTime)
+        if(happiness < 0 && timer > oldTime + 2)
         {
             Sound.instance.SoundRandomized(Sound.instance.audienceBoo);
-            
+            oldTime = timer;
         }
     }
  
