@@ -42,7 +42,7 @@ public class JuggleCatchCircle : MonoBehaviour
     {
         if (turnOffUpgradeFunction) { return; }
 
-        if (Input.GetKeyDown(KeyCode.Mouse2)) //|| Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift)
+        if (Input.GetKeyDown(KeyCode.Mouse1)) //|| Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift)
         {
             if (canCatchWeapon && !caughtWeapon && !catchOnCoolDown/* !currentCatchableGun.beingDropped*/)
             {
@@ -95,6 +95,7 @@ public class JuggleCatchCircle : MonoBehaviour
         if (caughtWeapon)
         {
             currentCatchableGun.gameObject.GetComponent<WeaponBase>().UpgradeWeapon();
+            currentCatchAttemptCooldownTimer = maxCatchAttemptCooldown;
             yield return new WaitForSeconds(0.3f);
         }
         else
@@ -103,7 +104,6 @@ public class JuggleCatchCircle : MonoBehaviour
             //Sound.Instance.SoundRandomized(Sound.Instance.notCatchingWeaponSounds);
             //currentCatchableGun.DropWeapon();
         }
-
 
 
         spriteRenderer.color = waitForWeaponColor;

@@ -12,7 +12,7 @@ public enum WeaponType
 public class WeaponBase : MonoBehaviour
 {
     [Header("References")]
-    [HideInInspector] public bool weaponEquipped;
+    [ReadOnly] public bool weaponEquipped;
     [HideInInspector] public float fireCooldown;
     [HideInInspector] protected float fireCooldownTimer;
     [HideInInspector] public float _waitUntilThrowTime;
@@ -90,6 +90,12 @@ public class WeaponBase : MonoBehaviour
         if (isHeart) { return; }
 
         //Sound.Instance.SoundSet(Sound.Instance.equipWeaponSounds, (int)weaponType);
+
+        fireCooldownTimer = fireCooldown * 1.1f;
+
+        StopCoroutine(nameof(ThrowUpWeaponWhenWeaponHasBeenFullyUsed));
+
+
         weaponEquipped = true;
         aimAgain = true;
     }
@@ -116,14 +122,17 @@ public class WeaponBase : MonoBehaviour
     {
         yield return new WaitForSeconds(_waitUntilThrowTime);
 
+        fireCooldownTimer = fireCooldown * 1.1f;
+
         if (weaponJuggleMovement.beingThrown) 
-        { 
+        {
             yield break; 
         }
 
-        if(player.GetComponent<PlayerJuggle>().weaponInHand = thisWeapon.weaponJuggleMovement)
+        if(player.GetComponent<PlayerJuggle>().weaponInHand == thisWeapon.weaponJuggleMovement)
         {
-            FindObjectOfType<PlayerJuggle>().ThrowUpWeaponInHand();
+            FindObjectOfType<PlayerJuggle>().ThrowUpWeaponInHand(); 
+            StopCoroutine(nameof(ThrowUpWeaponWhenWeaponHasBeenFullyUsed));
         }
     }
 

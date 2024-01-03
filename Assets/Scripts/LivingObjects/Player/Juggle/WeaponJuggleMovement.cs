@@ -21,11 +21,12 @@ public class WeaponJuggleMovement : MonoBehaviour
     [SerializeField] float startRotationZ;
     [HideInInspector] public bool gotCaught;
 
-    /*[HideInInspector] */public float curveDeltaTime = 0.0f;
-    public float curveSpeedModifier = 1f;
+    /*[HideInInspector] */
+    [ReadOnly] public float curveDeltaTime = 0.0f;
+    [ReadOnly] public float curveSpeedModifier = 1f;
 
-    private float endOfCurveYTimeValue;
-    [HideInInspector] public float endOfCurveXTimeValue;
+    [ReadOnly] public float endOfCurveYTimeValue;
+    [ReadOnly] public float endOfCurveXTimeValue;
 
     private PlayerJuggle playerJuggle;
 
@@ -56,11 +57,23 @@ public class WeaponJuggleMovement : MonoBehaviour
 
     private void ResetCurveSpeedModifier()
     {
-       // curveSpeedModifier = 1f;
+       curveSpeedModifier = 1f;
     }
 
     void Update()
     {
+
+
+        for (int i = 0; i < playerJuggle.weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+            if(curveDeltaTime == playerJuggle.weaponsCurrentlyInJuggleLoop[i].curveDeltaTime)
+            {
+                if(gameObject.GetComponent<WeaponJuggleMovement>() != playerJuggle.weaponsCurrentlyInJuggleLoop[i])
+                    curveDeltaTime += Random.Range(0.010f, 0.020f);
+            }
+        }
+
+
         if (beingThrown)
         {
             // Get the current position of the weapon
@@ -102,33 +115,37 @@ public class WeaponJuggleMovement : MonoBehaviour
         {
             if(playerJuggle.weaponInHand != null && beingThrown)
             {
-                playerJuggle.ThrowUpWeaponInHand();
+                if(playerJuggle.weaponInHand != gameObject.GetComponent<WeaponJuggleMovement>())
+                {
+                    //Debug.Log("THREW UP FROM WEAPONJUGGLE MOVEMENT");
+                    //playerJuggle.ThrowUpWeaponInHand(); TODO
+                }
             }
         }
 
-        //if (curveDeltaTime >= endOfCurveYTimeValue - 0.1)
-        //{
-        //    if (beingThrown)
-        //    {
-        //        ResetCurveSpeedModifier();
-        //    }
-        //}
 
 
-        //if (beingDropped)
-        //{
-        //    Vector3 currentPosition = transform.localPosition;
-        //    Vector3 offSet = transform.localPosition;
 
-        //    // Call evaluate on that time   
-        //    curveDeltaTime += Time.deltaTime;
-
-        //    currentPosition.y = gunDropAnimationCurveY.Evaluate(curveDeltaTime) + offSet.y;
-        //    currentPosition.x = gunDropAnimationCurveX.Evaluate(curveDeltaTime) + offSet.x;
-
-        //    // Update the current position of the sphere
-        //    transform.localPosition = currentPosition;
-        //}
+        if (curveDeltaTime >= endOfCurveYTimeValue && curveDeltaTime >= endOfCurveXTimeValue)
+        {
+            if (playerJuggle.isJuggling)
+            {
+                if(playerJuggle.weaponInHand != gameObject.GetComponent<WeaponJuggleMovement>())
+                {
+                    ThrowUpWeapon();
+                }
+            }
+        }
+        if (curveDeltaTime == 0)
+        {
+            if (playerJuggle.isJuggling)
+            {
+                if (playerJuggle.weaponInHand != gameObject.GetComponent<WeaponJuggleMovement>())
+                {
+                    ThrowUpWeapon();
+                }
+            }
+        }
     }
 
     public float GetTimeUntilWeaponIsInHand()

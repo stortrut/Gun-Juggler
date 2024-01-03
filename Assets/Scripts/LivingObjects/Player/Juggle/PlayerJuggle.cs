@@ -16,7 +16,7 @@ public class PlayerJuggle : MonoBehaviour
     [ReadOnly] public WeaponJuggleMovement weaponInHand;
     
     private WeaponQueueUI weaponQueueUI;
-    private bool isJuggling;
+    [ReadOnly] public  bool isJuggling;
 
     [HideInInspector] public ArmAnimationHandler armAnimationHandler;
     [HideInInspector] public bool isAlive;
@@ -83,8 +83,8 @@ public class PlayerJuggle : MonoBehaviour
         {
             if (isJuggling)
             {
-                Sound.instance.SoundRandomized(Sound.instance.throwUpWeapon, .6f);
-                ThrowUpWeaponInHand();
+                //Sound.instance.SoundRandomized(Sound.instance.throwUpWeapon, .6f);
+                //ThrowUpWeaponInHand();
             }
             else
             {
@@ -102,8 +102,6 @@ public class PlayerJuggle : MonoBehaviour
 
         //Dynamic Weapon Speeds
 
-        if (weaponInHand == null)
-            SpeedUpUpcomingWeapon();
 
         if (GetUpcomingWeapon() == null) { return; }
         nextWeapon = GetUpcomingWeapon().gameObject.name;
@@ -116,24 +114,25 @@ public class PlayerJuggle : MonoBehaviour
         int lastWeaponId = weaponsCurrentlyInJuggleLoop.Count - 1;
         int weaponBeforeLastId = lastWeaponId - 1;
         float minDistanceBetweenWeapons = 1f;
+
+
+     
+
+
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
             if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped && !(weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon()))
             {
-                int idOfWeaponBeforeThisWeapon;
+                int idOfWeaponBeforeThisWeapon = GetWeaponIdOfWeaponInfront(i);
+                Debug.Log(idOfWeaponBeforeThisWeapon);
 
-                if (i == 0)
+                if(idOfWeaponBeforeThisWeapon != -1) 
                 {
-                    idOfWeaponBeforeThisWeapon = weaponsCurrentlyInJuggleLoop.Count - 1;
-                }
-                else
-                {
-                    idOfWeaponBeforeThisWeapon = i - 1;
-                }
-
-                if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon) < 2)
-                {
-                    weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier -= 0.3f * Time.deltaTime;
+                    if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon) < 3)
+                    {
+                        Debug.Log("SLOWING DOWN WEAPON");
+                        weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier -= 4 * Time.deltaTime;
+                    }
                 }
                 else
                 {
@@ -142,11 +141,17 @@ public class PlayerJuggle : MonoBehaviour
             }
             else if (weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon() && weaponInHand == null)
             {
-                weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 3.85f;
+                //weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 5f;
             }
         }
 
     }
+
+
+
+
+
+
 
     private void StartJuggling()
     {
@@ -219,7 +224,7 @@ public class PlayerJuggle : MonoBehaviour
         }
         else {   weaponPosition++; }
 
-        weaponsCurrentlyInJuggleLoop[weaponPosition].curveSpeedModifier = 4f;
+        //weaponsCurrentlyInJuggleLoop[weaponPosition].curveSpeedModifier = 4f;
     }
 
     private WeaponJuggleMovement GetUpcomingWeapon()
@@ -245,10 +250,49 @@ public class PlayerJuggle : MonoBehaviour
         {
             weaponThatIsFurthestInLoop = weaponsCurrentlyInJuggleLoop[0];
         }
-      
 
         return weaponThatIsFurthestInLoop;
     }
+
+
+    private int GetWeaponIdOfWeaponInfront(int weaponId)
+    {
+        int weaponIdToReturn = -1;
+        float leastFarLoopTime = weaponsCurrentlyInJuggleLoop[weaponId].endOfCurveXTimeValue - weaponsCurrentlyInJuggleLoop[weaponId].curveDeltaTime;
+
+        if (weaponsCurrentlyInJuggleLoop.Count > 1)
+        {
+            Debug.Log("HERE");
+            for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+            {
+                Debug.Log("TERE");
+                if (weaponsCurrentlyInJuggleLoop[i] == weaponsCurrentlyInJuggleLoop[weaponId]) { return -1; }
+                Debug.Log("MERE");
+
+                if (weaponsCurrentlyInJuggleLoop[i].curveDeltaTime <= leastFarLoopTime)
+                {
+                    Debug.Log("SERE");
+
+                    if (weaponsCurrentlyInJuggleLoop[i].curveDeltaTime >= weaponsCurrentlyInJuggleLoop[weaponId].curveDeltaTime)
+                    {
+                        Debug.Log("åERE");
+
+                        if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped)
+                        {
+                            Debug.Log("ALL THE WAY");
+
+                            leastFarLoopTime = weaponsCurrentlyInJuggleLoop[i].curveDeltaTime;
+                            weaponIdToReturn = i;
+                        }
+                    }
+                }
+            }
+        }
+
+        return weaponIdToReturn;
+    }
+
+
 
 
 
@@ -277,12 +321,10 @@ public class PlayerJuggle : MonoBehaviour
 
     IEnumerator DistributeWeaponsInAir()
     {
-        
-
         while (CheckDistanceBetweenTwoWeapons(0, 1) < 0.5)
         {
             //Debug.Log(CheckDistanceBetweenTwoWeapons(0, 1));
-
+                
             weaponsCurrentlyInJuggleLoop[0].curveSpeedModifier += 0.001f;
             yield return null;
         }
@@ -392,24 +434,26 @@ public class PlayerJuggle : MonoBehaviour
     [System.Obsolete]
     public void CreateAndAddWeaponToLoop(GameObject weaponPrefabToAdd)
     {
+        if (!isJuggling)
+        {
+            isJuggling = true;
+            ThrowUpWeaponInHand();
+        }
 
         GameObject newGun = Instantiate(weaponPrefabToAdd, weaponHolderPoint.position, Quaternion.identity, weaponHolderPoint);
         //weaponsCurrentlyInJuggleLoop.Add(newGun.GetComponentInChildren<WeaponJuggleMovement>());
         newGun.transform.localPosition = new Vector3(0, 0, 0);
         newGun.transform.localRotation = Quaternion.EulerRotation(0, 0, 0);
 
+        //weaponsCurrentlyInJuggleLoop.Add(newGun.GetComponentInChildren<WeaponJuggleMovement>());
+
         if (UpgradeCombo.Instance != null)
             UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
         else { Debug.Log("ERROR: Did not find the UpgradeCombo Instance"); }
 
-        if (isJuggling)
-        {
-            ThrowUpWeaponInHand();
-        }
-
-
-        weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();
-        weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
+      
+        //weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();
+        //weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
         //weaponQueueUI.InstantiateTheWeapons();
     }
 
