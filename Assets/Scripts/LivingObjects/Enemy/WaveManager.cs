@@ -43,6 +43,8 @@ public class WaveManager : MonoBehaviour
                 StartWave();
             else
             {
+                hoolaHoop.EndWave();
+                clownAnimator.Dying();
                 foreach (var bla in curtain)
                 {
                     bla.SetActive(false);

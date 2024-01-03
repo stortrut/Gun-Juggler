@@ -58,10 +58,6 @@ public class TrailCollisions : MonoBehaviour
 
     void OnDestroy()
     {
-        if (myCollider != null)
-        {
-            myCollider.enabled = false;
-            unusedColliders.Add(myCollider);
-        }
+        Destroy(myCollider.gameObject);
     }
 }
