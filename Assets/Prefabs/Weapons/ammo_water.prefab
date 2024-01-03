@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5301430367838362368}
   - component: {fileID: -700389416651412963}
   - component: {fileID: 8333955496167337510}
+  - component: {fileID: 725045788052888015}
   m_Layer: 9
   m_Name: ammo_water
   m_TagString: Bullet
@@ -229,14 +230,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5340873581181613749}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 8fea298a93f714e4e8d8f37911afa231, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -299,6 +300,18 @@ PolygonCollider2D:
       - {x: 1.5993472, y: -1.5765282}
       - {x: 0.66316575, y: -1.6462244}
   m_UseDelaunayMesh: 0
+--- !u!114 &725045788052888015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5340873581181613749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafcfb38c504dc94fb5079995daea516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8711619230311620050
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +323,7 @@ GameObject:
   - component: {fileID: 2181413056299773842}
   - component: {fileID: 3318003514732389251}
   - component: {fileID: 5374767405951774085}
+  - component: {fileID: 1856428567722620049}
   m_Layer: 9
   m_Name: water_drops
   m_TagString: Untagged
@@ -5094,9 +5108,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 220209013
-  m_SortingLayer: 5
-  m_SortingOrder: 2
+  m_SortingLayerID: 1869175581
+  m_SortingLayer: 7
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5129,3 +5143,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!50 &1856428567722620049
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711619230311620050}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
