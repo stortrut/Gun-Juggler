@@ -116,33 +116,52 @@ public class PlayerJuggle : MonoBehaviour
         float minDistanceBetweenWeapons = 1f;
 
 
-     
+
+        if (weaponsCurrentlyInJuggleLoop.Count <= 1) { return; }
 
 
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
-            if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped && !(weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon()))
+            if(GetWeaponIdOfWeaponInfront(i) != -1)
             {
-                int idOfWeaponBeforeThisWeapon = GetWeaponIdOfWeaponInfront(i);
-                Debug.Log(idOfWeaponBeforeThisWeapon);
-
-                if(idOfWeaponBeforeThisWeapon != -1) 
+                if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped && !(weaponsCurrentlyInJuggleLoop[i] == weaponsCurrentlyInJuggleLoop[GetWeaponIdOfWeaponInfront(i)]))
                 {
-                    if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon) < 3)
+                    int idOfWeaponBeforeThisWeapon = GetWeaponIdOfWeaponInfront(i);
+
+                    if (idOfWeaponBeforeThisWeapon != -1)
                     {
-                        Debug.Log("SLOWING DOWN WEAPON");
-                        weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier -= 4 * Time.deltaTime;
+                        Debug.Log("This weapon element id is: " + i + ". And the one in front has the element id of " + idOfWeaponBeforeThisWeapon);
+
+                        if (CheckTimeBetweenTwoWeapons(i, idOfWeaponBeforeThisWeapon) < 2)
+                        {
+                            Debug.Log("SLOWING DOWN WEAPON");
+
+                            if(weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier > 0)
+                                weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier -= 1.2f * Time.deltaTime;
+                            else
+                            {
+                                weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 0.05f;
+                            }
+                        }
+                        else
+                        {
+                            weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 1f;
+                        }
+                    }
+                    else
+                    {
+                        weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 1f;
                     }
                 }
-                else
-                {
-                    weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 1f;
-                }
             }
-            else if (weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon() && weaponInHand == null)
+            else
             {
-                //weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 5f;
+                weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 1f;
             }
+            //else if (weaponsCurrentlyInJuggleLoop[i] == GetUpcomingWeapon() && weaponInHand == null)
+            //{
+            //    //weaponsCurrentlyInJuggleLoop[i].curveSpeedModifier = 5f;
+            //}
         }
 
     }
@@ -262,27 +281,21 @@ public class PlayerJuggle : MonoBehaviour
 
         if (weaponsCurrentlyInJuggleLoop.Count > 1)
         {
-            Debug.Log("HERE");
-            for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+            for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count - 1; i++)
             {
-                Debug.Log("TERE");
-                if (weaponsCurrentlyInJuggleLoop[i] == weaponsCurrentlyInJuggleLoop[weaponId]) { return -1; }
-                Debug.Log("MERE");
-
-                if (weaponsCurrentlyInJuggleLoop[i].curveDeltaTime <= leastFarLoopTime)
+                if (weaponsCurrentlyInJuggleLoop[i] != weaponsCurrentlyInJuggleLoop[weaponId])
                 {
-                    Debug.Log("SERE");
-
-                    if (weaponsCurrentlyInJuggleLoop[i].curveDeltaTime >= weaponsCurrentlyInJuggleLoop[weaponId].curveDeltaTime)
+                    if (weaponsCurrentlyInJuggleLoop[i].curveDeltaTime <= leastFarLoopTime)
                     {
-                        Debug.Log("åERE");
-
-                        if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped)
+                        if (weaponsCurrentlyInJuggleLoop[i].curveDeltaTime >= weaponsCurrentlyInJuggleLoop[weaponId].curveDeltaTime)
                         {
-                            Debug.Log("ALL THE WAY");
+                            if (!weaponsCurrentlyInJuggleLoop[i].weaponBase.weaponEquipped)
+                            {
+                                Debug.Log("ALL THE WAY");
 
-                            leastFarLoopTime = weaponsCurrentlyInJuggleLoop[i].curveDeltaTime;
-                            weaponIdToReturn = i;
+                                leastFarLoopTime = weaponsCurrentlyInJuggleLoop[i].curveDeltaTime;
+                                weaponIdToReturn = i;
+                            }
                         }
                     }
                 }
@@ -400,6 +413,8 @@ public class PlayerJuggle : MonoBehaviour
             newGun.GetComponentInChildren<WeaponJuggleMovement>().curveDeltaTime = oldWeaponData.curveDeltaTime;
             newGun.transform.localRotation = Quaternion.EulerRotation(0, 0, 0);
             newGun.GetComponentInChildren<WeaponJuggleMovement>().beingThrown = true;
+
+            newGun.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.UnEquipWeapon();
         }
 
         for (int i = 0; i < oldWeapons.Count; i++)
