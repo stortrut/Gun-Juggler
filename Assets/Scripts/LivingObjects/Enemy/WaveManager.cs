@@ -147,7 +147,7 @@ public class WaveManager : MonoBehaviour
             {
                 i = 0;
             }
-            c   c
+            
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
             i++;
         }
