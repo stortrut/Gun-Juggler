@@ -44,6 +44,10 @@ public class Health : MonoBehaviour, IDamageable
 
     public virtual void Death()
     {
+      
+    }
+    void OnDestroy()
+    {
         died?.Invoke();
     }
 }

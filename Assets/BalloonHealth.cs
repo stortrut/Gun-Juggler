@@ -95,7 +95,7 @@ public class BalloonHealth : Health
         if(this != null)
         { 
             EffectAnimations.instance.BalloonPop(transform.position);
-            Destroy(gameObject);
+            Destroy(gameObject);  
         }
     }
   
