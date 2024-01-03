@@ -9,7 +9,7 @@ using DG.Tweening;
 public class PlayerMovement : MonoBehaviour, IStunnable
 {
     [Header("References")]
-    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] public Rigidbody2D rigidBody;
     [SerializeField] private Collider2D mainPlayerCollider;
     [SerializeField] private LegAnimationHandler legs;
     [SerializeField] private Health playerHealth;
