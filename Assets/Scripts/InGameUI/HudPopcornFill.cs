@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HudPopcornFill : MonoBehaviour
 {
     private Image popcornFillImage;
-    private Image popcornFillTop;
+    public Image popcornFillTop;
     private UpgradeCombo comboScript;
 
     public Vector2 popcornFillTopPos = new Vector2(0, 0);
@@ -81,7 +81,6 @@ public class HudPopcornFill : MonoBehaviour
 
     public IEnumerator StartUlt()
     {
-        yield break;
         if (ultActive)
             yield break;
 

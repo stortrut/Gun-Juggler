@@ -46,14 +46,17 @@ public class WeaponConfettiGun : Gun
         //spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
         //bulletWave.Add(spawnedBullet);
 
-        float angleDistanceBetweenBullets = 180 / bulletCount;
+        float spread = 20;
+
+
+        float angleDistanceBetweenBullets = spread / bulletCount;
         float angelSum = -90;
 
         for (int i = 0; i < bulletCount; i++)
         {
             float bulletAngle = angleDistanceBetweenBullets;
             if (i == 0)
-                bulletAngle = (angleDistanceBetweenBullets) / 2;
+                bulletAngle = (180 - spread) / 2;
 
             angelSum += bulletAngle;
 
