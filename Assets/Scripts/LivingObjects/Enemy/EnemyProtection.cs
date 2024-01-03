@@ -7,7 +7,6 @@ public class EnemyProtection : Health
     [SerializeField] private GameObject Protection;
     public int numberOfProtection = 1;
     public int numberOfProtection2 = 1;
-    private Health health;
     public HealthUI healthImage;
     public List<GameObject> protectingItems;
     private GameObject currentProtection;
