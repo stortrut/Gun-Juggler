@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class EffectAnimations : MonoBehaviour
 {
@@ -10,8 +13,14 @@ public class EffectAnimations : MonoBehaviour
     [SerializeField] GameObject confettiExplosion;
     [SerializeField] GameObject pieExplosionGround;
     [SerializeField] GameObject pieExplosion;
-    [SerializeField] GameObject popcornPopping;
-    [SerializeField] GameObject ultReadyPopcornPopcorn;
+
+    [SerializeField] Image popcornPopping;
+    [SerializeField] Image ultReadyPopcornPopcorn;
+
+    [SerializeField] GameObject soundWave;
+
+    private Image particleHolder;
+    private HudPopcornFill popcornHudObject;
 
     private void Awake()
     {
@@ -23,6 +32,8 @@ public class EffectAnimations : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        popcornHudObject = FindObjectOfType<HudPopcornFill>();
     }
 
     private void Update()
@@ -72,17 +83,35 @@ public class EffectAnimations : MonoBehaviour
 
     public void PopcornPopping(Vector2 pos)
     {
-        var popping = Instantiate(popcornPopping, pos, Quaternion.identity, FindObjectOfType<HudPopcornFill>().transform);
+        var popping = Instantiate(popcornPopping, pos, Quaternion.identity, popcornHudObject.transform);    //, FindObjectOfType<HudPopcornFill>().transform
         //popping.AddComponent(typeof(RectTransform));
-        //popping.transform.localScale += new Vector3(8, 8);
+        popping.rectTransform.localScale += new Vector3(100,100);
         //popping.transform.position = new Vector3(20, FindObjectOfType<HudPopcornFill>().popcornFillTopPos.y);
+        popping.rectTransform.anchoredPosition = popcornHudObject.popcornFillTopPos;
         Destroy(popping, 1);
     }
 
     public void PopcornPoppingUltReady(Vector2 pos)
     {
-        var ultready = Instantiate(ultReadyPopcornPopcorn, pos, Quaternion.identity, FindObjectOfType<HudPopcornFill>().transform);
-        Destroy(ultready, 1);
+        if (particleHolder != null)
+        {
+            Destroy(particleHolder);
+        }
+        particleHolder = Instantiate(ultReadyPopcornPopcorn, pos, Quaternion.identity, FindObjectOfType<HudPopcornFill>().transform);
+        particleHolder.rectTransform.anchoredPosition = popcornHudObject.popcornFillTopPos;
+        //particleHolder.scale
+        Destroy(particleHolder, 40);
+    }
+
+    public void StunWave(Vector2 pos, Quaternion rot)
+    {
+        var soundWaveObj = Instantiate(soundWave, FindObjectOfType<WeaponStunGun>().transform.position, rot);
+        //soundWaveObj.transform.localScale = new Vector3(0.2f, 0.2f);
+    }
+
+    public void StunWaveUpgraded(Vector2 pos)
+    {
+        //var soundWaveObj = Instantiate(soundWaveUpgraded, pos, Quaternion.identity);
     }
 }
     
