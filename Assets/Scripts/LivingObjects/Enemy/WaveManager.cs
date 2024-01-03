@@ -48,6 +48,8 @@ public class WaveManager : MonoBehaviour
     [ReadOnly][SerializeField] private List<Vector3> setShape;
     [SerializeField] private List<GameObject> curtain;
     [SerializeField] private int shapeSize;
+    [SerializeField] private bool mixedWave;
+    private bool even;
 
     private void Update()
     {
@@ -57,24 +59,40 @@ public class WaveManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Spawn();
-            StartCoroutine(PoofAir());
+            StartWave();    
         }
     }
     public void StartWave()
     {
         Spawn();
-        StartCoroutine(PoofAir());
+        if (mixedWave == false)
+        {
+            if (!even)
+            {
+                StartCoroutine(PoofAir(airSpawnSpots));
+            }
+            else
+            {
+                StartCoroutine(PoofAir(groundSpawnSpots));
+            }
+
+        }
+        else
+        {
+            StartCoroutine(PoofAir(airSpawnSpots));
+            StartCoroutine(PoofAir(groundSpawnSpots));
+        }
+
     }
-    public IEnumerator PoofAir()
+    public IEnumerator PoofAir(List<Transform> spawnSpots)
     {
         yield return new WaitForSeconds(1);
         cannonAnimator.CannonAttack();
         yield return new WaitForSeconds(0.5f);
         var i = 0;
-        foreach (var enemy in airSpawnSpots)
+        foreach (var enemy in spawnSpots)
         {
-            var a = airSpawnSpots.ElementAt(i);
+            var a = spawnSpots.ElementAt(i);
             var pos = new Vector2(a.position.x, a.position.y);
             EffectAnimations.instance.EnemyPoof(pos);
             i++;
@@ -85,9 +103,26 @@ public class WaveManager : MonoBehaviour
 
         clownAnimator.CannonAttack();
         yield return new WaitForSeconds(2);
+        if (mixedWave == false)
+        {
+            even = !even;
+            if (even)
+            {
+                SpawnEnemies(presetAirWave, airSpawnSpots);
+            }
+            else
+            {
+                SpawnEnemies(presetGroundWave, groundSpawnSpots);
+            }
+        }
+        else
+        {
+            SpawnEnemies(presetAirWave, airSpawnSpots);
+            SpawnEnemies(presetGroundWave, groundSpawnSpots);
+        }
+        yield return new WaitForSeconds(15);
+        Spawn();
 
-        SpawnEnemies(presetAirWave, airSpawnSpots);
-        SpawnEnemies(presetGroundWave, groundSpawnSpots);
     }
     private void Spawn()
     {
@@ -112,7 +147,7 @@ public class WaveManager : MonoBehaviour
             {
                 i = 0;
             }
-
+            c   c
             var spawnedEnemy = Instantiate(availableEnemies.ElementAt(index), spawn.ElementAt(i));
             i++;
         }
@@ -120,7 +155,7 @@ public class WaveManager : MonoBehaviour
 
     private void Cube()
     {
-       
+
 
         var basePos = airSpawnSpots[0].position;
         setShape.Clear();
@@ -135,15 +170,15 @@ public class WaveManager : MonoBehaviour
             for (var j = 0; j < 3; j++)
             {
                 numberOnLine = Mathf.Abs(numberOnLine);
-                f -= 2; 
-                 if (j * shapeSize >= numberOnLine)
+                f -= 2;
+                if (j * shapeSize >= numberOnLine)
                 {
                     numberOnLine *= f / (Mathf.Abs(f));
                     if (even == true)
                     {
                         xValue += numberOnLine;
-                    }   
-                    else if(even == false)
+                    }
+                    else if (even == false)
                     {
                         yValue += numberOnLine;
                     }
@@ -161,17 +196,17 @@ public class WaveManager : MonoBehaviour
                         Debug.Log("EarlyX " + xValue + "numberBAllon " + i);
                         Debug.Log(f + "after X value");
                     }
-                    else if(even == false) 
-                    { 
+                    else if (even == false)
+                    {
                         yValue += numberOnLine;
                     }
                     even ^= true;
-                }   
-              
-              
+                }
+
+
             }
-            Debug.Log("X " + xValue + "Y"+ yValue + "numberBAllon " + i);
-            
+            Debug.Log("X " + xValue + "Y" + yValue + "numberBAllon " + i);
+
             // 4 ballonger 5 , 10 , 15 ,20
             // 20
             setShape.Add(new Vector3((basePos.x - (shapeSize / 2)) + xValue, (basePos.y - (shapeSize / 2)) + yValue, 0));
