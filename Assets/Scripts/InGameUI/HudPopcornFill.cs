@@ -18,6 +18,7 @@ public class HudPopcornFill : MonoBehaviour
     [SerializeField] float ultDuration;
 
     private bool ultActive = false;
+    [SerializeField] GameObject popping;
 
 
     void Start()
@@ -62,11 +63,13 @@ public class HudPopcornFill : MonoBehaviour
 
         popcornFillImage.fillAmount += 1 / (19 / popcornFillAmountPerUpgrade);
 
-        EffectAnimations.instance.PopcornPopping(popcornFillTopPos);
+        //EffectAnimations.instance.PopcornPopping(popcornFillTopPos);
+        popping.SetActive(false);
+        popping.SetActive(true);
 
         if (popcornFillTopPos.y > 19)
         {
-            EffectAnimations.instance.PopcornPoppingUltReady(popcornFillTopPos);
+            //EffectAnimations.instance.PopcornPoppingUltReady(popcornFillTopPos);
             StartCoroutine(nameof(StartUlt));
             popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
             popcornFillImage.fillAmount -= 1 / (19 / popcornFillAmountPerUpgrade);
