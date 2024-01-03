@@ -19,6 +19,7 @@ public class Sound : MonoBehaviour
     [Header("Audience")]
     [SerializeField] public AudioClip[] audienceApplaud;
     [SerializeField] public AudioClip[] audienceBoo;
+    [SerializeField] public AudioClip[] onePersonDissapointed;
 
     [Header("Weapon")]
     [SerializeField] public AudioClip[] catchWeaponWeapontypeEnumOrder;
@@ -42,6 +43,11 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] pieSplash;
     [SerializeField] public AudioClip[] buttonClick;
     [SerializeField] public AudioClip[] spotLightOn;
+
+    [SerializeField] private GameObject fight_music_on;
+    [SerializeField] private GameObject fight_music_off;
+
+    Collider2D onMusicCollider;
 
     //Volume
     [HideInInspector] Slider volumeSlider;
@@ -90,8 +96,14 @@ public class Sound : MonoBehaviour
         {
             backgroundSource.Play();
         }
+
+        onMusicCollider = fight_music_on.GetComponent<Collider2D>();
     }
 
+    //private void OnTriggerEnter2D(onMusicCollider)
+    //{
+        
+    //}
 
     public void SoundRandomized(AudioClip[] currentsound, float volume = 1)  //float volume)
     {
