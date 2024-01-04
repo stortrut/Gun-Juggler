@@ -67,6 +67,7 @@ public class Menu : MonoBehaviour, IStunnable
     }
     public void StartButton()
     {
+        PlayerPrefs.SetInt("cameraPan", 0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
     public void QuitButton()

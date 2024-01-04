@@ -55,7 +55,7 @@ public class Manager : MonoBehaviour
     {
         StartCoroutine(LoadSceneAsyncProcess());            
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        fadeToBlack.SetActive(true);
+        //fadeToBlack.SetActive(true);
         Invoke(nameof(SetActiveFalse), 7);
         PlayerPrefs.DeleteAll();
     }
@@ -67,7 +67,7 @@ public class Manager : MonoBehaviour
 
     private void SetActiveFalse()
     {
-        fadeToBlack.SetActive(false);
+        //fadeToBlack.SetActive(false);
     }
 
     public IEnumerator LoadSceneAsyncProcess()

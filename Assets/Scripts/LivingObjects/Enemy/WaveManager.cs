@@ -71,10 +71,10 @@ public class WaveManager : MonoBehaviour
         {
             Cube();
         }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            StartWave();    
-        }
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    StartWave();    
+        //}
     }
     public void StartWave()
     {
