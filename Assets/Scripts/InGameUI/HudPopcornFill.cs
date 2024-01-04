@@ -101,10 +101,45 @@ public class HudPopcornFill : MonoBehaviour
             ReducePopcornAmount();
             yield return null;
         }
-            popcornFillImage.fillAmount = 0;
+        popcornFillImage.fillAmount = 0;
 
         FindObjectOfType<PlayerJuggle>().NoUltimate();
+
+        ultActive = false;
+
+        FindObjectOfType<WeaponPopcornGun>().StopAllCoroutines();
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void ReducePopcornAmount()
     {
         //popcornFillTopPos.y = 0;

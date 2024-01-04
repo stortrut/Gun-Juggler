@@ -59,7 +59,6 @@ public class WeaponQueueUI : MonoBehaviour
             WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.GetCorrectWeaponOrder()[i];
             WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
 
-            Debug.Log(weaponEnum);
 
             int enumIndex = (int)weaponEnum;
 
