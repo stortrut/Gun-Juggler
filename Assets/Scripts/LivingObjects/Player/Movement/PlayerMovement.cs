@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [ReadOnly][SerializeField] private bool actuallyTouchingGround = true;
     [ReadOnly] public bool isJumping = false;
 
+    [SerializeField] private GameObject shadow;
     private float calculatedGroundCheckLenght;
     private float landingBounceAmount;
     private float savedVelocityForBounce;
@@ -95,8 +96,17 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     private void FixedUpdate()
     {
         onGround = CheckIfTouchingGround();
+      //  var shade = Shadow();
+       // shadow.transform.position = new Vector3(shadow.transform.position.x, shade, shadow.transform.position.z);
     }
 
+    //private float Shadow()
+    //{
+    //    LayerMask mask = LayerMask.GetMask("Ground");
+    //    var shadow = Physics2D.Raycast(transform.position, Vector2.down, 5, mask);
+    //    Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 5, transform.position.z), Color.green);
+    //    return shadow.point.y;
+    //}
     private bool CheckIfTouchingGround()
     {
         bool isTouchingGround = false;
