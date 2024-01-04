@@ -86,7 +86,7 @@ public class Sound : MonoBehaviour
         if ((SceneManager.GetActiveScene().buildIndex == 0)) 
         {
             backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
-            maxAmountOfSoundsPlayingAtSameTime = 1;
+            maxAmountOfSoundsPlayingAtSameTime = 2;
         }
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
