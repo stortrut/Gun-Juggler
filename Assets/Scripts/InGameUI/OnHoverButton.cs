@@ -33,7 +33,7 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         selectionSpotlight.SetActive(false);
         Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, .4f);
-        transform.DOScale(startScale, 0.5f);
+        transform.DOScale(startScale, 0.5f);    
         float scale = startScale;
         //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
     }

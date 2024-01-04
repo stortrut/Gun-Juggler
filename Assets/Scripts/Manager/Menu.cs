@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour, IStunnable
     [SerializeField] GameObject escMenu;
     [SerializeField] GameObject startMenu;
     [SerializeField] GameObject endMenu;
+    [SerializeField] GameObject scoreMenu;
     [SerializeField] IStunnable stunnable;
 
     public bool isStunnable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -68,7 +69,7 @@ public class Menu : MonoBehaviour, IStunnable
     public void StartButton()
     {
         PlayerPrefs.SetInt("cameraPan", 0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        Manager.Instance.LoadNextSceneWithTransition(1);
     }
     public void QuitButton()
     {
@@ -95,5 +96,11 @@ public class Menu : MonoBehaviour, IStunnable
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+    public void ScoreButton()
+    {
+        PlayerPrefs.SetInt("cameraPan", 0);
+        Manager.Instance.LoadNextSceneWithTransition(1);
+        scoreMenu.SetActive(false);
     }
 }

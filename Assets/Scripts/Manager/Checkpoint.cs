@@ -12,7 +12,8 @@ public class Checkpoint : MonoBehaviour
             //Debug.Log("Started Scene Preloading");
 
             // Start scene preloading.
-            Manager.Instance.LoadNextSceneWithTransition(1);
+            Score.Instance.DisplayScore();
+            
         }
     }
 }

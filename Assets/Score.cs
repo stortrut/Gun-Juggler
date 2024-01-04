@@ -15,8 +15,15 @@ public class Score : MonoBehaviour
     [ReadOnly] public int bulletsHit;
     private float score = 0;
     private float totalScore;
-    
-    
+    public TextMeshProUGUI elephantHitText;
+    public TextMeshProUGUI giraffeHitText;
+    public TextMeshProUGUI monkeyHitText;
+    public TextMeshProUGUI pieClownHitText;
+    public TextMeshProUGUI bulletsShotText;
+    public TextMeshProUGUI bulletsHitText;
+
+    public GameObject scoreCanvas;
+
 
     private void Awake()
     {
@@ -29,7 +36,7 @@ public class Score : MonoBehaviour
     }
     public void WhatEnemyHit(EnemyType enemy)
     {
-        if(enemy == EnemyType.Elephant)
+        if (enemy == EnemyType.Elephant)
         {
             elephantHit++;
         }
@@ -50,18 +57,37 @@ public class Score : MonoBehaviour
     {
         score += addScore;
         totalScore++;
-        
+
     }
-    public  int EndScore()
+    public int EndScore()
     {
-         var finalScore = score / totalScore * 100;
+        var finalScore = score / totalScore * 100;
         return (int)finalScore;
-        
-       
+
+
     }
     public void DisplayScore()
     {
-        scoreText.text = "AudienceSatisfaction "+EndScore()+"%";
+        scoreCanvas.SetActive(true);
+        elephantHitText.text = "";
+        giraffeHitText.text = "";
+        monkeyHitText.text = "";
+        pieClownHitText.text = "";
+        bulletsShotText.text = "";
+        bulletsHitText.text = "";
+        //
+        elephantHitText.text = "Babar hit: "+elephantHit;
+        giraffeHitText.text = "Savanna hit: "+giraffeHit;
+        monkeyHitText.text = "Boris hit: "+monkeyHit;
+        pieClownHitText.text = "PieBob hit: "+pieClownHit;
+        bulletsShotText.text = "Bullets shot: "+bulletsShot;
+        bulletsHitText.text="Bullets hit: "+bulletsHit;
 
+        scoreText.text = "Performance Rating: " + EndScore() + "%";
+
+    }
+    public void DontDisplayscore()
+    {
+        scoreCanvas.SetActive(false);
     }
 }
