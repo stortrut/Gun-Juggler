@@ -138,6 +138,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
             Invoke(nameof(ClownDeath), 1.5f);
+            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, 5);
             CameraShakeRobert.instance.AddTrauma(0.3f);
             enemyAnimator.Dying();
         }
