@@ -65,7 +65,7 @@ public class HandHoldingTutorial : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
 
-        explainThrowUp.GetComponentInChildren<TextMeshPro>().text = "Let's try it against an enemie!";
+        explainThrowUp.GetComponentInChildren<TextMeshPro>().text = "Let's try it against an enemy!";
         explainThrowUpArrow.SetActive(true);
 
         //explainThrowUp.SetActive(false);
@@ -119,7 +119,7 @@ public class HandHoldingTutorial : MonoBehaviour
         FindObjectOfType<PlayerMovement>().turnOffMovement = true;
         yield return new WaitForSeconds(4f);
 
-        entertainmentRatingBox.GetComponentInChildren<TextMeshPro>().text = "Defeat enemies before they leave the stage to keep your Entertainment Rating up!";
+        entertainmentRatingBox.GetComponentInChildren<TextMeshPro>().text = "Defeat enemies before they leave the stage to keep your Performance Rating up!";
         FindObjectOfType<PlayerMovement>().turnOffMovement = false;
         entertainmentRatingArrow.SetActive(false);
 
