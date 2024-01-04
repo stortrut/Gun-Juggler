@@ -78,6 +78,8 @@ public class WeaponBase : MonoBehaviour
             {
                 if (weaponEquipped)
                 {
+                    if (FindObjectOfType<PlayerJuggle>().canNotUseWeapons) { return; }
+
                     UseWeapon();
 
                     fireCooldownTimer = 0;

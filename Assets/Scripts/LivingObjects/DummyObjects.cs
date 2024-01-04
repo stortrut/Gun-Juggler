@@ -7,8 +7,15 @@ public class DummyObjects : MonoBehaviour
     public bool air;
     public EnemyType enemyType;
     [ReadOnly] public int spot;
+
+    public bool shouldNotRespawn;
+
+
     private void OnDestroy()
     {
+        if (shouldNotRespawn) { return; }
+
+
         if (Respawn.Instance != null)
         {
             if (air)

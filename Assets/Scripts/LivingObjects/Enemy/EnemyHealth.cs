@@ -97,14 +97,14 @@ public class EnemyHealth : Health
     }
     private void ColorChange(int color)
     {
-        if (colorischanged == false)
-        {
-            spriteRenderer.color = new Color (1,1,1, (health/maxHealth) * (health / maxHealth));
-        }
-        if (hasProtection == true)
-        {
-            spriteRenderer.color = Color.blue;  
-        }
+        //if (colorischanged == false)
+        //{
+        //    spriteRenderer.color = new Color (1,1,1, (health/maxHealth) * (health / maxHealth));
+        //}
+        //if (hasProtection == true)
+        //{
+        //    spriteRenderer.color = Color.blue;  
+        //}
         //colorischanged = true;
     }
     private void ColorChange()
@@ -124,7 +124,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.Dummy)
         {
             Invoke(nameof(DummyDeath), 1f);
-            CameraShakeRobert.instance.AddTrauma(0.2f);
+            //CameraShakeRobert.instance.AddTrauma(0.2f);
             enemyAnimator.Dying();
         }
         else if (enemyAnimator.enemyType == EnemyType.Giraffe)
@@ -145,12 +145,11 @@ public class EnemyHealth : Health
 
     void DummyDeath()
     {
-        CameraShakeRobert.instance.AddTrauma(0.1f);
+        //CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
         Sound.instance.SoundSet(Sound.instance.poof, 0);
         Destroy(gameObject);
-        
     }
 
     void ClownDeath()

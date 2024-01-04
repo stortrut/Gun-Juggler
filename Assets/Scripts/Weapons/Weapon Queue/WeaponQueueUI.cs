@@ -27,7 +27,6 @@ public class WeaponQueueUI : MonoBehaviour
     
     void Start()
     {
-
         //var rect = anchor.transform as RectTransform;
         //Debug.Log("anchor"+arrow.rectTransform.anchoredPosition); 
         //arrowStartPos = arrow.transform.position;

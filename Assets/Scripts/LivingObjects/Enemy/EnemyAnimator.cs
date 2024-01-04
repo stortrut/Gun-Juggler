@@ -34,7 +34,7 @@ public class EnemyAnimator : MonoBehaviour
     public void TakingDamage()
     {
         enemyAnimator.SetBool(TAKING_DAMAGE, true);
-        Invoke(nameof(Idle), .1f);
+        Invoke(nameof(Idle), 0.001f);
     }
 
     public void Dying()

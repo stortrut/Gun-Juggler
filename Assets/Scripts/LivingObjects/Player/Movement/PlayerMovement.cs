@@ -50,7 +50,12 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] GameObject wheelArtHolder;
 
     [HideInInspector] public bool onGround = false;
-    
+
+    [Header("Tutorial Controllers")]
+    public bool turnOffMovement;
+
+
+
     public bool isStunnable { get { return isStunned; } set { isStunned = value; } }
   
     void Start()
@@ -70,8 +75,11 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         {
             return;
         }
+
+
         Walk();
         Jump();
+
 
         //if (onGround)
         //{
@@ -136,8 +144,17 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     private void Walk()
     {
-        horizontalInputRaw = Input.GetAxisRaw("Horizontal");
-        horizontalInput = Input.GetAxis("Horizontal");
+        if (!turnOffMovement)
+        {
+            horizontalInputRaw = Input.GetAxisRaw("Horizontal");
+            horizontalInput = Input.GetAxis("Horizontal");
+        }
+        else
+        {
+            horizontalInputRaw = 0;
+            horizontalInput = 0;
+        }
+
         var veloX = rigidBody.velocity.x;
         timeActive += Time.deltaTime * 2;
         timeActive = Mathf.Clamp(timeActive, 0, 4);
