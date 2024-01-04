@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 220209013
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6a394602471318e4bbac855e8971aade, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -135,6 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefabToPickup: {fileID: 1543170955243148950, guid: 966343cb40802c34aa22ef4e294c2f65, type: 3}
+  justDropAllWeapons: 0
+  replaceAllPlayerWeaponsWithThisWeapon: 0
+  andAlsoAddAWeaponIfPlayerHasNone: 0
+  dropAllWeaponsAndThenPickUpOne: 0
 --- !u!1001 &2252729490804866465
 PrefabInstance:
   m_ObjectHideFlags: 0
