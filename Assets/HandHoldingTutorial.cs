@@ -16,6 +16,10 @@ public class HandHoldingTutorial : MonoBehaviour
     public GameObject learnToCriticalCatchBoc;
     public GameObject catchCircle;
 
+    public GameObject entertainmentRatingCheck;
+    public GameObject entertainmentRatingBox;
+    public GameObject entertainmentRatingArrow;
+
 
     private void Start()
     {
@@ -61,13 +65,20 @@ public class HandHoldingTutorial : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
 
-        explainThrowUp.GetComponentInChildren<TextMeshPro>().text = "Let's try it against some enemies!";
+        explainThrowUp.GetComponentInChildren<TextMeshPro>().text = "Let's try it against an enemie!";
         explainThrowUpArrow.SetActive(true);
 
         //explainThrowUp.SetActive(false);
         FindObjectOfType<PlayerMovement>().turnOffMovement = false;
 
 
+
+
+
+
+        //              
+        //              CRITICAL CATCH
+        //
         while (criticalCatchStartCheck != null)
         {
             yield return null;
@@ -82,9 +93,37 @@ public class HandHoldingTutorial : MonoBehaviour
         {
             yield return null;
         }
+        learnToCriticalCatchBoc.GetComponentInChildren<TextMeshPro>().text = "Good job! Make another Critical Catch!";
+        
+        FindObjectOfType<JuggleCatchCircle>().caughtGun = false;
+        while (FindObjectOfType<JuggleCatchCircle>().caughtGun == false)
+        {
+            yield return null;
+        }
 
         learnToCriticalCatchBoc.GetComponentInChildren<TextMeshPro>().text = "Weapons upgrade each time you make a Critical Catch!";
         FindObjectOfType<PlayerMovement>().turnOffMovement = false;
+
+
+
+        //              
+        //              ENTERTAINMENT RATING
+        //
+        while (entertainmentRatingCheck != null)
+        {
+            yield return null;
+        }
+        entertainmentRatingBox.SetActive(true);
+        entertainmentRatingArrow.SetActive(true);
+
+        FindObjectOfType<PlayerMovement>().turnOffMovement = true;
+        yield return new WaitForSeconds(4f);
+
+        entertainmentRatingBox.GetComponentInChildren<TextMeshPro>().text = "Defeat enemies before they leave the stage to keep your Entertainment Rating up!";
+        FindObjectOfType<PlayerMovement>().turnOffMovement = false;
+        entertainmentRatingArrow.SetActive(false);
+
+
 
 
         Debug.Log("END");
