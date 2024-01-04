@@ -5478,7 +5478,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6882087674361839852}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -5543,6 +5543,7 @@ MonoBehaviour:
   caughtWeaponColor: {r: 0.97735846, g: 0.8531631, b: 0, a: 0.54509807}
   spriteRenderer: {fileID: 8678099474843982719}
   gunCaughtEffect: {fileID: 4120608050117604858}
+  caughtGun: 0
 --- !u!70 &6933705831535843436
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5787,6 +5788,7 @@ MonoBehaviour:
   groundCheckDistanceFromCollider: 0.4
   actuallyTouchingGround: 1
   isJumping: 0
+  shadow: {fileID: 0}
   wheelArtHolder: {fileID: 5459838820391108873}
   onGround: 0
   turnOffMovement: 0
