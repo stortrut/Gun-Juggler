@@ -71,10 +71,10 @@ public class PlayerMovement : MonoBehaviour, IStunnable
         {
             return;
         }
-        if (isStunned == true) 
-        {
-            return;
-        }
+        //if (isStunned == true) 
+        //{
+        //    return;
+        //}
 
 
         Walk();

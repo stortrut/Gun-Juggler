@@ -12,7 +12,9 @@ public class Score : MonoBehaviour
     [ReadOnly] public int monkeyHit;
     [ReadOnly] public int pieClownHit;
     [ReadOnly] public int bulletsShot;
-    [ReadOnly] public int bulletsHit; 
+    [ReadOnly] public int bulletsHit;
+    private int score = 0;
+    private int totalScore;
     
     
 
@@ -43,6 +45,10 @@ public class Score : MonoBehaviour
         {
             pieClownHit++;
         }
+    }
+    public void ActScore(float score , float totalScore)
+    {
+        
     }
     public void DisplayScore()
     {
