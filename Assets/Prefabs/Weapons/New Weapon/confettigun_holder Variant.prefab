@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2918482243962957283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8480242443141166534}
+  - component: {fileID: 5509002296226695550}
+  m_Layer: 8
+  m_Name: upgraded_weapon_outline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8480242443141166534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2918482243962957283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7149932547298503207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5509002296226695550
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2918482243962957283}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bbdc770d799eec14a9779c1a4915ee3a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 220209013
+  m_SortingLayer: 5
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 58bef1aad385a5142b94d212c1690669, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6347118155798715954
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,6 +168,90 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6691497360599984360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6466550569938133104}
+  - component: {fileID: 5796110369942489249}
+  m_Layer: 8
+  m_Name: upgraded_weapon_art
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6466550569938133104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691497360599984360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7149932547298503207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5796110369942489249
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691497360599984360}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 220209013
+  m_SortingLayer: 5
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 58bef1aad385a5142b94d212c1690669, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &2985588369918228655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,6 +320,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4608834620217619682, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4973627003982700860, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
       propertyPath: m_Name
       value: confettygun_logic
@@ -179,6 +351,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5356848176084570760, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
       insertIndex: 1
       addedObject: {fileID: 2242026668746131905}
+    - targetCorrespondingSourceObject: {fileID: 5356848176084570760, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 6466550569938133104}
+    - targetCorrespondingSourceObject: {fileID: 5356848176084570760, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 8480242443141166534}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4973627003982700860, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
       insertIndex: -1
@@ -198,6 +376,11 @@ MonoBehaviour:
 --- !u!212 &1107907684811426958 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2742380901884179489, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
+  m_PrefabInstance: {fileID: 2985588369918228655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1628946709135789133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4608834620217619682, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
   m_PrefabInstance: {fileID: 2985588369918228655}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7149932547298503207 stripped
@@ -238,59 +421,40 @@ MonoBehaviour:
   currentWeaponBaseUpgradeData:
     weaponCooldown: 0
     waitUntilThrowTime: 0
+    stage1Art: {fileID: 0}
+    stage1Outline: {fileID: 0}
+    stage2Art: {fileID: 0}
+    stage2Outline: {fileID: 0}
   canUseWeaponChecker: {fileID: 0}
   bulletSmall: {fileID: 209809755986869906, guid: 6614d3728f6c06440a5cd42e3704af58, type: 3}
   currentGunBaseUpgradeData:
     weaponCooldown: 0
     waitUntilThrowTime: 0
+    stage1Art: {fileID: 0}
+    stage1Outline: {fileID: 0}
+    stage2Art: {fileID: 0}
+    stage2Outline: {fileID: 0}
     bulletDamage: 0
     bulletSpeed: 0
   shotGunLevelUpgradeData:
   - weaponCooldown: 1
     waitUntilThrowTime: 0.2
-    bulletDamage: 5
+    stage1Art: {fileID: 1628946709135789133}
+    stage1Outline: {fileID: 6347118155798715954}
+    stage2Art: {fileID: 6691497360599984360}
+    stage2Outline: {fileID: 2918482243962957283}
+    bulletDamage: 4
     bulletSpeed: 20
+    bulletCount: 6
+  - weaponCooldown: 0.5
+    waitUntilThrowTime: 0.2
+    stage1Art: {fileID: 1628946709135789133}
+    stage1Outline: {fileID: 6347118155798715954}
+    stage2Art: {fileID: 6691497360599984360}
+    stage2Outline: {fileID: 2918482243962957283}
+    bulletDamage: 6
+    bulletSpeed: 12
     bulletCount: 10
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 5
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 7
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 9
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 11
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 13
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 15
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 17
-  - weaponCooldown: 0.5
-    waitUntilThrowTime: 0.2
-    bulletDamage: 1
-    bulletSpeed: 10
-    bulletCount: 19
 --- !u!58 &8635591160967388790 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6825548993933977305, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
