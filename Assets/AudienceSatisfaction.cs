@@ -10,6 +10,7 @@ public class AudienceSatisfaction : MonoBehaviour
     public Image audienceSatisfaction;
     float timer = 4;
     float oldTime = 0;
+    float oldTime2 = 0;
     
     
     // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class AudienceSatisfaction : MonoBehaviour
             Sound.instance.SoundRandomized(Sound.instance.onePersonDissapointed, .2f);
             oldTime = timer;
         }
-        if(audienceSatisfaction.fillAmount == 1)
+        if(happiness > 0 &&  timer > oldTime2 + 2)
         {
            // Sound.instance.SoundRandomized(Sound.instance.)
         }
