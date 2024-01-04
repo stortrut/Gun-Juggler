@@ -23,6 +23,7 @@ public class HoolaHoop : MonoBehaviour
         FollowPlayer.Instance.FindPlayer();
         StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(5, 5.75f, 31.7999992f), true));
         PlayerJuggle.Instance.DropAllWeaponsOnGround();
+        PlayerJuggle.Instance.FightEnd();
         //FollowPlayer.Instance.lockOn = true;
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,6 +38,7 @@ public class HoolaHoop : MonoBehaviour
             Invoke(nameof(StartWave), 2);
             StartCoroutine(DelayStart());
             Sound.instance.ChangeBackgroundMusic(true);
+            PlayerJuggle.Instance.FightStart();
            // Respawn.Instance.waveStart.Invoke();
         }
     }

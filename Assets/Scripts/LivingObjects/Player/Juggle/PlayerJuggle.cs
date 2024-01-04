@@ -479,7 +479,14 @@ public class PlayerJuggle : MonoBehaviour
 
         weaponQueueUI.InstantiateTheWeapons();
     }
+    public void FightStart()
+    {
 
+    }
+    public void FightEnd()
+    {
+
+    }
     public void Ultimate()
     {
         //throw up all weapons in new curve
