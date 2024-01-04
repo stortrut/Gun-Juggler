@@ -18,8 +18,10 @@ public class HoolaHoop : MonoBehaviour
     }
     public void EndWave()
     {
-        enemyAnimator.SetBool(WAVE, false);
         Sound.Instance.ChangeBackgroundMusic(false);
+        //Lights.Instance.FightLightOn(false);
+
+        enemyAnimator.SetBool(WAVE, false);
         FollowPlayer.Instance.FindPlayer();
         StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(5, 5.75f, 31.7999992f), true));
         PlayerJuggle.Instance.DropAllWeaponsOnGround();
@@ -28,8 +30,10 @@ public class HoolaHoop : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if(other.gameObject.CompareTag("Player") && on == false)
+        Sound.Instance.ChangeBackgroundMusic(true);
+        //Lights.Instance.FightLightOn(true);
+
+        if (other.gameObject.CompareTag("Player") && on == false)
         {
             //StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(29.7999992f, -7.50287676f, 12.6000004f))); 
             StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, transform.position + new Vector3(17f, 0 ,5), false));
