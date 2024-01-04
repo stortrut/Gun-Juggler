@@ -31,8 +31,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private List<GameObject> curtain;
     [SerializeField] private int numberOfWaves;
     [SerializeField] private bool mixedWave;
-    [SerializeField] private List<Sprite> waveImage;
-    [SerializeField] private SpriteRenderer image;
+    [SerializeField] private List<Sprite> numbers;
+    [SerializeField] private SpriteRenderer firstNumber;
+    [SerializeField] private SpriteRenderer secondNumber;
+    [SerializeField] private SpriteRenderer slash;
+    [SerializeField] private SpriteRenderer waveImage;
     private bool even;
     private int spawnedEnemies;
     private int waveNumber;
@@ -75,8 +78,10 @@ public class WaveManager : MonoBehaviour
     }
     public void StartWave()
     {
-        image.sprite = waveImage[waveNumber];
-        image.enabled = true;
+        firstNumber.sprite = numbers[waveNumber+1];
+        secondNumber.sprite = numbers[numberOfWaves];
+        slash.enabled = true;
+        waveImage.enabled = true;
         waveNumber++;
         Spawn();
         if (mixedWave == false)
@@ -168,7 +173,10 @@ public class WaveManager : MonoBehaviour
             else
                 spawnedEnemy.GetComponentInChildren<Health>().died += EnemyDied;
             i++;
-            image.enabled = false;
+            waveImage.enabled = false;
+            slash.enabled = false;
+            firstNumber.sprite = null;
+            secondNumber.sprite = null;
         }
     }
 

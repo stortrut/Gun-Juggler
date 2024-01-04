@@ -14,6 +14,7 @@ public class DevButtons : MonoBehaviour
         // Restart Level
         if (Input.GetKeyUp(KeyCode.R))
         {
+            PlayerPrefs.SetInt("cameraPan", 1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         //Reset checkpoint for Level

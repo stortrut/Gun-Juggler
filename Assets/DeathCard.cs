@@ -30,7 +30,8 @@ public class DeathCard : MonoBehaviour
             
         }
         yield return new WaitForSeconds(2);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt("cameraPan", 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 
     }
