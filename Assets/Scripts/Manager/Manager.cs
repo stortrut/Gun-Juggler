@@ -88,7 +88,7 @@ public class Manager : MonoBehaviour
             Debug.Log("fadeout");
         }
 
-        Sound.Instance.DOTweenVolumeFade(targetAlpha, fadeInDuration);
+        Sound.Instance.DOTweenVolumeFade(startAlpha, fadeInDuration);
 
         StartCoroutine(FadeAlpha(targetAlpha, startAlpha, fadeInDuration));
         //colorToFade.DOFade(targetAlpha, fadeInDuration);
