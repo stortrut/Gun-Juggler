@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Health
 {
+    public static PlayerHealth Instance;
     Vector3 knockback;
     public GameObject player;
     public static GameObject s_player;
-    private bool died;
     private bool canTakeDamage = true;
     private CameraShake cameraShake;
 
@@ -17,6 +17,7 @@ public class PlayerHealth : Health
 
     private void Awake()
     {
+        Instance = this;
         maxHealth = health;
         s_player = gameObject;
         cameraShake = FindObjectOfType<CameraShake>();
@@ -64,16 +65,9 @@ public class PlayerHealth : Health
             StartCoroutine(cameraShake.ShakingRandomly(.1f, .6f, .1f, 1));
            // gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
         }
-        if (health <= 0)
-        {
-            if (!died)
-            {
-                StartCoroutine(nameof(PlayerDied));
-                died = true;
-            }
 
 
-        }
+        
     }
 
     IEnumerator FlashRed()
@@ -91,15 +85,23 @@ public class PlayerHealth : Health
         }
     }
 
-    IEnumerator PlayerDied()
+    public void KillPlayer()
+    {
+        StartCoroutine(PlayerDied());
+    }
+    private IEnumerator PlayerDied()
     {
         player.GetComponentInChildren<PlayerJuggle>().DropAllWeaponsOnGround();
         player.GetComponentInChildren<DeathAnimationHandler>().TriggerDeathAnimation();
         Sound.instance.SoundRandomized(Sound.instance.ohNo, 0.8f, .15f);
         //Debug.Log("Player Died");
         yield return new WaitForSeconds(2f);
+            DeathCard.instance.ActivateDeath();
+            
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
+
         //SceneManager.LoadScene(0);
     }
 
