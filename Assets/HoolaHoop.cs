@@ -22,6 +22,7 @@ public class HoolaHoop : MonoBehaviour
         Sound.instance.ChangeBackgroundMusic(false);
         FollowPlayer.Instance.FindPlayer();
         StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(5, 5.75f, 31.7999992f), true));
+        PlayerJuggle.Instance.DropAllWeaponsOnGround();
         //FollowPlayer.Instance.lockOn = true;
     }
     private void OnTriggerEnter2D(Collider2D other)
