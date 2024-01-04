@@ -97,10 +97,11 @@ public class HudPopcornFill : MonoBehaviour
         while (Time.time < startTime + ultDuration)
         {
             popcornFillImage.fillAmount -= Time.deltaTime * 0.2f;
-
+            popcornFillTopPos.y -= Time.deltaTime * 4;
             ReducePopcornAmount();
             yield return null;
         }
+            popcornFillImage.fillAmount = 0;
 
         FindObjectOfType<PlayerJuggle>().NoUltimate();
     }
