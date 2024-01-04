@@ -100,6 +100,8 @@ public class JuggleCatchCircle : MonoBehaviour
 
         if (caughtWeapon)
         {
+
+
             currentCatchableGun.gameObject.GetComponent<WeaponBase>().UpgradeWeapon();
             currentCatchAttemptCooldownTimer = maxCatchAttemptCooldown;
 

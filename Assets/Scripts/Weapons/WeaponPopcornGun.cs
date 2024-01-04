@@ -13,6 +13,39 @@ public class WeaponPopcornGun : Gun
         weaponType = WeaponType.PopcornGun;
         fireCooldown = 0.1f;
         _waitUntilThrowTime = 100f;
+
+        StartCoroutine(nameof(ShootAllTheTime));
+    }
+
+    private void Update()
+    {
+        aimAgain = true;
+
+
+        player = Manager.Instance.player.gameObject;
+
+        if(player == null) { return; }
+
+        aim = player.GetComponentInChildren<Aim>();
+
+        transform.rotation = aim.bulletRotation;
+
+
+        AdjustAim();
+
+
+    }
+
+    IEnumerator ShootAllTheTime()
+    {
+        if (weaponEquipped)
+        {
+            yield return new WaitForSeconds(0.09f);
+            Shoot();
+            StartCoroutine(nameof(ShootAllTheTime));
+
+        }
+
     }
 
 

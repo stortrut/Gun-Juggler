@@ -36,9 +36,9 @@ public class WeaponBase : MonoBehaviour
 
     [HideInInspector] public WeaponBaseUpgradeData currentWeaponBaseUpgradeData;
 
-    private Aim aim;
-    private bool aimAgain = true;
-    private GameObject player;  
+    public Aim aim;
+    public bool aimAgain = true;
+    public GameObject player;  
     public PlayerUseWeaponInputStopper canUseWeaponChecker;
 
     private void Start()
