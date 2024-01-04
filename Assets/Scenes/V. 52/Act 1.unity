@@ -24031,11 +24031,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -47.73
+      value: -48
       objectReference: {fileID: 0}
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.29
+      value: -17.8
       objectReference: {fileID: 0}
     - target: {fileID: 1140258072159811197, guid: be2cdba9265f16a4a8a1dbb9b0be7b74, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39259,6 +39259,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 719082430}
     m_Modifications:
     - target: {fileID: 326750008076233599, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: weaponPrefabToPickup
+      value: 
+      objectReference: {fileID: 641946131693433632, guid: 4a96ce53161e026429c5cfbd8f2d7933, type: 3}
+    - target: {fileID: 326750008076233599, guid: 645dd102c83240c4990c88736a93a802, type: 3}
+      propertyPath: dropAllWeaponsAndThenPickUpOne
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 326750008076233599, guid: 645dd102c83240c4990c88736a93a802, type: 3}
       propertyPath: andAlsoAddAWeaponIfPlayerHasNone
       value: 1
       objectReference: {fileID: 0}
@@ -39317,7 +39325,7 @@ PrefabInstance:
     - target: {fileID: 7836282291265597994, guid: 645dd102c83240c4990c88736a93a802, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5946cb7d0cc9209428710c19be3e90e4, type: 3}
+      objectReference: {fileID: 21300000, guid: ef18e2a29544faa46a01f28dbaa03063, type: 3}
     - target: {fileID: 7836282291265597994, guid: 645dd102c83240c4990c88736a93a802, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -47632,6 +47640,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -34
       objectReference: {fileID: 0}
+    - target: {fileID: 5913968407824689751, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31.399963
+      objectReference: {fileID: 0}
     - target: {fileID: 5915068848030693959, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
       propertyPath: m_Name
       value: manager_manager
@@ -48144,7 +48156,7 @@ Transform:
   m_GameObject: {fileID: 5044084409011125753}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 445.9, y: 48.3, z: 0}
+  m_LocalPosition: {x: 456.2, y: 47.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
