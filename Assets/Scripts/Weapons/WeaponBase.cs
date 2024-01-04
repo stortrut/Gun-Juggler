@@ -12,7 +12,7 @@ public enum WeaponType
 public class WeaponBase : MonoBehaviour
 {
     [Header("References")]
-    [ReadOnly] public bool weaponEquipped;
+    [ReadOnly] public bool weaponEquipped = false;
     [HideInInspector] public float fireCooldown;
     [HideInInspector] protected float fireCooldownTimer;
     [HideInInspector] public float _waitUntilThrowTime;
@@ -45,7 +45,7 @@ public class WeaponBase : MonoBehaviour
     {
         canUseWeaponChecker = FindObjectOfType<PlayerUseWeaponInputStopper>();
         player = Manager.Instance.player.gameObject;
-        UnEquipWeapon();
+        //UnEquipWeapon();
     }
 
     private void Update()
@@ -78,7 +78,7 @@ public class WeaponBase : MonoBehaviour
             {
                 if (weaponEquipped)
                 {
-                    if (FindObjectOfType<PlayerJuggle>().canNotUseWeapons) { return; }
+                    if (FindObjectOfType<PlayerJuggle>().canNotUseWeapons) { Debug.Log("Can not use weapon"); return; }
 
                     UseWeapon();
 
@@ -113,7 +113,9 @@ public class WeaponBase : MonoBehaviour
     {
         if(Score.Instance != null)
             Score.Instance.bulletsShot++;
-        aimAgain = false;
+
+        if(weaponType != WeaponType.PopcornGun)
+            aimAgain = false;
         int enumIndex = (int)weaponType;
 
         if (Score.Instance != null)

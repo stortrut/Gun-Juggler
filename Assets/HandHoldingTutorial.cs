@@ -14,6 +14,7 @@ public class HandHoldingTutorial : MonoBehaviour
 
     public GameObject criticalCatchStartCheck;
     public GameObject learnToCriticalCatchBoc;
+    public GameObject catchCircle;
 
 
     private void Start()
@@ -35,7 +36,7 @@ public class HandHoldingTutorial : MonoBehaviour
         aimBox.SetActive(true);
         FindObjectOfType<PlayerMovement>().turnOffMovement = true;
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5f);
 
         aimBox.SetActive(false);
         shootBox.SetActive(true);
@@ -67,7 +68,7 @@ public class HandHoldingTutorial : MonoBehaviour
         FindObjectOfType<PlayerMovement>().turnOffMovement = false;
 
 
-        while (firstGun != null)
+        while (criticalCatchStartCheck != null)
         {
             yield return null;
         }
