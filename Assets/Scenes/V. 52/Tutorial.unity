@@ -1317,11 +1317,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!4 &207807829 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-  m_PrefabInstance: {fileID: 1501512642}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &233858925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7441621551023813311, guid: f7c8b11d0feb7ae45a3570bcc0e42787, type: 3}
@@ -6016,7 +6011,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Right click when the weapon is in the circle to Critical Catch!
+  m_text: 'Right click when the weapon reaches the circle to perform a
+
+    Critical
+    Catch!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c30bb5b5488c5744b81e99a14561b3e9, type: 2}
   m_sharedMaterial: {fileID: -1597042202077305942, guid: c30bb5b5488c5744b81e99a14561b3e9, type: 2}
@@ -11239,75 +11237,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1776880337}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1501512642
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1937839916}
-    m_Modifications:
-    - target: {fileID: 1856259094273527825, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_Name
-      value: box_guns_arrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856259094273527825, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.7571363
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.0142868
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.91319025
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.40753365
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6340066515068137777, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 48.1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 38a17bc360a5b3c459280bdddc7d08d0, type: 3}
 --- !u!1 &1523086868
 GameObject:
   m_ObjectHideFlags: 0
@@ -11346,7 +11275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use A and D to move
+  m_text: Use A and D to pedal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c30bb5b5488c5744b81e99a14561b3e9, type: 2}
   m_sharedMaterial: {fileID: -1597042202077305942, guid: c30bb5b5488c5744b81e99a14561b3e9, type: 2}
@@ -13340,7 +13269,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1523086871}
-  - {fileID: 207807829}
   m_Father: {fileID: 1937273432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1939888041
