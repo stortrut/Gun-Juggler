@@ -15421,17 +15421,77 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 331926182}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: slash
+      value: 
+      objectReference: {fileID: 734551468}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: mixedWave
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage
+      value: 
+      objectReference: {fileID: 331926182}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: firstNumber
+      value: 
+      objectReference: {fileID: 734551469}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: secondNumber
+      value: 
+      objectReference: {fileID: 734551467}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: numberOfWaves
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: waveImage.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c4c49d2edd9f8141a02610e06c0f4c4, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 81a4c8f8fda40d14b8155f1d7510f527, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 87c9b9788952b644d97547743ac66ede, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 503aec8a7edc66d4ab546983397301c1, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8107ab1fed4f9c34a8ec278a439e8bbd, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: e025a2cc6ad51ab45a92429367d11d04, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 37349b2468434d04693d61a8deea8a34, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f021333637f3184dadcb3370371eec4, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: af4f23c5831809f499485d044cf971e7, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: d208fc672b884a147a16a1b4f8dfbd91, type: 3}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: waveImage.Array.data[0]
       value: 
@@ -15623,6 +15683,21 @@ PrefabInstance:
       addedObject: {fileID: 1722927433}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+--- !u!212 &734551467 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8324072244626537907, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 734551466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &734551468 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7117306146158537268, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 734551466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &734551469 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5338323820944837948, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 734551466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &744230598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 187433491710434421, guid: 124fc79b45e7c824caec4fa4c26edd23, type: 3}
@@ -34326,17 +34401,77 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1713914975}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: slash
+      value: 
+      objectReference: {fileID: 1939939143}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: mixedWave
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: waveImage
+      value: 
+      objectReference: {fileID: 1713914975}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: firstNumber
+      value: 
+      objectReference: {fileID: 1939939144}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: secondNumber
+      value: 
+      objectReference: {fileID: 1939939142}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: numberOfWaves
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: waveImage.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c4c49d2edd9f8141a02610e06c0f4c4, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 81a4c8f8fda40d14b8155f1d7510f527, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 87c9b9788952b644d97547743ac66ede, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 503aec8a7edc66d4ab546983397301c1, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8107ab1fed4f9c34a8ec278a439e8bbd, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: e025a2cc6ad51ab45a92429367d11d04, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 37349b2468434d04693d61a8deea8a34, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f021333637f3184dadcb3370371eec4, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: af4f23c5831809f499485d044cf971e7, type: 3}
+    - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+      propertyPath: numbers.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: d208fc672b884a147a16a1b4f8dfbd91, type: 3}
     - target: {fileID: 5581046289065139765, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
       propertyPath: waveImage.Array.data[0]
       value: 
@@ -34586,6 +34721,21 @@ Transform:
 --- !u!4 &1939939141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2907582198121543822, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 1939939139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1939939142 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8324072244626537907, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 1939939139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1939939143 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7117306146158537268, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
+  m_PrefabInstance: {fileID: 1939939139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1939939144 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5338323820944837948, guid: 9445163df78209b4abe83296b4aa416f, type: 3}
   m_PrefabInstance: {fileID: 1939939139}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1948265390 stripped
