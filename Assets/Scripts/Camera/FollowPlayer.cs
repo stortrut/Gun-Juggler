@@ -25,6 +25,7 @@ public class FollowPlayer : MonoBehaviour
     bool axisShouldStayUnlockedTilItReachesTarget = false;
     [SerializeField] private float smoothnessFactor = 3;
     [ReadOnly] public bool lockOn;
+    [ReadOnly] public bool zoomFinished;
     
 
     private void Awake()
@@ -127,7 +128,6 @@ public class FollowPlayer : MonoBehaviour
             transform.position = Vector3.Lerp(startpos, target, (i+1)/p);
             offset = vector;
         }
-
         if (onPlayer == true)
         {
             lockOn = true;
