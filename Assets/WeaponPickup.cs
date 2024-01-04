@@ -79,7 +79,7 @@ public class WeaponPickup : MonoBehaviour
             }
 
             if(!dontDoAnythingAtAll)
-                Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon, .8f);
+                Sound.Instance.SoundRandomized(Sound.Instance.equipNewWeapon, .8f);
 
             Destroy(gameObject);
         }

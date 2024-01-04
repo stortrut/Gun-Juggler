@@ -92,7 +92,7 @@ public class HudPopcornFill : MonoBehaviour
         FindObjectOfType<PlayerJuggle>().Ultimate();
         FindObjectOfType<PlayerJuggle>().canNotUseWeapons = false;
 
-        Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon);
+        Sound.Instance.SoundRandomized(Sound.Instance.equipNewWeapon);
 
         while (Time.time < startTime + ultDuration)
         {

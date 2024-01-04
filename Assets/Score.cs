@@ -12,7 +12,9 @@ public class Score : MonoBehaviour
     [ReadOnly] public int monkeyHit;
     [ReadOnly] public int pieClownHit;
     [ReadOnly] public int bulletsShot;
-    [ReadOnly] public int bulletsHit; 
+    [ReadOnly] public int bulletsHit;
+    private float score = 0;
+    private float totalScore;
     
     
 
@@ -44,9 +46,22 @@ public class Score : MonoBehaviour
             pieClownHit++;
         }
     }
+    public void ActScore(float addScore)
+    {
+        score += addScore;
+        totalScore++;
+        
+    }
+    public  int EndScore()
+    {
+         var finalScore = score / totalScore * 100;
+        return (int)finalScore;
+        
+       
+    }
     public void DisplayScore()
     {
-        scoreText.text = "blablabla";
+        scoreText.text = "AudienceSatisfaction "+EndScore()+"%";
 
     }
 }

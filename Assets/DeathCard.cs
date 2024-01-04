@@ -16,7 +16,7 @@ public class DeathCard : MonoBehaviour
         instance = this;
     }
     public void ActivateDeath()
-    {
+    { 
         image.sprite = deathCards[Random.Range(0,deathCards.Count)];
         StartCoroutine(FadeIn());
     }

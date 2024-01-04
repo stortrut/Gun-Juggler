@@ -30,7 +30,7 @@ public class ClickableWeapon : MonoBehaviour, IPointerDownHandler
 
 
 
-        Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon);
+        Sound.Instance.SoundRandomized(Sound.Instance.equipNewWeapon);
 
         // Destroy(gameObject);
     }
