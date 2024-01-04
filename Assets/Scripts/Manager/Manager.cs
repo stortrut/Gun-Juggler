@@ -38,7 +38,7 @@ public class Manager : MonoBehaviour
         //    Invoke(nameof(ProceedToNextLevel), 10);
         //}
 
-        Debug.Log("buildindex" + SceneManager.GetActiveScene().buildIndex);
+        //Debug.Log("buildindex" + SceneManager.GetActiveScene().buildIndex);
         if ((SceneManager.GetActiveScene().buildIndex == 0))
         {
             Debug.Log("player prefs is set, build 0");
