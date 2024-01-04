@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Manager : MonoBehaviour
 {
@@ -13,13 +16,15 @@ public class Manager : MonoBehaviour
     public int nextScene = 0;
     [SerializeField] private Texture2D cursorImage;
     private AsyncOperation asyncOperation;
-    [SerializeField] GameObject fadeToBlack;
+    [SerializeField] GameObject fadingPanel;
+    private Image fadingPanelImage;
+    private Color panelColor;
 
     private void Awake()
     {
-            Instance = this;
+        Instance = this;
     }
-
+        
     private void Start()
     {
         //  player = FindObjectOfType<PlayerJuggle>()?.gameObject;
@@ -27,13 +32,26 @@ public class Manager : MonoBehaviour
        
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
 
-        if (SceneManager.GetActiveScene().name == "WinScene")
+        //if (SceneManager.GetActiveScene().name == "WinScene")
+        //{
+        //    LoadNextLevel();
+        //    Invoke(nameof(ProceedToNextLevel), 10);
+        //}
+
+        Debug.Log("buildindex" + SceneManager.GetActiveScene().buildIndex);
+        if ((SceneManager.GetActiveScene().buildIndex == 0))
         {
-            LoadNextLevel();
-            Invoke(nameof(ProceedToNextLevel), 10);
+            Debug.Log("player prefs is set, build 0");
+            PlayerPrefs.SetFloat("fadein", 1f);
         }
 
         if (player == null) { Debug.Log("Did not find a player ERROR"); }
+
+
+        fadingPanelImage = fadingPanel.GetComponentInChildren<Image>();
+        Debug.Log("image component"+  fadingPanelImage);
+        //fade in music and light
+        FadeInOrOutSoundAndLight(true, PlayerPrefs.GetFloat("fadein"));
     }
 
 
@@ -47,32 +65,99 @@ public class Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            LoadNextLevel();
-            ProceedToNextLevel();
+            LoadNextSceneNoTransition();
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            LoadNextSceneNoTransition();
         }
     }
-    public void LoadNextLevel()
+
+    void FadeInOrOutSoundAndLight(bool fadingIn, float fadeInDuration)
+    {
+        Debug.Log("fadea");
+        float targetAlpha;
+        float startAlpha;
+        if (fadingIn)
+        { 
+            targetAlpha = 0;  startAlpha = 1;
+        }
+        else
+        { 
+            targetAlpha = 1; startAlpha = 0;
+            Debug.Log("fadeout");
+        }
+
+        Sound.instance.DOTweenVolumeFade(targetAlpha, fadeInDuration);
+
+        StartCoroutine(FadeAlpha(targetAlpha, startAlpha, fadeInDuration));
+        //colorToFade.DOFade(targetAlpha, fadeInDuration);
+    }
+
+    private IEnumerator FadeAlpha(float targetAlpha, float startAlpha, float duration)
+    {
+        Debug.Log("fadear faktiskt");
+        for (float i = 0; i < 200; i++)
+        {
+            yield return new WaitForSeconds(0.001f);
+            fadingPanelImage.color = new Color(0, 0, 0, Mathf.Lerp(startAlpha, targetAlpha, (i / 200)));
+        }
+        yield return new WaitForSeconds(2);
+
+
+
+        //currentAlpha.DOFade
+        //currentAlpha = Mathf.Lerp(currentAlpha, targetAlpha, fadeinDuration);
+
+        //fadingPanelImage.color.Lerp(currentAlpha, targetAlpha, fadeinDuration);
+        //yield return new WaitForSeconds(fadeinDuration);
+    }
+    
+    //only call these two:
+    public void LoadNextSceneNoTransition()
+    {
+        LoadNextLevel();
+        PlayerPrefs.SetFloat("fadein", 0);
+        ProceedToNextLevel();
+    }
+
+    public void LoadNextSceneWithTransition(float musicTransitionDuration)
+    {
+        StartCoroutine(nameof(TransitionHandler), musicTransitionDuration);
+    }
+    
+
+    //-------------------------------------------------------
+
+    private IEnumerator TransitionHandler(float musicTransitionDuration)
+    {
+        LoadNextLevel();
+        //fade out music and light
+        FadeInOrOutSoundAndLight(false, 1);
+        Sound.instance.DOTweenVolumeFade(0, musicTransitionDuration);
+        PlayerPrefs.SetFloat("fadein",musicTransitionDuration / 2);
+
+        yield return new WaitForSeconds(1);
+
+        ProceedToNextLevel();
+    }
+
+    public void LoadNextLevel()         //    fade
     {
         StartCoroutine(LoadSceneAsyncProcess());            
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //fadeToBlack.SetActive(true);
-        Invoke(nameof(SetActiveFalse), 7);
         PlayerPrefs.DeleteAll();
     }
-    public void ProceedToNextLevel()
+
+    public void ProceedToNextLevel()           //      byt
     {
         //Debug.Log("Allowed Scene Activation");
         asyncOperation.allowSceneActivation = true; 
     }
 
-    private void SetActiveFalse()
-    {
-        //fadeToBlack.SetActive(false);
-    }
-
     public IEnumerator LoadSceneAsyncProcess()
     {
-        // Begin to load the Scene you have specified.
+        // Begin to load the Scene you have specified. 
         asyncOperation = SceneManager.LoadSceneAsync(nextScene);
 
         // Don't let the Scene activate until you allow it to.
