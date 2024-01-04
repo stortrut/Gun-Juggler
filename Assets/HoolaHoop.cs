@@ -15,6 +15,7 @@ public class HoolaHoop : MonoBehaviour
     public void StartWave()
     {
         enemyAnimator.SetBool(WAVE, true);
+        Sound.Instance.SoundSet(Sound.Instance.hoopFire, 0);
     }
     public void EndWave()
     {

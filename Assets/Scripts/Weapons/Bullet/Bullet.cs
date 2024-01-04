@@ -50,15 +50,32 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            Destroy(gameObject,1f);
         }
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
-            Pierce();
+            if (piercing) 
+            {
+                Pierce();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                Destroy(gameObject, 1f);
+            }
         }
         else if(other.gameObject.CompareTag("EnemyNonTargetable"))
         {
-            Pierce();
+            if (piercing)
+            {
+                Pierce();
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                Destroy(gameObject, 1f);
+            }
         }
     }
         private void Pierce()
@@ -67,8 +84,7 @@ public class Bullet : MonoBehaviour
             if (pierceTarget == 0)
             {
                 Destroy(gameObject);
-            }
-                
+            }   
         }
     
 }
