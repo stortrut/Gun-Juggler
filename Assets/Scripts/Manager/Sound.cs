@@ -50,6 +50,7 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] balloonFirePop;
     [SerializeField] public AudioClip[] balloonSqueek;
     [SerializeField] public AudioClip[] poof;
+    [SerializeField] public AudioClip[] explosion;
 
     [SerializeField] public AudioClip[] clowny;
 
