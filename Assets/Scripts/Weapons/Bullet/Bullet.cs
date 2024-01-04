@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
 
     private void Death()
     {
-        this.gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Destroy(gameObject, 2);
     }
 
