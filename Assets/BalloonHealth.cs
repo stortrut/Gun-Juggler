@@ -47,6 +47,7 @@ public class BalloonHealth : Health
         {
             AudienceSatisfaction.Instance.AudienceHappiness(-health * 2);
             EffectAnimations.instance.BalloonFireExplosion(transform.position, Vector3.one * 0.9f);
+            Sound.Instance.SoundRandomized(Sound.Instance.balloonFirePop, Sound.Instance.balloonFirePop.Length);
             Destroy(gameObject);
             // CUSTOM FAIL DEATH;
         }
