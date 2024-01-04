@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
+
 
 public class PlayerJuggle : MonoBehaviour
 {
@@ -551,4 +553,13 @@ public class PlayerJuggle : MonoBehaviour
     }
 
 
+
+    public List<WeaponJuggleMovement> GetCorrectWeaponOrder()
+    {
+        List<WeaponJuggleMovement> listOfWeaponsInTheCorrectOrderToReturn = new();
+
+        listOfWeaponsInTheCorrectOrderToReturn = weaponsCurrentlyInJuggleLoop.OrderByDescending(go => go.curveDeltaTime).ToList();
+
+        return listOfWeaponsInTheCorrectOrderToReturn;
+    }
 }

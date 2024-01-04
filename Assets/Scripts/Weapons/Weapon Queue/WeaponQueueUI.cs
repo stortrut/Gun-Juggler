@@ -34,6 +34,42 @@ public class WeaponQueueUI : MonoBehaviour
         {
             Debug.Log("the juggle loop list is not yet created");
         }
+
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SortInTheRightOrder();
+        }
+    }
+
+    public void SortInTheRightOrder()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        weaponsInQueueDisplayedOrder.Clear();
+
+        for (int i = 0; i < playerJuggleScript.GetCorrectWeaponOrder().Count; i++)
+        {
+            WeaponJuggleMovement weaponJuggleMovement = playerJuggleScript.GetCorrectWeaponOrder()[i];
+            WeaponType weaponEnum = weaponJuggleMovement.weaponBase.weaponType;
+
+            Debug.Log(weaponEnum);
+
+            int enumIndex = (int)weaponEnum;
+
+            GameObject instantiatedPrefab = Instantiate(weaponsInQueueEnumsOrder[enumIndex], Vector3.zero, Quaternion.identity, transform);
+            weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);
+        }
+
+        i = -1;
+        arrow.rectTransform.anchoredPosition = startPosArrow;
+
     }
 
     public void InstantiateTheWeapons()
@@ -57,6 +93,9 @@ public class WeaponQueueUI : MonoBehaviour
             weaponsInQueueDisplayedOrder.Add(instantiatedPrefab);
             //instantiatedPrefab.GetComponent<Image>().rectTransform.localScale = new Vector3(.2f,.2f);
         }
+
+
+        SortInTheRightOrder();
     }
 
     //public void SetAndStretchToParentSize(RectTransform rectTransform, RectTransform parentRectTransform)
