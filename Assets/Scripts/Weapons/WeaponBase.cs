@@ -150,6 +150,9 @@ public class WeaponBase : MonoBehaviour
     public virtual void UpgradeWeapon()
     {
         currentWeaponLevel++;
+        if(currentWeaponLevel > 1) { currentWeaponLevel = 1; }
+        if (currentWeaponLevel < 0) { currentWeaponLevel = 0; }
+
     }
 
     public void ResetWeaponUpgradeLevel()
@@ -163,6 +166,28 @@ public class WeaponBase : MonoBehaviour
     {
         fireCooldown = currentWeaponBaseUpgradeData.weaponCooldown;
         _waitUntilThrowTime = currentWeaponBaseUpgradeData.waitUntilThrowTime;
+
+
+
+
+        if(currentWeaponBaseUpgradeData.stage1Art == null) { return; }
+
+        if(currentWeaponLevel == 0)
+        {
+            currentWeaponBaseUpgradeData.stage1Art.SetActive(true);
+            currentWeaponBaseUpgradeData.stage1Outline.SetActive(true);
+
+            currentWeaponBaseUpgradeData.stage2Art.SetActive(false);
+            currentWeaponBaseUpgradeData.stage2Outline.SetActive(false);
+        }
+        else
+        {
+            currentWeaponBaseUpgradeData.stage2Art.SetActive(true);
+            currentWeaponBaseUpgradeData.stage2Outline.SetActive(true);
+
+            currentWeaponBaseUpgradeData.stage1Art.SetActive(false);
+            currentWeaponBaseUpgradeData.stage1Outline.SetActive(false);
+        }
     }
 
 
@@ -194,4 +219,9 @@ public class WeaponBaseUpgradeData
     [SerializeField] public float weaponCooldown;
     [SerializeField] public float waitUntilThrowTime;
 
+    [SerializeField] public GameObject stage1Art;
+    [SerializeField] public GameObject stage1Outline;
+
+    [SerializeField] public GameObject stage2Art;
+    [SerializeField] public GameObject stage2Outline;
 }
