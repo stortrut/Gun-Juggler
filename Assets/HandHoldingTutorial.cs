@@ -75,6 +75,16 @@ public class HandHoldingTutorial : MonoBehaviour
 
         FindObjectOfType<PlayerMovement>().turnOffMovement = true;
         learnToCriticalCatchBoc.SetActive(true);
+        catchCircle.GetComponent<SpriteRenderer>().enabled = true;
+
+        FindObjectOfType<JuggleCatchCircle>().caughtGun = false;
+        while (FindObjectOfType<JuggleCatchCircle>().caughtGun == false)
+        {
+            yield return null;
+        }
+
+        learnToCriticalCatchBoc.GetComponentInChildren<TextMeshPro>().text = "Weapons upgrade each time you make a Critical Catch!";
+        FindObjectOfType<PlayerMovement>().turnOffMovement = false;
 
 
         Debug.Log("END");

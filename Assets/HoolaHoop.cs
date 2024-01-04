@@ -19,7 +19,7 @@ public class HoolaHoop : MonoBehaviour
     public void EndWave()
     {
         enemyAnimator.SetBool(WAVE, false);
-        Sound.instance.ChangeBackgroundMusic(false);
+        Sound.Instance.ChangeBackgroundMusic(false);
         FollowPlayer.Instance.FindPlayer();
         StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(5, 5.75f, 31.7999992f), true));
         PlayerJuggle.Instance.DropAllWeaponsOnGround();
@@ -37,7 +37,7 @@ public class HoolaHoop : MonoBehaviour
             on = true;
             Invoke(nameof(StartWave), 2);
             StartCoroutine(DelayStart());
-            Sound.instance.ChangeBackgroundMusic(true);
+            Sound.Instance.ChangeBackgroundMusic(true);
             PlayerJuggle.Instance.FightStart();
            // Respawn.Instance.waveStart.Invoke();
         }

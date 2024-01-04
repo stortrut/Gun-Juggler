@@ -42,7 +42,7 @@ public class EnemyHealth : Health
         if (other.gameObject.CompareTag("Bullet"))
         {
             int enumIndex = (int)enemyAnimator.enemyType;
-            Sound.instance.SoundSet(Sound.instance.enemyTakingDamageEnumOrder, enumIndex, 2f);
+            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, enumIndex, 2f);
             // UpgradeCombo.Instance.hitSinceShot = true;
             // UpgradeCombo.Instance.comboTween.Kill();
             //Destroy(other.gameObject);
@@ -132,7 +132,7 @@ public class EnemyHealth : Health
             Destroy(gameObject);
             //CameraShakeRobert.instance.AddTrauma(0.2f);
             EffectAnimations.instance.BalloonPop(positionForEffectAnimationScript);
-            Sound.instance.SoundSet(Sound.instance.balloonPop, 0);
+            Sound.Instance.SoundSet(Sound.Instance.balloonPop, 0);
 
         }
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
@@ -148,7 +148,7 @@ public class EnemyHealth : Health
         //CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
-        Sound.instance.SoundSet(Sound.instance.poof, 0);
+        Sound.Instance.SoundSet(Sound.Instance.poof, 0);
         Destroy(gameObject);
     }
 
@@ -157,7 +157,7 @@ public class EnemyHealth : Health
         CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
         EffectAnimations.instance.EnemyPoof(positionForEffectAnimationScript);
-        Sound.instance.SoundSet(Sound.instance.poof, 0);
+        Sound.Instance.SoundSet(Sound.Instance.poof, 0);
         Destroy(gameObject);
         Destroy(transform.parent.gameObject);
     }

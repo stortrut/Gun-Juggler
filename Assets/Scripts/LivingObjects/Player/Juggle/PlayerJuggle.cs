@@ -193,7 +193,7 @@ public class PlayerJuggle : MonoBehaviour
 
         for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
         {
-            Sound.instance.SoundRandomized(Sound.instance.throwUpWeapon, .6f, .4f);
+            Sound.Instance.SoundRandomized(Sound.Instance.throwUpWeapon, .6f, .4f);
             weaponsCurrentlyInJuggleLoop[i].ThrowUpWeapon();
             weaponsCurrentlyInJuggleLoop[i].curveDeltaTime = (weaponsCurrentlyInJuggleLoop.Count - (i * 0.1f)) * 0.1f;
         }
@@ -217,7 +217,7 @@ public class PlayerJuggle : MonoBehaviour
         //soundeffect:
         WeaponType weaponEnum = newWeapon.weaponBase.weaponType;
         int enumIndex = (int)weaponEnum;
-        Sound.instance.SoundSet(Sound.instance.catchWeaponWeapontypeEnumOrder, enumIndex, 0.2f, .3f);
+        Sound.Instance.SoundSet(Sound.Instance.catchWeaponWeapontypeEnumOrder, enumIndex, 0.2f, .3f);
     }
 
     public void ThrowUpWeaponInHand()
@@ -429,7 +429,6 @@ public class PlayerJuggle : MonoBehaviour
 
     public void DropAllWeaponsOnGround()
     {
-        Debug.Log("There are " + weaponsCurrentlyInJuggleLoop.Count.ToString() + " weapons that should be dropped");
 
         List<WeaponJuggleMovement> oldWeapons = weaponsCurrentlyInJuggleLoop;
 

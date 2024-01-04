@@ -88,7 +88,7 @@ public class Manager : MonoBehaviour
             Debug.Log("fadeout");
         }
 
-        Sound.instance.DOTweenVolumeFade(targetAlpha, fadeInDuration);
+        Sound.Instance.DOTweenVolumeFade(targetAlpha, fadeInDuration);
 
         StartCoroutine(FadeAlpha(targetAlpha, startAlpha, fadeInDuration));
         //colorToFade.DOFade(targetAlpha, fadeInDuration);
@@ -134,7 +134,7 @@ public class Manager : MonoBehaviour
         LoadNextLevel();
         //fade out music and light
         FadeInOrOutSoundAndLight(false, 1);
-        Sound.instance.DOTweenVolumeFade(0, musicTransitionDuration);
+        Sound.Instance.DOTweenVolumeFade(0, musicTransitionDuration);
         PlayerPrefs.SetFloat("fadein",musicTransitionDuration / 2);
 
         yield return new WaitForSeconds(1);
