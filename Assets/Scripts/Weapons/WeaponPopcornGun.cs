@@ -12,12 +12,9 @@ public class WeaponPopcornGun : Gun
     {
         weaponType = WeaponType.PopcornGun;
         fireCooldown = 0.1f;
+        _waitUntilThrowTime = 100f;
     }
 
-    void Update()
-    {
-        
-    }
 
     public override void UseWeapon()
     {

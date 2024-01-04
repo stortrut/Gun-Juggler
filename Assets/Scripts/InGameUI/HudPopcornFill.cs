@@ -15,7 +15,7 @@ public class HudPopcornFill : MonoBehaviour
 
     [SerializeField] private float popcornFillAmountPerUpgrade = 2;
 
-    [SerializeField] float ultDuration;
+    float ultDuration = 5;
 
     private bool ultActive = false;
     [SerializeField] GameObject popping;
@@ -33,6 +33,7 @@ public class HudPopcornFill : MonoBehaviour
         popcornFillImage.fillAmount = 0;
     }
 
+    [System.Obsolete]
     private void Update()
     {
         if (Input.GetMouseButtonDown(2))
@@ -57,6 +58,7 @@ public class HudPopcornFill : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     public void PopcornAmountUpgrade()
     {
         popcornFillTopPos.y += popcornFillAmountPerUpgrade;      
@@ -71,38 +73,42 @@ public class HudPopcornFill : MonoBehaviour
         {
             //EffectAnimations.instance.PopcornPoppingUltReady(popcornFillTopPos);
             StartCoroutine(nameof(StartUlt));
-            popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
-            popcornFillImage.fillAmount -= 1 / (19 / popcornFillAmountPerUpgrade);
+            //popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
+            //popcornFillImage.fillAmount -= 1 / (19 / popcornFillAmountPerUpgrade);
         }
     }
 
-    public void ReducePopcornAmount()
-    {
-        popcornFillTopPos.y = 0;
-        popcornFillImage.fillAmount = 0;
-    }
+    float startTime;
 
+
+    [System.Obsolete]
     public IEnumerator StartUlt()
     {
         if (ultActive)
             yield break;
 
         ultActive = true;
-        float startTime = Time.time;
+        startTime = Time.time;
         FindObjectOfType<PlayerJuggle>().Ultimate();
+        FindObjectOfType<PlayerJuggle>().canNotUseWeapons = false;
 
         Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon);
 
-
         while (Time.time < startTime + ultDuration)
         {
+            popcornFillImage.fillAmount -= Time.deltaTime * 0.5f;
+
+            ReducePopcornAmount();
             yield return null;
         }
 
-        if (Time.time >= ultDuration)
-            ReducePopcornAmount();
+        FindObjectOfType<PlayerJuggle>().NoUltimate();
     }
-
+    public void ReducePopcornAmount()
+    {
+        //popcornFillTopPos.y = 0;
+        //popcornFillImage.fillAmount = (ultDuration + startTime - Time.time) / (ultDuration + startTime);
+    }
 
     // popcorn fillage is based on combo/streak
 

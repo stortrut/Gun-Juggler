@@ -72,7 +72,7 @@ public class WeaponPickup : MonoBehaviour
                 collision.GetComponent<PlayerJuggle>().ReplaceAllWeaponsWithAnotherWeapon(weaponPrefabToPickup);
             }
 
-            else
+            else if(!dontDoAnythingAtAll)
             {
                 //Debug.Log("Picked Up Weapon");
                 collision.GetComponent<PlayerJuggle>().CreateAndAddWeaponToLoop(weaponPrefabToPickup);

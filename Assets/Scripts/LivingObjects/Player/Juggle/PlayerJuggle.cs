@@ -38,6 +38,8 @@ public class PlayerJuggle : MonoBehaviour
     [Header("Tutorial Bools")]
     public bool canNotUseWeapons;
 
+    [Header("Tutorial Bools")]
+    public bool isUlting;
 
     void Awake()
     {
@@ -90,7 +92,7 @@ public class PlayerJuggle : MonoBehaviour
             }
             else
             {
-                StartJuggling();
+                //StartJuggling();
             }
         }
         if (!isJuggling) { return; }
@@ -184,6 +186,8 @@ public class PlayerJuggle : MonoBehaviour
     }
     private void ThrowUpAllWeapons()
     {
+        if (isUlting) { return; }
+
         isJuggling = true;
         weaponInHand = null;
 
@@ -366,9 +370,7 @@ public class PlayerJuggle : MonoBehaviour
     public void RemoveWeaponFromLoop(WeaponJuggleMovement weaponToRemoved)
     {
         weaponsCurrentlyInJuggleLoop.Remove(weaponToRemoved);
-        if (weaponsCurrentlyInJuggleLoop.Count < 2)
-        {
-        }
+
     }
 
     public void ReplaceRandomWeaponWithHeart()
@@ -427,26 +429,29 @@ public class PlayerJuggle : MonoBehaviour
 
     public void DropAllWeaponsOnGround()
     {
-        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        Debug.Log("There are " + weaponsCurrentlyInJuggleLoop.Count.ToString() + " weapons that should be dropped");
+
+        List<WeaponJuggleMovement> oldWeapons = weaponsCurrentlyInJuggleLoop;
+
+
+        while (weaponsCurrentlyInJuggleLoop.Count > 0)
         {
-            weaponsCurrentlyInJuggleLoop[i].DropWeapon();
-            isAlive = false;
+            weaponsCurrentlyInJuggleLoop[0].DropWeapon();
         }
 
         weaponQueueUI.InstantiateTheWeapons();
-
     }
 
     public void AddExistingWeaponToLoop(GameObject weaponToAdd)
     {
         weaponsCurrentlyInJuggleLoop.Add(weaponToAdd.GetComponentInChildren<WeaponJuggleMovement>());
 
-        if (isJuggling)
+        if (isJuggling && !isUlting)
         {
             ThrowUpWeaponInHand();
         }
         weaponInHand = weaponToAdd.GetComponentInChildren<WeaponJuggleMovement>();
-        weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
+        weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lï¿½gg till i currently in loop listan ocksï¿½? sï¿½ queuen funkar
 
         weaponQueueUI.InstantiateTheWeapons();
 
@@ -455,7 +460,7 @@ public class PlayerJuggle : MonoBehaviour
     [System.Obsolete]
     public void CreateAndAddWeaponToLoop(GameObject weaponPrefabToAdd)
     {
-        if (!isJuggling)
+        if (!isJuggling && !isUlting)
         {
             isJuggling = true;
             ThrowUpWeaponInHand();
@@ -474,8 +479,14 @@ public class PlayerJuggle : MonoBehaviour
 
 
         //weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();
-        //weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
+        //weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lï¿½gg till i currently in loop listan ocksï¿½? sï¿½ queuen funkar
         //weaponQueueUI.InstantiateTheWeapons();
+
+        if (isUlting)
+        {
+            newGun.GetComponentInChildren<WeaponBase>().EquipWeapon();
+        }
+
 
         weaponQueueUI.InstantiateTheWeapons();
     }
@@ -487,11 +498,58 @@ public class PlayerJuggle : MonoBehaviour
     {
 
     }
+
+
+    [ReadOnly] public List<int> weaponsIDBeforeUlt = new();
+    public List<GameObject> allWeaponKinds = new();
+
+    [System.Obsolete]
     public void Ultimate()
     {
         //throw up all weapons in new curve
-        weaponsCurrentlyInJuggleLoop.Clear();
-        CreateAndAddWeaponToLoop(popcornGun);
+        //weaponsCurrentlyInJuggleLoop.Clear();
+
+        weaponsIDBeforeUlt.Clear();
+        for (int i = 0; i < weaponsCurrentlyInJuggleLoop.Count; i++)
+        {
+
+            if(weaponsCurrentlyInJuggleLoop[i].GetComponentInChildren<WeaponBase>().weaponType == WeaponType.ConfettiGun)
+                weaponsIDBeforeUlt.Add(0);
+
+            if (weaponsCurrentlyInJuggleLoop[i].GetComponentInChildren<WeaponBase>().weaponType == WeaponType.TrumpetGun)
+                weaponsIDBeforeUlt.Add(1);
+
+            if (weaponsCurrentlyInJuggleLoop[i].GetComponentInChildren<WeaponBase>().weaponType == WeaponType.WaterPistol)
+                weaponsIDBeforeUlt.Add(2);
+        }
+
+        DropAllWeaponsOnGround();
+
+        isUlting = true;
         isJuggling = false;
+
+
+        CreateAndAddWeaponToLoop(popcornGun);
     }
+
+    [System.Obsolete]
+    public void NoUltimate()
+    {
+        isUlting = false;
+        isJuggling = true;
+
+        DropAllWeaponsOnGround();
+
+        for (int i = 0; i < weaponsIDBeforeUlt.Count; i++)
+        {
+            if(weaponsIDBeforeUlt[i] == 0)
+                CreateAndAddWeaponToLoop(allWeaponKinds[0]);
+            if (weaponsIDBeforeUlt[i] == 1)
+                CreateAndAddWeaponToLoop(allWeaponKinds[1]);
+            if (weaponsIDBeforeUlt[i] == 2)
+                CreateAndAddWeaponToLoop(allWeaponKinds[2]);
+        }
+    }
+
+
 }

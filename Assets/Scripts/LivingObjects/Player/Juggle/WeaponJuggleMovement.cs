@@ -142,7 +142,8 @@ public class WeaponJuggleMovement : MonoBehaviour
             {
                 if (playerJuggle.weaponInHand != gameObject.GetComponent<WeaponJuggleMovement>())
                 {
-                    ThrowUpWeapon();
+                    if(!playerJuggle.isUlting)
+                        ThrowUpWeapon();
                 }
             }
         }
