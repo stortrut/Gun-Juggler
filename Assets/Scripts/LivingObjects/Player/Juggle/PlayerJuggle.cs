@@ -35,6 +35,8 @@ public class PlayerJuggle : MonoBehaviour
     [HideInInspector] public float timeBetweenWeapons;
 
 
+    [Header("Tutorial Bools")]
+    public bool canNotUseWeapons;
 
 
     void Awake()
@@ -93,11 +95,11 @@ public class PlayerJuggle : MonoBehaviour
         }
         if (!isJuggling) { return; }
 
-        if (Input.GetKeyDown(KeyCode.Mouse2))
-        {
-            if (!pauseJuggling) { pauseJuggling = true; return; }
-            if (pauseJuggling) { pauseJuggling = false; ThrowUpAllWeapons(); }
-        }
+        //if (Input.GetKeyDown(KeyCode.Mouse2))
+        //{
+        //    if (!pauseJuggling) { pauseJuggling = true; return; }
+        //    if (pauseJuggling) { pauseJuggling = false; ThrowUpAllWeapons(); }
+        //}
 
 
         //Dynamic Weapon Speeds
@@ -418,6 +420,9 @@ public class PlayerJuggle : MonoBehaviour
         {
             oldWeapons[i].DropWeapon();
         }
+
+        weaponQueueUI.InstantiateTheWeapons();
+
     }
 
     public void DropAllWeaponsOnGround()
@@ -427,6 +432,9 @@ public class PlayerJuggle : MonoBehaviour
             weaponsCurrentlyInJuggleLoop[i].DropWeapon();
             isAlive = false;
         }
+
+        weaponQueueUI.InstantiateTheWeapons();
+
     }
 
     public void AddExistingWeaponToLoop(GameObject weaponToAdd)
@@ -439,6 +447,9 @@ public class PlayerJuggle : MonoBehaviour
         }
         weaponInHand = weaponToAdd.GetComponentInChildren<WeaponJuggleMovement>();
         weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
+
+        weaponQueueUI.InstantiateTheWeapons();
+
     }
 
     [System.Obsolete]
@@ -458,13 +469,15 @@ public class PlayerJuggle : MonoBehaviour
         //weaponsCurrentlyInJuggleLoop.Add(newGun.GetComponentInChildren<WeaponJuggleMovement>());
 
         //if (UpgradeCombo.Instance != null)
-            //UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
+        //UpgradeCombo.Instance.playerjuggle = weaponsCurrentlyInJuggleLoop;
         //else { Debug.Log("ERROR: Did not find the UpgradeCombo Instance"); }
 
-      
+
         //weaponInHand = newGun.GetComponentInChildren<WeaponJuggleMovement>();
         //weaponInHand.GetComponentInChildren<WeaponJuggleMovement>().weaponBase.EquipWeapon();       //lägg till i currently in loop listan också? så queuen funkar
         //weaponQueueUI.InstantiateTheWeapons();
+
+        weaponQueueUI.InstantiateTheWeapons();
     }
 
     public void Ultimate()

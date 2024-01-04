@@ -15,6 +15,7 @@ public class WeaponPickup : MonoBehaviour
 
     [SerializeField] bool dropAllWeaponsAndThenPickUpOne;
 
+    [SerializeField] bool dontDoAnythingAtAll;
 
 
     [System.Obsolete]
@@ -22,6 +23,12 @@ public class WeaponPickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+
+            if (dontDoAnythingAtAll)
+            {
+                Debug.Log(" ");
+            }
+
             if (justDropAllWeapons)
             {
                 List<WeaponJuggleMovement> oldWeapons = new();
@@ -71,8 +78,8 @@ public class WeaponPickup : MonoBehaviour
                 collision.GetComponent<PlayerJuggle>().CreateAndAddWeaponToLoop(weaponPrefabToPickup);
             }
 
-
-            Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon, .8f);
+            if(!dontDoAnythingAtAll)
+                Sound.instance.SoundRandomized(Sound.instance.equipNewWeapon, .8f);
 
             Destroy(gameObject);
         }
