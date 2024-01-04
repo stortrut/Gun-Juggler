@@ -31,11 +31,11 @@ public class HoolaHoop : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Sound.Instance.ChangeBackgroundMusic(true);
         //Lights.Instance.FightLightOn(true);
 
         if (other.gameObject.CompareTag("Player") && on == false)
         {
+            Sound.Instance.ChangeBackgroundMusic(true);
             //StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(29.7999992f, -7.50287676f, 12.6000004f))); 
             StartCoroutine(FollowPlayer.Instance.SmoothCamera(100, transform.position + new Vector3(17f, 0 ,5), false));
             // new Vector3(9.27000046f, 7.05999994f, 16.2999992f)

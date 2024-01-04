@@ -43,15 +43,15 @@ public class Bullet : MonoBehaviour
 
     private void Death()
     {
-        Destroy(gameObject);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(gameObject, 2);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            gameObject.SetActive(false);
-            Destroy(gameObject,1f);
+            Death();
         }
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
@@ -61,8 +61,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                gameObject.SetActive(false);
-                Destroy(gameObject, 1f);
+                Death();
             }
         }
         else if(other.gameObject.CompareTag("EnemyNonTargetable"))
@@ -73,8 +72,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                gameObject.SetActive(false);
-                Destroy(gameObject, 1f);
+                Death();
             }
         }
     }
@@ -83,7 +81,7 @@ public class Bullet : MonoBehaviour
             pierceTarget--;
             if (pierceTarget == 0)
             {
-                Destroy(gameObject);
+                Death();
             }   
         }
     
