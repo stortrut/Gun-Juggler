@@ -29,6 +29,17 @@ public class Lights : MonoBehaviour
         StartCoroutine(FightLightsSerie(on));
     }
 
+    public void TurnOffBattleLights()
+    {
+        for (int i = 0; i < battleLightSerie.Length; i++)
+        {
+            battleLightSerie[i].SetActive(false);
+            battleLights[i].SetActive(false);
+            //yield return new WaitForSeconds(delayBetweenLights);
+        }
+
+    }
+
     private IEnumerator FightLightsSerie(bool on)
     {
         if (on)
