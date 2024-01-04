@@ -8,6 +8,8 @@ public class WeaponPopcornGun : Gun
     [SerializeField] float popcornSpeed;
     [SerializeField] float popcornDamage;
 
+    [SerializeField] public GameObject audioSource;
+
     void Start()
     {
         weaponType = WeaponType.PopcornGun;
@@ -40,7 +42,7 @@ public class WeaponPopcornGun : Gun
     {
         if (weaponEquipped)
         {
-            yield return new WaitForSeconds(0.09f);
+            yield return new WaitForSeconds(0.05f);
             Shoot();
             StartCoroutine(nameof(ShootAllTheTime));
 
@@ -67,4 +69,6 @@ public class WeaponPopcornGun : Gun
         var white = weaponSpriterenderer.color = Color.white;
         CreateNewBullet(popcornSpeed, popcornDamage, white, gunPoint.rotation);
     }
+
+
 }

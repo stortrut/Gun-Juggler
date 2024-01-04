@@ -550,6 +550,8 @@ public class PlayerJuggle : MonoBehaviour
             if (weaponsIDBeforeUlt[i] == 2)
                 CreateAndAddWeaponToLoop(allWeaponKinds[2]);
         }
+
+        Destroy(FindObjectOfType<WeaponPopcornGun>().audioSource);
     }
 
 

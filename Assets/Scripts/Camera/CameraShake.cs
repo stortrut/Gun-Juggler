@@ -3,23 +3,53 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public static CameraShake instance {  get; private set; }
+    //public static CameraShake instance {  get; private set; }
 
-    private Camera cam;
-    private void Awake()
-    {
-        instance = this; 
-        cam = GetComponent<Camera>();
-    }
+    //private Camera cam;
+    //private void Awake()
+    //{
+    //    instance = this; 
+    //    cam = GetComponent<Camera>();
+    //}
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log("Camera Shake");
-            ScreenShake();
-            //StartCoroutine(ShakingRandomly(1f, .8f, .5f, 3));
+            //ScreenShake();
+            //StartCoroutine(ShakingRandomly(0.4f, .4f, .2f, 1));
+
+            StartCoroutine(Shake(0.2f, .1f));
         }
     }
+
+    public void BasicCameraShake()
+    {
+        StartCoroutine(Shake(0.2f, .1f));
+
+    }
+
+
+    IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 OriginalPos = transform.localPosition;
+        float elapsed = 0.0f;
+        while (elapsed < duration)
+        {
+
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.localPosition = new Vector3(x, y, OriginalPos.z);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.localPosition = OriginalPos;
+
+    }
+
+
 
     public IEnumerator ShakingRandomly(float duration, float magnitudeX, float magnitudeY, int timesToShake)
     {
@@ -54,10 +84,10 @@ public class CameraShake : MonoBehaviour
 
         transform.localPosition = initialPosition;
     }
-    void ScreenShake()
-    {
-        float margin = Random.Range(0.0f, 0.3f);
-        cam.rect = new Rect(margin, 0.0f, 1.0f - margin * 2.0f, 1.0f);
-    }
+    //void ScreenShake()
+    //{
+    //    float margin = Random.Range(0.0f, 0.3f);
+    //    cam.rect = new Rect(margin, 0.0f, 1.0f - margin * 2.0f, 1.0f);
+    //}
 
 }

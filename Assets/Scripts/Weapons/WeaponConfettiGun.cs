@@ -35,6 +35,8 @@ public class WeaponConfettiGun : Gun
         //StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));
         //CameraShakeRobert.instance.AddTrauma(1f);
 
+        FindObjectOfType<CameraShake>().BasicCameraShake();
+
         if (knockback != null)
             knockback.KnockBackMyself(3f, 4f, 0.4f, gunPoint.transform);
 
