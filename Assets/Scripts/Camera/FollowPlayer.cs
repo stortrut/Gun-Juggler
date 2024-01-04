@@ -51,12 +51,11 @@ public class FollowPlayer : MonoBehaviour
         Vector3[] pathBack = path.Reverse().ToArray();
         transform.DOPath(pathBack, 1, PathType.CatmullRom, PathMode.Sidescroller2D).OnComplete(FindPlayer);
     }
-    private void FindPlayer()
+    public void FindPlayer()
     {
         playerToFollow = player.GetComponent<PlayerMovement>();
         var vector = offset;
         StartCoroutine(SmoothCamera(200, vector, true));  
-        lockOn = true;
 
         if (!useOffsetUnderneathThis) ;
             //offset = new Vector3(5, 5.75f, 31.7999992f);
@@ -120,13 +119,14 @@ public class FollowPlayer : MonoBehaviour
         var startpos = transform.position;
         if(onPlayer == true)
         {
+            lockOn = true;
             target = vector + playerToFollow.transform.position;
         }
         for (float i = 0; i < p; i++) 
         {
             yield return new WaitForSeconds(200/20000);
             transform.position = Vector3.Lerp(startpos, target, (i+1)/p);
-            FollowPlayer.Instance.offset = vector;
+            offset = vector;
         }
 
 
