@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7836282291265597994}
   - component: {fileID: 8477817805380338819}
   - component: {fileID: 326750008076233599}
+  - component: {fileID: 8586509539426172722}
   m_Layer: 0
   m_Name: pickup_trumpet
   m_TagString: Untagged
@@ -140,6 +141,21 @@ MonoBehaviour:
   andAlsoAddAWeaponIfPlayerHasNone: 0
   dropAllWeaponsAndThenPickUpOne: 0
   dontDoAnythingAtAll: 0
+--- !u!114 &8586509539426172722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874801801678317938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e33e4ad41f8fd4aaacf30a92e4c742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatSpeed: 2
+  floatHeight: 0.5
+  damping: 1
 --- !u!1001 &2252729490804866465
 PrefabInstance:
   m_ObjectHideFlags: 0
