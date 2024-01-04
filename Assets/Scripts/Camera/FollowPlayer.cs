@@ -119,7 +119,6 @@ public class FollowPlayer : MonoBehaviour
         var startpos = transform.position;
         if(onPlayer == true)
         {
-            lockOn = true;
             target = vector + playerToFollow.transform.position;
         }
         for (float i = 0; i < p; i++) 
@@ -129,9 +128,11 @@ public class FollowPlayer : MonoBehaviour
             offset = vector;
         }
 
+        if (onPlayer == true)
+        {
+            lockOn = true;
+        }
 
-       
-        
-    }
+        }
 
 }

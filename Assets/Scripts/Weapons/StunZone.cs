@@ -32,14 +32,17 @@ public class StunZone : MonoBehaviour
         {
             var enemyBullet = obj.GetComponent<IAim>();
             enemyBullet.Deflected();
+            AudienceSatisfaction.Instance.AudienceHappiness(10);
         }
         else if (obj.CompareTag("Enemy"))
         {
             Stun(obj, stunnedEnemy);
+            AudienceSatisfaction.Instance.AudienceHappiness(2);
         }
         else if (obj.CompareTag("EnemyNonTargetable"))
         {
             Stun(obj, stunnedBalloon);
+            AudienceSatisfaction.Instance.AudienceHappiness(2);
         }
         if (hit == true)
         {
