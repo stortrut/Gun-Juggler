@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6624293177660432423}
   - component: {fileID: 6491922782107871935}
   - component: {fileID: 4771056371992108356}
-  - component: {fileID: 1913069884289244368}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -59,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -76,18 +75,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1913069884289244368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3447353035526992665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6611e7b19954de745a5fcb5fe68e2d6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6556504002760531263
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +123,7 @@ Canvas:
   m_GameObject: {fileID: 6556504002760531263}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -144,11 +131,11 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -541377669
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!114 &3609817804199080192
 MonoBehaviour:

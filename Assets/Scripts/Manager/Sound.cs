@@ -74,11 +74,6 @@ public class Sound : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(instance);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -160,7 +155,7 @@ public class Sound : MonoBehaviour
         }
     }
 
-    private void DOTweenVolumeFade(float targetVolume, float fadeDuration)
+    public void DOTweenVolumeFade(float targetVolume, float fadeDuration)
     {
         backgroundSource.DOFade(targetVolume, fadeDuration);
     }
