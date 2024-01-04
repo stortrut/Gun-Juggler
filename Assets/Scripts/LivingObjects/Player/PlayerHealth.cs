@@ -30,7 +30,7 @@ public class PlayerHealth : Health
         {
             if (hasProtection == false && canTakeDamage)
             {
-                ApplyDamage(1);
+                //ApplyDamage(1);
                 StartCoroutine(nameof(FlashRed));
                 //CameraShakeRobert.instance.AddTrauma(0.1f);
 

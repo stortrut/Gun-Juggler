@@ -40,13 +40,14 @@ public class BalloonHealth : Health
         {
             ApplyDamage(1);
             Score.Instance.bulletsHit++;
-            AudienceSatisfaction.Instance.AudienceHappiness(2f);
+            AudienceSatisfaction.Instance.AudienceHappiness(1f);
            // Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("HoolaHoop"))
         {
             AudienceSatisfaction.Instance.AudienceHappiness(-health * 2);
             EffectAnimations.instance.BalloonFireExplosion(transform.position, Vector3.one * 0.9f);
+            Sound.Instance.SoundRandomized(Sound.Instance.balloonFirePop, Sound.Instance.balloonFirePop.Length);
             Destroy(gameObject);
             // CUSTOM FAIL DEATH;
         }

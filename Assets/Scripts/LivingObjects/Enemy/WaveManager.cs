@@ -55,6 +55,7 @@ public class WaveManager : MonoBehaviour
                 if (AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount < 0.15f)
                 {
                     PlayerHealth.Instance.KillPlayer();
+                    PlayerHealth.Instance.isDead = true; 
                 }
                 else
                 {
