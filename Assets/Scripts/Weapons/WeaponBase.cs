@@ -27,7 +27,7 @@ public class WeaponBase : MonoBehaviour
     [HideInInspector] public bool isHeart;
  
 
-    [HideInInspector] public WeaponType weaponType;
+    public WeaponType weaponType;
 
     public GameObject bullet;
     public Transform gunPoint;
