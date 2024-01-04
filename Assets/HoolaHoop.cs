@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HoolaHoop : MonoBehaviour
@@ -18,18 +19,22 @@ public class HoolaHoop : MonoBehaviour
     public void EndWave()
     {
         enemyAnimator.SetBool(WAVE, false);
-       
-        StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(5, 5.75f, 31.7999992f)));
+        Sound.instance.ChangeBackgroundMusic(false);
+        StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(5, 5.75f, 31.7999992f), true));
+        FollowPlayer.Instance.lockOn = true;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         
         if(other.gameObject.CompareTag("Player") && on == false)
         {
-            StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(9.27000046f, 7.05999994f, 16.2999992f)));
+            //StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(29.7999992f, -7.50287676f, 12.6000004f))); 
+            StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, transform.position + new Vector3(20.3f, 0 ,0), false));
+            // new Vector3(9.27000046f, 7.05999994f, 16.2999992f)
             on = true;
             Invoke(nameof(StartWave), 2);
             StartCoroutine(DelayStart());
+            Sound.instance.ChangeBackgroundMusic(true);
            // Respawn.Instance.waveStart.Invoke();
         }
     }

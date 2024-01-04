@@ -13,7 +13,7 @@ public class FollowPlayer : MonoBehaviour
 
 
     public static FollowPlayer Instance;
-    [HideInInspector] private PlayerMovement playerToFollow;
+    [HideInInspector] public PlayerMovement playerToFollow;
     private GameObject player;
 
     [SerializeField] bool useOffsetUnderneathThis;
@@ -24,7 +24,8 @@ public class FollowPlayer : MonoBehaviour
     float followPosSave;
     bool axisShouldStayUnlockedTilItReachesTarget = false;
     [SerializeField] private float smoothnessFactor = 3;
-    bool lockOn;
+    [ReadOnly] public bool lockOn;
+    
 
     private void Awake()
     {
@@ -54,8 +55,8 @@ public class FollowPlayer : MonoBehaviour
     {
         playerToFollow = player.GetComponent<PlayerMovement>();
         var vector = offset;
-        StartCoroutine(SmoothCamera(200, vector));  
-        //lockOn = true;
+        StartCoroutine(SmoothCamera(200, vector, true));  
+        lockOn = true;
 
         if (!useOffsetUnderneathThis) ;
             //offset = new Vector3(5, 5.75f, 31.7999992f);
@@ -112,17 +113,22 @@ public class FollowPlayer : MonoBehaviour
         //transform.position = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
         //transform.position = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
     }
-    public IEnumerator SmoothCamera(float p, Vector3 vector)
+    public IEnumerator SmoothCamera(float p, Vector3 vector, bool onPlayer)
     {
+        Vector3 target = vector;
         lockOn = false;
         var startpos = transform.position;
+        if(onPlayer == true)
+        {
+            target = vector + playerToFollow.transform.position;
+        }
         for (float i = 0; i < p; i++) 
         {
             yield return new WaitForSeconds(200/20000);
-            transform.position = Vector3.Lerp(startpos, playerToFollow.transform.position+vector, (i+1)/p);
+            transform.position = Vector3.Lerp(startpos, target, (i+1)/p);
             FollowPlayer.Instance.offset = vector;
         }
-        lockOn = true;
+
 
        
         
