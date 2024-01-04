@@ -6,12 +6,24 @@ public class Lights : MonoBehaviour
 {
     public static Lights Instance { get; private set; }
 
-    [SerializeField] GameObject bigFightLight;
-    [SerializeField] GameObject[] fightLightSerie;
+    [SerializeField] GameObject[] battleLights;
+    [SerializeField] GameObject[] battleLightSerie;
     [SerializeField] GameObject[] normalLights;
 
     [SerializeField] float delayBetweenLights = 0.5f;
 
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            FightLightOn(true);
+        }
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            FightLightOn(true);
+        }
+    }
     public void FightLightOn(bool on)
     {
         StartCoroutine(FightLightsSerie(on));
@@ -21,30 +33,43 @@ public class Lights : MonoBehaviour
     {
         if (on)
         {
-            for (int i = 0; i < fightLightSerie.Length; i++)
+            for (int i = 0; i < battleLightSerie.Length; i++)
             {
                 Sound.Instance.SoundSet(Sound.Instance.spotLightOn,0,1,.4f);
-                fightLightSerie[i].SetActive(true);
+                battleLightSerie[i].SetActive(true);
                 yield return new WaitForSeconds(delayBetweenLights);
             }
         }
 
         else
         {
-            for (int i = 0; i < fightLightSerie.Length; i++)
+            for (int i = 0; i < battleLightSerie.Length; i++)
             {
-                fightLightSerie[i].SetActive(false);
+                battleLightSerie[i].SetActive(false);
                 //yield return new WaitForSeconds(delayBetweenLights);
             }
         }
 
         for (int i = 0; i < normalLights.Length; i++)
         {
-            normalLights[i].SetActive(true);
+            normalLights[i].SetActive(on);
+            if (!on)
+            {
+                Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
+            }
+            
             //yield return new WaitForSeconds(delayBetweenLights);
         }
 
-        bigFightLight.SetActive(on);
+        for (int i = 0; i < normalLights.Length; i++)
+        {
+            battleLights[i].SetActive(on);
+            if (on)
+            {
+                Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
+            }
+            //yield return new WaitForSeconds(delayBetweenLights);
+        }
     }
 
 

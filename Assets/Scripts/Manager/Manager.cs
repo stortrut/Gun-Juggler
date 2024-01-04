@@ -88,7 +88,7 @@ public class Manager : MonoBehaviour
             Debug.Log("fadeout");
         }
 
-        Sound.Instance.DOTweenVolumeFade(targetAlpha, fadeInDuration);
+        Sound.Instance.DOTweenVolumeFade(startAlpha, fadeInDuration);
 
         StartCoroutine(FadeAlpha(targetAlpha, startAlpha, fadeInDuration));
         //colorToFade.DOFade(targetAlpha, fadeInDuration);
@@ -100,7 +100,10 @@ public class Manager : MonoBehaviour
         for (float i = 0; i < 200; i++)
         {
             yield return new WaitForSeconds(0.001f);
-            fadingPanelImage.color = new Color(0, 0, 0, Mathf.Lerp(startAlpha, targetAlpha, (i / 200)));
+
+
+            if(fadingPanelImage != null)
+                fadingPanelImage.color = new Color(0, 0, 0, Mathf.Lerp(startAlpha, targetAlpha, (i / 200)));
         }
         yield return new WaitForSeconds(2);
 
