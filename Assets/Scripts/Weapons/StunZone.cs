@@ -54,11 +54,12 @@ public class StunZone : MonoBehaviour
         foreach (var wave in soundWave)
         {
             polygonCollider.enabled = true;
+
             wave.enabled = true;
+
             var anim = soundWaveAnimator.ElementAt(soundWave.IndexOf(wave));
             anim.SetBool("Wave", true);
             StartCoroutine(Wait(wave, anim));
-           
         }
     }
     private IEnumerator Wait(SpriteRenderer sprite , Animator anim)
