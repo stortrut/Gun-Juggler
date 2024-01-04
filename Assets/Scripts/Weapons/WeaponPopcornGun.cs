@@ -16,7 +16,12 @@ public class WeaponPopcornGun : Gun
         fireCooldown = 0.1f;
         _waitUntilThrowTime = 100f;
 
+
+        weaponEquipped = true;
+
         StartCoroutine(nameof(ShootAllTheTime));
+        StartCoroutine(nameof(ShakeAllTheTime));
+
     }
 
     private void Update()
@@ -32,6 +37,7 @@ public class WeaponPopcornGun : Gun
 
         transform.rotation = aim.bulletRotation;
 
+        audioSource.GetComponent<AudioSource>().volume = 4f;
 
         AdjustAim();
 
@@ -45,10 +51,18 @@ public class WeaponPopcornGun : Gun
             yield return new WaitForSeconds(0.05f);
             Shoot();
             StartCoroutine(nameof(ShootAllTheTime));
-
         }
-
     }
+    IEnumerator ShakeAllTheTime()
+    {
+        if (weaponEquipped)
+        {
+            yield return new WaitForSeconds(0.01f);
+            FindObjectOfType<CameraShake>().BasicCameraShake();
+            StartCoroutine(nameof(ShakeAllTheTime));
+        }
+    }
+
 
 
     public override void UseWeapon()
