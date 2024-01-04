@@ -95,7 +95,7 @@ public class PlayerHealth : Health
     {
         player.GetComponentInChildren<PlayerJuggle>().DropAllWeaponsOnGround();
         player.GetComponentInChildren<DeathAnimationHandler>().TriggerDeathAnimation();
-        Sound.instance.SoundRandomized(Sound.instance.ohNo);
+        Sound.instance.SoundRandomized(Sound.instance.ohNo, 0.8f, .15f);
         //Debug.Log("Player Died");
         yield return new WaitForSeconds(2f);
 

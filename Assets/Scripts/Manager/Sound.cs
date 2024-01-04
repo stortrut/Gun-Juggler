@@ -41,15 +41,23 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] ohNo;
     [SerializeField] public AudioClip[] jumpVoice;
 
-    [Header("Effectsounds (pop, pof, splash etc)")]
+    [Header("Splash")]
+    [SerializeField] public AudioClip[] pieSplash;
+    [SerializeField] public AudioClip[] waterSplash;
+
+    [Header("Effectsounds (pop, pof etc)")]
     [SerializeField] public AudioClip[] balloonPop;
+    [SerializeField] public AudioClip[] balloonFirePop;
     [SerializeField] public AudioClip[] balloonSqueek;
     [SerializeField] public AudioClip[] poof;
+
     [SerializeField] public AudioClip[] clowny;
-    [SerializeField] public AudioClip[] pieSplash;
+
     [SerializeField] public AudioClip[] buttonClick;
     [SerializeField] public AudioClip[] spotLightOn;
+
     [SerializeField] public AudioClip[] landingWithBike;
+    [SerializeField] public AudioClip[] hampter;
 
     [Header("Other")]
     [SerializeField] private float backgroundMusicFadeOutOrInTime;
