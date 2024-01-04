@@ -37,7 +37,11 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         float scale = startScale;
         //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
     }
-   
+    private void OnDisable()
+    {
+        transform.localScale = Vector3.one;
+    }
+
 }
     
 
