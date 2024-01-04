@@ -39,15 +39,19 @@ public class Sound : MonoBehaviour
     [Header("Player")]
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
     [SerializeField] public AudioClip[] ohNo;
+    [SerializeField] public AudioClip[] jumpVoice;
 
     [Header("Effectsounds (pop, pof, splash etc)")]
     [SerializeField] public AudioClip[] balloonPop;
+    [SerializeField] public AudioClip[] balloonSqueek;
     [SerializeField] public AudioClip[] poof;
     [SerializeField] public AudioClip[] clowny;
     [SerializeField] public AudioClip[] pieSplash;
     [SerializeField] public AudioClip[] buttonClick;
     [SerializeField] public AudioClip[] spotLightOn;
+    [SerializeField] public AudioClip[] landingWithBike;
 
+    [Header("Other")]
     [SerializeField] private float backgroundMusicFadeOutOrInTime;
     [HideInInspector] float backgroundMusicTimeStamp = 0f;
 
@@ -55,11 +59,6 @@ public class Sound : MonoBehaviour
     [HideInInspector] Slider volumeSlider;
     private float soundVolume;
     [SerializeField] int maxAmountOfSoundsPlayingAtSameTime = 3;
-
-
-    //audiosource.time = sätt variabel till tiden i slutet av poster scenen och börja därifrån nästa gång
-    //crossfade, sänk volymen på bakgrundsmusiken i slutet och övergå i nästa, ny musik vid näata wave eller level eller varje gång låten tar slut?
-
 
     private void Awake()
     {
@@ -157,7 +156,7 @@ public class Sound : MonoBehaviour
         backgroundSource.DOFade(targetVolume, fadeDuration);
     }
 
-    public void SoundRandomized(AudioClip[] currentsound, float volume = 1)  //float volume)
+    public void SoundRandomized(AudioClip[] currentsound, float volume = 1f, float randomRange = 0f)  //float volume)
     {
         GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         AudioSource audioSource = instantiatedEffectAudioSourceGameObject.GetComponent<AudioSource>();
@@ -165,6 +164,9 @@ public class Sound : MonoBehaviour
         int i = Random.Range(0, currentsound.Length);
         audioSource.clip = currentsound[i];
         audioSource.volume = volume;
+
+        float y = Random.Range(-randomRange/2, randomRange/2);
+        audioSource.pitch = 1 + y;
         //input volume * set effect volume value from slider
 
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
@@ -195,7 +197,7 @@ public class Sound : MonoBehaviour
         }
     }
 
-    public void SoundSet(AudioClip[] currentsound, int orderedNumber, float volume = 1)
+    public void SoundSet(AudioClip[] currentsound, int orderedNumber, float volume = 1, float randomRange = 0f)
     {
         GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         AudioSource audioSource = instantiatedEffectAudioSourceGameObject.GetComponent<AudioSource>();
@@ -204,6 +206,9 @@ public class Sound : MonoBehaviour
         audioSource.clip = currentsound[i];
         //input volume * set effect volume value from slider
         audioSource.volume = volume;
+
+        float y = Random.Range(-randomRange / 2, randomRange / 2);
+        audioSource.pitch = 1 + y;
 
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
 

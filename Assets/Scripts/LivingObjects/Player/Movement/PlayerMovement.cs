@@ -129,6 +129,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
 
     private void AddBounceForce()
     {
+        Sound.instance.SoundSet(Sound.instance.landingWithBike, 0, .08f*savedVelocityForBounce, .7f);
         rigidBody.AddForce(new Vector2(0, 15 * savedVelocityForBounce));
         shouldAddBounceForce = false;
     }
@@ -223,6 +224,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     {
         if (onGround && Input.GetButtonDown("Jump"))
         {
+            Sound.instance.SoundSet(Sound.instance.jumpVoice, 0, .6f, .3f);
             float jumpVelocity = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
             isJumping = true;

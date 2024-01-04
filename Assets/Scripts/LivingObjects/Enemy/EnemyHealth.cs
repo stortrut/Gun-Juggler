@@ -41,8 +41,10 @@ public class EnemyHealth : Health
     {   
         if (other.gameObject.CompareTag("Bullet"))
         {
-           // UpgradeCombo.Instance.hitSinceShot = true;
-           // UpgradeCombo.Instance.comboTween.Kill();
+            int enumIndex = (int)enemyAnimator.enemyType;
+            Sound.instance.SoundSet(Sound.instance.enemyTakingDamageEnumOrder, enumIndex, 2f);
+            // UpgradeCombo.Instance.hitSinceShot = true;
+            // UpgradeCombo.Instance.comboTween.Kill();
             //Destroy(other.gameObject);
             ColorChange(1);
            // Invoke(nameof(ColorChange), 0.3f);
@@ -74,8 +76,8 @@ public class EnemyHealth : Health
                     enemyAnimator.TakingDamage();
                 }
 
-                int enumIndex = (int)enemyAnimator.enemyType;
-                Sound.instance.SoundSet(Sound.instance.enemyTakingDamageEnumOrder, enumIndex, .6f);
+                //int enumIndex = (int)enemyAnimator.enemyType;
+                //Sound.instance.SoundSet(Sound.instance.enemyTakingDamageEnumOrder, enumIndex, 2f);
 
                 if (health <= 0)
                 {
@@ -88,8 +90,8 @@ public class EnemyHealth : Health
             }
             else if (hasProtection == true)
             {
-                int enumIndex = (int)enemyAnimator.enemyType;
-                Sound.instance.SoundSet(Sound.instance.enemyNotTakingDamageEnumOrder, enumIndex);
+                //int enumIndex = (int)enemyAnimator.enemyType;
+                //Sound.instance.SoundSet(Sound.instance.enemyNotTakingDamageEnumOrder, enumIndex);
             }
         }
     }

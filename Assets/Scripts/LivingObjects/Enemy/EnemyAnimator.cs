@@ -71,5 +71,5 @@ public enum EnemyType
     Monkey,
     Elephant,
     PieClown,
-    CannonClown,
+    CannonClown
 }

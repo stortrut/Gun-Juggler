@@ -25,7 +25,9 @@ public class AudienceSatisfaction : MonoBehaviour
         audienceSatisfaction.fillAmount += happiness/100;
         if(happiness < 0 && timer > oldTime + 2)
         {
-            Sound.instance.SoundRandomized(Sound.instance.audienceBoo);
+            Sound.instance.SoundSet(Sound.instance.audienceBoo,0,.2f);
+            Sound.instance.SoundSet(Sound.instance.audienceBoo, 1,.2f);
+            Sound.instance.SoundRandomized(Sound.instance.onePersonDissapointed, .2f);
             oldTime = timer;
         }
         if(audienceSatisfaction.fillAmount == 1)
