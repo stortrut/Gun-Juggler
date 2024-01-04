@@ -31,7 +31,7 @@ public class HoolaHoop : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && on == false)
         {
             //StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(29.7999992f, -7.50287676f, 12.6000004f))); 
-            StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, transform.position + new Vector3(20.3f, 0 ,0), false));
+            StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, transform.position + new Vector3(17f, 0 ,5), false));
             // new Vector3(9.27000046f, 7.05999994f, 16.2999992f)
             on = true;
             Invoke(nameof(StartWave), 2);
