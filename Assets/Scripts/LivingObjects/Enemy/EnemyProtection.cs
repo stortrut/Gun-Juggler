@@ -50,7 +50,7 @@ public class EnemyProtection : Health
         if (totalProtection == 0)//protectingItems.Count==0)
         {
             base.Death();
-            EffectAnimations.instance.EnemyPoof(transform.position);
+            EffectAnimations.Instance.EnemyPoof(transform.position);
             Destroy(gameObject);
             //health.oneShot = true;
             //health.hasProtection = false;

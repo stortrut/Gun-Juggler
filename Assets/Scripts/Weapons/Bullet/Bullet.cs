@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
+using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] float bulletLifeTime = 15f;
     public bool piercing;
     private int pierceTarget = 3;
+    public bool isWaterGun = false;
+
+    bool waterBulletDestroyed = false;
 
     private void Start()
     {
@@ -43,32 +48,61 @@ public class Bullet : MonoBehaviour
 
     private void Death()
     {
+        Destroy(gameObject);
+    }
+
+    private void WaterGunDeath()
+    {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Destroy(gameObject, 2);
+        if (!waterBulletDestroyed) 
+        {
+            EffectAnimations.Instance.WaterSplash(transform.position, transform.localScale * 3);
+            waterBulletDestroyed = true;
+        }
+        
+        Destroy(gameObject, .1f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            Death();
-        }
-        if (other.gameObject.CompareTag("EnemyBullet"))
-        {
-            if (piercing) 
+            if (isWaterGun)
             {
-                Pierce();
+                WaterGunDeath();
             }
             else
             {
                 Death();
             }
         }
+
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            if (piercing) 
+            {
+                Pierce();
+            }
+            else if (isWaterGun)
+            {
+                WaterGunDeath();
+            }
+            else
+            {
+                Death();
+            }
+        }
+
         else if(other.gameObject.CompareTag("EnemyNonTargetable"))
         {
             if (piercing)
             {
                 Pierce();
+            }
+
+            else if (isWaterGun)
+            {
+                WaterGunDeath();
             }
             else
             {
@@ -81,7 +115,14 @@ public class Bullet : MonoBehaviour
             pierceTarget--;
             if (pierceTarget == 0)
             {
-                Death();
+                if (isWaterGun)
+                {
+                    WaterGunDeath();
+                }
+                else
+                {
+                    Death();
+                }
             }   
         }
     

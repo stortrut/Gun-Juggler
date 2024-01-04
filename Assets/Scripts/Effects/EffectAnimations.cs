@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class EffectAnimations : MonoBehaviour
 {
-    public static EffectAnimations instance { get; private set; }
+    public static EffectAnimations Instance { get; private set; }
+
     [SerializeField] GameObject balloonPop;
     [SerializeField] GameObject enemyPoof;
     [SerializeField] GameObject confettiExplosion;
@@ -28,9 +29,9 @@ public class EffectAnimations : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {

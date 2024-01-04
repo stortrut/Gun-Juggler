@@ -69,7 +69,7 @@ public class Sound : MonoBehaviour
     //Volume
     [HideInInspector] Slider volumeSlider;
     private float soundVolume;
-    [SerializeField] int maxAmountOfSoundsPlayingAtSameTime = 3;
+    [ReadOnly] int maxAmountOfSoundsPlayingAtSameTime;
 
     private void Awake()
     {
@@ -81,10 +81,17 @@ public class Sound : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("buildindex"+SceneManager.GetActiveScene().buildIndex);
-        if ((SceneManager.GetActiveScene().buildIndex == 0) || (SceneManager.GetActiveScene().buildIndex == 1))
+        //Debug.Log("buildindex"+SceneManager.GetActiveScene().buildIndex);
+
+        if ((SceneManager.GetActiveScene().buildIndex == 0)) 
         {
             backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
+            maxAmountOfSoundsPlayingAtSameTime = 1;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
+            maxAmountOfSoundsPlayingAtSameTime = 2;
         }
 
         else if (SceneManager.GetActiveScene().name == "WinScene")
@@ -95,6 +102,7 @@ public class Sound : MonoBehaviour
 
         else if (backgroundSource.clip == null)
         {
+            maxAmountOfSoundsPlayingAtSameTime = 3;
             int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
             backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];     //level random music
         }

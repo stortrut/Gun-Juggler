@@ -10,17 +10,26 @@ public class HoolaHoop : MonoBehaviour
     [SerializeField] WaveManager waveManager;
     bool on = false;
     const string WAVE = "wave";
+    //bool fightHasStarted;
 
+    private void Start()
+    {
+    }
 
     public void StartWave()
     {
         enemyAnimator.SetBool(WAVE, true);
+        Invoke(nameof(SoundHoopFire), .2f);
+    }
+    private void SoundHoopFire()
+    {
         Sound.Instance.SoundSet(Sound.Instance.hoopFire, 0);
     }
+
     public void EndWave()
     {
         Sound.Instance.ChangeBackgroundMusic(false);
-        //Lights.Instance.FightLightOn(false);
+        Lights.Instance.FightLightOn(false);
 
         enemyAnimator.SetBool(WAVE, false);
        // FollowPlayer.Instance.FindPlayer();
@@ -31,10 +40,10 @@ public class HoolaHoop : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Lights.Instance.FightLightOn(true);
-
         if (other.gameObject.CompareTag("Player") && on == false)
         {
+            Debug.Log("fight started");
+            Lights.Instance.FightLightOn(true);
             Sound.Instance.ChangeBackgroundMusic(true);
             //StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(29.7999992f, -7.50287676f, 12.6000004f))); 
             StartCoroutine(FollowPlayer.Instance.SmoothCamera(100, transform.position + new Vector3(17f, 0 ,5), false));
@@ -44,7 +53,7 @@ public class HoolaHoop : MonoBehaviour
             StartCoroutine(DelayStart());
             Sound.Instance.ChangeBackgroundMusic(true);
             PlayerJuggle.Instance.FightStart();
-           // Respawn.Instance.waveStart.Invoke();
+            // Respawn.Instance.waveStart.Invoke();
         }
     }
     private IEnumerator DelayStart()

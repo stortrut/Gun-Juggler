@@ -46,7 +46,7 @@ public class BalloonHealth : Health
         if(other.gameObject.CompareTag("HoolaHoop"))
         {
             AudienceSatisfaction.Instance.AudienceHappiness(-health * 2);
-            EffectAnimations.instance.BalloonFireExplosion(transform.position, Vector3.one * 0.9f);
+            EffectAnimations.Instance.BalloonFireExplosion(transform.position, Vector3.one * 0.9f);
             Sound.Instance.SoundRandomized(Sound.Instance.balloonFirePop, Sound.Instance.balloonFirePop.Length);
             Destroy(gameObject);
             // CUSTOM FAIL DEATH;
@@ -86,7 +86,7 @@ public class BalloonHealth : Health
         }
         if(this != null)
         { 
-        EffectAnimations.instance.BalloonPop(transform.position);
+        EffectAnimations.Instance.BalloonPop(transform.position);
         transform.localScale *= 0.9f;
         spriteRenderer.color = currentColor;
         }
@@ -96,7 +96,7 @@ public class BalloonHealth : Health
         base.Death();
         if(this != null)
         { 
-            EffectAnimations.instance.BalloonPop(transform.position);
+            EffectAnimations.Instance.BalloonPop(transform.position);
             Destroy(gameObject);  
         }
     }

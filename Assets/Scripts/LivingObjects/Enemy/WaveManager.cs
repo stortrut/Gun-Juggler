@@ -51,7 +51,7 @@ public class WaveManager : MonoBehaviour
             {
                 hoolaHoop.EndWave();
                 clownAnimator.Attacking();
-                EffectAnimations.instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one);
+                EffectAnimations.Instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one);
                 if (AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount < 0.15f)
                 {
                     PlayerHealth.Instance.KillPlayer();
@@ -120,7 +120,7 @@ public class WaveManager : MonoBehaviour
         {
             var a = spawnSpots.ElementAt(i);
             var pos = new Vector2(a.position.x, a.position.y);
-            EffectAnimations.instance.EnemyPoof(pos);
+            EffectAnimations.Instance.EnemyPoof(pos);
             i++;
         }
     }
