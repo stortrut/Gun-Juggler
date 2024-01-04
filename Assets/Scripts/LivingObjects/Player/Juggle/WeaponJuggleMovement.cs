@@ -168,7 +168,7 @@ public class WeaponJuggleMovement : MonoBehaviour
         curveDeltaTime = 0;
         beingThrown = true;
         weaponBase.UnEquipWeapon();
-        Sound.instance.SoundRandomized(Sound.instance.throwUpWeapon,.1f);
+        Sound.Instance.SoundRandomized(Sound.Instance.throwUpWeapon,.1f);
     }
 
     public void DropWeapon()

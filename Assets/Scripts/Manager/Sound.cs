@@ -10,7 +10,7 @@ using DG.Tweening.Plugins.Options;
 
 public class Sound : MonoBehaviour
 {
-    public static Sound instance { get; private set; }
+    public static Sound Instance { get; private set; }
 
     public AudioSource backgroundSource;
     [SerializeField] private GameObject effectAudioSourceGameObject;
@@ -71,9 +71,9 @@ public class Sound : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
     }
 
