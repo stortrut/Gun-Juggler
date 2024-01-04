@@ -56,6 +56,8 @@ public class WaveManager : MonoBehaviour
                 {
                     PlayerHealth.Instance.KillPlayer();
                 }
+                else
+                    AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount = 0.3f;
                 Destroy(clownAnimator.gameObject);
                 foreach (var bla in curtain)
                 {
