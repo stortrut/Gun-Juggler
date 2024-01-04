@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using DG.Tweening;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class FollowPlayer : MonoBehaviour
 {
@@ -36,9 +37,9 @@ public class FollowPlayer : MonoBehaviour
     private void Start()
     {
 
-        if(!doNotDoPathAtStart)
+        if (PlayerPrefs.GetInt("cameraPan") == 0 && !doNotDoPathAtStart)
             transform.DOPath(path, 10, PathType.CatmullRom,PathMode.Sidescroller2D).OnComplete(PathBack);
-        else
+        else 
         {
             transform.DOKill();
             FindPlayer();
