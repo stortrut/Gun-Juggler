@@ -24,6 +24,7 @@ public class AudienceSatisfaction : MonoBehaviour
     {
         timer = Time.time;
         audienceSatisfaction.fillAmount += happiness/100;
+        audienceSatisfaction.fillAmount = Mathf.Clamp(audienceSatisfaction.fillAmount, 0, 1);
         if(happiness < 0 && timer > oldTime + 2)
         {
             Sound.Instance.SoundSet(Sound.Instance.audienceBoo,0,.2f);

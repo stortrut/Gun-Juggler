@@ -23,8 +23,8 @@ public class HoolaHoop : MonoBehaviour
         //Lights.Instance.FightLightOn(false);
 
         enemyAnimator.SetBool(WAVE, false);
-        FollowPlayer.Instance.FindPlayer();
-        StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(5, 5.75f, 31.7999992f), true));
+       // FollowPlayer.Instance.FindPlayer();
+        StartCoroutine(FollowPlayer.Instance.SmoothCamera(50, new Vector3(5, 5.75f, 31.7999992f), true));
         PlayerJuggle.Instance.DropAllWeaponsOnGround();
         PlayerJuggle.Instance.FightEnd();
         //FollowPlayer.Instance.lockOn = true;
@@ -37,7 +37,7 @@ public class HoolaHoop : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && on == false)
         {
             //StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(29.7999992f, -7.50287676f, 12.6000004f))); 
-            StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, transform.position + new Vector3(17f, 0 ,5), false));
+            StartCoroutine(FollowPlayer.Instance.SmoothCamera(100, transform.position + new Vector3(17f, 0 ,5), false));
             // new Vector3(9.27000046f, 7.05999994f, 16.2999992f)
             on = true;
             Invoke(nameof(StartWave), 2);
