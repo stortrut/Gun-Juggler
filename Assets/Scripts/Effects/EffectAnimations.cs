@@ -127,9 +127,9 @@ public class EffectAnimations : MonoBehaviour
         Destroy(obj, 1);
     }
 
-    public void ConfettiBurst(Vector2 pos, Vector3 scale)
+    public void ConfettiBurst(Vector2 pos, Vector3 scale, Quaternion rot)
     {
-        var obj = Instantiate(confettiBurst, pos, Quaternion.identity);
+        var obj = Instantiate(confettiBurst, pos, rot);
         obj.transform.localScale = scale;
         Destroy(obj, 1);
     }

@@ -52,6 +52,8 @@ public class WeaponConfettiGun : Gun
         float angleDistanceBetweenBullets = spread / bulletCount;
         float angelSum = -90;
 
+
+        EffectAnimations.Instance.ConfettiBurst(gunPoint.position, new Vector3(2,2), gunPoint.rotation);
         for (int i = 0; i < bulletCount; i++)
         {
             float bulletAngle = angleDistanceBetweenBullets;
