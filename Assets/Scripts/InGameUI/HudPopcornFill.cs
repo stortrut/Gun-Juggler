@@ -96,7 +96,7 @@ public class HudPopcornFill : MonoBehaviour
 
         while (Time.time < startTime + ultDuration)
         {
-            popcornFillImage.fillAmount -= Time.deltaTime * 0.5f;
+            popcornFillImage.fillAmount -= Time.deltaTime * 0.2f;
 
             ReducePopcornAmount();
             yield return null;

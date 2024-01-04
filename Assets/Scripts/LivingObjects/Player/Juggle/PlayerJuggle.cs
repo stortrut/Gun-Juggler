@@ -429,7 +429,6 @@ public class PlayerJuggle : MonoBehaviour
 
     public void DropAllWeaponsOnGround()
     {
-        Debug.Log("There are " + weaponsCurrentlyInJuggleLoop.Count.ToString() + " weapons that should be dropped");
 
         List<WeaponJuggleMovement> oldWeapons = weaponsCurrentlyInJuggleLoop;
 

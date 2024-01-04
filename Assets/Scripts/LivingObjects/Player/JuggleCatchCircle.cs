@@ -82,7 +82,10 @@ public class JuggleCatchCircle : MonoBehaviour
             StartCoroutine(nameof(CaughtWeaponCheckHandler));
         }
     }
-  
+
+    public bool caughtGun = false;
+
+
     IEnumerator CaughtWeaponCheckHandler()
     {
         canCatchWeapon = true;
@@ -99,6 +102,9 @@ public class JuggleCatchCircle : MonoBehaviour
         {
             currentCatchableGun.gameObject.GetComponent<WeaponBase>().UpgradeWeapon();
             currentCatchAttemptCooldownTimer = maxCatchAttemptCooldown;
+
+            caughtGun = true;
+
             yield return new WaitForSeconds(0.3f);
         }
         else
