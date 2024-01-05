@@ -95,7 +95,7 @@ public class Lights : MonoBehaviour
 
         for (int i = 0; i < normalLights.Length; i++)       //stäng av ljus
         {
-            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
+            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, .4f, .4f);
             yield return new WaitForSeconds(.2f);
             normalLights[i].SetActive(true);
             yield return new WaitForSeconds(.5f);
@@ -114,7 +114,7 @@ public class Lights : MonoBehaviour
             {
                 
                 battleLightSerie[i].SetActive(true);
-                Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
+                Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, .6f, .4f);
                 yield return new WaitForSeconds(delayBetweenLights);
             }
 
@@ -144,7 +144,7 @@ public class Lights : MonoBehaviour
                 //Sound.Instance.SoundSet(Sound.Instance.spotLightOn,0,1,.4f);
                 normalLights[i].SetActive(true);
             }
-            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
+            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, .6f, .4f);
         }
     }
 }

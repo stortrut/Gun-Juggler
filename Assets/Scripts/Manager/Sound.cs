@@ -155,7 +155,7 @@ public class Sound : MonoBehaviour
             backgroundSource.clip = fightBackgroundMusicLevels[randomNum];
             backgroundSource.Play();
 
-            DOTweenVolumeFade(1f, backgroundMusicFadeOutOrInTime/4);
+            DOTweenVolumeFade(7f, backgroundMusicFadeOutOrInTime/4);
             yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime/4);
             yield return null;
         }
