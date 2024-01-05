@@ -42,7 +42,7 @@ public class EnemyHealth : Health
         if (other.gameObject.CompareTag("Bullet"))
         {
             int enumIndex = (int)enemyAnimator.enemyType;
-            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, enumIndex, 0.1f);
+            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, enumIndex, 0.1f,.2f);
             // UpgradeCombo.Instance.hitSinceShot = true;
             // UpgradeCombo.Instance.comboTween.Kill();
             //Destroy(other.gameObject);
@@ -138,7 +138,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
             Invoke(nameof(ClownDeath), 1.5f);
-            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, 5);
+            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, 5,.7f);
             CameraShakeRobert.instance.AddTrauma(0.3f);
             enemyAnimator.Dying();
         }

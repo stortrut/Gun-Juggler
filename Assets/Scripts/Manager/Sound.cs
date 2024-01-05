@@ -24,8 +24,7 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] audienceApplauding;
     [SerializeField] public AudioClip[] otherPositiveReactions;
     [SerializeField] public AudioClip[] audienceBoo;
-    [SerializeField] public AudioClip[] onePersonDissapointed;
-    [SerializeField] public AudioClip[] dissapointed;
+    [SerializeField] public AudioClip[] murmuring;
 
     [Header("Weapon")]
     [SerializeField] public AudioClip[] catchWeaponWeapontypeEnumOrder;
