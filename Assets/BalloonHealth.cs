@@ -8,8 +8,6 @@ using static BalloonHealth;
 
 public class BalloonHealth : Health
 {
-
-  
     [Header("Drag in")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private EnemyType enemyType;
@@ -41,13 +39,17 @@ public class BalloonHealth : Health
             ApplyDamage(1);
             Score.Instance.bulletsHit++;
             AudienceSatisfaction.Instance.AudienceHappiness(1f);
-           // Destroy(other.gameObject);
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0,.3f);
+            //Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 3, .3f);
+            // Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("HoolaHoop"))
         {
             AudienceSatisfaction.Instance.AudienceHappiness(-health * 2);
             EffectAnimations.Instance.BalloonFireExplosion(transform.position, Vector3.one * 0.9f);
-            Sound.Instance.SoundRandomized(Sound.Instance.balloonFirePop, Sound.Instance.balloonFirePop.Length);
+            Sound.Instance.SoundRandomized(Sound.Instance.balloonFirePop, 1,.2f);
+
+            Sound.Instance.SoundRandomized(Sound.Instance.dissapointment,.6f,.1f );
             Destroy(gameObject);
             // CUSTOM FAIL DEATH;
         }

@@ -33,16 +33,24 @@ public class StunZone : MonoBehaviour
             var enemyBullet = obj.GetComponent<IAim>();
             enemyBullet.Deflected();
             AudienceSatisfaction.Instance.AudienceHappiness(10);
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .3f);
+            Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 3, .3f);
         }
         else if (obj.CompareTag("Enemy"))
         {
             Stun(obj, stunnedEnemy);
+            Sound.Instance.SoundSet(Sound.Instance.dizzyPieClown, 1, .8f);
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .3f);
+
             AudienceSatisfaction.Instance.AudienceHappiness(2);
+
+            //stunned sound!!!
         }
         else if (obj.CompareTag("EnemyNonTargetable"))
         {
             Stun(obj, stunnedBalloon);
             AudienceSatisfaction.Instance.AudienceHappiness(2);
+            Sound.Instance.SoundSet(Sound.Instance.landingWithBike, 1, .3f);
         }
         if (hit == true)
         {

@@ -52,6 +52,7 @@ public class WaveManager : MonoBehaviour
                 hoolaHoop.EndWave();
                 clownAnimator.Attacking();
                 EffectAnimations.Instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one);
+                Sound.Instance.SoundSet(Sound.Instance.explosion, 0, .7f);
                 if (AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount < 0.15f)
                 {
                     PlayerHealth.Instance.KillPlayer();
@@ -85,6 +86,8 @@ public class WaveManager : MonoBehaviour
     }
     public void StartWave()
     {
+        
+
         firstNumber.sprite = numbers[waveNumber+1];
         secondNumber.sprite = numbers[numberOfWaves];
         slash.enabled = true;
@@ -103,6 +106,7 @@ public class WaveManager : MonoBehaviour
             }
 
         }
+
         else
         {
             StartCoroutine(PoofAir(airSpawnSpots));
@@ -114,6 +118,7 @@ public class WaveManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         cannonAnimator.CannonAttack();
+        Sound.Instance.SoundSet(Sound.Instance.explosion, 0, .3f);
         yield return new WaitForSeconds(0.5f);
         var i = 0;
         foreach (var enemy in spawnSpots)
@@ -122,6 +127,7 @@ public class WaveManager : MonoBehaviour
             var pos = new Vector2(a.position.x, a.position.y);
             EffectAnimations.Instance.EnemyPoof(pos);
             i++;
+            Sound.Instance.SoundSet(Sound.Instance.poof, 0, .2f);
         }
     }
     public IEnumerator DelayedSpawn()

@@ -25,6 +25,7 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] otherPositiveReactions;
     [SerializeField] public AudioClip[] audienceBoo;
     [SerializeField] public AudioClip[] murmuring;
+    [SerializeField] public AudioClip[] dissapointment;
 
     [Header("Weapon")]
     [SerializeField] public AudioClip[] catchWeaponWeapontypeEnumOrder;
@@ -36,6 +37,7 @@ public class Sound : MonoBehaviour
     [Header("Enemy")]
     [SerializeField] public AudioClip[] enemyTakingDamageEnumOrder;
     [SerializeField] public AudioClip[] enemyNotTakingDamageEnumOrder;
+    [SerializeField] public AudioClip[] dizzyPieClown;
 
     [Header("Player")]
     [SerializeField] public AudioClip[] playerTakingDamageSounds;
@@ -113,6 +115,7 @@ public class Sound : MonoBehaviour
             int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
             backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];     //level random music
             Lights.Instance.NormalLightsOn();
+            SoundSet(murmuring, 0, 1f);
         }
         
         if (backgroundSource.clip != null)

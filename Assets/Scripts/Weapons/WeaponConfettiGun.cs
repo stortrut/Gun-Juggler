@@ -29,7 +29,11 @@ public class WeaponConfettiGun : Gun
         //    StartCoroutine(UpgradeCombo.Instance.Combo());
         //}
         if(AudienceSatisfaction.Instance != null)
+        {
             AudienceSatisfaction.Instance.AudienceHappiness(5);
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 1, .3f);
+            Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 0, .3f);
+        }
         //bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);
         //StartCoroutine(CameraShake.instance.ShakingRandomly(.1f, .6f, .1f, 1));

@@ -27,8 +27,8 @@ public class AudienceSatisfaction : MonoBehaviour
         audienceSatisfaction.fillAmount = Mathf.Clamp(audienceSatisfaction.fillAmount, 0, 1);
         if(happiness < 0 && timer > oldTime + 2)
         {
-            Sound.Instance.SoundSet(Sound.Instance.audienceBoo,0,.2f);
-            Sound.Instance.SoundSet(Sound.Instance.audienceBoo, 1,.2f);
+            //Sound.Instance.SoundSet(Sound.Instance.audienceBoo,0,.2f);
+            //Sound.Instance.SoundSet(Sound.Instance.audienceBoo, 1,.2f);
             oldTime = timer;
         }
         if(happiness > 0 &&  timer > oldTime2 + 2)
