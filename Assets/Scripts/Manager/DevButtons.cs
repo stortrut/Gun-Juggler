@@ -38,7 +38,8 @@ public class DevButtons : MonoBehaviour
         // Set Development Checkpoint
         if (Input.GetKeyUp(KeyCode.C))
         {
-
+            PlayerPrefs.SetInt("cameraPan", 0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         // Teleport to Checkpoint

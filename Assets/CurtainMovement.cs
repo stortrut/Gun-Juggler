@@ -16,16 +16,10 @@ public class CurtainMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void ActivateCurtains()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-            PlayerPrefs.DeleteAll();
-
-            if (Input.GetKeyDown(KeyCode.S)) 
-        {
             curtainLeftRigidbody.DOMoveX(curtainLeftRigidbody.transform.position.x - 23, tweenSpeed);
             curtainRightRigidbody.DOMoveX(curtainRightRigidbody.transform.position.x + 23 , tweenSpeed).OnComplete(DisableCurtain);
-        }
        
     }
     private void DisableCurtain()

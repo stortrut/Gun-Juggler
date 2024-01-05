@@ -8,6 +8,7 @@ public class HoolaHoop : MonoBehaviour
 {
     [SerializeField] Animator enemyAnimator;
     [SerializeField] WaveManager waveManager;
+    [SerializeField] CurtainMovement curtainMovement;
     bool on = false;
     const string WAVE = "wave";
     //bool fightHasStarted;
@@ -42,6 +43,7 @@ public class HoolaHoop : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && on == false)
         {
+            curtainMovement.ActivateCurtains();
             Debug.Log("fight started");
             Lights.Instance.FightLightOn(true);
             Sound.Instance.ChangeBackgroundMusic(true);
@@ -49,7 +51,7 @@ public class HoolaHoop : MonoBehaviour
             StartCoroutine(FollowPlayer.Instance.SmoothCamera(100, transform.position + new Vector3(17f, 0 ,5), false));
             // new Vector3(9.27000046f, 7.05999994f, 16.2999992f)
             on = true;
-            Invoke(nameof(StartWave), 2);
+            Invoke(nameof(StartWave), 5);
             StartCoroutine(DelayStart());
             Sound.Instance.ChangeBackgroundMusic(true);
             PlayerJuggle.Instance.FightStart();
@@ -58,7 +60,7 @@ public class HoolaHoop : MonoBehaviour
     }
     private IEnumerator DelayStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         waveManager.StartWave();
     }
 }

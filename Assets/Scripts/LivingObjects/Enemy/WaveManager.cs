@@ -155,7 +155,7 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(DelayedSpawn());
         foreach (var bla in curtain)
         {
-            bla.SetActive(true);
+            bla.GetComponent<EdgeCollider2D>().enabled = true;
         }
 
     }
