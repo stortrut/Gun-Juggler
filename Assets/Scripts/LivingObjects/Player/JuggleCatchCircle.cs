@@ -102,8 +102,8 @@ public class JuggleCatchCircle : MonoBehaviour
         {
             Sound.Instance.SoundRandomized(Sound.Instance.equipNewWeapon, 0.4f, 1f);
 
-
-            currentCatchableGun.gameObject.GetComponent<WeaponBase>().UpgradeWeapon();
+            if(currentCatchableGun != null)
+                currentCatchableGun.gameObject.GetComponent<WeaponBase>().UpgradeWeapon();
             currentCatchAttemptCooldownTimer = maxCatchAttemptCooldown;
 
             caughtGun = true;
@@ -112,7 +112,8 @@ public class JuggleCatchCircle : MonoBehaviour
         }
         else
         {
-            currentCatchableGun.gameObject.GetComponent<WeaponBase>().ResetWeaponUpgradeLevel();
+            if(currentCatchableGun != null)
+                currentCatchableGun.gameObject.GetComponent<WeaponBase>().ResetWeaponUpgradeLevel();
 
 
             //playerJuggle.RemoveWeaponFromLoop(currentCatchableGun);
