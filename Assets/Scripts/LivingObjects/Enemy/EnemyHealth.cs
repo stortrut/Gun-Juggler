@@ -141,6 +141,7 @@ public class EnemyHealth : Health
             Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, 5,.7f);
             CameraShakeRobert.instance.AddTrauma(0.3f);
             enemyAnimator.Dying();
+            Score.Instance.pieClownHit++;
         }
     }
 

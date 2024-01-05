@@ -124,7 +124,7 @@ public class HandHoldingTutorial : MonoBehaviour
         entertainmentRatingArrow.SetActive(false);
 
 
-
+        Score.Instance.ActScore(1);
 
         Debug.Log("END");
     }
