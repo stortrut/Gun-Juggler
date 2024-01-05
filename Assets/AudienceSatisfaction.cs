@@ -29,7 +29,6 @@ public class AudienceSatisfaction : MonoBehaviour
         {
             Sound.Instance.SoundSet(Sound.Instance.audienceBoo,0,.2f);
             Sound.Instance.SoundSet(Sound.Instance.audienceBoo, 1,.2f);
-            Sound.Instance.SoundRandomized(Sound.Instance.onePersonDissapointed, .2f);
             oldTime = timer;
         }
         if(happiness > 0 &&  timer > oldTime2 + 2)

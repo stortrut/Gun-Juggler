@@ -61,6 +61,7 @@ public class Lights : MonoBehaviour
             }
 
             Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1.3f, .2f);
+            yield return new WaitForSeconds(0.2f);
 
             for (int i = 0; i < battleLights.Length; i++)
             {
