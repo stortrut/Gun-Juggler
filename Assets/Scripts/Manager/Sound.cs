@@ -22,8 +22,10 @@ public class Sound : MonoBehaviour
 
     [Header("Audience")]
     [SerializeField] public AudioClip[] audienceApplauding;
+    [SerializeField] public AudioClip[] otherPositiveReactions;
     [SerializeField] public AudioClip[] audienceBoo;
     [SerializeField] public AudioClip[] onePersonDissapointed;
+    [SerializeField] public AudioClip[] dissapointed;
 
     [Header("Weapon")]
     [SerializeField] public AudioClip[] catchWeaponWeapontypeEnumOrder;
@@ -48,6 +50,8 @@ public class Sound : MonoBehaviour
     [Header("Effectsounds (pop, pof etc)")]
     [SerializeField] public AudioClip[] balloonFirePop;
     [SerializeField] public AudioClip[] hoopFire;
+
+    [SerializeField] public AudioClip[] shortPopping;
 
     [SerializeField] public AudioClip[] balloonPop;
     [SerializeField] public AudioClip[] balloonSqueek;

@@ -61,6 +61,7 @@ public class HudPopcornFill : MonoBehaviour
     [System.Obsolete]
     public void PopcornAmountUpgrade()
     {
+        Sound.Instance.SoundSet(Sound.Instance.shortPopping, 0);
         popcornFillTopPos.y += popcornFillAmountPerUpgrade;      
 
         popcornFillImage.fillAmount += 1 / (19 / popcornFillAmountPerUpgrade);
