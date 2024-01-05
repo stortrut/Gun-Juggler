@@ -102,14 +102,19 @@ public class FollowPlayer : MonoBehaviour
             //targetPos.y = transform.position.y; 
             axisShouldStayUnlockedTilItReachesTarget = false;
         }
-
+        if (trampolineJumping)
+        {
+            targetPos.y = playerToFollow.transform.position.y + offset.y;
+        }
         targetPos.x = playerToFollow.transform.position.x + offset.x;
         targetPos.z = offset.z;
         Vector3 posY = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
         Vector3 posX = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
         transform.position = new Vector3(targetPos.x, posY.y, offset.z);
-    }
 
+       
+    }
+    public bool trampolineJumping;
     //private void FixedUpdate()
     //{
     //    if (lockOn == false || player == null) { return; }
