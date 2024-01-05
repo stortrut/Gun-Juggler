@@ -72,11 +72,15 @@ public class WeaponBase : MonoBehaviour
             {
                 AdjustAim();
             }
+            else if(!weaponJuggleMovement.beingThrown && player.GetComponent<PlayerJuggle>().pauseJuggling)
+            {
+                AdjustAim();
+            }
 
             fireCooldownTimer += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Mouse0) && fireCooldownTimer > fireCooldown && canUseWeaponChecker.isAbleToUseWeapon)
             {
-                if (weaponEquipped)
+                if (weaponEquipped && !player.GetComponent<PlayerJuggle>().pauseJuggling)
                 {
                     if (FindObjectOfType<PlayerJuggle>().canNotUseWeapons) { Debug.Log("Can not use weapon"); return; }
 

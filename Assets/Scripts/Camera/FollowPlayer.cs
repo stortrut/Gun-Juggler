@@ -40,7 +40,10 @@ public class FollowPlayer : MonoBehaviour
     {
 
         if (PlayerPrefs.GetInt("cameraPan") == 0 && !doNotDoPathAtStart)
-            transform.DOPath(path, 10, PathType.CatmullRom,PathMode.Sidescroller2D).OnComplete(PathBack);
+        {
+            transform.DOPath(path, 10, PathType.CatmullRom, PathMode.Sidescroller2D).OnComplete(PathBack);
+            FindObjectOfType<PlayerMovement>().turnOffMovement = true;
+        }
         else 
         {
             transform.DOKill();
@@ -127,6 +130,12 @@ public class FollowPlayer : MonoBehaviour
             yield return new WaitForSeconds(200/20000);
             transform.position = Vector3.Lerp(startpos, target, (i+1)/p);
             offset = vector;
+
+            if(i == p - 1)
+            {
+                FindObjectOfType<PlayerMovement>().turnOffMovement = false;
+            }
+
         }
         if (onPlayer == true)
         {

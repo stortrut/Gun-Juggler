@@ -25,7 +25,7 @@ public class PlayerJuggle : MonoBehaviour
 
     [SerializeField] bool startJuggling = true;
 
-    [SerializeField] bool pauseJuggling = false;
+    [SerializeField] public bool pauseJuggling = false;
 
     [Header("The separate WeaponHolder - Drag in")]
     [SerializeField] Transform weaponHolderPoint;
@@ -97,13 +97,18 @@ public class PlayerJuggle : MonoBehaviour
                 //StartJuggling();
             }
         }
+
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (!pauseJuggling) { pauseJuggling = true; return; }
+            if (pauseJuggling) { pauseJuggling = false; ThrowUpAllWeapons(); }
+        }
+
+
         if (!isJuggling) { return; }
 
-        //if (Input.GetKeyDown(KeyCode.Mouse2))
-        //{
-        //    if (!pauseJuggling) { pauseJuggling = true; return; }
-        //    if (pauseJuggling) { pauseJuggling = false; ThrowUpAllWeapons(); }
-        //}
+       
 
 
         //Dynamic Weapon Speeds
@@ -227,6 +232,7 @@ public class PlayerJuggle : MonoBehaviour
         if (weaponInHand == null) { return; }
         if (pauseJuggling) { return; }
         if (!isJuggling) { ThrowUpAllWeapons(); return; }
+        Debug.Log("THREW UP WEAPON");
 
         weaponInHand.ThrowUpWeapon();
         //weaponInHand.gameObject.transform.SetParent(originalParent, false);
@@ -493,10 +499,11 @@ public class PlayerJuggle : MonoBehaviour
     }
     public void FightStart()
     {
-
+        if (pauseJuggling) { pauseJuggling = false; ThrowUpAllWeapons(); }
     }
     public void FightEnd()
     {
+        if (!pauseJuggling) { pauseJuggling = true; return; }
 
     }
 
@@ -541,6 +548,15 @@ public class PlayerJuggle : MonoBehaviour
 
         DropAllWeaponsOnGround();
 
+
+        if (FindObjectOfType<WeaponPopcornGun>() != null)
+            Destroy(FindObjectOfType<WeaponPopcornGun>().audioSource);
+
+
+
+        if (pauseJuggling)
+            return;
+
         for (int i = 0; i < weaponsIDBeforeUlt.Count; i++)
         {
             if(weaponsIDBeforeUlt[i] == 0)
@@ -551,7 +567,6 @@ public class PlayerJuggle : MonoBehaviour
                 CreateAndAddWeaponToLoop(allWeaponKinds[2]);
         }
 
-        Destroy(FindObjectOfType<WeaponPopcornGun>().audioSource);
     }
 
 

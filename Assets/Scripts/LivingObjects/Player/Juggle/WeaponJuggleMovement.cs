@@ -160,7 +160,7 @@ public class WeaponJuggleMovement : MonoBehaviour
         if (playerJuggle == null) { /*Debug.Log("ERROR..");*/ playerJuggle = FindObjectOfType<PlayerJuggle>(); }
         if (playerJuggle == null) { Debug.Log("BIG ERROR!");}
         if (beingThrown) { return; }
-
+        if(playerJuggle.GetComponent<PlayerJuggle>().pauseJuggling) { return; }
 
         if (playerJuggle.armAnimationHandler == null) { Debug.Log("ARM ANIMATION ERROR"); }
         playerJuggle.armAnimationHandler.StartCoroutine(nameof(playerJuggle.armAnimationHandler.PlayThrowUpWeaponAnimation));

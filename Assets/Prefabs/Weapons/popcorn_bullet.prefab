@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8455349040596785382}
   - component: {fileID: 718414815011456638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: popcorn_art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 8365290706307921402}
   - component: {fileID: 1147579213068962553}
   - component: {fileID: 2097895514615790950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: popcorn_bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   direction: {x: 1, y: 0}
   bulletLifeTime: 15
   piercing: 0
+  isWaterGun: 0
 --- !u!58 &8365290706307921402
 CircleCollider2D:
   m_ObjectHideFlags: 0

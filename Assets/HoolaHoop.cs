@@ -36,6 +36,7 @@ public class HoolaHoop : MonoBehaviour
        // FollowPlayer.Instance.FindPlayer();
         StartCoroutine(FollowPlayer.Instance.SmoothCamera(50, new Vector3(5, 5.75f, 31.7999992f), true));
         PlayerJuggle.Instance.DropAllWeaponsOnGround();
+        PlayerJuggle.Instance.pauseJuggling = true;
         PlayerJuggle.Instance.FightEnd();
         //FollowPlayer.Instance.lockOn = true;
     }

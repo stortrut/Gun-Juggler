@@ -107,7 +107,9 @@ public class HudPopcornFill : MonoBehaviour
 
         ultActive = false;
 
-        FindObjectOfType<WeaponPopcornGun>().StopAllCoroutines();
+
+        if(FindObjectOfType<WeaponPopcornGun>() != null)
+            FindObjectOfType<WeaponPopcornGun>().StopAllCoroutines();
 
     }
 

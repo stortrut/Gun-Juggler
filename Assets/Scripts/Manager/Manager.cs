@@ -75,7 +75,6 @@ public class Manager : MonoBehaviour
 
     void FadeInOrOutSoundAndLight(bool fadingIn, float fadeInDuration)
     {
-        Debug.Log("fadea");
         float targetAlpha;
         float startAlpha;
         if (fadingIn)
