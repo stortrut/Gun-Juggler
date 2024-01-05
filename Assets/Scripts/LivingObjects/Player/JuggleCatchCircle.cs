@@ -112,7 +112,8 @@ public class JuggleCatchCircle : MonoBehaviour
         }
         else
         {
-            currentCatchableGun.gameObject.GetComponent<WeaponBase>().ResetWeaponUpgradeLevel();
+            if(currentCatchableGun != null)
+                currentCatchableGun.gameObject.GetComponent<WeaponBase>().ResetWeaponUpgradeLevel();
 
 
             //playerJuggle.RemoveWeaponFromLoop(currentCatchableGun);

@@ -425,6 +425,9 @@ MonoBehaviour:
     stage1Outline: {fileID: 0}
     stage2Art: {fileID: 0}
     stage2Outline: {fileID: 0}
+  aim: {fileID: 0}
+  aimAgain: 1
+  player: {fileID: 0}
   canUseWeaponChecker: {fileID: 0}
   bulletSmall: {fileID: 209809755986869906, guid: 6614d3728f6c06440a5cd42e3704af58, type: 3}
   currentGunBaseUpgradeData:
@@ -453,8 +456,8 @@ MonoBehaviour:
     stage2Art: {fileID: 6691497360599984360}
     stage2Outline: {fileID: 2918482243962957283}
     bulletDamage: 6
-    bulletSpeed: 12
-    bulletCount: 10
+    bulletSpeed: 30
+    bulletCount: 12
 --- !u!58 &8635591160967388790 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 6825548993933977305, guid: 1b66fe1df605a9b4288d31206af6c97e, type: 3}
