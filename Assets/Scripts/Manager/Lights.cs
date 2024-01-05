@@ -9,6 +9,7 @@ public class Lights : MonoBehaviour
     [SerializeField] GameObject[] battleLights;
     [SerializeField] GameObject[] battleLightSerie;
     [SerializeField] GameObject[] normalLights;
+    [SerializeField] GameObject[] menuLights;
 
     [SerializeField] float delayBetweenLights;
 
@@ -32,6 +33,11 @@ public class Lights : MonoBehaviour
             FightLightOn(true);
         }
     }
+    public void MenuLightsOn()
+    {
+        StartCoroutine(MenuLightSerie());
+    }
+
     public void FightLightOn(bool on)
     {
         StartCoroutine(FightLightsSerie(on));
@@ -39,7 +45,7 @@ public class Lights : MonoBehaviour
 
     public void NormalLightsOn()
     {
-        StartCoroutine(NormalLightSerie()); ;
+        StartCoroutine(NormalLightSerie());
     }
 
     public void TurnOffBattleLights()
@@ -52,6 +58,33 @@ public class Lights : MonoBehaviour
         }
 
     }
+
+    private IEnumerator MenuLightSerie()
+    {
+        for (int i = 0; i < menuLights.Length; i++)
+        {
+            menuLights[i].SetActive(false);
+        }
+
+        yield return new WaitForSeconds(.2f);
+
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .25f);
+        yield return new WaitForSeconds(.05f);
+        menuLights[0].SetActive(true);
+
+        yield return new WaitForSeconds(.1f);
+
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .25f);
+        yield return new WaitForSeconds(.05f);
+        menuLights[1].SetActive(true);
+
+        yield return new WaitForSeconds(.13f);
+
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .25f);
+        yield return new WaitForSeconds(.05f);
+        menuLights[2].SetActive(true);
+    }
+
     private IEnumerator NormalLightSerie()
     {
         for (int i = 0; i < normalLights.Length; i++)       

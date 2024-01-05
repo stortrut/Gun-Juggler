@@ -47,6 +47,9 @@ public class Menu : MonoBehaviour, IStunnable
         {
             if (optionsPanelActive && SceneManager.GetActiveScene().buildIndex == 0)
             {
+                Sound.Instance.SoundSet(Sound.Instance.poster, 0, .3f);
+                Sound.Instance.SoundSet(Sound.Instance.windWhoosh, 0, .2f);
+
                 optionsPanel.SetActive(false);
                 startMenu.SetActive(true);
                 optionsPanelActive = false;
@@ -79,12 +82,27 @@ public class Menu : MonoBehaviour, IStunnable
     }
     public void OptionsButton()
     {
-        Sound.Instance.SoundSet(Sound.Instance.buttonClick, 0, .9f);
+        Sound.Instance.SoundSet(Sound.Instance.poster, 0, .5f);
+        Sound.Instance.SoundSet(Sound.Instance.throwUpWeapon, 0, .1f);
+        
+        Invoke(nameof(OpenOptions), .2f);
+        void OpenOptions()
+        {
+            optionsPanel.SetActive(true);
+            optionsPanelActive = true;
+            startMenu.SetActive(false);
+            escMenu.SetActive(false);
+        }
+    }
+
+    private void OpenOptions()
+    {
         optionsPanel.SetActive(true);
         optionsPanelActive = true;
         startMenu.SetActive(false);
         escMenu.SetActive(false);
     }
+
     public void BackToMenuButton()
     {
         SceneManager.LoadScene(0);

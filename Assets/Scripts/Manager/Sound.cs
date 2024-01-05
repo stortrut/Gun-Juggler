@@ -50,6 +50,8 @@ public class Sound : MonoBehaviour
     [Header("Effectsounds (pop, pof etc)")]
     [SerializeField] public AudioClip[] balloonFirePop;
     [SerializeField] public AudioClip[] hoopFire;
+    [SerializeField] public AudioClip[] poster;
+    [SerializeField] public AudioClip[] windWhoosh;
 
     [SerializeField] public AudioClip[] shortPopping;
 
@@ -91,6 +93,7 @@ public class Sound : MonoBehaviour
         {
             backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
             maxAmountOfSoundsPlayingAtSameTime = 4;
+            Lights.Instance.MenuLightsOn();
         }
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {

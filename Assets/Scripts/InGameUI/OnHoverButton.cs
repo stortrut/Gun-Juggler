@@ -23,7 +23,7 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
        
         //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
         selectionSpotlight.SetActive(true);
-        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, .9f);
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, .9f, .2f);
         transform.DOScale(scaleAmount, 0.5f);
     }
 
