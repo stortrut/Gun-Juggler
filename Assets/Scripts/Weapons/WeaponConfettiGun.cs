@@ -48,7 +48,7 @@ public class WeaponConfettiGun : Gun
         //spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation);
         //bulletWave.Add(spawnedBullet);
 
-        float spread = 20;
+        float spread = 30;
 
 
         float angleDistanceBetweenBullets = spread / bulletCount;

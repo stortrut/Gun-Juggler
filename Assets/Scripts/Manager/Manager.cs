@@ -95,7 +95,6 @@ public class Manager : MonoBehaviour
 
     private IEnumerator FadeAlpha(float targetAlpha, float startAlpha, float duration)
     {
-        Debug.Log("fadear faktiskt");
         for (float i = 0; i < 200; i++)
         {
             yield return new WaitForSeconds(0.001f);
