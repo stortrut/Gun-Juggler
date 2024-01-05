@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 351259549014668213}
   - component: {fileID: 8074503198181322790}
   - component: {fileID: 5274010982386831181}
+  - component: {fileID: 2858924924228593475}
   m_Layer: 0
   m_Name: balloon_monkey_logic
   m_TagString: EnemyNonTargetable
@@ -156,6 +157,21 @@ MonoBehaviour:
   isDead: 0
   spriteRenderer: {fileID: 6845735761896759181}
   enemyType: 2
+--- !u!114 &2858924924228593475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587413989768671432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b152536bb5faab44e83f3df32d0a06ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squahsSpeed: 2
+  squahsHeight: 0.1
+  damping: 1
 --- !u!1001 &6336994601880583290
 PrefabInstance:
   m_ObjectHideFlags: 0

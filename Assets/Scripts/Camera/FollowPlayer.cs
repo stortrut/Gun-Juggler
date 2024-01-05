@@ -39,7 +39,7 @@ public class FollowPlayer : MonoBehaviour
     private void Start()
     {
 
-        if (PlayerPrefs.GetInt("cameraPan") == 0 && !doNotDoPathAtStart)
+        if (/*PlayerPrefs.GetInt("cameraPan") == 0 && */!doNotDoPathAtStart)
         {
             transform.DOPath(path, 10, PathType.CatmullRom, PathMode.Sidescroller2D).OnComplete(PathBack);
             FindObjectOfType<PlayerMovement>().turnOffMovement = true;
