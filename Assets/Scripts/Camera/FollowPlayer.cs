@@ -26,13 +26,13 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private float smoothnessFactor = 3;
     [ReadOnly] public bool lockOn;
     [ReadOnly] public bool zoomFinished;
-    
+
 
     private void Awake()
     {
         Instance = this;
         player = FindObjectOfType<PlayerMovement>()?.gameObject;
-        smoothnessFactor = 9;
+        smoothnessFactor = 1.5f;
         //transform.parent = null;
     }
 
@@ -44,7 +44,7 @@ public class FollowPlayer : MonoBehaviour
             transform.DOPath(path, 10, PathType.CatmullRom, PathMode.Sidescroller2D).OnComplete(PathBack);
             FindObjectOfType<PlayerMovement>().turnOffMovement = true;
         }
-        else 
+        else
         {
             transform.DOKill();
             FindPlayer();
@@ -59,79 +59,91 @@ public class FollowPlayer : MonoBehaviour
     {
         playerToFollow = player.GetComponent<PlayerMovement>();
         var vector = offset;
-        StartCoroutine(SmoothCamera(200, vector, true));  
+        StartCoroutine(SmoothCamera(200, vector, true));
 
         if (!useOffsetUnderneathThis) ;
-            //offset = new Vector3(5, 5.75f, 31.7999992f);
+        //offset = new Vector3(5, 5.75f, 31.7999992f);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             transform.DOKill();
             FindPlayer();
         }
-        if(lockOn == false || player == null) { return; }
+        if (lockOn == false || player == null) { return; }
         if (!playerToFollow.onGround)
         {
             if (axisShouldStayUnlockedTilItReachesTarget)
             {
-                //Debug.Log("return");
-                return;
+                Debug.Log("return");
+
             }
-            yAxisLocked = true;
-            //Debug.Log(Mathf.Abs(playerToFollow.transform.position.y - transform.position.y));
-            if (Mathf.Abs(playerToFollow.transform.position.y - transform.position.y) > 2.5f)
+            else
             {
-                yAxisLocked = false;
-                axisShouldStayUnlockedTilItReachesTarget = true;
+                yAxisLocked = true;
+                targetPos.y = playerToFollow.transform.position.y + offset.y;
+                followPosSave = transform.position.y;
+                //Debug.Log(Mathf.Abs(playerToFollow.transform.position.y - transform.position.y));
+                if (Mathf.Abs(playerToFollow.transform.position.y - transform.position.y) > 2.5f)
+                {
+                    yAxisLocked = false;
+                    targetPos.y = followPosSave;
+                    axisShouldStayUnlockedTilItReachesTarget = true;
+                }
             }
+
         }
         else if (playerToFollow.onGround)
         {
             yAxisLocked = false;
+            targetPos.y = playerToFollow.transform.position.y + offset.y;
+            //targetPos.y = transform.position.y; 
             axisShouldStayUnlockedTilItReachesTarget = false;
         }
-    }
 
-    private void FixedUpdate()
-    {
-        if (lockOn == false || player == null) { return; }
         targetPos.x = playerToFollow.transform.position.x + offset.x;
-        if (!yAxisLocked)
-        {
-            targetPos.y = playerToFollow.transform.position.y + offset.y;
-            followPosSave = transform.position.y;
-        }
-        else if (yAxisLocked)
-        {
-            targetPos.y = followPosSave;
-        }
-        //followPos.y = playerToFollow.transform.position.y + offset.y;
         targetPos.z = offset.z;
         Vector3 posY = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
         Vector3 posX = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
-        transform.position = new Vector3(posX.x, posY.y, offset.z);
-        //transform.position = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
-        //transform.position = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
+        transform.position = new Vector3(targetPos.x, posY.y, offset.z);
     }
+
+    //private void FixedUpdate()
+    //{
+    //    if (lockOn == false || player == null) { return; }
+    //    targetPos.x = playerToFollow.transform.position.x + offset.x;
+    //    if (!yAxisLocked)
+    //    {
+    //        targetPos.y = playerToFollow.transform.position.y + offset.y;
+    //        followPosSave = transform.position.y;
+    //    }
+    //    else if (yAxisLocked)
+    //    {
+    //        targetPos.y = followPosSave;
+    //    }
+    //    targetPos.z = offset.z;
+    //    Vector3 posY = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
+    //    Vector3 posX = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
+    //    transform.position = new Vector3(posX.x, posY.y, offset.z);
+    //}
     public IEnumerator SmoothCamera(float p, Vector3 vector, bool onPlayer)
     {
         Vector3 target = vector;
         lockOn = false;
         var startpos = transform.position;
-        if(onPlayer == true)
+        if (onPlayer == true)
         {
             target = vector + playerToFollow.transform.position;
         }
-        for (float i = 0; i < p; i++) 
+        for (float i = 0; i < p; i++)
         {
-            yield return new WaitForSeconds(200/20000);
-            transform.position = Vector3.Lerp(startpos, target, (i+1)/p);
+            yield return new WaitForSeconds(200 / 20000);
+            transform.position = Vector3.Lerp(startpos, target, (i + 1) / p);
             offset = vector;
 
-            if(i == p - 1)
+            if (i == p - 1)
             {
                 FindObjectOfType<PlayerMovement>().turnOffMovement = false;
             }
@@ -142,6 +154,6 @@ public class FollowPlayer : MonoBehaviour
             lockOn = true;
         }
 
-        }
+    }
 
 }
