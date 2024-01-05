@@ -90,12 +90,13 @@ public class Sound : MonoBehaviour
         if ((SceneManager.GetActiveScene().buildIndex == 0)) 
         {
             backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
-            maxAmountOfSoundsPlayingAtSameTime = 2;
+            maxAmountOfSoundsPlayingAtSameTime = 4;
         }
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             backgroundSource.clip = backgroundMusicSetStartEndEtc[SceneManager.GetActiveScene().buildIndex];
             maxAmountOfSoundsPlayingAtSameTime = 2;
+            Lights.Instance.NormalLightsOn();
         }
 
         else if (SceneManager.GetActiveScene().name == "WinScene")
@@ -109,6 +110,7 @@ public class Sound : MonoBehaviour
             maxAmountOfSoundsPlayingAtSameTime = 3;
             int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
             backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];     //level random music
+            Lights.Instance.NormalLightsOn();
         }
         
         if (backgroundSource.clip != null)

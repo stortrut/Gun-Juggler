@@ -68,15 +68,18 @@ public class Menu : MonoBehaviour, IStunnable
     }
     public void StartButton()
     {
+        Sound.Instance.SoundSet(Sound.Instance.buttonClick, 0, .9f);
         PlayerPrefs.SetInt("cameraPan", 0);
         Manager.Instance.LoadNextSceneWithTransition(1);
     }
     public void QuitButton()
     {
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1);
         Application.Quit();
     }
     public void OptionsButton()
     {
+        Sound.Instance.SoundSet(Sound.Instance.buttonClick, 0, .9f);
         optionsPanel.SetActive(true);
         optionsPanelActive = true;
         startMenu.SetActive(false);

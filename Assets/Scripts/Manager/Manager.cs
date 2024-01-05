@@ -41,8 +41,7 @@ public class Manager : MonoBehaviour
         //Debug.Log("buildindex" + SceneManager.GetActiveScene().buildIndex);
         if ((SceneManager.GetActiveScene().buildIndex == 0))
         {
-            Debug.Log("player prefs is set, build 0");
-            PlayerPrefs.SetFloat("fadein", 1f);
+            PlayerPrefs.SetFloat("fadein", 0f);
         }
 
         if (player == null) { Debug.Log("Did not find a player ERROR"); }
@@ -51,7 +50,7 @@ public class Manager : MonoBehaviour
         fadingPanelImage = fadingPanel.GetComponentInChildren<Image>();
         Debug.Log("image component"+  fadingPanelImage);
         //fade in music and light
-        FadeInOrOutSoundAndLight(true, PlayerPrefs.GetFloat("fadein"));
+        FadeInOrOutSoundAndLight(true, PlayerPrefs.GetFloat("fadein"), .8f);
     }
 
 
@@ -73,7 +72,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    void FadeInOrOutSoundAndLight(bool fadingIn, float fadeInDuration)
+    void FadeInOrOutSoundAndLight(bool fadingIn, float fadeInDuration, float menuMusicVolume = 1)
     {
         float targetAlpha;
         float startAlpha;
@@ -87,8 +86,17 @@ public class Manager : MonoBehaviour
             Debug.Log("fadeout");
         }
 
-        Sound.Instance.DOTweenVolumeFade(startAlpha, fadeInDuration);
-
+        if (menuMusicVolume != 1)
+        {
+            var targetVolume = menuMusicVolume;
+            Sound.Instance.DOTweenVolumeFade(targetVolume, fadeInDuration);
+        }
+        else
+        {
+            var targetVolume = startAlpha;
+            Sound.Instance.DOTweenVolumeFade(targetVolume, fadeInDuration);
+        }
+        
         StartCoroutine(FadeAlpha(targetAlpha, startAlpha, fadeInDuration));
         //colorToFade.DOFade(targetAlpha, fadeInDuration);
     }

@@ -14,8 +14,13 @@ public class Lights : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
     }
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.H))
@@ -32,6 +37,11 @@ public class Lights : MonoBehaviour
         StartCoroutine(FightLightsSerie(on));
     }
 
+    public void NormalLightsOn()
+    {
+        StartCoroutine(NormalLightSerie()); ;
+    }
+
     public void TurnOffBattleLights()
     {
         for (int i = 0; i < battleLightSerie.Length; i++)
@@ -42,8 +52,23 @@ public class Lights : MonoBehaviour
         }
 
     }
+    private IEnumerator NormalLightSerie()
+    {
+        for (int i = 0; i < normalLights.Length; i++)       
+        {
+            normalLights[i].SetActive(false);
+        }
+        yield return new WaitForSeconds(.5f);
 
-    private IEnumerator FightLightsSerie(bool on)
+        for (int i = 0; i < normalLights.Length; i++)       //stäng av ljus
+        {
+            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
+            yield return new WaitForSeconds(.2f);
+            normalLights[i].SetActive(true);
+            yield return new WaitForSeconds(.5f);
+        }
+    }
+        private IEnumerator FightLightsSerie(bool on)
     {
         if (on)         //fightlights on
         {

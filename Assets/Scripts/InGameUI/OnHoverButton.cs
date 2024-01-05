@@ -30,7 +30,6 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         theText.color = new Color(0.168f, 0.098f, 0.070f); //Or however you do your color
-        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, .2f);
         selectionSpotlight.SetActive(false);
         transform.DOScale(startScale, 0.5f);    
         float scale = startScale;
