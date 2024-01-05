@@ -11,6 +11,8 @@ public class EnemyProtection : Health
     public List<GameObject> protectingItems;
     private GameObject currentProtection;
     [ReadOnly] public int totalProtection;
+    [SerializeField] private bool hamster;
+    [SerializeField] private GameObject hamter;
     
     public void Start()
     {
@@ -51,6 +53,10 @@ public class EnemyProtection : Health
         {
             base.Death();
             EffectAnimations.Instance.EnemyPoof(transform.position);
+            if (hamster == true)
+            {
+                Instantiate(hamter, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
             //health.oneShot = true;
             //health.hasProtection = false;
