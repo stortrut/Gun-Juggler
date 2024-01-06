@@ -115,8 +115,7 @@ public class WeaponBase : MonoBehaviour
 
     public virtual void UseWeapon()
     {
-        if(Score.Instance != null)
-            Score.Instance.bulletsShot++;
+        
 
         if(weaponType != WeaponType.PopcornGun)
             aimAgain = false;

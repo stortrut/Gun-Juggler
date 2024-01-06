@@ -10,7 +10,7 @@ public class Checkpoint : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Started Scene Preloading");
-
+            AudienceSatisfaction.Instance.ActStarted();
             // Start scene preloading.
             Score.Instance.DisplayScore();
             

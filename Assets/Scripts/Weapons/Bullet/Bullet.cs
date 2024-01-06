@@ -79,33 +79,39 @@ public class Bullet : MonoBehaviour
 
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
-            if (piercing) 
+            if (piercing == true) 
             {
                 Pierce();
             }
             else if (isWaterGun)
             {
+                Score.Instance.bulletsHit++;
                 WaterGunDeath();
             }
             else
             {
+                Debug.Log("EXTRA HAPPENS");
+                Score.Instance.bulletsHit++;
                 Death();
             }
         }
 
         else if(other.gameObject.CompareTag("EnemyNonTargetable"))
         {
-            if (piercing)
+            if (piercing == true)
             {
                 Pierce();
             }
 
             else if (isWaterGun)
             {
+                Score.Instance.bulletsHit++;
                 WaterGunDeath();
             }
             else
             {
+                Debug.Log("EXTRA HAPPENS");
+                Score.Instance.bulletsHit++;
                 Death();
             }
         }
@@ -113,7 +119,12 @@ public class Bullet : MonoBehaviour
         private void Pierce()
         {
             pierceTarget--;
-            if (pierceTarget == 0)
+            if(pierceTarget == 2)
+            {
+             Debug.Log("bullets hit" + Score.Instance.bulletsHit);
+             Score.Instance.bulletsHit++;
+             }
+            else if (pierceTarget == 0)
             {
                 if (isWaterGun)
                 {

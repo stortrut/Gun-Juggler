@@ -60,8 +60,10 @@ public class WaveManager : MonoBehaviour
                 }
                 else
                 {
+                    Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0);
+                    AudienceSatisfaction.Instance.AudienceHappiness(20);
                     Score.Instance.ActScore(AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount);
-                    AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount = 0.3f;
+                    AudienceSatisfaction.Instance.ActDone();
                 }
                   
                 Destroy(clownAnimator.gameObject);

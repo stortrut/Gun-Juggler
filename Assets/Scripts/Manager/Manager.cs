@@ -32,11 +32,10 @@ public class Manager : MonoBehaviour
        
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
 
-        //if (SceneManager.GetActiveScene().name == "WinScene")
-        //{
-        //    LoadNextLevel();
-        //    Invoke(nameof(ProceedToNextLevel), 10);
-        //}
+        if(SceneManager.GetActiveScene().name == "WinScene")
+        {
+            StartCoroutine(BackToSquareOne());
+        }
 
         //Debug.Log("buildindex" + SceneManager.GetActiveScene().buildIndex);
         if ((SceneManager.GetActiveScene().buildIndex == 0))
@@ -53,13 +52,17 @@ public class Manager : MonoBehaviour
         FadeInOrOutSoundAndLight(true, PlayerPrefs.GetFloat("fadein"), .8f);
     }
 
-
+    private IEnumerator BackToSquareOne()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(0);
+    }
     private void Update()
     {
         if (player == null)
             player = FindObjectOfType<PlayerJuggle>()?.gameObject;
 
-        if(player == null) { Debug.Log("DOES STILL NOT FIND PLAYER ERROR!"); }
+        if(player == null) //{ Debug.Log("DOES STILL NOT FIND PLAYER ERROR!"); }
 
 
         if (Input.GetKeyDown(KeyCode.N))

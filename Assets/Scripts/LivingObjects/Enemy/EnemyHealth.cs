@@ -41,6 +41,7 @@ public class EnemyHealth : Health
     {   
         if (other.gameObject.CompareTag("Bullet"))
         {
+            Score.Instance.pieClownHit++;
             int enumIndex = (int)enemyAnimator.enemyType;
             Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, enumIndex, 0.1f,.2f);
             // UpgradeCombo.Instance.hitSinceShot = true;

@@ -63,4 +63,21 @@ public class EnemyProtection : Health
             //healthImage.ColorChange(Color.yellow);
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("HoolaHoop"))
+        {
+            AudienceSatisfaction.Instance.AudienceHappiness(-health * 2);
+            base.Death();
+            EffectAnimations.Instance.EnemyPoof(transform.position);
+            if (hamster == true)
+            {
+                Instantiate(hamter, transform.position, Quaternion.identity);
+            }
+
+            Sound.Instance.SoundRandomized(Sound.Instance.dissapointment, .6f, .1f);
+            Destroy(gameObject);
+            // CUSTOM FAIL DEATH;
+        }
+    }
 }

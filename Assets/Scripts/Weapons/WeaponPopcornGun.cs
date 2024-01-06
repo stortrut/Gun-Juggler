@@ -50,6 +50,7 @@ public class WeaponPopcornGun : Gun
         {
             yield return new WaitForSeconds(0.05f);
             Shoot();
+            Score.Instance.bulletsShot++;
             StartCoroutine(nameof(ShootAllTheTime));
         }
     }

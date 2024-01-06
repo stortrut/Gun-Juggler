@@ -62,6 +62,7 @@ public class HoolaHoop : MonoBehaviour
     private IEnumerator DelayStart()
     {
         yield return new WaitForSeconds(5);
+        AudienceSatisfaction.Instance.ActStarted();
         waveManager.StartWave();
         Sound.Instance.SoundSet(Sound.Instance.murmuring, 0, 1f);
     }

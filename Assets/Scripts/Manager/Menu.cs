@@ -73,7 +73,8 @@ public class Menu : MonoBehaviour, IStunnable
     {
         Sound.Instance.SoundSet(Sound.Instance.buttonClick, 0, .9f);
         PlayerPrefs.SetInt("cameraPan", 0);
-        Manager.Instance.LoadNextSceneWithTransition(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //Manager.Instance.LoadNextSceneWithTransition(1);
     }
     public void QuitButton()
     {
@@ -123,6 +124,6 @@ public class Menu : MonoBehaviour, IStunnable
         Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0);
         PlayerPrefs.SetInt("cameraPan", 0);
         Manager.Instance.LoadNextSceneWithTransition(1);
-        scoreMenu.SetActive(false);
+        
     }
 }

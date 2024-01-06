@@ -69,6 +69,7 @@ public class WeaponConfettiGun : Gun
             angelSum += bulletAngle;
 
             spawnedBullet = CreateNewBullet(bulletSpeed, bulletDamageInput, weaponSpriterenderer.color, gunPoint.rotation * Quaternion.Euler(0, 0,  angelSum));
+            Score.Instance.bulletsShot++;
         }
 
         //int halfAmountOfBulletCount = bulletCount / 2;

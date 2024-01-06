@@ -37,7 +37,7 @@ public class BalloonHealth : Health
         if (other.gameObject.CompareTag("Bullet"))
         {
             ApplyDamage(1);
-            Score.Instance.bulletsHit++;
+           
             AudienceSatisfaction.Instance.AudienceHappiness(1f);
             Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0,.3f);
             //Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 3, .3f);

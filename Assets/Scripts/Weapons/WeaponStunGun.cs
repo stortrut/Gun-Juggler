@@ -41,6 +41,7 @@ public class WeaponStunGun : WeaponBase
         
         base.UseWeapon();
         ReflectStun();
+        Score.Instance.bulletsShot++;
         //Sound.Instance.SoundRandomized(Sound.Instance.weaponShootingSoundsEnumOrder[]);
     }
 

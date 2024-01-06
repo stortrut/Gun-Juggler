@@ -39,7 +39,7 @@ public class StunZone : MonoBehaviour
         else if (obj.CompareTag("Enemy"))
         {
             Stun(obj, stunnedEnemy);
-            Sound.Instance.SoundSet(Sound.Instance.dizzyPieClown, 1, .8f);
+            Sound.Instance.SoundSet(Sound.Instance.dizzyPieClown, 0, .8f);
             Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .3f);
 
             AudienceSatisfaction.Instance.AudienceHappiness(2);
@@ -50,7 +50,7 @@ public class StunZone : MonoBehaviour
         {
             Stun(obj, stunnedBalloon);
             AudienceSatisfaction.Instance.AudienceHappiness(2);
-            Sound.Instance.SoundSet(Sound.Instance.landingWithBike, 1, .3f);
+             Sound.Instance.SoundSet(Sound.Instance.landingWithBike, 0 , 0.3f );
         }
         if (hit == true)
         {

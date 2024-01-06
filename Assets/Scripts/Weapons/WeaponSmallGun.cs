@@ -31,6 +31,7 @@ public class WeaponSmallGun : Gun
     private void Shoot()
     {
         CreateNewBullet(currentBulletSpeed, currentBulletDamage, weaponSpriterenderer.color, gunPoint.rotation);
+        Score.Instance.bulletsShot++;
         //GameObject weaponBullet = Instantiate(bullet, gunPoint.position, gunPoint.rotation);
 
         //Bullet bulletScript = weaponBullet.GetComponent<Bullet>();
