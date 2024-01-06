@@ -70,8 +70,10 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] hampter;
 
     [Header("Other")]
-    [SerializeField] private float backgroundMusicFadeOutOrInTime;
+    [SerializeField] private float backgroundMusicFadeOutOrInTime =.3f;
     [HideInInspector] float backgroundMusicTimeStamp = 0f;
+    [HideInInspector] int backgroundMusicIndex;
+
 
     //Volume
     [HideInInspector] Slider volumeSlider;
@@ -114,6 +116,7 @@ public class Sound : MonoBehaviour
             maxAmountOfSoundsPlayingAtSameTime = 3;
             int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
             backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];     //level random music
+            backgroundMusicIndex = randomNum;   
             Lights.Instance.NormalLightsOn();
             SoundSet(murmuring, 0, 1f);
         }
@@ -150,6 +153,7 @@ public class Sound : MonoBehaviour
             yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime);
 
             backgroundMusicTimeStamp = backgroundSource.time;
+
             backgroundSource.time = 0;
             int randomNum = Random.Range(0, fightBackgroundMusicLevels.Length);
             backgroundSource.clip = fightBackgroundMusicLevels[randomNum];
@@ -165,8 +169,7 @@ public class Sound : MonoBehaviour
             DOTweenVolumeFade(0f, backgroundMusicFadeOutOrInTime);
             yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime);
 
-            int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
-            backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];
+            backgroundSource.clip = backgroundMusicLevelsInBetween[backgroundMusicIndex];
             backgroundSource.time = backgroundMusicTimeStamp;
             backgroundSource.Play();
 
