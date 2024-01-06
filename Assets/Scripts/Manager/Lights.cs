@@ -38,6 +38,11 @@ public class Lights : MonoBehaviour
         StartCoroutine(MenuLightSerie());
     }
 
+    public void MenuLightsOff()
+    {
+        StartCoroutine(MenuLightsOfCourutine());
+    }
+
     public void FightLightOn(bool on)
     {
         StartCoroutine(FightLightsSerie(on));
@@ -46,6 +51,11 @@ public class Lights : MonoBehaviour
     public void NormalLightsOn()
     {
         StartCoroutine(NormalLightSerie());
+    }
+
+    public void MenuLightsOnNoSerie()
+    {
+        StartCoroutine(MenuLightsOnCoroutine());
     }
 
     public void TurnOffBattleLights()
@@ -68,21 +78,42 @@ public class Lights : MonoBehaviour
 
         yield return new WaitForSeconds(.2f);
 
-        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .25f);
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
         yield return new WaitForSeconds(.05f);
         menuLights[0].SetActive(true);
 
         yield return new WaitForSeconds(.1f);
 
-        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .25f);
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
         yield return new WaitForSeconds(.05f);
         menuLights[1].SetActive(true);
 
         yield return new WaitForSeconds(.13f);
 
-        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .25f);
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
         yield return new WaitForSeconds(.05f);
         menuLights[2].SetActive(true);
+    }
+    private IEnumerator MenuLightsOfCourutine()
+    {
+        for (int i = 0; i < menuLights.Length; i++)
+        {
+            menuLights[i].SetActive(false);
+        }
+        yield return null;
+    }
+
+    private IEnumerator MenuLightsOnCoroutine()
+    {
+        yield return new WaitForSeconds(.07f);
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, 1, .4f);
+
+        for (int i = 0; i < menuLights.Length; i++)
+        {
+            menuLights[i].SetActive(true);
+        }
+
+        yield return null;
     }
 
     private IEnumerator NormalLightSerie()

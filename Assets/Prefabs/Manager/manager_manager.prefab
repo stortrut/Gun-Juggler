@@ -973,7 +973,7 @@ Transform:
   m_GameObject: {fileID: 480575252411014593}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.0024627175, w: 0.99999696}
-  m_LocalPosition: {x: 14.799997, y: -28.9, z: 0}
+  m_LocalPosition: {x: 9.4, y: -28.9, z: 34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -995,8 +995,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.9622642, g: 0.8250895, b: 0.5053399, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 1, g: 0.8024561, b: 0.34528297, a: 1}
+  m_Intensity: 10
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 230015cb4d2100f400000000f30e3d7747a6008b6d6bf7fe1d5b696f
@@ -7889,6 +7889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audienceSatisfaction: {fileID: 8705351361146318024}
+  fightActive: 0
 --- !u!1 &1744790422773358597
 GameObject:
   m_ObjectHideFlags: 0
@@ -9031,9 +9032,9 @@ Transform:
   m_GameObject: {fileID: 2615052507354647761}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.0024627175, w: 0.99999696}
-  m_LocalPosition: {x: -18.1, y: -28.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -9.7, y: -28.7, z: 34}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1824574828127212926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9053,8 +9054,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.9622642, g: 0.8250895, b: 0.5053399, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 1, g: 0.8024561, b: 0.34528297, a: 1}
+  m_Intensity: 10
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 230015cb4d2100f400000000f30e3d7747a6008b6d6bf7fe1d5b696f
@@ -11278,7 +11279,7 @@ Transform:
   m_GameObject: {fileID: 4502626214919184958}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.0024627175, w: 0.99999696}
-  m_LocalPosition: {x: -1.4000025, y: -28.8, z: 0}
+  m_LocalPosition: {x: 0, y: -28.8, z: 34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11300,8 +11301,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.9622642, g: 0.8250895, b: 0.5053399, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 1, g: 0.8024561, b: 0.34528297, a: 1}
+  m_Intensity: 10
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 230015cb4d2100f400000000f30e3d7747a6008b6d6bf7fe1d5b696f
@@ -18418,6 +18419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2776806095612901819}
+  - component: {fileID: 2561741889716805664}
   m_Layer: 0
   m_Name: normal_overhead_spotlights
   m_TagString: Untagged
@@ -18442,6 +18444,36 @@ Transform:
   - {fileID: 2681315310710943889}
   m_Father: {fileID: 8538375191009901035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2561741889716805664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6055710406749417131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee3fb845632c094fa96297ca5a3bbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleLights:
+  - {fileID: 3470597235133847236}
+  - {fileID: 7281387175223040810}
+  - {fileID: 2615052507354647761}
+  - {fileID: 4502626214919184958}
+  - {fileID: 480575252411014593}
+  battleLightSerie:
+  - {fileID: 2615052507354647761}
+  - {fileID: 4502626214919184958}
+  - {fileID: 480575252411014593}
+  normalLights:
+  - {fileID: 908257645967362151}
+  - {fileID: 2443384389760883629}
+  menuLights:
+  - {fileID: 4084031949969892287}
+  - {fileID: 9083318863578401794}
+  - {fileID: 6208480756197303026}
+  delayBetweenLights: 1
 --- !u!1 &6208480756197303026
 GameObject:
   m_ObjectHideFlags: 0
@@ -24391,7 +24423,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.392
   m_Color: {r: 0.9559748, g: 0.9027256, b: 0.84474504, a: 1}
-  m_Intensity: 5
+  m_Intensity: 8
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 751f200d0f13743afd42d8ad
@@ -26134,7 +26166,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5305749472286821461}
   - component: {fileID: 991218885915459860}
-  - component: {fileID: 507530712369684400}
   m_Layer: 0
   m_Name: camera_holder
   m_TagString: Untagged
@@ -26181,36 +26212,7 @@ MonoBehaviour:
   smoothnessFactor: 4
   lockOn: 0
   zoomFinished: 0
---- !u!114 &507530712369684400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8996062447987374948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ee3fb845632c094fa96297ca5a3bbc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleLights:
-  - {fileID: 3470597235133847236}
-  - {fileID: 7281387175223040810}
-  - {fileID: 2615052507354647761}
-  - {fileID: 4502626214919184958}
-  - {fileID: 480575252411014593}
-  battleLightSerie:
-  - {fileID: 2615052507354647761}
-  - {fileID: 4502626214919184958}
-  - {fileID: 480575252411014593}
-  normalLights:
-  - {fileID: 908257645967362151}
-  - {fileID: 2443384389760883629}
-  menuLights:
-  - {fileID: 4084031949969892287}
-  - {fileID: 9083318863578401794}
-  - {fileID: 6208480756197303026}
-  delayBetweenLights: 1
+  trampolineJumping: 0
 --- !u!1 &9060747058823621631
 GameObject:
   m_ObjectHideFlags: 0

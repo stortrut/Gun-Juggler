@@ -53,6 +53,7 @@ public class Menu : MonoBehaviour, IStunnable
                 optionsPanel.SetActive(false);
                 startMenu.SetActive(true);
                 optionsPanelActive = false;
+                Lights.Instance.MenuLightsOnNoSerie();
             }
             else if (optionsPanelActive && SceneManager.GetActiveScene().buildIndex != 0)
             {
@@ -63,6 +64,8 @@ public class Menu : MonoBehaviour, IStunnable
         }
         if (Input.GetKeyDown(KeyCode.Escape) && !(SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "End"))
         {
+            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, 1, .4f);
+
             escMenu.SetActive(true);
             //stunnable.isStunnable = true;
             //stunnable.timeStopped = true;       
@@ -87,20 +90,14 @@ public class Menu : MonoBehaviour, IStunnable
         Sound.Instance.SoundSet(Sound.Instance.throwUpWeapon, 0, .1f);
         
         Invoke(nameof(OpenOptions), .2f);
-        void OpenOptions()
-        {
-            optionsPanel.SetActive(true);
-            optionsPanelActive = true;
-            startMenu.SetActive(false);
-            escMenu.SetActive(false);
-        }
     }
 
     private void OpenOptions()
     {
         optionsPanel.SetActive(true);
         optionsPanelActive = true;
-        startMenu.SetActive(false);
+        Lights.Instance.MenuLightsOff();
+        //startMenu.SetActive(false);
         escMenu.SetActive(false);
     }
 

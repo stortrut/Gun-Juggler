@@ -23,12 +23,13 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
        
         //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
         selectionSpotlight.SetActive(true);
-        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, .9f, .2f);
+        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, 1f, .1f);
         transform.DOScale(scaleAmount, 0.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        //Sound.Instance.SoundSet(Sound.Instance.landingWithBike, 0, .9f, .2f);
         theText.color = new Color(0.168f, 0.098f, 0.070f); //Or however you do your color
         selectionSpotlight.SetActive(false);
         transform.DOScale(startScale, 0.5f);    
