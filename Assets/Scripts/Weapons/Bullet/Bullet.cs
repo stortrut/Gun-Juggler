@@ -57,6 +57,7 @@ public class Bullet : MonoBehaviour
         if (!waterBulletDestroyed) 
         {
             EffectAnimations.Instance.WaterSplash(transform.position, transform.localScale * 3);
+            Sound.Instance.SoundSet(Sound.Instance.waterSplash, 0, 1, .15f);
             waterBulletDestroyed = true;
         }
         

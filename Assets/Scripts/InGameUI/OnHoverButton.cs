@@ -11,6 +11,7 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public TextMeshProUGUI theText;
     float startScale;
     [SerializeField] float scaleAmount = 1.2f;
+    public bool isUltButton = false;
     private void Start()
     {
         startScale = transform.localScale.x;
@@ -18,23 +19,25 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        theText.color = new Color(144/255f, 27/255f, 32/255f);  //Or however you do your color
+        if (!isUltButton)
+        {
+            theText.color = new Color(144 / 255f, 27 / 255f, 32 / 255f);  //Or however you do your color
+            selectionSpotlight.SetActive(true);
+            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, 1f, .1f);
+        }
 
-       
-        //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
-        selectionSpotlight.SetActive(true);
-        Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 1, 1f, .1f);
         transform.DOScale(scaleAmount, 0.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //Sound.Instance.SoundSet(Sound.Instance.landingWithBike, 0, .9f, .2f);
-        theText.color = new Color(0.168f, 0.098f, 0.070f); //Or however you do your color
-        selectionSpotlight.SetActive(false);
+        if (!isUltButton)
+        {
+            theText.color = new Color(0.168f, 0.098f, 0.070f); //Or however you do your color
+            selectionSpotlight.SetActive(false);
+        }
+        
         transform.DOScale(startScale, 0.5f);    
-        float scale = startScale;
-        //transform.DOScale(new Vector3(scale, scale), .3f).SetEase(Ease.OutBack);
     }
     private void OnDisable()
     {
@@ -42,5 +45,4 @@ public class OnHoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
 }
-    
 

@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class WaveManager : MonoBehaviour
 {
@@ -51,8 +52,10 @@ public class WaveManager : MonoBehaviour
             {
                 hoolaHoop.EndWave();
                 clownAnimator.Attacking();
+                //Lights.Instance.NormalLightsOn();
                 EffectAnimations.Instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one);
                 Sound.Instance.SoundSet(Sound.Instance.explosion, 0, .7f);
+                clownAnimator.Dying();
                 if (AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount < 0.15f)
                 {
                     PlayerHealth.Instance.KillPlayer();
@@ -61,12 +64,13 @@ public class WaveManager : MonoBehaviour
                 else
                 {
                     Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0);
+                    Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 2);
                     AudienceSatisfaction.Instance.AudienceHappiness(20);
                     Score.Instance.ActScore(AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount);
                     AudienceSatisfaction.Instance.ActDone();
                 }
                   
-                Destroy(clownAnimator.gameObject);
+                Destroy(clownAnimator.gameObject,5);
                 foreach (var bla in curtain)
                 {
                     bla.SetActive(false);
@@ -125,6 +129,7 @@ public class WaveManager : MonoBehaviour
         var i = 0;
         foreach (var enemy in spawnSpots)
         {
+            Sound.Instance.SoundSet(Sound.Instance.poof, 0);
             var a = spawnSpots.ElementAt(i);
             var pos = new Vector2(a.position.x, a.position.y);
             EffectAnimations.Instance.EnemyPoof(pos);
@@ -134,7 +139,7 @@ public class WaveManager : MonoBehaviour
     }
     public IEnumerator DelayedSpawn()
     {
-
+        Sound.Instance.SoundSet(Sound.Instance.explosion, 0, .3f);
         clownAnimator.CannonAttack();
         yield return new WaitForSeconds(2);
         if (mixedWave == false)
@@ -174,6 +179,7 @@ public class WaveManager : MonoBehaviour
         var i = 0;
         foreach (var enemy in enemies)
         {
+            Sound.Instance.SoundSet(Sound.Instance.poof, 0, .5f);
             currentEnemy = enemy;
             var index = (int)currentEnemy;
             if (i >= spawn.Count)
@@ -272,6 +278,7 @@ public class WaveManager : MonoBehaviour
         var i = 0;
         foreach (var enemy in enemies)
         {
+            Sound.Instance.SoundSet(Sound.Instance.poof, 0, .5f);
             currentEnemy = enemy;
             var index = (int)currentEnemy;
             //if (i >= setShape.Count)

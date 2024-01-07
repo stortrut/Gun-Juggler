@@ -33,14 +33,14 @@ public class StunZone : MonoBehaviour
             var enemyBullet = obj.GetComponent<IAim>();
             enemyBullet.Deflected();
             AudienceSatisfaction.Instance.AudienceHappiness(10);
-            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .3f);
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .5f);
             Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 3, .3f);
         }
         else if (obj.CompareTag("Enemy"))
         {
             Stun(obj, stunnedEnemy);
-            Sound.Instance.SoundSet(Sound.Instance.dizzyPieClown, 0, .8f);
-            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .3f);
+            Sound.Instance.SoundSet(Sound.Instance.dizzyPieClown, 0, 1f);
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .5f);
 
             AudienceSatisfaction.Instance.AudienceHappiness(2);
 
@@ -50,7 +50,8 @@ public class StunZone : MonoBehaviour
         {
             Stun(obj, stunnedBalloon);
             AudienceSatisfaction.Instance.AudienceHappiness(2);
-             Sound.Instance.SoundSet(Sound.Instance.landingWithBike, 0 , 0.3f );
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0, .5f);
+            Sound.Instance.SoundSet(Sound.Instance.landingWithBike, 0 , 0.3f );
         }
         if (hit == true)
         {

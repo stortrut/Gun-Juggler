@@ -49,7 +49,7 @@ public class Manager : MonoBehaviour
         fadingPanelImage = fadingPanel.GetComponentInChildren<Image>();
         Debug.Log("image component"+  fadingPanelImage);
         //fade in music and light
-        FadeInOrOutSoundAndLight(true, PlayerPrefs.GetFloat("fadein"), .8f);
+        FadeInOrOutSoundAndLight(true, PlayerPrefs.GetFloat("fadein"), .5f);
     }
 
     private IEnumerator BackToSquareOne()
@@ -145,7 +145,7 @@ public class Manager : MonoBehaviour
     {
         LoadNextLevel();
         //fade out music and light
-        FadeInOrOutSoundAndLight(false, 1);
+        FadeInOrOutSoundAndLight(false, 1, .5f);
         Sound.Instance.DOTweenVolumeFade(0, musicTransitionDuration);
         PlayerPrefs.SetFloat("fadein",musicTransitionDuration / 2);
 

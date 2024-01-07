@@ -13,6 +13,8 @@ public class HudPopcornFill : MonoBehaviour
     public Vector2 popcornFillTopPos = new Vector2(0, 0);
     private Vector2 popcornFillImagePos = new Vector2(0, 0);
 
+    [SerializeField] private GameObject popcornReady;
+
     [SerializeField] private float popcornFillAmountPerUpgrade = 2;
 
     float ultDuration = 5;
@@ -25,7 +27,7 @@ public class HudPopcornFill : MonoBehaviour
     {
         comboScript = FindObjectOfType<UpgradeCombo>();
         popcornFillImage = transform.GetChild(0).GetComponent<Image>();
-        popcornFillTop = transform.GetChild(1).GetComponent<Image>();
+        //popcornFillTop = transform.GetChild(1).GetComponent<Image>();
 
         popcornFillTopPos.y = 0f;
         popcornFillTop.rectTransform.anchoredPosition = popcornFillTopPos;
@@ -72,15 +74,22 @@ public class HudPopcornFill : MonoBehaviour
 
         if (popcornFillTopPos.y > 19)
         {
+            var popp = Instantiate(popcornReady, transform.position, Quaternion.identity, transform);
+            popp.transform.localPosition += new Vector3(120, 0);
             //EffectAnimations.instance.PopcornPoppingUltReady(popcornFillTopPos);
-            StartCoroutine(nameof(StartUlt));
+            
             //popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
             //popcornFillImage.fillAmount -= 1 / (19 / popcornFillAmountPerUpgrade);
         }
     }
 
     float startTime;
-
+    public void StartPopcornUlt()
+    {
+        StartCoroutine(nameof(StartUlt));
+        Destroy(popcornReady);
+    }
+    
 
     [System.Obsolete]
     public IEnumerator StartUlt()

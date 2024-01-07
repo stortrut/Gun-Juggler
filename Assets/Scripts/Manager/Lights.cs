@@ -40,7 +40,7 @@ public class Lights : MonoBehaviour
 
     public void MenuLightsOff()
     {
-        StartCoroutine(MenuLightsOfCourutine());
+        StartCoroutine(MenuLightsOffCourutine());
     }
 
     public void FightLightOn(bool on)
@@ -51,6 +51,11 @@ public class Lights : MonoBehaviour
     public void NormalLightsOn()
     {
         StartCoroutine(NormalLightSerie());
+    }
+
+    public void NormalLightsOff()
+    {
+        StartCoroutine(NormalLightsOffCourutine());
     }
 
     public void MenuLightsOnNoSerie()
@@ -94,7 +99,7 @@ public class Lights : MonoBehaviour
         yield return new WaitForSeconds(.05f);
         menuLights[2].SetActive(true);
     }
-    private IEnumerator MenuLightsOfCourutine()
+    private IEnumerator MenuLightsOffCourutine()
     {
         for (int i = 0; i < menuLights.Length; i++)
         {
@@ -122,17 +127,26 @@ public class Lights : MonoBehaviour
         {
             normalLights[i].SetActive(false);
         }
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
 
         for (int i = 0; i < normalLights.Length; i++)       //stäng av ljus
         {
-            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, .4f, .4f);
+            Sound.Instance.SoundSet(Sound.Instance.spotLightOn, 0, .3f, .4f);
             yield return new WaitForSeconds(.2f);
             normalLights[i].SetActive(true);
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.2f);
         }
     }
-        private IEnumerator FightLightsSerie(bool on)
+    private IEnumerator NormalLightsOffCourutine()
+    {
+        for (int i = 0; i < normalLights.Length; i++)
+        {
+            normalLights[i].SetActive(false);
+        }
+        yield return null;
+    }
+
+    private IEnumerator FightLightsSerie(bool on)
     {
         if (on)         //fightlights on
         {

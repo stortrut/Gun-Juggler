@@ -31,8 +31,8 @@ public class WeaponConfettiGun : Gun
         if(AudienceSatisfaction.Instance != null)
         {
             AudienceSatisfaction.Instance.AudienceHappiness(5);
-            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 1, .3f);
-            Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 0, .3f);
+            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 1, .4f, .1f);
+            Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 0, .4f, .1f);
         }
         //bulletWave.Clear();
         ShootWideSpread(currentBulletSpeed, currentBulletDamage, currentBulletCount);

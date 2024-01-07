@@ -73,6 +73,8 @@ public class Sound : MonoBehaviour
     [SerializeField] private float backgroundMusicFadeOutOrInTime =.3f;
     [HideInInspector] float backgroundMusicTimeStamp = 0f;
     [HideInInspector] int backgroundMusicIndex;
+    [SerializeField] float fightMusicVolume = .2f;
+    [SerializeField] float backgroundMusicVolume = .5f;
 
 
     //Volume
@@ -113,11 +115,11 @@ public class Sound : MonoBehaviour
 
         else if (backgroundSource.clip == null)
         {
+            Lights.Instance.NormalLightsOff();
             maxAmountOfSoundsPlayingAtSameTime = 3;
             int randomNum = Random.Range(0, backgroundMusicLevelsInBetween.Length);
             backgroundSource.clip = backgroundMusicLevelsInBetween[randomNum];     //level random music
             backgroundMusicIndex = randomNum;   
-            Lights.Instance.NormalLightsOn();
             SoundSet(murmuring, 0, 1f);
         }
         
@@ -127,18 +129,6 @@ public class Sound : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            ChangeBackgroundMusic(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            ChangeBackgroundMusic(false);
-        }
-    }
 
     public void ChangeBackgroundMusic(bool playFightMusic) 
     {
@@ -159,7 +149,7 @@ public class Sound : MonoBehaviour
             backgroundSource.clip = fightBackgroundMusicLevels[randomNum];
             backgroundSource.Play();
 
-            DOTweenVolumeFade(7f, backgroundMusicFadeOutOrInTime/4);
+            DOTweenVolumeFade(fightMusicVolume, backgroundMusicFadeOutOrInTime/4);
             yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime/4);
             yield return null;
         }
@@ -173,7 +163,7 @@ public class Sound : MonoBehaviour
             backgroundSource.time = backgroundMusicTimeStamp;
             backgroundSource.Play();
 
-            DOTweenVolumeFade(1f, backgroundMusicFadeOutOrInTime);
+            DOTweenVolumeFade(backgroundMusicVolume, backgroundMusicFadeOutOrInTime);
             yield return new WaitForSeconds(backgroundMusicFadeOutOrInTime);
             yield return null;
         }

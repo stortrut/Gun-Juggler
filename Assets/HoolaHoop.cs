@@ -45,6 +45,8 @@ public class HoolaHoop : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && on == false)
         {
             curtainMovement.ActivateCurtains();
+            Sound.Instance.SoundSet(Sound.Instance.murmuring, 0, 1f);
+            Sound.Instance.SoundSet(Sound.Instance.windWhoosh, 0, 1f);
             Debug.Log("fight started");
             Lights.Instance.FightLightOn(true);
             Sound.Instance.ChangeBackgroundMusic(true);
@@ -54,7 +56,6 @@ public class HoolaHoop : MonoBehaviour
             on = true;
             Invoke(nameof(StartWave), 5);
             StartCoroutine(DelayStart());
-            Sound.Instance.ChangeBackgroundMusic(true);
             PlayerJuggle.Instance.FightStart();
             // Respawn.Instance.waveStart.Invoke();
         }

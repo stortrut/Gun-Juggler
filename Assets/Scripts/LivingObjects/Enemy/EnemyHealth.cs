@@ -139,7 +139,7 @@ public class EnemyHealth : Health
         else if (enemyAnimator.enemyType == EnemyType.PieClown)
         {
             Invoke(nameof(ClownDeath), 1.5f);
-            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, 5,.7f);
+            Sound.Instance.SoundSet(Sound.Instance.enemyTakingDamageEnumOrder, 5,1f,.1f);
             CameraShakeRobert.instance.AddTrauma(0.3f);
             enemyAnimator.Dying();
             Score.Instance.pieClownHit++;
@@ -158,7 +158,7 @@ public class EnemyHealth : Health
     void ClownDeath()
     {
         CameraShakeRobert.instance.AddTrauma(0.1f);
-        Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + .5f);
+        Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
         EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
         Sound.Instance.SoundSet(Sound.Instance.poof, 0);
         Destroy(gameObject);
