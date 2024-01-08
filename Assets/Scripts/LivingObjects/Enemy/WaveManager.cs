@@ -52,6 +52,7 @@ public class WaveManager : MonoBehaviour
             {
                 hoolaHoop.EndWave();
                 clownAnimator.Attacking();
+                FollowPlayer.Instance.trampolineJumping = false;
                 //Lights.Instance.NormalLightsOn();
                 //EffectAnimations.Instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one);
                 //Sound.Instance.SoundSet(Sound.Instance.explosion, 0, .7f);
