@@ -149,9 +149,9 @@ public class Manager : MonoBehaviour
         Sound.Instance.DOTweenVolumeFade(0, musicTransitionDuration);
         PlayerPrefs.SetFloat("fadein",musicTransitionDuration / 2);
         Debug.Log("Load next");
-        yield return new WaitForSeconds(1);
-
+        //yield return new WaitForSeconds(1);
         ProceedToNextLevel();
+        yield return null;
     }
 
     public void LoadNextLevel()         //    fade
