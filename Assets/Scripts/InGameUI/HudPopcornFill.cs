@@ -21,6 +21,7 @@ public class HudPopcornFill : MonoBehaviour
 
     private bool ultActive = false;
     [SerializeField] GameObject popping;
+    GameObject popp;
 
 
     void Start()
@@ -74,8 +75,12 @@ public class HudPopcornFill : MonoBehaviour
 
         if (popcornFillTopPos.y > 19)
         {
-            var popp = Instantiate(popcornReady, transform.position, Quaternion.identity, transform);
-            popp.transform.localPosition += new Vector3(120, 0);
+            if (popp == null)
+            {
+                popp = Instantiate(popcornReady, transform.position, Quaternion.identity, transform);
+                popp.transform.localPosition += new Vector3(120, 0);
+            }
+            
             //EffectAnimations.instance.PopcornPoppingUltReady(popcornFillTopPos);
             
             //popcornFillTopPos.y -= popcornFillAmountPerUpgrade;
@@ -88,6 +93,7 @@ public class HudPopcornFill : MonoBehaviour
     {
         StartCoroutine(nameof(StartUlt));
         Destroy(popcornReady);
+        popp = null;
     }
     
 
