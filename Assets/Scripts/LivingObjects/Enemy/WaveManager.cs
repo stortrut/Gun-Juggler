@@ -53,8 +53,8 @@ public class WaveManager : MonoBehaviour
                 hoolaHoop.EndWave();
                 clownAnimator.Attacking();
                 //Lights.Instance.NormalLightsOn();
-                EffectAnimations.Instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one);
-                Sound.Instance.SoundSet(Sound.Instance.explosion, 0, .7f);
+                //EffectAnimations.Instance.BigExplosion(clownAnimator.gameObject.transform.position, Vector3.one);
+                //Sound.Instance.SoundSet(Sound.Instance.explosion, 0, .7f);
                 clownAnimator.Dying();
                 if (AudienceSatisfaction.Instance.audienceSatisfaction.fillAmount < 0.15f)
                 {
@@ -70,7 +70,7 @@ public class WaveManager : MonoBehaviour
                     AudienceSatisfaction.Instance.ActDone();
                 }
                   
-                Destroy(clownAnimator.gameObject,5);
+                Destroy(clownAnimator.gameObject,25);
                 foreach (var bla in curtain)
                 {
                     bla.SetActive(false);
