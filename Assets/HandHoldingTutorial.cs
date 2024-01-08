@@ -20,6 +20,8 @@ public class HandHoldingTutorial : MonoBehaviour
     public GameObject entertainmentRatingBox;
     public GameObject entertainmentRatingArrow;
 
+    public GameObject popCornGunCheck;
+    public GameObject popCornGun;
 
     private void Start()
     {
@@ -27,7 +29,7 @@ public class HandHoldingTutorial : MonoBehaviour
         StartCoroutine(nameof(Tutorial));
     }
 
-
+    [System.Obsolete]
     IEnumerator Tutorial()
     {
         if(firstGun == null) { Debug.Log("NDAWONDAOWDNAOWPDIHAWDAWD"); }
@@ -122,6 +124,33 @@ public class HandHoldingTutorial : MonoBehaviour
         entertainmentRatingBox.GetComponentInChildren<TextMeshPro>().text = "Defeat enemies before they leave the stage to keep your Performance Rating up!";
         FindObjectOfType<PlayerMovement>().turnOffMovement = false;
         entertainmentRatingArrow.SetActive(false);
+
+        while (popCornGunCheck != null)
+        {
+            yield return null;
+        }
+        FindObjectOfType<PlayerMovement>().turnOffMovement = true;
+
+        popCornGun.SetActive(true);
+        yield return new WaitForSeconds(3.85f);
+
+        popCornGun.GetComponentInChildren<TextMeshPro>().text = "When you have enough, middle mouse click to use the Popcorn Gun temporarily!";
+        yield return new WaitForSeconds(4f);
+        popCornGun.GetComponentInChildren<TextMeshPro>().text = "Try it out!";
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+        FindObjectOfType<HudPopcornFill>().PopcornAmountUpgrade();
+
+        FindObjectOfType<PlayerMovement>().turnOffMovement = false;
+        yield return new WaitForSeconds(3.85f);
+        popCornGun.GetComponentInChildren<TextMeshPro>().text = "Middle mouse click to use it!";
+
 
 
         Score.Instance.ActScore(1);

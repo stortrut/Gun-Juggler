@@ -38,6 +38,7 @@ public class JuggleCatchCircle : MonoBehaviour
         currentCatchAttemptCooldownTimer = maxCatchAttemptCooldown;
     }
 
+    [System.Obsolete]
     private void Update()
     {
         if (turnOffUpgradeFunction) { return; }
