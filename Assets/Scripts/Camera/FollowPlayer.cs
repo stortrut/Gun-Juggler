@@ -53,7 +53,7 @@ public class FollowPlayer : MonoBehaviour
     private void PathBack()
     {
         Vector3[] pathBack = path.Reverse().ToArray();
-        Sound.Instance.SoundSet(Sound.Instance.windWhoosh, 0);
+        Sound.Instance.SoundSet(Sound.Instance.windWhoosh, 0,.7f);
         transform.DOPath(pathBack, 1, PathType.CatmullRom, PathMode.Sidescroller2D).OnComplete(() => {
             FindPlayer();
             Lights.Instance.NormalLightsOn();

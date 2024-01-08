@@ -39,7 +39,7 @@ public class BalloonHealth : Health
             ApplyDamage(1);
            
             AudienceSatisfaction.Instance.AudienceHappiness(1f);
-            Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0,.5f);
+            Sound.Instance.SoundRandomized(Sound.Instance.randomPositiveReactions,.7f,.05f,.15f);
             //Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 3, .3f);
             // Destroy(other.gameObject);
         }
@@ -48,9 +48,8 @@ public class BalloonHealth : Health
             AudienceSatisfaction.Instance.AudienceHappiness(-health * 2);
             EffectAnimations.Instance.BalloonFireExplosion(transform.position, Vector3.one * .9f);
             Sound.Instance.SoundRandomized(Sound.Instance.balloonFirePop, 1f,.2f);
-            Sound.Instance.SoundRandomized(Sound.Instance.balloonFirePop, .5f, .2f);
 
-            Sound.Instance.SoundRandomized(Sound.Instance.dissapointment,.4f,.1f );
+            Sound.Instance.SoundRandomized(Sound.Instance.randomNegativeReactions, .3f, .05f, .15f);
             Destroy(gameObject);
             // CUSTOM FAIL DEATH;
         }

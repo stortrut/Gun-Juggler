@@ -159,10 +159,10 @@ public class EnemyHealth : Health
     {
         CameraShakeRobert.instance.AddTrauma(0.1f);
         Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-        EffectAnimations.Instance.EnemyPoof(positionForEffectAnimationScript);
-        Sound.Instance.SoundSet(Sound.Instance.poof, 0);
-        Destroy(gameObject);
-        Destroy(transform.parent.gameObject);
+        EffectAnimations.Instance.BigExplosion(positionForEffectAnimationScript, new Vector3(1,1,1));
+        Sound.Instance.SoundSet(Sound.Instance.explosion, 0);
+        //Destroy(gameObject);
+        //Destroy(transform.parent.gameObject);
     }
 }
     

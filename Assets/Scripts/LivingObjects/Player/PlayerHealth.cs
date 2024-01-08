@@ -37,8 +37,8 @@ public class PlayerHealth : Health
                 //Sound.Instance.SoundRandomized(Sound.Instance.playerTakingDamageSounds);
                 Destroy(other.gameObject);
                 AudienceSatisfaction.Instance.AudienceHappiness(-10);
-                Sound.Instance.SoundSet(Sound.Instance.audienceBoo,0,.1f);
-                Sound.Instance.SoundSet(Sound.Instance.audienceBoo, 1,.1f);
+                Sound.Instance.SoundSet(Sound.Instance.audienceBoo,0,.15f);
+                Sound.Instance.SoundSet(Sound.Instance.audienceBoo, 1,.15f);
                 //gameObject.GetComponent<PlayerJuggle>().ReplaceRandomWeaponWithHeart();
                 //Debug.Log(health);
 

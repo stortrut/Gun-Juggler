@@ -71,6 +71,7 @@ public class HoolaHoop : MonoBehaviour
             Sound.Instance.SoundSet(Sound.Instance.murmuring, 0, 1f);
             Sound.Instance.SoundSet(Sound.Instance.windWhoosh, 0, 1f);
             Debug.Log("fight started");
+
             Lights.Instance.FightLightOn(true);
             Sound.Instance.ChangeBackgroundMusic(true);
             //StartCoroutine(FollowPlayer.Instance.SmoothCamera(400, new Vector3(29.7999992f, -7.50287676f, 12.6000004f))); 

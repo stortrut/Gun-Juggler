@@ -120,7 +120,7 @@ public class Menu : MonoBehaviour, IStunnable
     {
         //Sound.Instance.SoundSet(Sound.Instance.audienceApplauding, 0);
         PlayerPrefs.SetInt("cameraPan", 0);
-        Manager.Instance.LoadNextSceneWithTransition(1);
+        Manager.Instance.LoadNextSceneNoTransition();
         
     }
 }

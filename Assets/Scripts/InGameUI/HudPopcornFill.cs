@@ -18,10 +18,11 @@ public class HudPopcornFill : MonoBehaviour
     [SerializeField] private float popcornFillAmountPerUpgrade = 2;
 
     float ultDuration = 5;
+    private bool ultReady = false;
 
     private bool ultActive = false;
     [SerializeField] GameObject popping;
-    GameObject popp;
+    GameObject ultReadyText;
 
 
     void Start()
@@ -39,9 +40,9 @@ public class HudPopcornFill : MonoBehaviour
     [System.Obsolete]
     private void Update()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) && ultReady)
         {
-            PopcornAmountUpgrade();
+            StartPopcornUlt();
         }
     }
 
@@ -75,10 +76,11 @@ public class HudPopcornFill : MonoBehaviour
 
         if (popcornFillTopPos.y > 19)
         {
-            if (popp == null)
-            {
-                popp = Instantiate(popcornReady, transform.position, Quaternion.identity, transform);
-                popp.transform.localPosition += new Vector3(120, 0);
+            if (ultReadyText == null)
+            { 
+                ultReadyText = Instantiate(popcornReady, transform.position, Quaternion.identity, transform);
+                ultReadyText.transform.localPosition += new Vector3(120, 0);
+                ultReady = true;
             }
             
             //EffectAnimations.instance.PopcornPoppingUltReady(popcornFillTopPos);
@@ -91,9 +93,10 @@ public class HudPopcornFill : MonoBehaviour
     float startTime;
     public void StartPopcornUlt()
     {
+        ultReady = false;
         StartCoroutine(nameof(StartUlt));
-        Destroy(popcornReady);
-        popp = null;
+        Destroy(ultReadyText);
+        ultReadyText = null;
     }
     
 

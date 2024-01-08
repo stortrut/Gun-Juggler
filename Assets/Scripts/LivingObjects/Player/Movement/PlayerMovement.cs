@@ -271,7 +271,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     {
         if (onGround && Input.GetButtonDown("Jump") || actuallyTouchingGround && Input.GetButtonDown("Jump"))
         {
-            Sound.Instance.SoundSet(Sound.Instance.jumpVoice, 0, .4f, .3f);
+            Sound.Instance.SoundRandomized(Sound.Instance.jumpVoice, .6f, .3f,.2f);
             float jumpVelocity = Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
             isJumping = true;

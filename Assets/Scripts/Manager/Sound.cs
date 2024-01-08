@@ -26,6 +26,8 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] audienceBoo;
     [SerializeField] public AudioClip[] murmuring;
     [SerializeField] public AudioClip[] dissapointment;
+    [SerializeField] public AudioClip[] randomPositiveReactions;
+    [SerializeField] public AudioClip[] randomNegativeReactions;
 
     [Header("Weapon")]
     [SerializeField] public AudioClip[] catchWeaponWeapontypeEnumOrder;
@@ -70,11 +72,11 @@ public class Sound : MonoBehaviour
     [SerializeField] public AudioClip[] hampter;
 
     [Header("Other")]
-    [SerializeField] private float backgroundMusicFadeOutOrInTime =.3f;
+    [HideInInspector] private float backgroundMusicFadeOutOrInTime =.3f;
     [HideInInspector] float backgroundMusicTimeStamp = 0f;
     [HideInInspector] int backgroundMusicIndex;
-    [SerializeField] float fightMusicVolume = .2f;
-    [SerializeField] float backgroundMusicVolume = .5f;
+    [HideInInspector] float fightMusicVolume = .8f;
+    [HideInInspector] float backgroundMusicVolume = .7f;
 
 
     //Volume
@@ -174,7 +176,7 @@ public class Sound : MonoBehaviour
         backgroundSource.DOFade(targetVolume, fadeDuration);
     }
 
-    public void SoundRandomized(AudioClip[] currentsound, float volume = 1f, float randomRange = 0f)  //float volume)
+    public void SoundRandomized(AudioClip[] currentsound, float volume = 1f, float randomPitchRange = 0f, float randomVolumeRange = 0f)  //float volume)
     {
         GameObject instantiatedEffectAudioSourceGameObject = Instantiate(effectAudioSourceGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         AudioSource audioSource = instantiatedEffectAudioSourceGameObject.GetComponent<AudioSource>();
@@ -183,8 +185,11 @@ public class Sound : MonoBehaviour
         audioSource.clip = currentsound[i];
         audioSource.volume = volume;
 
-        float y = Random.Range(-randomRange/2, randomRange/2);
+        float y = Random.Range(-randomPitchRange/2, randomPitchRange/2);
         audioSource.pitch = 1 + y;
+
+        float u = Random.Range(-randomVolumeRange / 2, randomVolumeRange / 2);
+        audioSource.volume = volume + u;
         //input volume * set effect volume value from slider
 
         GameObject[] soundEffectInstantiatedObjects = GameObject.FindGameObjectsWithTag("SoundEffectObject");
