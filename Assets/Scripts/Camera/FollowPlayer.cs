@@ -26,6 +26,9 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private float smoothnessFactor = 3;
     [ReadOnly] public bool lockOn;
     [ReadOnly] public bool zoomFinished;
+    float trampOffset;
+    float yOffset;
+    float latestOnGround;
 
 
     private void Awake()
@@ -106,16 +109,24 @@ public class FollowPlayer : MonoBehaviour
             //targetPos.y = transform.position.y; 
             axisShouldStayUnlockedTilItReachesTarget = false;
         }
-        if (trampolineJumping)
+        if (trampolineJumping == true)
         {
-            targetPos.y = playerToFollow.transform.position.y + offset.y;
+            offset = new Vector3(5, latestOnGround + 14.5f, -120);
         }
+        else
+        {
+            offset = new Vector3(5, 2, 46.5f);
+            latestOnGround = targetPos.y;
+        }
+       
         targetPos.x = playerToFollow.transform.position.x + offset.x;
         targetPos.z = offset.z;
         Vector3 posY = Vector3.Lerp(transform.position, targetPos, smoothnessFactor * Time.deltaTime);
         Vector3 posX = new Vector3(playerToFollow.transform.position.x + offset.x, 0, 0);
-        transform.position = new Vector3(targetPos.x, posY.y, offset.z);
-
+        if (trampolineJumping == false)
+            transform.position = new Vector3(targetPos.x, posY.y, offset.z);
+        else
+            transform.position = new Vector3(targetPos.x, offset.y, offset.z);
        
     }
     public bool trampolineJumping;

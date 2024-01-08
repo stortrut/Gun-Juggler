@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
             if (shouldAddBounceForce)
             {
                 Debug.Log("savedvelocity: " + savedVelocityForBounce);
-                FindObjectOfType<FollowPlayer>().trampolineJumping = true;
+                //FindObjectOfType<FollowPlayer>().trampolineJumping = true;
 
                 AddBounceForce();
             }
