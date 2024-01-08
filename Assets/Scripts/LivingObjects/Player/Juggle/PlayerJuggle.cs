@@ -232,7 +232,7 @@ public class PlayerJuggle : MonoBehaviour
         if (weaponInHand == null) { return; }
         if (pauseJuggling) { return; }
         if (!isJuggling) { ThrowUpAllWeapons(); return; }
-        Debug.Log("THREW UP WEAPON");
+        //Debug.Log("THREW UP WEAPON");
 
         weaponInHand.ThrowUpWeapon();
         //weaponInHand.gameObject.transform.SetParent(originalParent, false);

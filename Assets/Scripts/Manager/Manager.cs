@@ -148,7 +148,7 @@ public class Manager : MonoBehaviour
         FadeInOrOutSoundAndLight(false, 1, .5f);
         Sound.Instance.DOTweenVolumeFade(0, musicTransitionDuration);
         PlayerPrefs.SetFloat("fadein",musicTransitionDuration / 2);
-
+        Debug.Log("Load next");
         yield return new WaitForSeconds(1);
 
         ProceedToNextLevel();

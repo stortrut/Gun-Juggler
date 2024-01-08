@@ -14,7 +14,7 @@ public class EnemyHealth : Health
     private Vector2 positionForEffectAnimationScript;
     private bool colorischanged;
     private bool dummy;
-    public bool died;
+    public bool hasDied;
     private IStunnable[] stunnable;
 
     private void Awake()
@@ -25,7 +25,7 @@ public class EnemyHealth : Health
     }
     private void Start()
     {
-        died = false;
+        hasDied = false;
         maxHealth = health;
         
         if (enemyAnimator != null )
@@ -82,9 +82,9 @@ public class EnemyHealth : Health
 
                 if (health <= 0)
                 {
-                    if (died == true) { return; }
+                    if (hasDied == true) { return; }
 
-                    died = true;
+                    hasDied = true;
 
                    // Death();
                 }

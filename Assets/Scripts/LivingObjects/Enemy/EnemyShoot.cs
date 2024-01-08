@@ -72,7 +72,7 @@ public class EnemyShoot : MonoBehaviour, IStunnable
 
                 // Perform the shooting and aim adjustment
                 StartCoroutine(nameof(Shoot));
-                if (enemyHealth.died)
+                if (enemyHealth.hasDied)
                 { return; }
                 AdjustAim();
             }

@@ -99,7 +99,7 @@ public class Pie : EnemyBullet
             Vector2 positionForEffectAnimationScript = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
             EffectAnimations.Instance.PieExplosion(positionForEffectAnimationScript);
             Sound.Instance.SoundSet(Sound.Instance.pieSplash, 1, 1f);
-            Sound.Instance.SoundSet(Sound.Instance.dissapointment, 1, .3f);
+            Sound.Instance.SoundSet(Sound.Instance.dissapointment, 0, .3f);
             Destroy(gameObject);
         }
         if (other.gameObject.CompareTag("Bullet"))

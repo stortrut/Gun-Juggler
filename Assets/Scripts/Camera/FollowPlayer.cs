@@ -81,7 +81,7 @@ public class FollowPlayer : MonoBehaviour
         {
             if (axisShouldStayUnlockedTilItReachesTarget)
             {
-                Debug.Log("return");
+                //Debug.Log("return");
 
             }
             else
