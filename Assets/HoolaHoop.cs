@@ -13,8 +13,15 @@ public class HoolaHoop : MonoBehaviour
     const string WAVE = "wave";
     //bool fightHasStarted;
 
+
+    [SerializeField] GameObject wavesClearedSign;
+
+
+
     private void Start()
     {
+        if (wavesClearedSign != null)
+            wavesClearedSign.SetActive(false);
     }
 
     public void StartWave()
@@ -33,13 +40,29 @@ public class HoolaHoop : MonoBehaviour
         Lights.Instance.FightLightOn(false);
 
         enemyAnimator.SetBool(WAVE, false);
-       // FollowPlayer.Instance.FindPlayer();
+
+        if (wavesClearedSign != null)
+            wavesClearedSign.SetActive(true);
+
+        StartCoroutine(nameof(EndWaveCorotine));
+    }
+
+
+    IEnumerator EndWaveCorotine()
+    {
+        yield return new WaitForSeconds(3);
+
+
+        // FollowPlayer.Instance.FindPlayer();
         StartCoroutine(FollowPlayer.Instance.SmoothCamera(50, new Vector3(5, 5.75f, 31.7999992f), true));
         PlayerJuggle.Instance.DropAllWeaponsOnGround();
         PlayerJuggle.Instance.pauseJuggling = true;
         PlayerJuggle.Instance.FightEnd();
         //FollowPlayer.Instance.lockOn = true;
     }
+
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && on == false)
