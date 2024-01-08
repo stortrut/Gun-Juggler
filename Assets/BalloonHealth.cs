@@ -39,7 +39,7 @@ public class BalloonHealth : Health
             ApplyDamage(1);
            
             AudienceSatisfaction.Instance.AudienceHappiness(1f);
-            Sound.Instance.SoundRandomized(Sound.Instance.randomPositiveReactions,.7f,.05f,.15f);
+            Sound.Instance.SoundRandomized(Sound.Instance.randomPositiveReactions,.4f,.05f,.2f);
             //Sound.Instance.SoundSet(Sound.Instance.otherPositiveReactions, 3, .3f);
             // Destroy(other.gameObject);
         }
