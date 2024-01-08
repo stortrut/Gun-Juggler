@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour, IStunnable
     [SerializeField] private Collider2D mainPlayerCollider;
     [SerializeField] private LegAnimationHandler legs;
     [SerializeField] private Health playerHealth;
+    [SerializeField] private Animator anim;
 
     [Header("Walk")]
     [SerializeField] private float acceleration = 10f;
@@ -204,10 +205,12 @@ public class PlayerMovement : MonoBehaviour, IStunnable
             if (horizontalInputRaw > 0)
             {
                 legs.SetDirectionToForwards();
+                anim.SetBool("Forward", true);
             }
             else
             {
                 legs.SetDirectionToBackwards();
+                anim.SetBool("Forward", false);
             }
         }
 
